@@ -1,0 +1,26 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+  - name: "pricing"
+    label: "Pricing"
+    files:
+      - file: "content/pricing.json"
+        label: "Website Pricing"
+        name: "website_pricing"
+        fields:
+          - label: "Starter Price"
+            name: "starter_price"
+            widget: "string"
+
+          - label: "Standard Price"
+            name: "standard_price"
+            widget: "string"
+
+          - label: "Custom Price"
+            name: "custom_price"
+            widget: "string"

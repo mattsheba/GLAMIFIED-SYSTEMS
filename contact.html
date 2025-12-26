@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Contact Us | Glamified Systems</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Contact Glamified Systems, IT Support Lusaka, Business Consultancy Zambia">
+    <meta name="description" content="Contact Glamified Systems for reliable IT support, business consultancy, and professional services in Lusaka, Zambia.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/260964016196?text=Hello%20Glamified%20Systems,%20I%20would%20like%20to%20enquire%20about%20your%20services."
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Topbar -->
+<div class="container-fluid bg-dark py-2 d-none d-md-flex">
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <div>
+                <small class="me-3 text-white-50">
+                    <i class="fas fa-map-marker-alt me-2 text-secondary"></i>
+                    Lusaka, Zambia
+                </small>
+                <small class="me-3 text-white-50">
+                    <i class="fas fa-envelope me-2 text-secondary"></i>
+                    glamifiedstylez@gmail.com
+                </small>
+            </div>
+            <div>
+                <small class="text-secondary">Reliable IT & Business Solutions</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<div class="container-fluid bg-primary">
+    <div class="container">
+        <nav class="navbar navbar-dark navbar-expand-lg py-0">
+            <a href="index.html" class="navbar-brand d-flex align-items-center">
+                <img src="img/logo.png" alt="Glamified Systems" style="height:55px;" class="me-2">
+                <span class="fw-bold text-white">Glamified Systems</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto mx-xl-auto">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Services</a>
+                    <a href="pricing.html" class="nav-item nav-link">Pricing</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                </div>
+            </div>
+
+            <div class="d-none d-xl-flex align-items-center">
+                <div class="pe-4 border-end">
+                    <span class="text-white-50">Call us</span><br>
+                    <span class="text-secondary">+260 770 029 595</span>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- Page Header -->
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-4 text-white mb-3 animated slideInDown">Contact Us</h1>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Contact Info -->
+            <div class="col-lg-5">
+                <h2 class="mb-3">Let’s Talk</h2>
+                <p class="mb-4">
+                    Whether you need IT support, professional advice, or want to discuss a project,
+                    feel free to contact us. We keep communication clear and timely.
+                </p>
+
+                <p><i class="fas fa-map-marker-alt text-secondary me-2"></i> Lusaka, Zambia</p>
+                <p><i class="fas fa-phone-alt text-secondary me-2"></i> +260 770 029 595</p>
+                <p><i class="fas fa-envelope text-secondary me-2"></i> glamifiedstylez@gmail.com</p>
+
+                <p class="mt-4">
+                    You can also reach us instantly using WhatsApp via the green button on this page.
+                </p>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7">
+                <div class="bg-light rounded p-4">
+
+                    <!-- Success Message -->
+                    <div id="success-message" class="alert alert-success d-none">
+                        Your message has been sent successfully. We will get back to you shortly.
+                    </div>
+
+                    <h4 class="mb-3">Send Us a Message</h4>
+
+                    <form action="https://formspree.io/f/xeejayrn" method="POST" onsubmit="handleSubmit(event)">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="col-12">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="col-12">
+                                <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+
+                            <input type="hidden" name="_subject" value="New message from Glamified Systems website">
+                            <input type="hidden" name="_captcha" value="false">
+
+                            <div class="col-12">
+                                <button class="btn btn-primary rounded-pill px-4" type="submit">
+                                    Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Google Map -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h3>Our Location</h3>
+            <p>
+                We are based in Lusaka and serve clients across Zambia.
+            </p>
+        </div>
+
+        <div class="ratio ratio-16x9 rounded overflow-hidden">
+            <iframe 
+                src="https://www.google.com/maps?q=Lusaka%2C%20Zambia&output=embed"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="container-fluid bg-dark text-white py-4">
+    <div class="container text-center">
+        <p class="mb-1">Glamified Systems | Lusaka, Zambia</p>
+        <p class="mb-0">
+            Phone: +260 770 029 595 | Email: glamifiedstylez@gmail.com
+        </p>
+        <small class="text-white-50">Designed by Glamified Systems</small>
+    </div>
+</div>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+
+    fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) {
+            form.reset();
+            document.getElementById('success-message').classList.remove('d-none');
+        } else {
+            alert("Something went wrong. Please try again.");
+        }
+    }).catch(() => {
+        alert("Network error. Please try again later.");
+    });
+}
+</script>
+
+</body>
+</html>
