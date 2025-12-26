@@ -7,20 +7,20 @@ public_folder: "/img/uploads"
 
 collections:
   - name: "pricing"
-    label: "Pricing"
+    label: "Pricing & Packages"
     files:
       - file: "content/pricing.json"
         label: "Website Pricing"
         name: "website_pricing"
         fields:
-          - label: "Starter Price"
+          - label: "Starter Package Price"
             name: "starter_price"
             widget: "string"
 
-          - label: "Standard Price"
+          - label: "Standard Package Price"
             name: "standard_price"
             widget: "string"
 
-          - label: "Custom Price"
+          - label: "Custom Package Price"
             name: "custom_price"
             widget: "string"
