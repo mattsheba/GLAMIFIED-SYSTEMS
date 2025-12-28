@@ -561,4 +561,31 @@
     background-color: #f9fdfb !important;
 }
 
+/* === FIX WOW / animation blocking hover === */
+
+/* Re-enable pointer events on pricing section */
+.pricing-card,
+.pricing-card * {
+    pointer-events: auto !important;
+}
+
+/* Ensure WOW wrapper does not block hover */
+.wow {
+    pointer-events: auto !important;
+}
+
+/* Pricing card hover effect */
+.pricing-card {
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.35s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+    border-top: 4px solid #198754; /* green */
+    background-color: #f9fdfb;
+}
+
 /*** Footer End ***/
