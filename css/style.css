@@ -545,4 +545,20 @@
     border-top: 4px solid #198754; /* green */
 }
 
+/* === FORCE pricing card hover === */
+.pricing-card {
+    position: relative;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.35s ease !important;
+    pointer-events: auto !important;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2) !important;
+    border-top: 4px solid #198754 !important; /* green */
+    background-color: #f9fdfb !important;
+}
+
 /*** Footer End ***/
