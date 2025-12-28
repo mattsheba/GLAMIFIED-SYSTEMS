@@ -533,4 +533,16 @@
     border-top: 4px solid #0d6efd; /* Bootstrap primary blue */
 }
 
+/* Pricing cards – hover & highlight (force override) */
+.pricing-card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    background-color: #ffffff;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    border-top: 4px solid #198754; /* green */
+}
+
 /*** Footer End ***/
