@@ -26,26 +26,39 @@
 </head>
 
 <body>
-
-<a href="https://wa.me/260964016196?text=Hello%20Glamified%20Systems,%20I%20would%20like%20to%20enquire%20about%20your%20services."
-   class="whatsapp-float"
-   target="_blank"
-   aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content visually-hidden visually-hidden-focusable">
+        Skip to main content
+    </a>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/260964016196?text=Hello%20Glamified%20Systems,%20I%20would%20like%20to%20enquire%20about%20your%20services."
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 <!-- Topbar -->
 <div class="container-fluid bg-dark py-2 d-none d-md-flex">
     <div class="container">
-        <div class="d-flex justify-content-between">
-            <div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-wrap">
                 <small class="me-3 text-white-50">
                     <i class="fas fa-map-marker-alt me-2 text-secondary"></i>
                     Southgate Mall, Lusaka, Zambia
                 </small>
                 <small class="me-3 text-white-50">
                     <i class="fas fa-envelope me-2 text-secondary"></i>
-                    glamifiedstylez@gmail.com
+                    <a href="mailto:glamifiedstylez@gmail.com" class="text-white-50 text-decoration-none">
+                        glamifiedstylez@gmail.com
+                    </a>
+                </small>
+                <small class="me-3 text-white-50">
+                    <i class="fas fa-phone me-2 text-secondary"></i>
+                    <a href="tel:+260770029595" class="text-white-50 text-decoration-none">
+                        +260 770 029 595
+                    </a>
                 </small>
             </div>
             <div>
@@ -78,12 +91,6 @@
                 </div>
             </div>
 
-            <div class="d-none d-xl-flex align-items-center">
-                <div class="pe-4 border-end">
-                    <span class="text-white-50">Call us</span><br>
-                    <span class="text-secondary">+260 770 029 595</span>
-                </div>
-            </div>
         </nav>
     </div>
 </div>
@@ -102,7 +109,7 @@
 </div>
 
 <!-- Services Introduction -->
-<div class="container-fluid py-5">
+<div class="container-fluid py-5" id="main-content">
     <div class="container text-center">
         <h2 class="mb-3">Practical Solutions That Work</h2>
         <p class="mb-4">
@@ -119,8 +126,10 @@
         <div class="row g-4">
 
             <div class="col-md-4">
-                <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <i class="fas fa-tools fa-3x text-secondary mb-3"></i>
+                <div class="service-item wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="icon-wrapper">
+                    <i class="fas fa-tools"></i>
+            </div>
                     <h5>IT Support & Maintenance</h5>
                     <p>
                         We provide reliable technical support for computers, networks,
@@ -131,8 +140,10 @@
             </div>
 
             <div class="col-md-4">
-                <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <i class="fas fa-cloud fa-3x text-secondary mb-3"></i>
+                <div class="service-item wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="icon-wrapper">
+                    <i class="fas fa-cloud"></i>
+            </div>
                     <h5>Cloud Services</h5>
                     <p>
                         We assist with cloud setup (AWS, Azure & Google Cloud), data backup, system migration,
@@ -143,8 +154,10 @@
             </div>
 
             <div class="col-md-4">
-                <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <i class="fas fa-briefcase fa-3x text-secondary mb-3"></i>
+                <div class="service-item wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="icon-wrapper">
+                    <i class="fas fa-briefcase"></i>
+            </div>
                     <h5>Business Consultancy</h5>
                     <p>
                         We help you register your business with PACRA and all related services from ZRA, ZPPA, NAPSA, 
@@ -156,8 +169,10 @@
             </div>
 
             <div class="col-md-4">
-                <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <i class="fas fa-code fa-3x text-secondary mb-3"></i>
+                <div class="service-item wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="icon-wrapper">
+                    <i class="fas fa-code"></i>
+            </div>
                     <h5>Web Design & Development</h5>
                     <p>
                         We design and develop professional websites that are clean,
@@ -168,8 +183,10 @@
             </div>
 
             <div class="col-md-4">
-                <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <i class="fas fa-chalkboard-teacher fa-3x text-secondary mb-3"></i>
+                <div class="service-item wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="icon-wrapper">
+                    <i class="fas fa-chalkboard-teacher"></i>
+            </div>
                     <h5>IT Training</h5>
                     <p>
                         We offer hands-on IT training for individuals and teams,
@@ -180,8 +197,10 @@
             </div>
 
             <div class="col-md-4">
-                <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <i class="fas fa-shield-alt fa-3x text-secondary mb-3"></i>
+                <div class="service-item wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="icon-wrapper">
+                    <i class="fas fa-shield-alt"></i>
+            </div>
                     <h5>Basic Cybersecurity</h5>
                     <p>
                         We help organisations improve system security through user
@@ -192,8 +211,10 @@
             </div>
 
             <div class="col-md-4">
-                <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.7s">
-                    <i class="fas fa-passport fa-3x text-secondary"></i>
+                <div class="service-item wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="icon-wrapper">
+                    <i class="fas fa-passport"></i>
+            </div>
                     <h5>Visa Application Support</h5>
                     <p>
                         Guidance on visa applications, document preparation,

@@ -26,27 +26,39 @@
 </head>
 
 <body>
-
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/260964016196?text=Hello%20Glamified%20Systems,%20I%20would%20like%20to%20enquire%20about%20your%20services."
-   class="whatsapp-float"
-   target="_blank"
-   aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content visually-hidden visually-hidden-focusable">
+        Skip to main content
+    </a>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/260964016196?text=Hello%20Glamified%20Systems,%20I%20would%20like%20to%20enquire%20about%20your%20services."
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 <!-- Topbar -->
 <div class="container-fluid bg-dark py-2 d-none d-md-flex">
     <div class="container">
-        <div class="d-flex justify-content-between">
-            <div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-wrap">
                 <small class="me-3 text-white-50">
                     <i class="fas fa-map-marker-alt me-2 text-secondary"></i>
                     Southgate Mall, Lusaka, Zambia
                 </small>
                 <small class="me-3 text-white-50">
                     <i class="fas fa-envelope me-2 text-secondary"></i>
-                    glamifiedstylez@gmail.com
+                    <a href="mailto:glamifiedstylez@gmail.com" class="text-white-50 text-decoration-none">
+                        glamifiedstylez@gmail.com
+                    </a>
+                </small>
+                <small class="me-3 text-white-50">
+                    <i class="fas fa-phone me-2 text-secondary"></i>
+                    <a href="tel:+260770029595" class="text-white-50 text-decoration-none">
+                        +260 770 029 595
+                    </a>
                 </small>
             </div>
             <div>
@@ -78,13 +90,6 @@
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
             </div>
-
-            <div class="d-none d-xl-flex align-items-center">
-                <div class="pe-4 border-end">
-                    <span class="text-white-50">Call us</span><br>
-                    <span class="text-secondary">+260 770 029 595</span>
-                </div>
-            </div>
         </nav>
     </div>
 </div>
@@ -97,7 +102,7 @@
 </div>
 
 <!-- Contact Section -->
-<div class="container-fluid py-5">
+<div class="container-fluid py-5" id="main-content">
     <div class="container">
         <div class="row g-4">
 

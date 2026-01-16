@@ -46,27 +46,39 @@
 </head>
 
 <body>
-
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/260964016196?text=Hello%20Glamified%20Systems,%20I%20would%20like%20to%20enquire%20about%20your%20services."
-   class="whatsapp-float"
-   target="_blank"
-   aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content visually-hidden visually-hidden-focusable">
+        Skip to main content
+    </a>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/260964016196?text=Hello%20Glamified%20Systems,%20I%20would%20like%20to%20enquire%20about%20your%20services."
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
 <!-- Topbar -->
 <div class="container-fluid bg-dark py-2 d-none d-md-flex">
     <div class="container">
-        <div class="d-flex justify-content-between">
-            <div>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-wrap">
                 <small class="me-3 text-white-50">
                     <i class="fas fa-map-marker-alt me-2 text-secondary"></i>
                     Southgate Mall, Lusaka, Zambia
                 </small>
                 <small class="me-3 text-white-50">
                     <i class="fas fa-envelope me-2 text-secondary"></i>
-                    glamifiedstylez@gmail.com
+                    <a href="mailto:glamifiedstylez@gmail.com" class="text-white-50 text-decoration-none">
+                        glamifiedstylez@gmail.com
+                    </a>
+                </small>
+                <small class="me-3 text-white-50">
+                    <i class="fas fa-phone me-2 text-secondary"></i>
+                    <a href="tel:+260770029595" class="text-white-50 text-decoration-none">
+                        +260 770 029 595
+                    </a>
                 </small>
             </div>
             <div>
@@ -98,12 +110,6 @@
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
 
-            <div class="d-none d-xl-flex align-items-center">
-                <div class="pe-4 border-end">
-                    <span class="text-white-50">Call us</span><br>
-                    <span class="text-secondary">+260 770 029 595</span>
-                </div>
-            </div>
         </nav>
     </div>
 </div>
@@ -138,11 +144,12 @@
     </div>
 </div>
 
-<!-- About Section -->
-<div class="container-fluid py-5">
+<!-- About & Services Section -->
+<div class="container-fluid py-5" id="main-content">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4">
+        <!-- About Section -->
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
                 <h2 class="mb-3">About Glamified Systems</h2>
                 <p>
                     Glamified Systems is an IT and Business solutions provider based in Lusaka, Zambia.
@@ -155,64 +162,66 @@
                 <a href="about.html" class="btn btn-primary rounded-pill px-4">
                     Learn More
                 </a>
+            </div>
+            <div class="col-lg-6">
+                <img src="img/about.webp" class="img-fluid rounded" alt="About Glamified Systems" loading="lazy">
+            </div>
+        </div>
 
-    </div>
-</div>
+        <!-- Services Section Header -->
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="mb-3">Our Core Services</h2>
+                <p class="lead mb-0">Practical IT and business solutions for growth and efficiency</p>
+            </div>
+        </div>
 
-<!-- Services Section -->
-<div class="row g-4">
+        <!-- Services Cards -->
+        <div class="row g-4 justify-content-center">
+            <!-- IT Support -->
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+                <div class="service-item wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h5>IT Support</h5>
+                    <p>Technical support, troubleshooting, and system maintenance for reliable daily operations.</p>
+                </div>
+            </div>
 
-    <div class="col-md-4">
-        <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.1s">
-            <i class="fas fa-tools fa-3x text-secondary mb-3"></i>
-            <h5>IT Support</h5>
-            <p>Technical Support, Troubleshooting, and System Maintenance.</p>
+            <!-- Cloud Services -->
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+                <div class="service-item wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h5>Cloud Services</h5>
+                    <p>Cloud setup (AWS, Azure, Google Cloud), data backup, migration, and secure access solutions.</p>
+                </div>
+            </div>
+
+            <!-- Business Consultancy -->
+            <div class="col-md-6 col-lg-4 d-flex justify-content-center">
+                <div class="service-item wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h5>Business Consultancy</h5>
+                    <p>Business registration, compliance, IT strategy, and digital transformation guidance.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- View All Services Button -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <a href="service.html" class="btn btn-outline-primary rounded-pill px-5">
+                    View All Services <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
         </div>
     </div>
-
-    <div class="col-md-4">
-        <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.3s">
-            <i class="fas fa-cloud fa-3x text-secondary mb-3"></i>
-            <h5>Cloud Services</h5>
-            <p>Cloud setup, management, and secure data solutions.</p>
-        </div>
-    </div>
-
-    <div class="col-md-4">
-        <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.5s">
-            <i class="fas fa-briefcase fa-3x text-secondary mb-3"></i>
-            <h5>Business Consultancy</h5>
-            <p>Business Development, IT strategy, systems improvement, and digital transformation.</p>
-        </div>
-    </div>
-
 </div>
-
-<div class="col-md-4">
-    <div class="service-item text-center h-100 p-4 wow fadeInUp" data-wow-delay="0.7s">
-        <i class="fas fa-passport fa-3x text-secondary mb-3"></i>
-        <h5>Visa Application Support</h5>
-        <p>
-            Assistance with visa applications, documentation,
-            and submission guidance.
-        </p>
-    </div>
-</div>
-
-<!-- Pricing Call to Action -->
-<div class="container-fluid py-5 bg-light">
-    <div class="container text-center">
-        <h2 class="mb-3">Simple & Transparent Pricing</h2>
-        <p class="mb-4">
-            We offer affordable website and digital service packages
-            tailored for businesses and individuals in Zambia.
-        </p>
-        <a href="pricing.html" class="btn btn-primary rounded-pill px-4">
-            View Pricing & Get Quote
-        </a>
-    </div>
-</div>
-
 <!-- Footer -->
 <div class="container-fluid bg-dark text-white py-4">
     <div class="container text-center">
