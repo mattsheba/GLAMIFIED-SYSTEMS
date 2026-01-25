@@ -1,0 +1,10 @@
+/* Home page service card custom size and padding */
+.home-service-card {
+    padding: 2.2rem 2rem 2rem 2rem !important;
+    min-height: 220px;
+    max-width: 410px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    box-sizing: border-box;
+}
