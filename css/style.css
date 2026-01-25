@@ -1,11 +1,14 @@
 /*** Spinner Start ***/
 /*** CSS Variables Start ***/
 :root {
-    --primary-blue: #0d6efd;
-    --dark-blue: #0a58ca;
+    --primary-blue: #0a1a2f; /* Deep navy blue for header */
+    --dark-blue: #0a1a2f;
     --light-blue: #e7f1ff;
     --hover-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     --transition-default: all 0.3s ease;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
 }
 /*** CSS Variables End ***/
 /* ...existing spinner code continues... */
@@ -154,16 +157,19 @@ body.has-sticky-header {
 }
 
 .navbar .navbar-nav .nav-link {
-    padding: 10px;
-    color: var(--bs-white);
+    padding: 10px 18px;
+    color: #fff;
     font-size: 18px;
     outline: none;
-    
+    font-family: 'Saira', 'Inter', Arial, sans-serif;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
 }
 
 .navbar .navbar-nav .nav-link:hover,
-.navbar .navbar-nav .nav-link.active {
-    color: var(--bs-secondary) !important;
+    .navbar .navbar-nav .nav-link.active {
+    color: #e74c3c !important; /* Red accent for active/hover */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .navbar .dropdown-toggle::after {
@@ -420,39 +426,355 @@ body.has-sticky-header {
    Service Cards – STRONG BLUE
 ================================ */
 
-.service-item {
+
+
+
+/*** Blog Start ***/
+.blog-item .blog-btn {
+    z-index: 2;
+}
+
+.blog-btn .blog-btn-icon {
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-btn-icon .blog-icon-2 {
+    display: flex;
+    position: absolute;
+    top: 6px;
+    left: -140px;
+    
+}
+
+.blog-btn-icon:hover .blog-icon-2 {
+    transition: 1s;
+    left: 5px;
+    top: 6px;
+    padding-bottom: 5px;
+}
+.blog-icon-1 {
+    position: relative;
+    top: -4px;
+}
+.blog-btn-icon:hover .blog-icon-1 {
+    top: 0;
+    right: -140px;
+    transition: 1s;
+}
+/*** Blog End ***/
+
+
+/*** Contact Start ***/
+.contact-detail::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../img/background.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.contact-map {
+    background: #26d48c;
+}
+
+.contact-form {
+    background: #26d48c;
+}
+
+/*** Form Improvements Start ***/
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/*** Form Improvements End ***/
+/*** Contact End ***/
+
+
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.whatsapp-float i {
+    line-height: 55px;
+}
+
+/* Ensure navbar is always clickable on mobile */
+.navbar,
+.navbar * {
+    z-index: 1050;
+}
+
+.container-fluid.bg-primary {
+    position: relative;
+    z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
+}
+
+/* ============================================
+   UNIFIED PRICING CARD STYLES
+============================================ */
+.pricing-card {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
 }
 
-/* Default state */
-.service-item h5 {
-    color: #111111;
+.pricing-card:hover {
+    background-color: #0d6efd !important;
+    border-color: #0a58ca;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+}
+
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #ffffff !important;
+}
+
+/*** Accessibility Start ***/
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*** Accessibility End ***/
+
+/*** Cookie Consent Start ***/
+.cookie-consent {
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/*** Cookie Consent End ***/
+
+/*** Card Improvements Start ***/
+
+/* ============================================
+   BASE CARD STYLES (applies to all cards)
+============================================ */
+.card,
+.service-item,
+.pricing-card,
+.project-card {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+/* Card hover effects */
+.card:hover,
+.service-item:hover,
+.pricing-card:hover,
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* Card header styling */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+/* Card body with better spacing */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Card footer styling */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+}
+
+/* ============================================
+   SERVICE CARDS ENHANCEMENT
+============================================ */
+.service-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #111111; /* Strong dark for text */
+}
+
+.service-item h5, .service-item p, .service-item i {
+}
+
+.service-item h5,
+.service-item i {
+    color: #0d6efd;
 }
 
 .service-item p {
-    color: #444444;
+    color: #111111;
 }
-
-.service-item i {
-    color: #0d6efd; /* Bootstrap blue */
-    transition: all 0.3s ease;
 }
-
-/* Hover state */
+.service-item::before,
+.service-item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+.service-item::before { left: 0; }
+.service-item::after { right: 0; }
+.service-item:hover::before,
+.service-item:hover::after {
+    width: 50%;
+}
 .service-item:hover {
-    background-color: #0d6efd; /* STRONG BLUE */
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
-
-/* Hover text & icons */
-.service-item:hover h5,
-.service-item:hover p,
-.service-item:hover i {
-    color: #ffffff !important;
+.service-item * { position: relative; z-index: 2; }
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff;
+}
+.service-item:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.service-item:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.service-item .service-icon i {
+    transition: .2s, color 0.3s;
+}
+.service-item:hover .service-icon i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
 }
 
 /*** Services End ***/
@@ -607,6 +929,8 @@ body.has-sticky-header {
 .container-fluid.bg-primary {
     position: relative;
     z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
 }
 
 /* ============================================
@@ -741,584 +1065,2774 @@ body.has-sticky-header {
 ============================================ */
 .service-item {
     position: relative;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    border-top: 4px solid transparent;
-}
-
-.service-item:hover::before {
-    opacity: 1;
-}
-
-.service-item .icon-wrapper {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, #e7f1ff, #ffffff);
-    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+    flex-direction: column;
 }
-
-.service-item:hover .icon-wrapper {
-    background: linear-gradient(135deg, #0d6efd, #0a58ca);
-    transform: scale(1.1) rotate(5deg);
-}
-
-.service-item .icon-wrapper i {
-    font-size: 2.2rem;
-    background: linear-gradient(135deg, #0d6efd, #198754);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    transition: all 0.3s ease;
-}
-
-.service-item:hover .icon-wrapper i {
-    background: linear-gradient(135deg, #ffffff, #f8f9fa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    transform: scale(1.1);
-}
-
-.service-item h5 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #1a1a1a;
-    transition: color 0.3s ease;
-}
-
-.service-item p {
-    color: #666;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
-}
-
-.service-item:hover h5,
-.service-item:hover p {
-    color: #ffffff !important;
-}
-
-/* ============================================
-   PRICING CARDS ENHANCEMENT
-============================================ */
-.pricing-card {
-    border-top: 4px solid #0d6efd;
-    position: relative;
-    overflow: visible;
-}
-
-.pricing-card.popular {
-    border-top: 4px solid #198754;
-    transform: scale(1.02);
+.service-item::before,
+.service-item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
     z-index: 1;
+    transition: 0.5s ease;
+}
+.service-item::before { left: 0; }
+.service-item::after { right: 0; }
+.service-item:hover::before,
+.service-item:hover::after {
+    width: 50%;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+.service-item * { position: relative; z-index: 2; }
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff;
+}
+.service-item:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.service-item:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.service-item .service-icon i {
+    transition: .2s, color 0.3s;
+}
+.service-item:hover .service-icon i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
 }
 
-.pricing-card.popular::after {
-    content: 'Most Popular';
-    position: absolute;
-    top: -12px;
-    right: 20px;
-    background: #198754;
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
+/*** Services End ***/
+
+
+/*** Blog Start ***/
+.blog-item .blog-btn {
+    z-index: 2;
 }
 
-.pricing-card .price {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #0d6efd;
-    margin: 1rem 0;
-}
-
-.pricing-card.popular .price {
-    color: #198754;
-}
-
-.pricing-card .period {
-    font-size: 0.9rem;
-    color: #666;
-    margin-left: 4px;
-}
-
-.pricing-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
-}
-
-.pricing-card ul li {
-    padding: 8px 0;
-    color: #555;
+.blog-btn .blog-btn-icon {
+    height: 50px;
     position: relative;
-    padding-left: 28px;
+    overflow: hidden;
 }
 
-.pricing-card ul li::before {
-    content: '✓';
+.blog-btn-icon .blog-icon-2 {
+    display: flex;
     position: absolute;
+    top: 6px;
+    left: -140px;
+    
+}
+
+.blog-btn-icon:hover .blog-icon-2 {
+    transition: 1s;
+    left: 5px;
+    top: 6px;
+    padding-bottom: 5px;
+}
+.blog-icon-1 {
+    position: relative;
+    top: -4px;
+}
+.blog-btn-icon:hover .blog-icon-1 {
+    top: 0;
+    right: -140px;
+    transition: 1s;
+}
+/*** Blog End ***/
+
+
+/*** Contact Start ***/
+.contact-detail::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    top: 0;
     left: 0;
-    color: #198754;
-    font-weight: bold;
-}
-
-.pricing-card ul li.disabled {
-    color: #999;
-}
-
-.pricing-card ul li.disabled::before {
-    content: '×';
-    color: #dc3545;
-}
-
-/* Pricing card hover states */
-.pricing-card:hover {
-    background: linear-gradient(135deg, #0d6efd, #0a58ca);
-}
-
-.pricing-card.popular:hover {
-    background: linear-gradient(135deg, #198754, #157347);
-}
-
-.pricing-card:hover * {
-    color: #ffffff !important;
-}
-
-.pricing-card:hover ul li::before {
-    color: #ffffff !important;
-}
-
-/* ============================================
-   PRICING PAGE SPECIFIC STYLES
-============================================ */
-
-/* Page header background */
-.page-header {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                url('../img/carousel-1.webp') center center no-repeat;
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../img/background.jpg) center center no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    border-radius: 10px;
+    z-index: -1;
 }
 
-/* Section titles */
-.section-title {
-    color: #1a1a1a;
-    font-weight: 700;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+.contact-map {
+    background: #26d48c;
+}
+
+.contact-form {
+    background: #26d48c;
+}
+
+/*** Form Improvements Start ***/
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.btn-loading {
     position: relative;
-    display: inline-block;
+    color: transparent !important;
 }
 
-.section-title::after {
+.btn-loading::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    width: 20px;
+    height: 20px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, #0d6efd, #198754);
-    border-radius: 3px;
-}
-
-/* Pricing features list */
-.pricing-features {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
-}
-
-.pricing-features li {
-    padding: 8px 0;
-    color: #555;
-    position: relative;
-    padding-left: 30px;
-    text-align: left;
-}
-
-.pricing-features li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #198754;
-    font-weight: bold;
-}
-
-.pricing-features li.disabled {
-    color: #999;
-}
-
-.pricing-features li.disabled::before {
-    content: '✗';
-    color: #dc3545;
-}
-
-/* Price display */
-.price {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #0d6efd;
-    margin: 1rem 0;
-}
-
-.period {
-    font-size: 1rem;
-    color: #666;
-    font-weight: normal;
-}
-
-/* Payment button */
-.payment-btn {
-    background: linear-gradient(135deg, #198754, #157347);
-    border: none;
-    padding: 12px 24px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border-radius: 50px !important;
-}
-
-.payment-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(25, 135, 84, 0.3);
-    background: linear-gradient(135deg, #157347, #0d6c3a);
-}
-
-/* Provider logos */
-.provider-logos img {
-    height: 30px;
-    margin: 0 5px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-    vertical-align: middle;
-}
-
-.provider-logos img:hover {
-    opacity: 1;
-}
-
-/* Popular badge */
-.pricing-card.popular {
-    border: 2px solid #198754;
-    transform: scale(1.02);
-    z-index: 1;
-}
-
-.badge.bg-success {
-    background: linear-gradient(135deg, #198754, #157347) !important;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .price {
-        font-size: 2rem;
-    }
-    
-    .pricing-card {
-        margin-bottom: 1.5rem;
-    }
-    
-    .provider-logos img {
-        height: 25px;
-        margin: 0 3px;
-    }
-}
-/* ============================================
-   PROJECT CARDS ENHANCEMENT
-============================================ */
-.project-card {
-    border-top: 4px solid #198754;
-    height: 100%;
-    transition: all 0.4s ease;
-}
-
-.project-card:hover {
-    border-top-color: #0d6efd;
-}
-
-.project-card h5 {
-    color: #1a1a1a;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    transition: color 0.3s ease;
-}
-
-.project-card p {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
-}
-
-.project-card .badge {
-    background: #f8f9fa;
-    color: #666;
-    font-size: 0.75rem;
-    padding: 4px 12px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-}
-
-.project-card:hover .badge {
-    background: #0d6efd;
-    color: white;
-}
-
-.project-card:hover h5,
-.project-card:hover p {
-    color: #ffffff;
-}
-
-/* ============================================
-   MISSION/VALUES CARDS ENHANCEMENT
-============================================ */
-.mission-card {
-    background: linear-gradient(135deg, #f8f9fa, #ffffff);
-    border: none;
-    border-left: 4px solid #0d6efd;
-    padding: 2rem;
-    text-align: center;
-}
-
-.mission-card .icon-wrapper {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #fff;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/*** Form Improvements End ***/
+/*** Contact End ***/
+
+
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.whatsapp-float i {
+    line-height: 55px;
+}
+
+/* Ensure navbar is always clickable on mobile */
+.navbar,
+.navbar * {
+    z-index: 1050;
+}
+
+.container-fluid.bg-primary {
+    position: relative;
+    z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
+}
+
+/* ============================================
+   UNIFIED PRICING CARD STYLES
+============================================ */
+.pricing-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
     transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
 }
 
-.mission-card:hover .icon-wrapper {
-    transform: scale(1.1) rotate(15deg);
-    background: linear-gradient(135deg, #198754, #157347);
+.pricing-card:hover {
+    background-color: #0d6efd !important;
+    border-color: #0a58ca;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
 }
 
-.mission-card .icon-wrapper i {
-    font-size: 1.8rem;
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #ffffff !important;
+}
+
+/*** Accessibility Start ***/
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
     color: white;
+    padding: 8px;
+    z-index: 9999;
+    text-decoration: none;
 }
 
-.mission-card h5 {
-    color: #1a1a1a;
-    font-weight: 600;
-    margin-bottom: 1rem;
+.skip-to-content:focus {
+    top: 0;
 }
 
-.mission-card p {
-    color: #666;
-    line-height: 1.6;
-}
-
-/* ============================================
-   CARD ANIMATIONS
-============================================ */
-@keyframes cardFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.card-hover-float:hover {
-    animation: cardFloat 3s ease-in-out infinite;
-}
-
-/* ============================================
-   RESPONSIVE CARD STYLES
-============================================ */
-@media (max-width: 768px) {
-    .service-item,
-    .pricing-card,
-    .project-card,
-    .mission-card {
-        margin-bottom: 1.5rem;
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
+}
+
+/*** Accessibility End ***/
+
+/*** Cookie Consent Start ***/
+.cookie-consent {
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/*** Cookie Consent End ***/
+
+/*** Card Improvements Start ***/
+
+/* ============================================
+   BASE CARD STYLES (applies to all cards)
+============================================ */
+.card,
+.service-item,
+.pricing-card,
+.project-card {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     
-    .service-item:hover,
-    .pricing-card:hover,
-    .project-card:hover {
-        transform: translateY(-6px);
-    }
-    
-    .pricing-card.popular {
-        transform: scale(1);
-    }
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+/* Card hover effects */
+.card:hover,
+.service-item:hover,
+.pricing-card:hover,
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* Card header styling */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+/* Card body with better spacing */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Card footer styling */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
 }
 
 /* ============================================
-   CARD ALIGNMENT & CENTERING
+   SERVICE CARDS ENHANCEMENT
 ============================================ */
-
-/* Force all service cards to be same height and centered */
-.row.g-4 {
-    justify-content: center !important;
-}
-
-.col-md-4, .col-lg-4 {
-    display: flex;
-    justify-content: center;
-}
-
-.service-item, .mission-card {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 350px; /* Control maximum width */
-    margin: 0 auto; /* Center the card */
-}
-
-/* Ensure content inside cards is centered */
-.service-item .icon-wrapper,
-.mission-card .icon-wrapper {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.service-item h5,
-.mission-card h5 {
-    text-align: center;
-    width: 100%;
-}
-
-.service-item p,
-.mission-card p {
-    text-align: center;
-    width: 100%;
-}
-
-/* Fix for uneven card heights */
 .service-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     height: 100%;
     display: flex;
     flex-direction: column;
 }
-
-.service-item p {
-    flex-grow: 1;
+.service-item::before,
+.service-item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+.service-item::before { left: 0; }
+.service-item::after { right: 0; }
+.service-item:hover::before,
+.service-item:hover::after {
+    width: 50%;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+.service-item * { position: relative; z-index: 2; }
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff;
+}
+.service-item:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.service-item:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.service-item .service-icon i {
+    transition: .2s, color 0.3s;
+}
+.service-item:hover .service-icon i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
 }
 
-/* Fix for cards that appear left-aligned */
-.row:not(.justify-content-center) {
-    justify-content: center !important;
+/*** Services End ***/
+
+
+/*** Blog Start ***/
+.blog-item .blog-btn {
+    z-index: 2;
+}
+
+.blog-btn .blog-btn-icon {
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-btn-icon .blog-icon-2 {
+    display: flex;
+    position: absolute;
+    top: 6px;
+    left: -140px;
+    
+}
+
+.blog-btn-icon:hover .blog-icon-2 {
+    transition: 1s;
+    left: 5px;
+    top: 6px;
+    padding-bottom: 5px;
+}
+.blog-icon-1 {
+    position: relative;
+    top: -4px;
+}
+.blog-btn-icon:hover .blog-icon-1 {
+    top: 0;
+    right: -140px;
+    transition: 1s;
+}
+/*** Blog End ***/
+
+
+/*** Contact Start ***/
+.contact-detail::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../img/background.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.contact-map {
+    background: #26d48c;
+}
+
+.contact-form {
+    background: #26d48c;
+}
+
+/*** Form Improvements Start ***/
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/*** Form Improvements End ***/
+/*** Contact End ***/
+
+
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.whatsapp-float i {
+    line-height: 55px;
+}
+
+/* Ensure navbar is always clickable on mobile */
+.navbar,
+.navbar * {
+    z-index: 1050;
+}
+
+.container-fluid.bg-primary {
+    position: relative;
+    z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
 }
 
 /* ============================================
-   QUICK FIX FOR CARD ISSUES
+   UNIFIED PRICING CARD STYLES
 ============================================ */
-
-/* Remove green gradient from all cards */
-.service-item::before {
-    background: #0d6efd !important; /* Solid blue instead of gradient */
+.pricing-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
 }
 
-/* OR remove it completely: */
-.service-item::before {
-    display: none !important;
+.pricing-card:hover {
+    background-color: #0d6efd !important;
+    border-color: #0a58ca;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
 }
 
-/* Center all service cards */
-.services .row,
-.bg-light .row {
-    justify-content: center !important;
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #ffffff !important;
 }
 
-/* Make all service cards same width and centered */
-.col-md-4 {
-    display: flex !important;
-    justify-content: center !important;
-    margin-bottom: 30px !important;
+/*** Accessibility Start ***/
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px;
+    z-index: 9999;
+    text-decoration: none;
 }
 
-.service-item {
-    width: 100% !important;
-    max-width: 320px !important;
-    text-align: center !important;
-    margin: 0 auto !important;
+.skip-to-content:focus {
+    top: 0;
 }
 
-/* Center icon and text */
-.service-item .icon-wrapper {
-    margin-left: auto !important;
-    margin-right: auto !important;
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
-.service-item h5 {
-    text-align: center !important;
-    width: 100% !important;
+/*** Accessibility End ***/
+
+/*** Cookie Consent Start ***/
+.cookie-consent {
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    margin-bottom: 0;
+    border-radius: 0;
 }
 
-.service-item p {
-    text-align: center !important;
-    width: 100% !important;
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
 }
 
-/* Fix uneven heights */
-.service-item {
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important;
-}
+/*** Cookie Consent End ***/
 
-.service-item p {
-    flex-grow: 1 !important;
-}
+/*** Card Improvements Start ***/
 
-/* Remove any left-align classes */
-.text-left, .text-start {
-    text-align: center !important;
-}
-/* Perfect card centering */
-.row.g-4 {
-    justify-content: center !important;
-}
-
-.col-md-4, .col-lg-4 {
-    display: flex !important;
-    justify-content: center !important;
-}
-
-.service-item, .mission-card, .pricing-card {
-    width: 100% !important;
-    max-width: 350px !important;
-    margin: 0 auto !important;
-}
-
-/* Home Page Specific Fixes */
-#main-content .container {
-    width: 100%;
-}
-
-#main-content .row {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-#main-content .col-lg-6 {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-#main-content img.img-fluid {
-    width: 100%;
-    height: auto;
+/* ============================================
+   BASE CARD STYLES (applies to all cards)
+============================================ */
+.card,
+.service-item,
+.pricing-card,
+.project-card {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
 }
 
-/*** Card Improvements End ***/
+/* Card hover effects */
+.card:hover,
+.service-item:hover,
+.pricing-card:hover,
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.2);
+}
 
-/* ...existing code... */
-/*** Footer End ***/
+/* Card header styling */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+/* Card body with better spacing */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Card footer styling */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+}
+
+/* ============================================
+   SERVICE CARDS ENHANCEMENT
+============================================ */
+.service-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.service-item::before,
+.service-item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+.service-item::before { left: 0; }
+.service-item::after { right: 0; }
+.service-item:hover::before,
+.service-item:hover::after {
+    width: 50%;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+.service-item * { position: relative; z-index: 2; }
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff;
+}
+.service-item:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.service-item:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.service-item .service-icon i {
+    transition: .2s, color 0.3s;
+}
+.service-item:hover .service-icon i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
+}
+
+/*** Services End ***/
+
+
+/*** Blog Start ***/
+.blog-item .blog-btn {
+    z-index: 2;
+}
+
+.blog-btn .blog-btn-icon {
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-btn-icon .blog-icon-2 {
+    display: flex;
+    position: absolute;
+    top: 6px;
+    left: -140px;
+    
+}
+
+.blog-btn-icon:hover .blog-icon-2 {
+    transition: 1s;
+    left: 5px;
+    top: 6px;
+    padding-bottom: 5px;
+}
+.blog-icon-1 {
+    position: relative;
+    top: -4px;
+}
+.blog-btn-icon:hover .blog-icon-1 {
+    top: 0;
+    right: -140px;
+    transition: 1s;
+}
+/*** Blog End ***/
+
+
+/*** Contact Start ***/
+.contact-detail::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../img/background.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.contact-map {
+    background: #26d48c;
+}
+
+.contact-form {
+    background: #26d48c;
+}
+
+/*** Form Improvements Start ***/
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/*** Form Improvements End ***/
+/*** Contact End ***/
+
+
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.whatsapp-float i {
+    line-height: 55px;
+}
+
+/* Ensure navbar is always clickable on mobile */
+.navbar,
+.navbar * {
+    z-index: 1050;
+}
+
+.container-fluid.bg-primary {
+    position: relative;
+    z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
+}
+
+/* ============================================
+   UNIFIED PRICING CARD STYLES
+============================================ */
+.pricing-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.pricing-card:hover {
+    background-color: #0d6efd !important;
+    border-color: #0a58ca;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+}
+
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #ffffff !important;
+}
+
+/*** Accessibility Start ***/
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*** Accessibility End ***/
+
+/*** Cookie Consent Start ***/
+.cookie-consent {
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/*** Cookie Consent End ***/
+
+/*** Card Improvements Start ***/
+
+/* ============================================
+   BASE CARD STYLES (applies to all cards)
+============================================ */
+.card,
+.service-item,
+.pricing-card,
+.project-card {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+/* Card hover effects */
+.card:hover,
+.service-item:hover,
+.pricing-card:hover,
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* Card header styling */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+/* Card body with better spacing */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Card footer styling */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+}
+
+/* ============================================
+   SERVICE CARDS ENHANCEMENT
+============================================ */
+.service-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.service-item::before,
+.service-item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+.service-item::before { left: 0; }
+.service-item::after { right: 0; }
+.service-item:hover::before,
+.service-item:hover::after {
+    width: 50%;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+.service-item * { position: relative; z-index: 2; }
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff;
+}
+.service-item:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.service-item:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.service-item .service-icon i {
+    transition: .2s, color 0.3s;
+}
+.service-item:hover .service-icon i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
+}
+
+/*** Services End ***/
+
+
+/*** Blog Start ***/
+.blog-item .blog-btn {
+    z-index: 2;
+}
+
+.blog-btn .blog-btn-icon {
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-btn-icon .blog-icon-2 {
+    display: flex;
+    position: absolute;
+    top: 6px;
+    left: -140px;
+    
+}
+
+.blog-btn-icon:hover .blog-icon-2 {
+    transition: 1s;
+    left: 5px;
+    top: 6px;
+    padding-bottom: 5px;
+}
+.blog-icon-1 {
+    position: relative;
+    top: -4px;
+}
+.blog-btn-icon:hover .blog-icon-1 {
+    top: 0;
+    right: -140px;
+    transition: 1s;
+}
+/*** Blog End ***/
+
+
+/*** Contact Start ***/
+.contact-detail::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../img/background.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.contact-map {
+    background: #26d48c;
+}
+
+.contact-form {
+    background: #26d48c;
+}
+
+/*** Form Improvements Start ***/
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/*** Form Improvements End ***/
+/*** Contact End ***/
+
+
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.whatsapp-float i {
+    line-height: 55px;
+}
+
+/* Ensure navbar is always clickable on mobile */
+.navbar,
+.navbar * {
+    z-index: 1050;
+}
+
+.container-fluid.bg-primary {
+    position: relative;
+    z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
+}
+
+/* ============================================
+   UNIFIED PRICING CARD STYLES
+============================================ */
+.pricing-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.pricing-card:hover {
+    background-color: #0d6efd !important;
+    border-color: #0a58ca;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+}
+
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #ffffff !important;
+}
+
+/*** Accessibility Start ***/
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*** Accessibility End ***/
+
+/*** Cookie Consent Start ***/
+.cookie-consent {
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/*** Cookie Consent End ***/
+
+/*** Card Improvements Start ***/
+
+/* ============================================
+   BASE CARD STYLES (applies to all cards)
+============================================ */
+.card,
+.service-item,
+.pricing-card,
+.project-card {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+/* Card hover effects */
+.card:hover,
+.service-item:hover,
+.pricing-card:hover,
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* Card header styling */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+/* Card body with better spacing */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Card footer styling */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+}
+
+/* ============================================
+   SERVICE CARDS ENHANCEMENT
+============================================ */
+.service-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.service-item::before,
+.service-item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+.service-item::before { left: 0; }
+.service-item::after { right: 0; }
+.service-item:hover::before,
+.service-item:hover::after {
+    width: 50%;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+.service-item * { position: relative; z-index: 2; }
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff;
+}
+.service-item:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.service-item:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.service-item .service-icon i {
+    transition: .2s, color 0.3s;
+}
+.service-item:hover .service-icon i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
+}
+
+/*** Services End ***/
+
+
+/*** Blog Start ***/
+.blog-item .blog-btn {
+    z-index: 2;
+}
+
+.blog-btn .blog-btn-icon {
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-btn-icon .blog-icon-2 {
+    display: flex;
+    position: absolute;
+    top: 6px;
+    left: -140px;
+    
+}
+
+.blog-btn-icon:hover .blog-icon-2 {
+    transition: 1s;
+    left: 5px;
+    top: 6px;
+    padding-bottom: 5px;
+}
+.blog-icon-1 {
+    position: relative;
+    top: -4px;
+}
+.blog-btn-icon:hover .blog-icon-1 {
+    top: 0;
+    right: -140px;
+    transition: 1s;
+}
+/*** Blog End ***/
+
+
+/*** Contact Start ***/
+.contact-detail::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../img/background.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.contact-map {
+    background: #26d48c;
+}
+
+.contact-form {
+    background: #26d48c;
+}
+
+/*** Form Improvements Start ***/
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/*** Form Improvements End ***/
+/*** Contact End ***/
+
+
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.whatsapp-float i {
+    line-height: 55px;
+}
+
+/* Ensure navbar is always clickable on mobile */
+.navbar,
+.navbar * {
+    z-index: 1050;
+}
+
+.container-fluid.bg-primary {
+    position: relative;
+    z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
+}
+
+/* ============================================
+   UNIFIED PRICING CARD STYLES
+============================================ */
+.pricing-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.pricing-card:hover {
+    background-color: #0d6efd !important;
+    border-color: #0a58ca;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+}
+
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #ffffff !important;
+}
+
+/*** Accessibility Start ***/
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*** Accessibility End ***/
+
+/*** Cookie Consent Start ***/
+.cookie-consent {
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/*** Cookie Consent End ***/
+
+/*** Card Improvements Start ***/
+
+/* ============================================
+   BASE CARD STYLES (applies to all cards)
+============================================ */
+.card,
+.service-item,
+.pricing-card,
+.project-card {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+/* Card hover effects */
+.card:hover,
+.service-item:hover,
+.pricing-card:hover,
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* Card header styling */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+/* Card body with better spacing */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Card footer styling */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+}
+
+/* ============================================
+   SERVICE CARDS ENHANCEMENT
+============================================ */
+.service-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.service-item::before,
+.service-item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+.service-item::before { left: 0; }
+.service-item::after { right: 0; }
+.service-item:hover::before,
+.service-item:hover::after {
+    width: 50%;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+.service-item * { position: relative; z-index: 2; }
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff;
+}
+.service-item:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.service-item:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.service-item .service-icon i {
+    transition: .2s, color 0.3s;
+}
+.service-item:hover .service-icon i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
+}
+
+/*** Services End ***/
+
+
+/*** Blog Start ***/
+.blog-item .blog-btn {
+    z-index: 2;
+}
+
+.blog-btn .blog-btn-icon {
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-btn-icon .blog-icon-2 {
+    display: flex;
+    position: absolute;
+    top: 6px;
+    left: -140px;
+    
+}
+
+.blog-btn-icon:hover .blog-icon-2 {
+    transition: 1s;
+    left: 5px;
+    top: 6px;
+    padding-bottom: 5px;
+}
+.blog-icon-1 {
+    position: relative;
+    top: -4px;
+}
+.blog-btn-icon:hover .blog-icon-1 {
+    top: 0;
+    right: -140px;
+    transition: 1s;
+}
+/*** Blog End ***/
+
+
+/*** Contact Start ***/
+.contact-detail::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../img/background.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.contact-map {
+    background: #26d48c;
+}
+
+.contact-form {
+    background: #26d48c;
+}
+
+/*** Form Improvements Start ***/
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/*** Form Improvements End ***/
+/*** Contact End ***/
+
+
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.whatsapp-float i {
+    line-height: 55px;
+}
+
+/* Ensure navbar is always clickable on mobile */
+.navbar,
+.navbar * {
+    z-index: 1050;
+}
+
+.container-fluid.bg-primary {
+    position: relative;
+    z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
+}
+
+/* ============================================
+   UNIFIED PRICING CARD STYLES
+============================================ */
+.pricing-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.pricing-card:hover {
+    background-color: #0d6efd !important;
+    border-color: #0a58ca;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+}
+
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #ffffff !important;
+}
+
+/*** Accessibility Start ***/
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*** Accessibility End ***/
+
+/*** Cookie Consent Start ***/
+.cookie-consent {
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/*** Cookie Consent End ***/
+
+/*** Card Improvements Start ***/
+
+/* ============================================
+   BASE CARD STYLES (applies to all cards)
+============================================ */
+.card,
+.service-item,
+.pricing-card,
+.project-card {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+/* Card hover effects */
+.card:hover,
+.service-item:hover,
+.pricing-card:hover,
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* Card header styling */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+/* Card body with better spacing */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Card footer styling */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+}
+
+/* ============================================
+   SERVICE CARDS ENHANCEMENT
+============================================ */
+.service-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.service-item::before,
+.service-item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+.service-item::before { left: 0; }
+.service-item::after { right: 0; }
+.service-item:hover::before,
+.service-item:hover::after {
+    width: 50%;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+.service-item * { position: relative; z-index: 2; }
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff;
+}
+.service-item:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.service-item:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.service-item .service-icon i {
+    transition: .2s, color 0.3s;
+}
+.service-item:hover .service-icon i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
+}
+
+/*** Services End ***/
+
+
+/*** Blog Start ***/
+.blog-item .blog-btn {
+    z-index: 2;
+}
+
+.blog-btn .blog-btn-icon {
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-btn-icon .blog-icon-2 {
+    display: flex;
+    position: absolute;
+    top: 6px;
+    left: -140px;
+    
+}
+
+.blog-btn-icon:hover .blog-icon-2 {
+    transition: 1s;
+    left: 5px;
+    top: 6px;
+    padding-bottom: 5px;
+}
+.blog-icon-1 {
+    position: relative;
+    top: -4px;
+}
+.blog-btn-icon:hover .blog-icon-1 {
+    top: 0;
+    right: -140px;
+    transition: 1s;
+}
+/*** Blog End ***/
+
+
+/*** Contact Start ***/
+.contact-detail::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../img/background.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.contact-map {
+    background: #26d48c;
+}
+
+.contact-form {
+    background: #26d48c;
+}
+
+/*** Form Improvements Start ***/
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/*** Form Improvements End ***/
+/*** Contact End ***/
+
+
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.whatsapp-float i {
+    line-height: 55px;
+}
+
+/* Ensure navbar is always clickable on mobile */
+.navbar,
+.navbar * {
+    z-index: 1050;
+}
+
+.container-fluid.bg-primary {
+    position: relative;
+    z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
+}
+
+/* ============================================
+   UNIFIED PRICING CARD STYLES
+============================================ */
+.pricing-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.pricing-card:hover {
+    background-color: #0d6efd !important;
+    border-color: #0a58ca;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+}
+
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #ffffff !important;
+}
+
+/*** Accessibility Start ***/
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*** Accessibility End ***/
+
+/*** Cookie Consent Start ***/
+.cookie-consent {
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/*** Cookie Consent End ***/
+
+/*** Card Improvements Start ***/
+
+/* ============================================
+   BASE CARD STYLES (applies to all cards)
+============================================ */
+.card,
+.service-item,
+.pricing-card,
+.project-card {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+/* Card hover effects */
+.card:hover,
+.service-item:hover,
+.pricing-card:hover,
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* Card header styling */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+/* Card body with better spacing */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Card footer styling */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.5rem;
+}
+
+/* ============================================
+   SERVICE CARDS ENHANCEMENT
+============================================ */
+.service-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.service-item::before,
+.service-item::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+.service-item::before { left: 0; }
+.service-item::after { right: 0; }
+.service-item:hover::before,
+.service-item:hover::after {
+    width: 50%;
+}
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+.service-item * { position: relative; z-index: 2; }
+.service-item:hover h4,
+.service-item:hover p {
+    color: #fff;
+}
+.service-item:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.service-item:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.service-item .service-icon i {
+    transition: .2s, color 0.3s;
+}
+.service-item:hover .service-icon i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
+}
+
+/*** Services End ***/
+
+
+/*** Blog Start ***/
+.blog-item .blog-btn {
+    z-index: 2;
+}
+
+.blog-btn .blog-btn-icon {
+    height: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-btn-icon .blog-icon-2 {
+    display: flex;
+    position: absolute;
+    top: 6px;
+    left: -140px;
+    
+}
+
+.blog-btn-icon:hover .blog-icon-2 {
+    transition: 1s;
+    left: 5px;
+    top: 6px;
+    padding-bottom: 5px;
+}
+.blog-icon-1 {
+    position: relative;
+    top: -4px;
+}
+.blog-btn-icon:hover .blog-icon-1 {
+    top: 0;
+    right: -140px;
+    transition: 1s;
+}
+/*** Blog End ***/
+
+
+/*** Contact Start ***/
+.contact-detail::before {
+    position: absolute;
+    content: "";
+    height: 50%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgb(210, 243, 235, 1), rgba(230, 250, 245, .3)), url(../img/background.jpg) center center no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.contact-map {
+    background: #26d48c;
+}
+
+.contact-form {
+    background: #26d48c;
+}
+
+/*** Form Improvements Start ***/
+.form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.is-invalid {
+    border-color: #dc3545 !important;
+}
+
+/*** Form Improvements End ***/
+/*** Contact End ***/
+
+
+/*** Footer Start ***/
+
+.footer .short-link a,
+.footer .help-link a,
+.footer .contact-link a {
+    transition: .5s;
+}
+
+.footer .short-link a:hover,
+.footer .help-link a:hover,
+.footer .contact-link a:hover {
+    letter-spacing: 1px;
+}
+
+.footer .hightech-link a:hover {
+    background: var(--bs-secondary);
+    border: 0;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 28px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+}
+
+.whatsapp-float i {
+    line-height: 55px;
+}
+
+/* Ensure navbar is always clickable on mobile */
+.navbar,
+.navbar * {
+    z-index: 1050;
+}
+
+.container-fluid.bg-primary {
+    position: relative;
+    z-index: 1050;
+    background: var(--primary-blue) !important;
+    border-bottom: 4px solid #e74c3c; /* Optional: red accent as in screenshot */
+}
+
+/* ============================================
+   UNIFIED PRICING CARD STYLES
+============================================ */
+.pricing-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+}
+
+.pricing-card:hover {
+    background-color: #0d6efd !important;
+    border-color: #0a58ca;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+}
+
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #ffffff !important;
+}
+
+/*** Accessibility Start ***/
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-blue);
+    color: white;
+    padding: 8px;
+    z-index: 9999;
+    text-decoration: none;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*** Accessibility End ***/
+
+/*** Cookie Consent Start ***/
+.cookie-consent {
+    z-index: 9999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.5s ease-out;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/*** Cookie Consent End ***/
+
+/*** Card Improvements Start ***/
+
+/* ============================================
+   BASE CARD STYLES (applies to all cards)
+============================================ */
+.card,
+.service-item,
+.pricing-card,
+.project-card {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+    --card-transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    transition: var(--card-transition);
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+/* Card hover effects */
+.card:hover,
+.service-item:hover,
+.pricing-card:hover,
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+
+/* Card header styling */
+.card-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.5rem 0.5rem;
+}
+
+/* Card body with better spacing */
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Card footer styling */
+.card-footer {
+    background-color: transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+    /* === PRICING CARD ANIMATION & HOVER EFFECTS (match service-item) === */
+.pricing-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.pricing-card::before,
+.pricing-card::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    background: rgba(4, 15, 40, 0.75);
+    z-index: 1;
+    transition: 0.5s ease;
+}
+.pricing-card::before { left: 0; }
+.pricing-card::after { right: 0; }
+.pricing-card:hover::before,
+.pricing-card:hover::after {
+    width: 50%;
+}
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+.pricing-card * { position: relative; z-index: 2; }
+.pricing-card:hover h4,
+.pricing-card:hover h3,
+.pricing-card:hover p,
+.pricing-card:hover li,
+.pricing-card:hover strong {
+    color: #fff !important;
+}
+.pricing-card:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.pricing-card:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 18px 28px 18px;
+    min-height: 320px;
+}
+.service-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #f4f6f8;
+    color: var(--primary, #FD5D14);
+    font-size: 2.5rem;
+    margin-bottom: 18px;
+}
+.service-item h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.service-item p {
+    margin-bottom: 0;
+    color: #444;
+}
