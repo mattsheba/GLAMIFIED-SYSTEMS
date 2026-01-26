@@ -586,6 +586,8 @@ body.has-sticky-header {
    UNIFIED PRICING CARD STYLES
 ============================================ */
 .pricing-card {
+        position: relative;
+        overflow: hidden;
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -3792,11 +3794,27 @@ body.has-sticky-header {
 }
 .pricing-card * { position: relative; z-index: 2; }
 .pricing-card:hover h4,
+    color: #fff;
+}
 .pricing-card:hover h3,
-.pricing-card:hover p,
-.pricing-card:hover li,
-.pricing-card:hover strong {
-    color: #fff !important;
+.pricing-card:hover p {
+    color: #fff;
+}
+.pricing-card:hover h4 {
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+.pricing-card:hover p {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.pricing-card .service-icon i,
+.pricing-card i {
+    transition: .2s, color 0.3s;
+}
+.pricing-card:hover .service-icon i,
+.pricing-card:hover i {
+    transform: scale(1.2);
+    color: var(--primary, #FD5D14);
+}
 }
 .pricing-card:hover h4 {
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
