@@ -5,21 +5,103 @@
     <title>Privacy Policy | Glamified Systems</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Privacy policy for Glamified Systems - IT and business solutions provider in Zambia.">
-    
-    <!-- Same CSS imports as other pages -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Skip link and WhatsApp button same as other pages -->
-    
-    <!-- Same header/navigation as other pages -->
-    
-    <div class="container-fluid page-header py-5 mb-5">
-        <div class="container py-5">
-            <h1 class="display-4 text-white mb-3">Privacy Policy</h1>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-to-content visually-hidden visually-hidden-focusable">
+        Skip to main content
+    </a>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/260964016196?text=Hello%20Glamified%20Systems,%20I%20would%20like%20to%20enquire%20about%20your%20services."
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+<!-- Topbar -->
+<div class="container-fluid bg-dark py-2 d-none d-md-flex">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex flex-wrap">
+                <small class="me-3 text-white-50">
+                    <i class="fas fa-map-marker-alt me-2 text-secondary"></i>
+                    Southgate Mall, Lusaka, Zambia
+                </small>
+                <small class="me-3 text-white-50">
+                    <i class="fas fa-envelope me-2 text-secondary"></i>
+                    <a href="mailto:glamifiedstylez@gmail.com" class="text-white-50 text-decoration-none">
+                        glamifiedstylez@gmail.com
+                    </a>
+                </small>
+                <small class="me-3 text-white-50">
+                    <i class="fas fa-phone me-2 text-secondary"></i>
+                    <a href="tel:+260770029595" class="text-white-50 text-decoration-none">
+                        +260 770 029 595
+                    </a>
+                </small>
+            </div>
+            <div>
+                <small class="text-secondary">Reliable IT & Business Solutions</small>
+            </div>
         </div>
     </div>
+</div>
+
+<!-- Navbar -->
+<div class="container-fluid bg-primary">
+    <div class="container">
+        <nav class="navbar navbar-dark navbar-expand-lg py-0">
+            <a href="index.html" class="navbar-brand d-flex align-items-center">
+                <img src="img/logo.png" alt="Glamified Systems" style="height:55px;" class="me-2">
+                <span class="fw-bold text-white">Glamified Systems</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto mx-xl-auto">
+                <a href="index.html" class="nav-item nav-link">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="service.html" class="nav-item nav-link">Services</a>
+                <a href="pricing.html" class="nav-item nav-link">Pricing</a>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- Page Header -->
+<div class="container-fluid page-header py-5 mb-5">
+    <div class="container py-5">
+        <h1 class="display-4 text-white mb-3 animated slideInDown">Privacy Policy</h1>
+        <nav aria-label="breadcrumb animated slideInDown">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
+                <li class="breadcrumb-item text-white active" aria-current="page">Privacy Policy</li>
+            </ol>
+        </nav>
+    </div>
+</div>
 
     <div class="container-fluid py-5" id="main-content">
         <div class="container">
@@ -56,9 +138,32 @@
             </div>
         </div>
     </div>
-    
-    <!-- Same footer as other pages -->
-    
-    <!-- Same scripts as other pages -->
+
+<!-- Footer -->
+<div class="container-fluid bg-dark text-white py-4">
+    <div class="container text-center">
+        <p class="mb-1">Glamified Systems | Lusaka, Zambia</p>
+        <p class="mb-0">
+            Phone: <a href="tel:+260770029595" class="text-white text-decoration-none">+260 770 029 595</a> | Email: <a href="mailto:glamifiedstylez@gmail.com" class="text-white text-decoration-none">glamifiedstylez@gmail.com</a>
+        </p>
+        <small class="text-white-50">Designed by Glamified Systems</small>
+    </div>
+</div>
+
+<!-- JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- WOW Animation -->
+<script src="lib/wow/wow.min.js"></script>
+
+<!-- Template Main JS -->
+<script src="js/main.js"></script>
+
+<script>
+    if (typeof WOW !== 'undefined') {
+        new WOW().init();
+    }
+</script>
+
 </body>
 </html>

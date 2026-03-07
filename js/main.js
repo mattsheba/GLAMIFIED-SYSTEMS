@@ -133,9 +133,8 @@ $(document).ready(function() {
     // ============================================
 
     $('.whatsapp-float').on('click', function() {
-        // You can add Google Analytics tracking here
-        // Example: gtag('event', 'whatsapp_click', { 'event_category': 'Contact' });
-        console.log('WhatsApp button clicked - message: ' + $(this).attr('href'));
+        // Track WhatsApp clicks via analytics if configured
+        // gtag('event', 'whatsapp_click', { 'event_category': 'Contact' });
     });
 
     // ============================================
@@ -201,7 +200,7 @@ $(document).ready(function() {
     $('.pricing-card').on('click', function() {
         var packageName = $(this).find('h4').text();
         // Track package interest
-        console.log('Package interest:', packageName);
+        // gtag('event', 'package_interest', { 'event_label': packageName });
         // Optional: Scroll to contact form
         // $('html, body').animate({
         //     scrollTop: $('#contact-form').offset().top - 100
@@ -229,8 +228,6 @@ $(document).ready(function() {
         //     'event_label': service,
         //     'value': parseInt(amount.replace(/[^0-9]/g, ''))
         // });
-        
-        console.log('Payment initiated:', service, amount);
     });
     
     // Check for returning customers with pending payments
@@ -240,8 +237,7 @@ $(document).ready(function() {
         var hoursSince = (new Date() - new Date(pendingPayment.timestamp)) / (1000 * 60 * 60);
         
         if (hoursSince < 2) { // Within 2 hours
-            console.log('Customer has a pending payment from', Math.round(hoursSince * 60), 'minutes ago');
-            // You could show a "Complete your payment" message
+            // Customer has a pending payment - could show a reminder
         }
     }
     
@@ -284,11 +280,8 @@ function showPaymentSuccessMessage() {
     // ============================================
 
     if (!('loading' in HTMLImageElement.prototype)) {
-        // Load a polyfill or implement Intersection Observer
-        var lazyImages = $('img[loading="lazy"]');
-        if (lazyImages.length) {
-            console.log('Consider adding lazy loading polyfill for', lazyImages.length, 'images');
-        }
+        // Browser doesn't support native lazy loading - consider adding a polyfill
+        // for older browsers if needed
     }
 
     // ============================================
