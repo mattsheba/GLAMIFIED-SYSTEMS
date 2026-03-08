@@ -327,26 +327,5 @@
 <!-- Template Main JS -->
 <script src="js/main.js"></script>
 
-<!-- Initialize WOW.js -->
-<script>
-    if (typeof WOW !== 'undefined') {
-        new WOW().init();
-    }
-</script>
-
-<!-- Netlify Identity (if using Netlify CMS) -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
-
 </body>
 </html>

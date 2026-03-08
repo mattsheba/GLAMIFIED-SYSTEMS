@@ -126,23 +126,6 @@
     }
 }
 
-#note {
-    width: 500px;
-    overflow: hidden;
-}
-
-#note small {
-    position: relative;
-    display: inline-block;
-    animation: mymove 5s infinite;
-    animation-timing-function: all;
-}
-
-@keyframes mymove {
-    from {left: -100%;}
-    to {left: 100%;}
-}
-
 /*** Topbar End ***/
 
 
@@ -405,15 +388,9 @@ body.has-sticky-header {
     height: 0;
     top: 0;
     left: 0;
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px;
     background: rgba(3, 43, 243, 0.8);
     transition: .5s;
-}
-
-.services-content::after {
-    top: 0;
-    bottom: auto;
-    border-radius: 10px 10px 10px 10px;
 }
 
 .services-item:hover .services-content::after {
@@ -447,43 +424,6 @@ body.has-sticky-header {
 
 
 
-/*** Blog Start ***/
-.blog-item .blog-btn {
-    z-index: 2;
-}
-
-.blog-btn .blog-btn-icon {
-    height: 50px;
-    position: relative;
-    overflow: hidden;
-}
-
-.blog-btn-icon .blog-icon-2 {
-    display: flex;
-    position: absolute;
-    top: 6px;
-    left: -140px;
-    
-}
-
-.blog-btn-icon:hover .blog-icon-2 {
-    transition: 1s;
-    left: 5px;
-    top: 6px;
-    padding-bottom: 5px;
-}
-.blog-icon-1 {
-    position: relative;
-    top: -4px;
-}
-.blog-btn-icon:hover .blog-icon-1 {
-    top: 0;
-    right: -140px;
-    transition: 1s;
-}
-/*** Blog End ***/
-
-
 /*** Contact Start ***/
 .contact-detail::before {
     position: absolute;
@@ -496,14 +436,6 @@ body.has-sticky-header {
     background-size: cover;
     border-radius: 10px;
     z-index: -1;
-}
-
-.contact-map {
-    background: #26d48c;
-}
-
-.contact-form {
-    background: #26d48c;
 }
 
 /*** Form Improvements Start ***/

@@ -116,9 +116,9 @@
                 </div>
                 <div class="col-md-4 text-end">
                     <span class="provider-logos">
-                        <img src="img/mtn-logo.png" alt="MTN Mobile Money" title="MTN Mobile Money" class="me-2" style="height:30px;">
-                        <img src="img/airtel-logo.png" alt="Airtel Money" title="Airtel Money" class="me-2" style="height:30px;">
-                        <img src="img/zamtel-logo.png" alt="Zamtel Kwacha" title="Zamtel Kwacha" style="height:30px;">
+                        <img src="img/mtn-logo.png" alt="MTN Mobile Money" title="MTN Mobile Money" class="payment-logo me-2">
+                        <img src="img/airtel-logo.png" alt="Airtel Money" title="Airtel Money" class="payment-logo me-2">
+                        <img src="img/zamtel-logo.png" alt="Zamtel Kwacha" title="Zamtel Kwacha" class="payment-logo">
                 </div>
             </div>
         </div>
@@ -671,20 +671,20 @@
     </div>
 
     <!-- COPY AND REPLACE YOUR ENTIRE FOOTER SECTION WITH THIS -->
-<footer style="background-color: #f8f9fa; padding: 30px 20px; margin-top: 40px; border-top: 3px solid #6f42c1;">
-  <div style="max-width: 1200px; margin: 0 auto;">
+<footer class="payment-footer">
+  <div class="payment-footer-container">
     
     <!-- Payment Instructions Section -->
-    <div style="margin-bottom: 30px;">
-      <h2 style="color: #333; border-bottom: 2px solid #6f42c1; padding-bottom: 10px;">
+    <div class="payment-section">
+      <h2 class="payment-section-title">
         How to Pay via Mobile Money
       </h2>
       
-      <div style="display: flex; flex-wrap: wrap; gap: 40px; margin-top: 20px;">
+      <div class="payment-steps">
         <!-- Payment Steps -->
-        <div style="flex: 1; min-width: 300px;">
-          <h3 style="color: #6f42c1;">📱 Payment Steps:</h3>
-          <ol style="line-height: 1.8; color: #555;">
+        <div class="payment-step-column">
+          <h3 class="payment-section-subtitle">📱 Payment Steps:</h3>
+          <ol class="payment-list">
             <li><strong>Click</strong> any "Pay Now" or "Subscribe Now" button</li>
             <li><strong>Select</strong> your mobile money provider</li>
             <li><strong>Enter</strong> your mobile number</li>
@@ -697,9 +697,9 @@
         </div>
         
         <!-- Payment Security -->
-        <div style="flex: 1; min-width: 300px;">
-          <h3 style="color: #6f42c1;">🔒 Payment Security:</h3>
-          <ul style="line-height: 1.8; color: #555; list-style: none; padding-left: 0;">
+        <div class="payment-step-column">
+          <h3 class="payment-section-subtitle">🔒 Payment Security:</h3>
+          <ul class="payment-list payment-list-clean">
             <li>✅ <strong>Encrypted:</strong> All payments are encrypted</li>
             <li>✅ <strong>Secure:</strong> No card details stored</li>
             <li>✅ <strong>Instant:</strong> Immediate payment confirmation</li>
@@ -707,55 +707,45 @@
             <li>✅ <strong>Monitoring:</strong> 24/7 transaction monitoring</li>
             <li>✅ <strong>Guarantee:</strong> Money-back guarantee*</li>
           </ul>
-          <p style="font-size: 14px; color: #777; margin-top: 15px;">
+          <p class="payment-note">
             *Terms and conditions apply. See our refund policy for details.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Accepted Payment Methods - FIXED BULLETS -->
-    <div style="margin-bottom: 30px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-      <h3 style="color: #333; margin-bottom: 15px;">💰 Accepted Payment Methods:</h3>
-      <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-        <!-- Using consistent style for all -->
-        <div style="flex: 1; min-width: 200px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <div style="width: 30px; height: 30px; background: #6f42c1; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              💵
-            </div>
+    <!-- Accepted Payment Methods -->
+    <div class="payment-methods-box">
+      <h3 class="payment-methods-title">💰 Accepted Payment Methods:</h3>
+      <div class="payment-methods-grid">
+        <div class="payment-method-item">
+          <div class="payment-method-header">
+            <div class="payment-method-icon">💵</div>
             <span><strong>Cash</strong></span>
           </div>
         </div>
         
-        <div style="flex: 1; min-width: 200px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <div style="width: 30px; height: 30px; background: #6f42c1; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              🏦
-            </div>
+        <div class="payment-method-item">
+          <div class="payment-method-header">
+            <div class="payment-method-icon">🏦</div>
             <span><strong>Bank Transfer</strong></span>
           </div>
         </div>
         
-        <div style="flex: 1; min-width: 200px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <div style="width: 30px; height: 30px; background: #6f42c1; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              💳
-            </div>
+        <div class="payment-method-item">
+          <div class="payment-method-header">
+            <div class="payment-method-icon">💳</div>
             <span><strong>Credit/Debit Card</strong></span>
           </div>
         </div>
         
-        <div style="flex: 1; min-width: 200px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-            <div style="width: 30px; height: 30px; background: #6f42c1; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              📱
-            </div>
+        <div class="payment-method-item">
+          <div class="payment-method-header">
+            <div class="payment-method-icon">📱</div>
             <span><strong>Mobile Money</strong></span>
           </div>
         </div>
       </div>
-      
     </div>
 
     <!-- Contact Information -->
@@ -776,30 +766,19 @@
     <script src="js/main.js"></script>
 
     <script>
-        // Initialize WOW.js
-        if (typeof WOW !== 'undefined') {
-            new WOW().init();
-        }
-        
-        // Payment tracking function
+        // Payment tracking function used by onclick handlers
         function trackPayment(service, amount) {
-            // Store payment intent
-            localStorage.setItem('payment_intent', JSON.stringify({
-                service: service,
-                amount: amount,
-                timestamp: new Date().toISOString()
-            }));
-            
-            // Optional: Google Analytics integration
-            // gtag('event', 'payment_initiated', {
-            //     'event_category': 'Ecommerce',
-            //     'event_label': service,
-            //     'value': amount
-            // });
-            
-            console.log('Payment tracked:', service, 'K' + amount);
+            try {
+                localStorage.setItem('payment_intent', JSON.stringify({
+                    service: service,
+                    amount: amount,
+                    timestamp: new Date().toISOString()
+                }));
+            } catch (e) {
+                // localStorage may be unavailable
+            }
         }
-        
+
         // Check for returning customers from payment portal
         if (document.referrer.includes('tumeny.herokuapp.com')) {
             setTimeout(function() {

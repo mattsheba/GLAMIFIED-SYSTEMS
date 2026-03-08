@@ -15,59 +15,72 @@
     };
     spinner();
 
-    // Auto-add main-content ID if missing
-$(document).ready(function() {
-    if ($('#main-content').length === 0) {
-        // Find the first content section after the page header
-        var $pageHeader = $('.page-header');
-        if ($pageHeader.length) {
-            var $firstContent = $pageHeader.next('.container-fluid, .container');
-            if ($firstContent.length) {
-                $firstContent.attr('id', 'main-content');
-            } else {
-                // Fallback: add to body
-                $('body').attr('id', 'main-content');
-            }
-        } else {
-            // No page header found
-            var $firstContent = $('.navbar').next('.container-fluid, .container');
-            if ($firstContent.length) {
-                $firstContent.attr('id', 'main-content');
-            }
-        }
-    }
-});
-    
     // Initiate the wowjs
     if (typeof WOW !== 'undefined') {
         new WOW().init();
     }
-    
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 300) {
-            $('.back-to-top').fadeIn('slow');
-        } else {
-            $('.back-to-top').fadeOut('slow');
-        }
-        
-        // Sticky Header
-        if ($(window).scrollTop() > 100) {
-            $('.navbar').addClass('fixed-top shadow');
-            $('body').addClass('has-sticky-header');
-        } else {
-            $('.navbar').removeClass('fixed-top shadow');
-            $('body').removeClass('has-sticky-header');
+
+    // ============================================
+    // SCROLL HANDLER (throttled with rAF)
+    // ============================================
+
+    var scrollTicking = false;
+    $(window).on('scroll', function () {
+        if (!scrollTicking) {
+            window.requestAnimationFrame(function () {
+                var scrollTop = $(window).scrollTop();
+
+                // Back to top button
+                if (scrollTop > 300) {
+                    $('.back-to-top').fadeIn('slow');
+                } else {
+                    $('.back-to-top').fadeOut('slow');
+                }
+
+                // Sticky Header
+                if (scrollTop > 100) {
+                    $('.navbar').addClass('fixed-top shadow');
+                    $('body').addClass('has-sticky-header');
+                } else {
+                    $('.navbar').removeClass('fixed-top shadow');
+                    $('body').removeClass('has-sticky-header');
+                }
+
+                scrollTicking = false;
+            });
+            scrollTicking = true;
         }
     });
-    
+
     $('.back-to-top').click(function () {
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
     });
 
-    // Fact Counter
-    $(document).ready(function(){
+    // ============================================
+    // DOCUMENT READY (consolidated)
+    // ============================================
+
+    $(document).ready(function() {
+        // Auto-add main-content ID if missing
+        if ($('#main-content').length === 0) {
+            var $pageHeader = $('.page-header');
+            if ($pageHeader.length) {
+                var $firstContent = $pageHeader.next('.container-fluid, .container');
+                if ($firstContent.length) {
+                    $firstContent.attr('id', 'main-content');
+                } else {
+                    $('body').attr('id', 'main-content');
+                }
+            } else {
+                var $firstContent = $('.navbar').next('.container-fluid, .container');
+                if ($firstContent.length) {
+                    $firstContent.attr('id', 'main-content');
+                }
+            }
+        }
+
+        // Fact Counter
         $('.counter-value').each(function(){
             $(this).prop('Counter',0).animate({
                 Counter: $(this).text()
@@ -79,6 +92,48 @@ $(document).ready(function() {
                 }
             });
         });
+
+        // Track payment button clicks
+        $('.payment-btn').on('click', function(e) {
+            var service = $(this).closest('.pricing-card').find('h4').text().trim();
+            var amount = $(this).closest('.pricing-card').find('.price').text().trim();
+
+            try {
+                localStorage.setItem('pending_payment', JSON.stringify({
+                    service: service,
+                    amount: amount,
+                    timestamp: new Date().toISOString(),
+                    url: $(this).attr('href')
+                }));
+            } catch (e) {
+                // localStorage may be unavailable
+            }
+        });
+
+        // Check for returning customers with pending payments
+        try {
+            var pendingPayment = localStorage.getItem('pending_payment');
+            if (pendingPayment) {
+                pendingPayment = JSON.parse(pendingPayment);
+                var hoursSince = (new Date() - new Date(pendingPayment.timestamp)) / (1000 * 60 * 60);
+
+                if (hoursSince < 2) {
+                    // Customer has a pending payment - could show a reminder
+                }
+            }
+        } catch (e) {
+            // localStorage may be unavailable
+        }
+
+        // Payment success detection (if returning from payment portal)
+        if (window.location.search.includes('payment_success')) {
+            showPaymentSuccessMessage();
+            try {
+                localStorage.removeItem('pending_payment');
+            } catch (e) {
+                // localStorage may be unavailable
+            }
+        }
     });
 
     // ============================================
@@ -109,9 +164,6 @@ $(document).ready(function() {
         // Add loading state
         $submitBtn.prop('disabled', true).addClass('btn-loading');
         
-        // For Formspree forms, let them handle submission
-        // Loading state will reset on page reload after submission
-        
         return true;
     });
 
@@ -127,15 +179,6 @@ $(document).ready(function() {
         } else {
             $(this).removeClass('is-invalid');
         }
-    });
-
-    // ============================================
-    // WHATSAPP ANALYTICS
-    // ============================================
-
-    $('.whatsapp-float').on('click', function() {
-        // Track WhatsApp clicks via analytics if configured
-        // gtag('event', 'whatsapp_click', { 'event_category': 'Contact' });
     });
 
     // ============================================
@@ -157,132 +200,78 @@ $(document).ready(function() {
     // COOKIE CONSENT
     // ============================================
 
-    if (!localStorage.getItem('cookies-accepted')) {
-        setTimeout(function() {
-            $('body').append(`
-                <div class="cookie-consent alert alert-info fixed-bottom m-0 rounded-0">
-                    <div class="container">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <p class="mb-0">
-                                We use cookies to improve your experience on our website. 
-                                By continuing to browse, you agree to our use of cookies.
-                            </p>
-                            <div class="ms-3">
-                                <button class="btn btn-sm btn-primary" id="accept-cookies">
-                                    Accept
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary ms-2" id="learn-more-cookies">
-                                    Learn More
-                                </button>
+    try {
+        if (!localStorage.getItem('cookies-accepted')) {
+            setTimeout(function() {
+                $('body').append(`
+                    <div class="cookie-consent alert alert-info fixed-bottom m-0 rounded-0">
+                        <div class="container">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <p class="mb-0">
+                                    We use cookies to improve your experience on our website. 
+                                    By continuing to browse, you agree to our use of cookies.
+                                </p>
+                                <div class="ms-3">
+                                    <button class="btn btn-sm btn-primary" id="accept-cookies">
+                                        Accept
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary ms-2" id="learn-more-cookies">
+                                        Learn More
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `);
-            
-            $('#accept-cookies').on('click', function() {
-                localStorage.setItem('cookies-accepted', 'true');
-                $('.cookie-consent').fadeOut(300, function() {
-                    $(this).remove();
+                `);
+                
+                $('#accept-cookies').on('click', function() {
+                    try {
+                        localStorage.setItem('cookies-accepted', 'true');
+                    } catch (e) {
+                        // localStorage may be unavailable
+                    }
+                    $('.cookie-consent').fadeOut(300, function() {
+                        $(this).remove();
+                    });
                 });
-            });
-            
-            $('#learn-more-cookies').on('click', function() {
-                // Redirect to privacy policy or show modal
-                window.location.href = 'privacy-policy.html'; // Create this page
-            });
-        }, 1000); // Show after 1 second
-    }
-
-    // ============================================
-    // PRICING CARD INTERACTIONS
-    // ============================================
-
-    $('.pricing-card').on('click', function() {
-        var packageName = $(this).find('h4').text();
-        // Track package interest
-        // gtag('event', 'package_interest', { 'event_label': packageName });
-        // Optional: Scroll to contact form
-        // $('html, body').animate({
-        //     scrollTop: $('#contact-form').offset().top - 100
-        // }, 800);
-    });
-
-    // Payment tracking and analytics
-$(document).ready(function() {
-    // Track payment button clicks
-    $('.payment-btn').on('click', function(e) {
-        var service = $(this).closest('.pricing-card').find('h4').text().trim();
-        var amount = $(this).closest('.pricing-card').find('.price').text().trim();
-        
-        // Store in localStorage for follow-up
-        localStorage.setItem('pending_payment', JSON.stringify({
-            service: service,
-            amount: amount,
-            timestamp: new Date().toISOString(),
-            url: $(this).attr('href')
-        }));
-        
-        // Optional: Google Analytics event
-        // gtag('event', 'payment_initiated', {
-        //     'event_category': 'Payment',
-        //     'event_label': service,
-        //     'value': parseInt(amount.replace(/[^0-9]/g, ''))
-        // });
-    });
-    
-    // Check for returning customers with pending payments
-    var pendingPayment = localStorage.getItem('pending_payment');
-    if (pendingPayment) {
-        pendingPayment = JSON.parse(pendingPayment);
-        var hoursSince = (new Date() - new Date(pendingPayment.timestamp)) / (1000 * 60 * 60);
-        
-        if (hoursSince < 2) { // Within 2 hours
-            // Customer has a pending payment - could show a reminder
+                
+                $('#learn-more-cookies').on('click', function() {
+                    window.location.href = 'privacy-policy.html';
+                });
+            }, 1000);
         }
+    } catch (e) {
+        // localStorage may be unavailable
     }
-    
-    // Payment success detection (if returning from payment portal)
-    if (window.location.search.includes('payment_success')) {
-        showPaymentSuccessMessage();
-        localStorage.removeItem('pending_payment');
-    }
-});
 
-function showPaymentSuccessMessage() {
-    // Create success modal
-    $('body').append(`
-        <div class="modal fade" id="paymentSuccessModal" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header bg-success text-white">
-                        <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i>Payment Successful!</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body text-center py-4">
-                        <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
-                        <h4>Thank You for Your Payment</h4>
-                        <p class="mb-0">We've received your payment and will contact you within 24 hours to begin your service.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="contact.html" class="btn btn-primary">Contact Us</a>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    // ============================================
+    // PAYMENT SUCCESS MODAL
+    // ============================================
+
+    function showPaymentSuccessMessage() {
+        $('body').append(`
+            <div class="modal fade" id="paymentSuccessModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title"><i class="fas fa-check-circle me-2"></i>Payment Successful!</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body text-center py-4">
+                            <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+                            <h4>Thank You for Your Payment</h4>
+                            <p class="mb-0">We've received your payment and will contact you within 24 hours to begin your service.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    `);
-    
-    $('#paymentSuccessModal').modal('show');
-}
-
-    // ============================================
-    // IMAGE LAZY LOADING FALLBACK
-    // ============================================
-
-    if (!('loading' in HTMLImageElement.prototype)) {
-        // Browser doesn't support native lazy loading - consider adding a polyfill
-        // for older browsers if needed
+        `);
+        
+        $('#paymentSuccessModal').modal('show');
     }
 
     // ============================================
@@ -294,16 +283,5 @@ function showPaymentSuccessMessage() {
             $('.navbar-collapse').collapse('hide');
         }
     });
-
-    // ============================================
-    // WHATSAPP BUTTON PULSE ANIMATION
-    // ============================================
-
-    setInterval(function() {
-        $('.whatsapp-float').toggleClass('pulse');
-    }, 2000);
-
-    // Add pulse class definition
-    $('<style>').text('.pulse { animation: pulse 2s infinite; } @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }').appendTo('head');
 
 })(jQuery);
