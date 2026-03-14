@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Glamified Jobs — Find Work in Zambia | Post a Job</title>
+<meta name="description" content="Browse job listings across Zambia. Post a vacancy and find qualified candidates through Glamified Jobs, powered by CVPro Zambia."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/style.css"/>
+<style>
+.search-bar{display:flex;gap:1rem;max-width:700px;margin:2rem auto 0;flex-wrap:wrap;}
+.search-bar input,.search-bar select{flex:1;min-width:160px;background:var(--navy2);border:1px solid var(--border2);border-radius:10px;padding:13px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;}
+.search-bar input:focus,.search-bar select:focus{border-color:rgba(201,153,42,.5);}
+.search-bar select option{background:var(--navy2);}
+.tab-bar{display:flex;gap:.5rem;margin-bottom:2.5rem;border-bottom:1px solid var(--border);padding-bottom:0;}
+.tab-btn{padding:10px 24px;background:transparent;border:none;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;color:var(--muted);cursor:pointer;transition:.2s;border-bottom:2px solid transparent;margin-bottom:-1px;}
+.tab-btn.active{color:var(--gold2);border-bottom-color:var(--gold2);}
+.tab-content{display:none;}.tab-content.active{display:block;}
+.jobs-list{display:flex;flex-direction:column;gap:1rem;}
+.job-badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:700;}
+.badge-ft{background:rgba(26,140,114,.15);color:var(--teal2);}
+.badge-ct{background:rgba(201,153,42,.15);color:var(--gold2);}
+.badge-pt{background:rgba(83,74,183,.15);color:#9C8FE8;}
+.badge-new2{background:rgba(201,153,42,.15);color:var(--gold2);border:1px solid rgba(201,153,42,.3);}
+.employer-box{background:linear-gradient(135deg,rgba(26,140,114,.1),rgba(201,153,42,.06));border:1px solid rgba(26,140,114,.2);border-radius:var(--radius-xl);padding:3rem;}
+.employer-step{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem;}
+.estep-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.employer-step h4{font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.25rem;}
+.employer-step p{font-size:.85rem;color:var(--muted);}
+.cvpro-promo{background:var(--navy3);border:1px solid rgba(68,160,71,.25);border-radius:var(--radius-lg);padding:2.5rem;text-align:center;}
+.cvpro-promo img{width:72px;height:72px;border-radius:14px;background:rgba(68,160,71,.12);padding:10px;object-fit:contain;margin:0 auto 1.25rem;}
+</style>
+</head>
+<body>
+<div id="nav-container"></div>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content" style="text-align:center;max-width:700px;margin:0 auto;">
+    <span class="tag anim-1" style="justify-content:center;">Glamified Jobs</span>
+    <h1 class="display-2 anim-2" style="font-family:'Playfair Display',serif;">Find your next opportunity<br>or your next <span style="color:var(--gold2);">hire</span></h1>
+    <p class="lead anim-3">Zambia's HR ecosystem — connecting job seekers with employers, powered by CVPro Zambia and GlamifiedHR.</p>
+    <div class="search-bar anim-4">
+      <input type="text" id="search-input" placeholder="Job title, company, or keyword..." oninput="filterJobs()"/>
+      <select id="location-filter" onchange="filterJobs()">
+        <option value="">All locations</option>
+        <option>Lusaka</option><option>Ndola</option><option>Kitwe</option><option>Livingstone</option><option>Kabwe</option>
+      </select>
+      <select id="dept-filter" onchange="filterJobs()">
+        <option value="">All departments</option>
+        <option>Finance</option><option>HR</option><option>IT</option><option>Operations</option><option>Sales</option><option>Administration</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<hr class="divider-gold"/>
+
+<section class="section">
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="window.switchTab('listings',this)">Job Listings</button>
+    <button class="tab-btn" onclick="window.switchTab('post',this)" id="post-tab">Post a Job</button>
+  </div>
+
+  <div id="tab-listings" class="tab-content active">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
+      <div style="font-size:.85rem;color:var(--muted);" id="results-count">Showing 8 jobs</div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <button class="btn btn-sm btn-outline" onclick="filterByType('all',this)" style="font-size:.8rem;padding:7px 16px;">All</button>
+        <button class="btn btn-sm btn-outline" onclick="filterByType('Full-time',this)" style="font-size:.8rem;padding:7px 16px;">Full-time</button>
+        <button class="btn btn-sm btn-outline" onclick="filterByType('Contract',this)" style="font-size:.8rem;padding:7px 16px;">Contract</button>
+        <button class="btn btn-sm btn-outline" onclick="filterByType('Part-time',this)" style="font-size:.8rem;padding:7px 16px;">Part-time</button>
+      </div>
+    </div>
+    <div class="jobs-list" id="jobs-list"></div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://cvprozambia.com" target="_blank" class="btn btn-outline-gold">View all jobs on CVPro Zambia →</a>
+    </div>
+  </div>
+
+  <div id="tab-post" class="tab-content">
+    <div class="grid-2" style="gap:3rem;align-items:start;">
+      <div class="employer-box reveal">
+        <img src="assets/logo.png" alt="Glamified Systems" style="width:44px;height:44px;object-fit:contain;margin-bottom:1.25rem;border-radius:8px;background:rgba(255,255,255,.05);padding:6px;"/>
+        <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.75rem;">Post a job vacancy</h2>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:2rem;">Reach qualified Zambian job seekers. Jobs are published on Glamified Jobs and listed on CVPro Zambia within 24 hours.</p>
+        <div class="employer-step">
+          <div class="estep-num">1</div>
+          <div><h4>Fill in your job details</h4><p>Title, description, requirements, salary range, and location.</p></div>
+        </div>
+        <div class="employer-step">
+          <div class="estep-num">2</div>
+          <div><h4>We review and publish</h4><p>Your listing goes live on Glamified Jobs and CVPro Zambia within 24 hours.</p></div>
+        </div>
+        <div class="employer-step">
+          <div class="estep-num">3</div>
+          <div><h4>Receive applications</h4><p>Candidates apply and their CVs are sent directly to <a href="mailto:info.glamifiedsystems@gmail.com">info.glamifiedsystems@gmail.com</a>.</p></div>
+        </div>
+        <div class="employer-step">
+          <div class="estep-num">4</div>
+          <div><h4>Hire &amp; onboard instantly</h4><p>Using GlamifiedHR? Import the hired candidate as an employee with one click.</p></div>
+        </div>
+        <div class="cvpro-promo" style="margin-top:1.5rem;">
+          <img src="assets/logo-cv.png" alt="CVPro Zambia"/>
+          <p style="font-size:.85rem;color:var(--muted);line-height:1.7;">All listings are powered by <strong style="color:var(--white);">CVPro Zambia</strong> — Zambia's dedicated career and talent platform.</p>
+          <a href="https://cvprozambia.com" target="_blank" class="btn btn-green btn-sm" style="margin-top:1rem;display:inline-flex;">Visit CVPro Zambia →</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.75rem;">Submit your vacancy</h3>
+        <form onsubmit="window.handleContactForm(event)">
+          <div class="form-row">
+            <div class="form-group"><label>Company name</label><input type="text" placeholder="Acme Ltd" required/></div>
+            <div class="form-group"><label>Your name</label><input type="text" placeholder="HR Manager" required/></div>
+          </div>
+          <div class="form-group"><label>Your email</label><input type="email" placeholder="hr@company.com" required/></div>
+          <div class="form-group"><label>Job title</label><input type="text" placeholder="e.g. Accounts Clerk" required/></div>
+          <div class="form-row">
+            <div class="form-group"><label>Location</label><select><option>Lusaka</option><option>Ndola</option><option>Kitwe</option><option>Livingstone</option><option>Other</option></select></div>
+            <div class="form-group"><label>Job type</label><select><option>Full-time</option><option>Part-time</option><option>Contract</option></select></div>
+          </div>
+          <div class="form-group"><label>Salary range (optional)</label><input type="text" placeholder="e.g. K5,000 – K8,000 per month"/></div>
+          <div class="form-group"><label>Job description &amp; requirements</label><textarea placeholder="Describe the role, key responsibilities, required qualifications, and experience..." style="min-height:150px;"></textarea></div>
+          <button type="submit" class="form-submit">Submit job posting →</button>
+        </form>
+        <div id="form-success" style="display:none;margin-top:1rem;padding:14px 16px;background:rgba(26,140,114,.15);border:1px solid rgba(26,140,114,.3);border-radius:8px;font-size:.88rem;color:var(--teal2);">✓ Job posting received! We'll publish it within 24 hours and confirm by email.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band reveal">
+  <span class="tag" style="justify-content:center;">Are you a job seeker?</span>
+  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">Build a professional CV. Get hired faster.</h2>
+  <p>Create a standout CV on CVPro Zambia — free for job seekers.</p>
+  <div class="cta-band-actions" style="margin-top:2rem;">
+    <a href="https://cvprozambia.com" target="_blank" class="btn btn-gold btn-lg">Build your CV on CVPro →</a>
+    <a href="cvpro.html" class="btn btn-outline btn-lg">Learn more about CVPro</a>
+  </div>
+</div>
+
+<div id="footer-container"></div>
+<script src="assets/main.js"></script>
+<script>
+const JOBS = [
+  {title:"Accounts Clerk",company:"ABC Trading Ltd",location:"Lusaka",dept:"Finance",type:"Full-time",salary:"K5,000 – K7,000",posted:"2 days ago",isNew:true},
+  {title:"HR Officer",company:"Zambia Health NGO",location:"Lusaka",dept:"HR",type:"Full-time",salary:"K8,000 – K11,000",posted:"3 days ago",isNew:true},
+  {title:"IT Support Technician",company:"Telecom Company",location:"Ndola",dept:"IT",type:"Contract",salary:"K6,000 – K9,000",posted:"4 days ago",isNew:false},
+  {title:"Sales Representative",company:"FMCG Distributor",location:"Lusaka",dept:"Sales",type:"Full-time",salary:"K4,500 + Commission",posted:"5 days ago",isNew:false},
+  {title:"Receptionist / Admin Assistant",company:"Private Clinic",location:"Lusaka",dept:"Administration",type:"Full-time",salary:"K3,500 – K5,000",posted:"1 week ago",isNew:false},
+  {title:"Logistics Coordinator",company:"Construction Firm",location:"Kitwe",dept:"Operations",type:"Full-time",salary:"K7,000 – K10,000",posted:"1 week ago",isNew:false},
+  {title:"Bookkeeper",company:"Retail Chain",location:"Livingstone",dept:"Finance",type:"Part-time",salary:"K3,000 – K4,500",posted:"2 weeks ago",isNew:false},
+  {title:"Project Officer",company:"Development NGO",location:"Lusaka",dept:"Operations",type:"Contract",salary:"K9,000 – K13,000",posted:"2 weeks ago",isNew:false},
+];
+function renderJobs(list) {
+  const el = document.getElementById('jobs-list');
+  const count = document.getElementById('results-count');
+  if (!list.length) { el.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted);">No jobs found. Try adjusting your search.</div>'; count.textContent='0 jobs found'; return; }
+  count.textContent = 'Showing '+list.length+' job'+(list.length>1?'s':'');
+  const typeClass = {Full-time:'badge-ft',Contract:'badge-ct','Part-time':'badge-pt'};
+  el.innerHTML = list.map(j => `
+    <div class="job-card">
+      <div class="job-info">
+        <div class="job-title">${j.title} ${j.isNew ? '<span class="badge-new2" style="display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;background:rgba(201,153,42,.15);color:var(--gold2);border:1px solid rgba(201,153,42,.3);margin-left:6px;">NEW</span>' : ''}</div>
+        <div class="job-meta">
+          <span class="job-tag">🏢 ${j.company}</span>
+          <span class="job-tag">📍 ${j.location}</span>
+          <span class="job-tag"><span class="job-badge ${typeClass[j.type]||'badge-ft'}">${j.type}</span></span>
+          <span class="job-tag">💰 ${j.salary}</span>
+          <span class="job-tag">🕒 ${j.posted}</span>
+        </div>
+      </div>
+      <a href="https://cvprozambia.com" target="_blank" class="job-apply">Apply →</a>
+    </div>`).join('');
+}
+function filterJobs() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const loc = document.getElementById('location-filter').value;
+  const dept = document.getElementById('dept-filter').value;
+  const type = window._typeFilter||'all';
+  renderJobs(JOBS.filter(j => {
+    const matchQ = !q || j.title.toLowerCase().includes(q) || j.company.toLowerCase().includes(q);
+    const matchLoc = !loc || j.location===loc;
+    const matchDept = !dept || j.dept===dept;
+    const matchType = type==='all' || j.type===type;
+    return matchQ && matchLoc && matchDept && matchType;
+  }));
+}
+window.filterByType = function(type, btn) {
+  window._typeFilter = type;
+  document.querySelectorAll('.tab-btn ~ * .btn-outline').forEach(b => b.classList.remove('btn-gold'));
+  filterJobs();
+};
+renderJobs(JOBS);
+if (window.location.hash==='#post') { window.switchTab('post', document.getElementById('post-tab')); }
+</script>
+</body>
+</html>

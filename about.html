@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About Glamified Systems — Zambia's HR Technology Company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/style.css"/>
+<style>
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.vision-card{background:linear-gradient(135deg,rgba(201,153,42,.1),rgba(26,140,114,.06));border:1px solid rgba(201,153,42,.2);border-radius:var(--radius-xl);padding:3rem;}
+.vision-card h2{font-size:1.8rem;margin-bottom:1rem;}
+.vision-card p{color:var(--muted);font-size:.95rem;line-height:1.8;}
+.milestone-line{position:relative;padding-left:2.5rem;}
+.milestone-line::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--gold2),transparent);}
+.milestone{position:relative;margin-bottom:2rem;}
+.milestone::before{content:'';position:absolute;left:-2.5rem;top:4px;width:10px;height:10px;border-radius:50%;background:var(--gold2);border:2px solid var(--navy2);}
+.milestone-year{font-size:.72rem;font-weight:700;color:var(--gold2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.25rem;}
+.milestone-text{font-size:.9rem;color:var(--muted);}
+.value-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;}
+.value-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--gold2);opacity:.3;margin-bottom:.75rem;}
+.value-card h4{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.value-card p{font-size:.875rem;color:var(--muted);line-height:1.7;}
+.team-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:var(--transition);}
+.team-card:hover{border-color:rgba(201,153,42,.3);transform:translateY(-3px);}
+.team-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--navy3),var(--navy4));border:2px solid rgba(201,153,42,.3);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold2);margin:0 auto 1.25rem;}
+.team-name{font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;margin-bottom:.25rem;}
+.team-role{font-size:.8rem;color:var(--gold2);font-weight:600;margin-bottom:.75rem;}
+.team-bio{font-size:.825rem;color:var(--muted);line-height:1.65;}
+@media(max-width:900px){.mission-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="nav-container"></div>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>About</span></div>
+    <span class="tag anim-1">Our story</span>
+    <h1 class="display-2 anim-2" style="font-family:'Playfair Display',serif;">Built by Zambians,<br>for <span style="color:var(--gold2);">Zambian business</span></h1>
+    <p class="lead anim-3" style="max-width:600px;">We started Glamified Systems because we saw how much time Zambian businesses were wasting on manual HR and payroll. We knew there was a better way — and that it had to be built here, for here.</p>
+  </div>
+</div>
+
+<hr class="divider-gold"/>
+
+<section class="section">
+  <div class="mission-grid">
+    <div class="reveal">
+      <span class="tag">Our mission</span>
+      <h2 class="section-title">To become Zambia's default HR technology platform</h2>
+      <p style="color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:2rem;">Every Zambian business — from a 5-person clinic to a 500-employee manufacturer — should have access to proper HR systems, statutory compliance tools, and talent management. Not imported software that doesn't understand Zambia. Ours.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+        <div class="stat-card" style="background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Zambia-built</span>
+        </div>
+        <div class="stat-card" style="background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Live products</span>
+        </div>
+        <div class="stat-card" style="background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+          <span class="stat-num">ZRA</span>
+          <span class="stat-label">Fully compliant</span>
+        </div>
+        <div class="stat-card" style="background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+          <span class="stat-num">LSK</span>
+          <span class="stat-label">Based in Lusaka</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="vision-card">
+        <span class="tag">Our vision</span>
+        <h2>Zambia's national HR ecosystem</h2>
+        <p style="margin-bottom:1.5rem;">We are building the infrastructure layer for employment in Zambia. A platform where job seekers build CVs, employers manage their workforce, and every transaction is statutory compliant — all connected.</p>
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;"><span style="color:var(--teal2);font-weight:700;font-size:1rem;">→</span>Job seekers on CVPro Zambia</div>
+          <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;"><span style="color:var(--teal2);font-weight:700;font-size:1rem;">→</span>Employers on GlamifiedHR</div>
+          <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;"><span style="color:var(--teal2);font-weight:700;font-size:1rem;">→</span>Recruitment on Glamified Jobs</div>
+          <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;"><span style="color:var(--teal2);font-weight:700;font-size:1rem;">→</span>Compliance via GlamifiedHR engine</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-gold"/>
+
+<section class="section section-navy2">
+  <div class="section-header section-header-center reveal">
+    <span class="tag">Our values</span>
+    <h2 class="section-title">What we stand for</h2>
+  </div>
+  <div class="grid-4">
+    <div class="value-card reveal"><div class="value-num">01</div><h4>Local first</h4><p>We understand Zambian business because we are Zambian. Every decision is made with the local context in mind.</p></div>
+    <div class="value-card reveal"><div class="value-num">02</div><h4>Practical over perfect</h4><p>We ship working software that solves real problems today — then improve it. We don't disappear into perfection.</p></div>
+    <div class="value-card reveal"><div class="value-num">03</div><h4>Long-term relationships</h4><p>We're not a transactional vendor. We want to be your technology partner for the life of your business.</p></div>
+    <div class="value-card reveal"><div class="value-num">04</div><h4>Honest &amp; transparent</h4><p>We tell you what you need — not what sounds most expensive. If a simple solution works, we recommend it.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-header section-header-center reveal">
+    <span class="tag">The team</span>
+    <h2 class="section-title">The people behind Glamified Systems</h2>
+  </div>
+  <div class="grid-3" style="max-width:900px;margin:0 auto;">
+    <div class="team-card reveal">
+      <div class="team-avatar">GS</div>
+      <div class="team-name">Founder &amp; CEO</div>
+      <div class="team-role">Product &amp; Strategy</div>
+      <p class="team-bio">Built GlamifiedHR from scratch to solve a problem seen first-hand in Zambian businesses. Leads product direction and client relationships.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">TK</div>
+      <div class="team-name">Lead Developer</div>
+      <div class="team-role">Software Engineering</div>
+      <p class="team-bio">Architects the GlamifiedHR codebase. Ensures payroll calculations are accurate and the system is stable for Zambian operating conditions.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar">MC</div>
+      <div class="team-name">HR &amp; Compliance Lead</div>
+      <div class="team-role">Compliance Advisory</div>
+      <p class="team-bio">Former HR practitioner with deep knowledge of Zambian employment law, NAPSA, NHIMA, and ZRA requirements. Keeps our software legally sound.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-gold"/>
+
+<section class="section section-navy2">
+  <div class="grid-2" style="gap:5rem;align-items:start;">
+    <div class="reveal">
+      <span class="tag">Our journey</span>
+      <h2 class="section-title">How we got here</h2>
+      <div class="milestone-line" style="margin-top:2.5rem;">
+        <div class="milestone"><div class="milestone-year">2022</div><div class="milestone-text">Glamified Systems founded in Lusaka. IT consulting services begin. First corporate clients.</div></div>
+        <div class="milestone"><div class="milestone-year">2023</div><div class="milestone-text">CVPro Zambia launched — Zambia's first dedicated CV builder. Hundreds of job seekers sign up.</div></div>
+        <div class="milestone"><div class="milestone-year">2024</div><div class="milestone-text">GlamifiedHR development begins. 12 months of research into Zambian payroll and HR requirements.</div></div>
+        <div class="milestone"><div class="milestone-year">2025</div><div class="milestone-text">GlamifiedHR beta launched with pilot clients. Payroll, NAPSA, NHIMA, and PAYE fully implemented.</div></div>
+        <div class="milestone"><div class="milestone-year">2026</div><div class="milestone-text">Full public launch. Glamified Jobs launched. Target: 50 paying clients by end of year.</div></div>
+        <div class="milestone"><div class="milestone-year">2027 →</div><div class="milestone-text">GlamifiedHR SaaS cloud version. Employee self-service portal. Mobile app. National scale.</div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="tag">Our products</span>
+      <h2 class="section-title">Three products. One ecosystem.</h2>
+      <div style="display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem;">
+        <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--navy2);border:1px solid rgba(26,140,114,.2);border-radius:var(--radius);">
+          <img src="assets/logo-hr.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(201,153,42,.1);padding:6px;flex-shrink:0;" alt="GlamifiedHR"/>
+          <div><h4 style="font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem;">GlamifiedHR</h4><p style="font-size:.85rem;color:var(--muted);">Complete HR &amp; payroll desktop software. PAYE, NAPSA, NHIMA compliant.</p><a href="glamifiedhr.html" style="font-size:.8rem;color:var(--teal2);font-weight:600;">Learn more →</a></div>
+        </div>
+        <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--navy2);border:1px solid rgba(68,160,71,.2);border-radius:var(--radius);">
+          <img src="assets/logo-cv.png" style="width:44px;height:44px;object-fit:contain;border-radius:8px;background:rgba(68,160,71,.1);padding:6px;flex-shrink:0;" alt="CVPro"/>
+          <div><h4 style="font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem;">CVPro Zambia</h4><p style="font-size:.85rem;color:var(--muted);">Zambia's dedicated CV builder and career platform. Free for job seekers.</p><a href="cvpro.html" style="font-size:.8rem;color:var(--green2);font-weight:600;">Learn more →</a></div>
+        </div>
+        <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--navy2);border:1px solid rgba(201,153,42,.2);border-radius:var(--radius);">
+          <div style="width:44px;height:44px;border-radius:8px;background:rgba(201,153,42,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">💼</div>
+          <div><h4 style="font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem;">Glamified Jobs</h4><p style="font-size:.85rem;color:var(--muted);">Zambian recruitment marketplace connecting employers with qualified candidates.</p><a href="jobs.html" style="font-size:.8rem;color:var(--gold2);font-weight:600;">Browse jobs →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band reveal">
+  <span class="tag" style="justify-content:center;">Work with us</span>
+  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">Let's build something great together</h2>
+  <p>Whether you need our software, our consulting services, or just want to talk — we're a WhatsApp message away.</p>
+  <div class="cta-band-actions" style="margin-top:2rem;">
+    <a href="contact.html" class="btn btn-gold btn-lg">Get in touch</a>
+    <a href="https://wa.me/260977669883" target="_blank" class="btn btn-whatsapp btn-lg">Chat on WhatsApp</a>
+  </div>
+</div>
+
+<div id="footer-container"></div>
+<script src="assets/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>IT & Business Consulting — Glamified Systems Zambia</title>
+<meta name="description" content="IT infrastructure, business process consulting, HR advisory, and digital presence services for Zambian businesses."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/style.css"/>
+<style>
+.service-detail{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:4rem 0;border-top:1px solid var(--border);}
+.service-detail:first-child{border-top:none;}
+.service-detail:nth-child(even){direction:rtl;}.service-detail:nth-child(even)>*{direction:ltr;}
+.service-detail h3{font-size:1.8rem;margin-bottom:1rem;}
+.service-detail p{color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:1.5rem;}
+.service-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.service-list li{display:flex;align-items:flex-start;gap:8px;font-size:.875rem;color:var(--muted);}
+.service-list li::before{content:'✓';color:var(--teal2);font-weight:700;flex-shrink:0;margin-top:1px;}
+.service-visual{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;min-height:260px;display:flex;flex-direction:column;justify-content:center;gap:1rem;}
+.svc-icon-row{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--navy3);border-radius:10px;border:1px solid var(--border);}
+.svc-icon-box{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.process-step{padding:2rem;text-align:center;position:relative;}
+.process-step::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--gold2);font-size:1.2rem;z-index:1;}
+.process-step:last-child::after{display:none;}
+.process-num{width:48px;height:48px;border-radius:50%;background:var(--gold-dim);border:2px solid rgba(201,153,42,.4);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold2);margin:0 auto 1rem;}
+.process-step h4{font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:.4rem;}
+.process-step p{font-size:.8rem;color:var(--muted);}
+@media(max-width:900px){.service-detail{grid-template-columns:1fr;}.service-detail:nth-child(even){direction:ltr;}.process-grid{grid-template-columns:1fr 1fr;}.process-step::after{display:none;}}
+@media(max-width:600px){.process-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="nav-container"></div>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Consulting</span></div>
+    <span class="tag anim-1">Consultancy services</span>
+    <h1 class="display-2 anim-2" style="font-family:'Playfair Display',serif;">Technology &amp; business<br>consulting for <span style="color:var(--gold2);">Zambian SMEs</span></h1>
+    <p class="lead anim-3" style="max-width:580px;">We don't just sell software — we help businesses understand and implement the right technology. From IT infrastructure to HR compliance advisory.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;" class="anim-4">
+      <a href="contact.html" class="btn btn-gold btn-lg">Get a free consultation</a>
+      <a href="https://wa.me/260977669883" target="_blank" class="btn btn-whatsapp btn-lg">Chat on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider-gold"/>
+
+<section class="section">
+  <div class="section-header section-header-center reveal">
+    <span class="tag">Our services</span>
+    <h2 class="section-title">What we help businesses with</h2>
+    <p class="lead">Practical, hands-on support — not theoretical advice. We implement, train, and follow up.</p>
+  </div>
+
+  <div id="it">
+    <div class="service-detail reveal">
+      <div>
+        <span class="tag">IT services</span>
+        <h3>IT Infrastructure &amp; Support</h3>
+        <p>We design, install, and maintain the IT systems that keep your business running. From a 5-person office to a 100-employee operation — we scope what you actually need.</p>
+        <ul class="service-list">
+          <li>Network design, setup, and maintenance</li>
+          <li>Hardware procurement and configuration</li>
+          <li>Server setup and management</li>
+          <li>Email and cloud services setup (Microsoft 365, Google Workspace)</li>
+          <li>Ongoing IT support and helpdesk</li>
+          <li>Backup and disaster recovery planning</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline-gold" style="margin-top:1.5rem;">Get a quote →</a>
+      </div>
+      <div class="service-visual">
+        <div class="svc-icon-row"><div class="svc-icon-box" style="background:rgba(201,153,42,.12);">🌐</div><div><div style="font-size:.85rem;font-weight:600;">Network design</div><div style="font-size:.75rem;color:var(--muted);">LAN, WiFi, VPN setup</div></div></div>
+        <div class="svc-icon-row"><div class="svc-icon-box" style="background:var(--teal-dim);">🖥️</div><div><div style="font-size:.85rem;font-weight:600;">Server management</div><div style="font-size:.75rem;color:var(--muted);">On-site or cloud-based</div></div></div>
+        <div class="svc-icon-row"><div class="svc-icon-box" style="background:rgba(201,153,42,.12);">🔒</div><div><div style="font-size:.85rem;font-weight:600;">Security &amp; backups</div><div style="font-size:.75rem;color:var(--muted);">Protect your business data</div></div></div>
+        <div class="svc-icon-row"><div class="svc-icon-box" style="background:var(--teal-dim);">🛟</div><div><div style="font-size:.85rem;font-weight:600;">Ongoing support</div><div style="font-size:.75rem;color:var(--muted);">Monthly retainer available</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="business">
+    <div class="service-detail reveal">
+      <div>
+        <span class="tag">Business consulting</span>
+        <h3>Business Process &amp; Strategy</h3>
+        <p>We review how your business operates and identify where technology, process changes, or better systems can save time and money. Practical recommendations, not slide decks.</p>
+        <ul class="service-list">
+          <li>Business process audit and improvement</li>
+          <li>Software selection and implementation guidance</li>
+          <li>Workflow design and documentation</li>
+          <li>Digital transformation planning for SMEs</li>
+          <li>Financial systems and reporting setup</li>
+          <li>Operational efficiency consulting</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline-gold" style="margin-top:1.5rem;">Book a consultation →</a>
+      </div>
+      <div class="service-visual">
+        <div style="padding:1.25rem;background:var(--navy3);border-radius:10px;border:1px solid rgba(201,153,42,.2);">
+          <div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:1rem;">Process improvement example</div>
+          <div style="display:flex;flex-direction:column;gap:.6rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:.8rem;color:var(--muted);">Payroll processing time</span><div style="display:flex;gap:.5rem;align-items:center;"><span style="font-size:.8rem;text-decoration:line-through;color:var(--coral);">3 days</span><span style="font-size:.8rem;font-weight:700;color:var(--teal2);">2 hours</span></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:.8rem;color:var(--muted);">Monthly HR admin cost</span><div style="display:flex;gap:.5rem;align-items:center;"><span style="font-size:.8rem;text-decoration:line-through;color:var(--coral);">K4,200</span><span style="font-size:.8rem;font-weight:700;color:var(--teal2);">K800</span></div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:.8rem;color:var(--muted);">Compliance errors / month</span><div style="display:flex;gap:.5rem;align-items:center;"><span style="font-size:.8rem;text-decoration:line-through;color:var(--coral);">7 errors</span><span style="font-size:.8rem;font-weight:700;color:var(--teal2);">0 errors</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="hr-advisory">
+    <div class="service-detail reveal">
+      <div>
+        <span class="tag">HR advisory</span>
+        <h3>HR Compliance &amp; Advisory</h3>
+        <p>Many Zambian SMEs are non-compliant with employment law, NAPSA, or NHIMA — often without knowing it. We help you get properly set up and stay compliant.</p>
+        <ul class="service-list">
+          <li>Employment contract drafting and review</li>
+          <li>NAPSA and NHIMA employer registration</li>
+          <li>ZRA TPIN and PAYE registration guidance</li>
+          <li>HR policy and procedure manual creation</li>
+          <li>Staff handbook development</li>
+          <li>GlamifiedHR implementation and training</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline-gold" style="margin-top:1.5rem;">Talk to an HR advisor →</a>
+      </div>
+      <div class="service-visual">
+        <div style="font-size:.75rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem;">Compliance checklist</div>
+        <div style="display:flex;flex-direction:column;gap:.5rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;background:var(--navy3);border-radius:8px;"><span style="color:var(--teal2);font-weight:700;">✓</span><span style="font-size:.82rem;">Employment contracts in place</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;background:var(--navy3);border-radius:8px;"><span style="color:var(--teal2);font-weight:700;">✓</span><span style="font-size:.82rem;">NAPSA employer registration</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;background:var(--navy3);border-radius:8px;"><span style="color:var(--teal2);font-weight:700;">✓</span><span style="font-size:.82rem;">NHIMA contributions deducted</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;background:rgba(201,153,42,.06);border:1px solid rgba(201,153,42,.2);border-radius:8px;"><span style="color:var(--gold2);font-weight:700;">!</span><span style="font-size:.82rem;">PAYE returns submitted monthly</span></div>
+          <div style="display:flex;align-items:center;gap:.75rem;padding:.7rem 1rem;background:rgba(196,80,53,.06);border:1px solid rgba(196,80,53,.2);border-radius:8px;"><span style="color:var(--coral);font-weight:700;">✗</span><span style="font-size:.82rem;">HR policy manual not in place</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="digital">
+    <div class="service-detail reveal">
+      <div>
+        <span class="tag">Digital presence</span>
+        <h3>Website &amp; Digital Setup</h3>
+        <p>A professional website is non-negotiable for any business that wants to be taken seriously. We build fast, mobile-friendly websites that work on Zambian internet connections.</p>
+        <ul class="service-list">
+          <li>Professional website design and development</li>
+          <li>Business email setup (yourname@yourcompany.com)</li>
+          <li>Google My Business and local SEO setup</li>
+          <li>Social media profile setup and branding</li>
+          <li>Website hosting and maintenance</li>
+          <li>Domain registration and DNS management</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline-gold" style="margin-top:1.5rem;">Get a website quote →</a>
+      </div>
+      <div class="service-visual">
+        <div style="border:1px solid var(--border2);border-radius:10px;overflow:hidden;">
+          <div style="background:var(--navy4);padding:.75rem 1rem;display:flex;align-items:center;gap:6px;">
+            <div style="width:8px;height:8px;border-radius:50%;background:#ff5f57;"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:#febc2e;"></div>
+            <div style="width:8px;height:8px;border-radius:50%;background:#28c840;"></div>
+            <span style="font-size:.68rem;color:var(--muted);margin-left:6px;">yourcompany.com</span>
+          </div>
+          <div style="background:var(--navy3);padding:1.5rem;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold2);margin-bottom:.5rem;">Your Business Name</div>
+            <div style="font-size:.72rem;color:var(--muted);margin-bottom:1rem;">Professional · Fast · Mobile-friendly</div>
+            <div style="display:flex;gap:.5rem;justify-content:center;">
+              <span style="padding:5px 12px;background:var(--gold);color:var(--navy);border-radius:6px;font-size:.68rem;font-weight:700;">Contact Us</span>
+              <span style="padding:5px 12px;border:1px solid var(--border2);border-radius:6px;font-size:.68rem;color:var(--muted);">Learn More</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-gold"/>
+
+<section class="section section-navy2">
+  <div class="section-header section-header-center reveal">
+    <span class="tag">Our process</span>
+    <h2 class="section-title">How we work with you</h2>
+  </div>
+  <div class="process-grid reveal">
+    <div class="process-step"><div class="process-num">1</div><h4>Free consultation</h4><p>We talk through your situation and understand your business needs — no charge, no obligation.</p></div>
+    <div class="process-step"><div class="process-num">2</div><h4>Proposal &amp; scope</h4><p>We present a clear, fixed-price proposal with scope, timeline, and deliverables.</p></div>
+    <div class="process-step"><div class="process-num">3</div><h4>Implementation</h4><p>We do the work — on-site when needed, remotely when sufficient. You're kept informed throughout.</p></div>
+    <div class="process-step"><div class="process-num">4</div><h4>Training &amp; handover</h4><p>We train your team and don't leave until you're confident. Ongoing support available.</p></div>
+  </div>
+</section>
+
+<div class="cta-band reveal">
+  <span class="tag" style="justify-content:center;">Let's talk</span>
+  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">First consultation is free</h2>
+  <p>Tell us what you're dealing with. We'll give you an honest assessment of what would actually help.</p>
+  <div class="cta-band-actions" style="margin-top:2rem;">
+    <a href="contact.html" class="btn btn-gold btn-lg">Book a free consultation</a>
+    <a href="https://wa.me/260977669883" target="_blank" class="btn btn-whatsapp btn-lg">Chat on WhatsApp</a>
+  </div>
+</div>
+
+<div id="footer-container"></div>
+<script src="assets/main.js"></script>
+</body>
+</html>

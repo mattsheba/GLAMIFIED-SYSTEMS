@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>GlamifiedHR — Features, Pricing &amp; Download</title>
+<meta name="description" content="Full HR and payroll management software for Zambian businesses. PAYE, NAPSA, NHIMA compliant. Download today."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/style.css"/>
+<style>
+.feature-deep{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:6rem;}
+.feature-deep:nth-child(even){direction:rtl;}.feature-deep:nth-child(even)>*{direction:ltr;}
+.feature-deep-visual{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;min-height:280px;display:flex;flex-direction:column;gap:1rem;}
+.fv-row{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:var(--navy3);border-radius:8px;border:1px solid var(--border);}
+.fv-label{font-size:.82rem;color:var(--muted);}
+.fv-val{font-size:.82rem;font-weight:600;color:var(--gold2);}
+.fv-bar-wrap{background:rgba(255,255,255,.05);border-radius:4px;height:6px;flex:1;margin:0 1rem;}
+.fv-bar{height:6px;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--teal2));}
+.spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+.spec-item{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;}
+.spec-item h5{font-family:"DM Sans",sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;}
+.spec-item p{font-size:.875rem;}
+.download-hero{background:linear-gradient(135deg,rgba(26,140,114,.12),rgba(201,153,42,.08));border:1px solid rgba(201,153,42,.25);border-radius:var(--radius-xl);padding:3.5rem;display:flex;align-items:center;gap:3rem;margin-bottom:3rem;}
+.dl-logo{width:90px;height:90px;flex-shrink:0;border-radius:18px;background:rgba(201,153,42,.1);display:flex;align-items:center;justify-content:center;padding:14px;}
+.dl-logo img{width:100%;height:100%;object-fit:contain;}
+.lenco-bar{display:flex;align-items:center;gap:10px;margin-top:2rem;padding:14px 18px;background:rgba(46,125,50,.1);border:1px solid rgba(46,125,50,.25);border-radius:10px;font-size:.82rem;color:var(--muted);}
+.ldot{width:8px;height:8px;border-radius:50%;background:var(--green2);flex-shrink:0;}
+@media(max-width:900px){.feature-deep{grid-template-columns:1fr;}.feature-deep:nth-child(even){direction:ltr;}.download-hero{flex-direction:column;gap:1.5rem;}.spec-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="nav-container"></div>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>GlamifiedHR</span></div>
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;">
+      <img src="assets/logo-hr.png" alt="GlamifiedHR" style="width:56px;height:56px;border-radius:12px;background:rgba(201,153,42,.1);padding:8px;object-fit:contain;"/>
+      <div><div class="badge badge-teal" style="margin-bottom:.4rem;">Available Now</div><h1 class="display-2 anim-1">GlamifiedHR</h1></div>
+    </div>
+    <p class="lead anim-2" style="max-width:580px;">Complete HR &amp; Payroll Management for Zambian Businesses. PAYE, NAPSA, and NHIMA compliant out of the box.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;" class="anim-3">
+      <button class="btn btn-gold btn-lg" onclick="window.openPurchaseModal('HR + Payroll',2500)">Buy Now — K2,500</button>
+      <a href="contact.html" class="btn btn-outline btn-lg">Request a demo →</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider-gold"/>
+
+<section class="section" id="features">
+  <div class="section-header section-header-center reveal">
+    <span class="tag">Core features</span>
+    <h2 class="section-title">Built for how payroll really works in Zambia</h2>
+    <p class="lead">Six years of Zambian HR challenges distilled into one powerful desktop application.</p>
+  </div>
+
+  <div class="feature-deep reveal">
+    <div>
+      <span class="tag">Payroll engine</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">Accurate payroll in minutes, not days</h2>
+      <p style="color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:1.5rem;">Process an entire company's payroll with a single click. GlamifiedHR handles gross pay, all statutory deductions, allowances, loan deductions, and net pay calculations — all in the correct order.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.75rem;">
+        <li class="feature-item"><div class="feature-icon feature-icon-gold">💰</div><div class="feature-text"><h4>Multi-component salary</h4><p>Basic salary, housing, transport, lunch, and custom allowances — all configurable per employee.</p></div></li>
+        <li class="feature-item"><div class="feature-icon feature-icon-teal">📊</div><div class="feature-text"><h4>ZRA PAYE bands auto-applied</h4><p>Current tax bands built in. Updated free whenever ZRA announces new rates.</p></div></li>
+        <li class="feature-item"><div class="feature-icon feature-icon-gold">🔄</div><div class="feature-text"><h4>Batch processing</h4><p>Process all employees at once or individually. Review, edit, and approve before finalising.</p></div></li>
+      </ul>
+    </div>
+    <div class="feature-deep-visual">
+      <div style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Payroll breakdown — March 2026</div>
+      <div class="fv-row"><span class="fv-label">Basic Salary</span><span class="fv-val">K 12,000.00</span></div>
+      <div class="fv-row"><span class="fv-label">Housing Allowance</span><span class="fv-val">K 2,000.00</span></div>
+      <div class="fv-row"><span class="fv-label">Transport Allowance</span><span class="fv-val">K 800.00</span></div>
+      <div class="fv-row"><span class="fv-label" style="color:var(--teal2);">Gross Pay</span><span class="fv-val" style="color:var(--teal2);">K 14,800.00</span></div>
+      <div style="height:1px;background:var(--border);margin:.25rem 0;"></div>
+      <div class="fv-row"><span class="fv-label">PAYE Tax</span><span class="fv-val" style="color:#E06848;">− K 2,340.00</span></div>
+      <div class="fv-row"><span class="fv-label">NAPSA (5%)</span><span class="fv-val" style="color:#E06848;">− K 600.00</span></div>
+      <div class="fv-row"><span class="fv-label">NHIMA (1%)</span><span class="fv-val" style="color:#E06848;">− K 120.00</span></div>
+      <div class="fv-row" style="background:rgba(201,153,42,.1);border-color:rgba(201,153,42,.3);"><span class="fv-label" style="color:var(--gold2);font-weight:700;">NET PAY</span><span class="fv-val" style="font-size:1rem;">K 11,740.00</span></div>
+    </div>
+  </div>
+
+  <div class="feature-deep reveal">
+    <div>
+      <span class="tag">Employee management</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">A complete record for every employee</h2>
+      <p style="color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:1.5rem;">Store everything ZRA, NAPSA, and NHIMA might ever ask for — in one searchable, secure database that runs on your own computer.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.75rem;">
+        <li class="feature-item"><div class="feature-icon feature-icon-gold">🪪</div><div class="feature-text"><h4>NRC &amp; statutory numbers</h4><p>Store NRC, NAPSA number, NHIMA number, and TPIN for every employee.</p></div></li>
+        <li class="feature-item"><div class="feature-icon feature-icon-teal">🏦</div><div class="feature-text"><h4>Bank account details</h4><p>Bank name and account number stored securely for payment processing.</p></div></li>
+        <li class="feature-item"><div class="feature-icon feature-icon-gold">📂</div><div class="feature-text"><h4>Employment history</h4><p>Contract type, start date, promotions, salary history — all recorded.</p></div></li>
+      </ul>
+    </div>
+    <div class="feature-deep-visual">
+      <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:var(--navy3);border-radius:8px;border:1px solid rgba(201,153,42,.2);">
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--teal-dim);border:1px solid rgba(26,140,114,.3);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--teal2);font-size:.85rem;flex-shrink:0;">JB</div>
+        <div><div style="font-size:.9rem;font-weight:600;">John Banda</div><div style="font-size:.75rem;color:var(--muted);">Senior Accountant · Finance</div></div>
+        <span class="badge badge-teal" style="margin-left:auto;">Active</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.5rem;">
+        <div class="fv-row"><span class="fv-label">Employee ID</span><span class="fv-val">EMP-042</span></div>
+        <div class="fv-row"><span class="fv-label">NRC</span><span class="fv-val">123456/10/1</span></div>
+        <div class="fv-row"><span class="fv-label">NAPSA No.</span><span class="fv-val">NSB-884421</span></div>
+        <div class="fv-row"><span class="fv-label">NHIMA No.</span><span class="fv-val">NHI-22871</span></div>
+        <div class="fv-row"><span class="fv-label">Bank</span><span class="fv-val">Zanaco</span></div>
+        <div class="fv-row"><span class="fv-label">Contract</span><span class="fv-val">Permanent</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-deep reveal">
+    <div>
+      <span class="tag">Leave management</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">Leave tracking that actually works</h2>
+      <p style="color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:1.5rem;">Manage annual, sick, maternity, paternity, and custom leave types with an approval workflow that keeps HR in control.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:.75rem;">
+        <li class="feature-item"><div class="feature-icon feature-icon-gold">📅</div><div class="feature-text"><h4>Auto balance calculations</h4><p>Leave balances update automatically when leave is approved or cancelled.</p></div></li>
+        <li class="feature-item"><div class="feature-icon feature-icon-teal">✅</div><div class="feature-text"><h4>Approval workflow</h4><p>Employees request leave, managers approve or reject. Full audit trail kept.</p></div></li>
+        <li class="feature-item"><div class="feature-icon feature-icon-gold">📋</div><div class="feature-text"><h4>Leave reports</h4><p>See who is on leave, leave usage by department, and remaining balances at a glance.</p></div></li>
+      </ul>
+    </div>
+    <div class="feature-deep-visual">
+      <div style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.75rem;">Leave balances — 2026</div>
+      <div style="display:flex;flex-direction:column;gap:.6rem;">
+        <div><div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.3rem;"><span>Annual Leave</span><span style="color:var(--gold2);">14 / 24 days</span></div><div class="fv-bar-wrap"><div class="fv-bar" style="width:58%;"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.3rem;"><span>Sick Leave</span><span style="color:var(--gold2);">2 / 14 days</span></div><div class="fv-bar-wrap"><div class="fv-bar" style="width:14%;background:linear-gradient(90deg,#C45035,#D9603F);"></div></div></div>
+        <div><div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.3rem;"><span>Maternity Leave</span><span style="color:var(--gold2);">0 / 90 days</span></div><div class="fv-bar-wrap"><div class="fv-bar" style="width:0%;"></div></div></div>
+      </div>
+      <div style="margin-top:1rem;padding:1rem;background:var(--navy3);border-radius:8px;border:1px solid rgba(201,153,42,.2);">
+        <div style="font-size:.78rem;color:var(--muted);margin-bottom:.5rem;">Pending approval</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div><div style="font-size:.85rem;font-weight:600;">M. Zulu — Annual Leave</div><div style="font-size:.75rem;color:var(--muted);">14 Apr – 18 Apr (5 days)</div></div>
+          <div style="display:flex;gap:.5rem;">
+            <span style="padding:4px 10px;background:var(--teal-dim);border:1px solid rgba(26,140,114,.3);border-radius:6px;font-size:.72rem;color:var(--teal2);cursor:pointer;">Approve</span>
+            <span style="padding:4px 10px;background:rgba(196,80,53,.1);border:1px solid rgba(196,80,53,.25);border-radius:6px;font-size:.72rem;color:#E06848;cursor:pointer;">Reject</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-gold"/>
+
+<section class="section section-navy2" id="compliance">
+  <div class="section-header section-header-center reveal">
+    <span class="tag">Statutory compliance</span>
+    <h2 class="section-title">Built around Zambian law</h2>
+    <p class="lead">Not adapted from a foreign system — built from scratch for Zambian compliance requirements.</p>
+  </div>
+  <div class="grid-3">
+    <div class="card card-teal reveal" style="text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">🏛️</div>
+      <h3 style="font-size:1.3rem;margin-bottom:.75rem;color:var(--teal2);">ZRA PAYE</h3>
+      <p style="font-size:.875rem;color:var(--muted);line-height:1.7;">Current income tax bands applied automatically. Generates P18 monthly schedules and P9 annual certificates.</p>
+    </div>
+    <div class="card card-teal reveal" style="text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">🛡️</div>
+      <h3 style="font-size:1.3rem;margin-bottom:.75rem;color:var(--teal2);">NAPSA</h3>
+      <p style="font-size:.875rem;color:var(--muted);line-height:1.7;">5% employee + 5% employer contributions calculated correctly. Monthly NAPSA contribution schedules generated automatically.</p>
+    </div>
+    <div class="card card-teal reveal" style="text-align:center;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">🏥</div>
+      <h3 style="font-size:1.3rem;margin-bottom:.75rem;color:var(--teal2);">NHIMA</h3>
+      <p style="font-size:.875rem;color:var(--muted);line-height:1.7;">1% employee + 1% employer health insurance contributions with correct calculation logic and monthly submission reports.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <div class="section-header section-header-center reveal">
+    <span class="tag">Download &amp; pricing</span>
+    <h2 class="section-title">Purchase a license. Download instantly.</h2>
+    <p class="lead">Buy once, use forever. Free updates for 12 months. Support via WhatsApp.</p>
+  </div>
+  <div class="download-hero reveal">
+    <div class="dl-logo"><img src="assets/logo-hr.png" alt="GlamifiedHR"/></div>
+    <div>
+      <h3 style="font-size:1.5rem;margin-bottom:.5rem;">GlamifiedHR Desktop</h3>
+      <p style="color:var(--muted);font-size:.95rem;line-height:1.7;max-width:500px;">A complete HR and payroll management system that runs on Windows. Works offline. Pre-configured for Zambia — PAYE, NAPSA, NHIMA built in.</p>
+    </div>
+    <div style="flex-shrink:0;text-align:center;padding:1.5rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:12px;min-width:160px;">
+      <div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Platform</div>
+      <div style="font-size:.9rem;font-weight:600;">Windows 10 / 11</div>
+      <div style="font-size:.72rem;color:var(--muted);margin-top:.75rem;">RAM: 4GB minimum</div>
+      <div style="font-size:.72rem;color:var(--teal2);margin-top:.25rem;">✓ Works offline</div>
+    </div>
+  </div>
+  <div class="grid-3">
+    <div class="pricing-card reveal">
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;">Basic HR</div>
+      <div class="price-amount">K1,200</div>
+      <div class="price-period">One-time license · up to 2 machines</div>
+      <ul class="price-features">
+        <li>Employee records &amp; profiles</li><li>Department management</li><li>Search, filter &amp; export</li><li>Basic HR reports</li><li>Up to 50 employees</li><li class="no">Payroll processing</li><li class="no">Leave management</li>
+      </ul>
+      <button class="btn btn-outline-gold" style="width:100%;justify-content:center;" onclick="window.openPurchaseModal('Basic HR',1200)">Buy Basic HR</button>
+    </div>
+    <div class="pricing-card featured reveal">
+      <div class="popular-label">Most Popular</div>
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;">HR + Payroll</div>
+      <div class="price-amount">K2,500</div>
+      <div class="price-period">One-time license · up to 2 machines</div>
+      <ul class="price-features">
+        <li>Everything in Basic HR</li><li>Full payroll processing</li><li>Auto PAYE, NAPSA &amp; NHIMA</li><li>PDF payslip generation</li><li>Payroll history &amp; reports</li><li>Allowances &amp; deductions</li><li>Up to 100 employees</li>
+      </ul>
+      <button class="btn btn-gold" style="width:100%;justify-content:center;" onclick="window.openPurchaseModal('HR + Payroll',2500)">Buy HR + Payroll</button>
+    </div>
+    <div class="pricing-card reveal">
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;">Full Suite</div>
+      <div class="price-amount">K3,500</div>
+      <div class="price-period">One-time license · up to 2 machines</div>
+      <ul class="price-features">
+        <li>Everything in HR + Payroll</li><li>Leave management</li><li>Leave approval workflows</li><li>NAPSA &amp; NHIMA returns</li><li>ZRA PAYE schedules</li><li>Unlimited employees</li><li>Priority WhatsApp support</li>
+      </ul>
+      <button class="btn btn-outline-gold" style="width:100%;justify-content:center;" onclick="window.openPurchaseModal('Full Suite',3500)">Buy Full Suite</button>
+    </div>
+  </div>
+  <div class="lenco-bar reveal"><div class="ldot"></div><span>Secure payments via <strong>Lenco</strong> — pay with Airtel Money, MTN MoMo, or bank card. License key delivered by email immediately after payment.</span></div>
+</section>
+
+<section class="section section-navy2">
+  <div class="section-header section-header-center reveal">
+    <span class="tag">Technical specifications</span>
+    <h2 class="section-title">What you need to run GlamifiedHR</h2>
+  </div>
+  <div class="spec-grid reveal" style="max-width:640px;margin:0 auto;">
+    <div class="spec-item"><h5>Operating System</h5><p>Windows 10 or Windows 11 (64-bit)</p></div>
+    <div class="spec-item"><h5>Memory (RAM)</h5><p>4 GB minimum · 8 GB recommended</p></div>
+    <div class="spec-item"><h5>Storage</h5><p>500 MB for installation · additional for database</p></div>
+    <div class="spec-item"><h5>Display</h5><p>1366 × 768 minimum resolution</p></div>
+    <div class="spec-item"><h5>Internet</h5><p>Only needed for activation and updates. Runs fully offline after activation.</p></div>
+    <div class="spec-item"><h5>Machines per license</h5><p>Up to 2 computers per license key</p></div>
+  </div>
+</section>
+
+<div class="cta-band reveal">
+  <span class="tag" style="justify-content:center;">Ready to get started?</span>
+  <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;margin-bottom:1rem;">Your payroll sorted. Starting today.</h2>
+  <p>Download GlamifiedHR and process your first payroll within the hour.</p>
+  <div class="cta-band-actions" style="margin-top:2rem;">
+    <button class="btn btn-gold btn-lg" onclick="window.openPurchaseModal('HR + Payroll',2500)">Buy HR + Payroll — K2,500</button>
+    <a href="https://your-storage.com/glamifiedhr/GlamifiedHR-Payroll-Setup.exe" class="btn btn-outline btn-lg" target="_blank" rel="noopener">Download GlamifiedHR</a>
+    <a href="contact.html" class="btn btn-outline btn-lg">Book a free demo</a>
+  </div>
+</div>
+
+<div id="footer-container"></div>
+<script src="assets/main.js"></script>
+</body>
+</html>
