@@ -2,30 +2,15 @@
  * submit-job.js
  * Netlify Function — endpoint: /api/submit-job
  *
- * Accepts job posting submissions from the frontend.
- * Saves each submission to a JSON file and emails the admin.
+ * Accepts job posting submissions from the frontend and emails the admin.
+ * Note: Netlify Functions are serverless — no filesystem writes allowed.
  *
  * Requires environment variables:
  *   ADMIN_EMAIL — where to send notifications (e.g. info.glamifiedsystems@gmail.com)
  *   FROM_EMAIL, SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS — for nodemailer
  */
 
-const fs = require('fs');
-const path = require('path');
 const nodemailer = require('nodemailer');
-
-const DATA_PATH = path.join(__dirname, '../data/job-postings.json');
-
-function saveJobPosting(job) {
-  let jobs = [];
-  if (fs.existsSync(DATA_PATH)) {
-    try {
-      jobs = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
-    } catch {}
-  }
-  jobs.push({ ...job, submitted: new Date().toISOString() });
-  fs.writeFileSync(DATA_PATH, JSON.stringify(jobs, null, 2));
-}
 
 async function sendEmail(job) {
   const transporter = nodemailer.createTransport({
@@ -83,18 +68,16 @@ exports.handler = async (event) => {
   if (!company || !name || !email || !title || !location || !type || !description) {
     return { statusCode: 400, body: 'Missing required fields' };
   }
-  // Save to file
-  try {
-    saveJobPosting(body);
-  } catch (err) {
-    return { statusCode: 500, body: 'Failed to save job posting' };
-  }
+  
+  // Build job object for email
+  const job = { company, name, email, title, location, type, salary, description };
+  
   // Email admin
   try {
-    await sendEmail(body);
+    await sendEmail(job);
   } catch (err) {
-    // Still return success if email fails, but log error
     console.error('Failed to send email:', err);
+    return { statusCode: 500, body: 'Failed to send notification email' };
   }
   return {
     statusCode: 200,
