@@ -75,7 +75,11 @@ exports.handler = async (event) => {
   } catch {
     return { statusCode: 400, body: 'Invalid JSON' };
   }
-  const { company, name, email, title, location, type, salary, description } = body;
+  const { company, contactName, email, jobTitle, location, jobType, salary, description } = body;
+  // Map to internal names for email
+  const name = contactName;
+  const title = jobTitle;
+  const type = jobType;
   if (!company || !name || !email || !title || !location || !type || !description) {
     return { statusCode: 400, body: 'Missing required fields' };
   }

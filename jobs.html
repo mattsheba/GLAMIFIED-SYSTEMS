@@ -157,7 +157,7 @@ function renderJobs(list) {
   const count = document.getElementById('results-count');
   if (!list.length) { el.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted);">No jobs found. Try adjusting your search.</div>'; count.textContent='0 jobs found'; return; }
   count.textContent = 'Showing '+list.length+' job'+(list.length>1?'s':'');
-  const typeClass = {Full-time:'badge-ft',Contract:'badge-ct','Part-time':'badge-pt'};
+  const typeClass = {'Full-time':'badge-ft','Contract':'badge-ct','Part-time':'badge-pt'};
   el.innerHTML = list.map(j => `
     <div class="job-card">
       <div class="job-info">
