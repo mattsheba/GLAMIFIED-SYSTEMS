@@ -72,16 +72,22 @@ exports.handler = async (event) => {
   // Build job object for email
   const job = { company, name, email, title, location, type, salary, description };
   
-  // Email admin
+  // Email admin (don't fail if email fails - we still got the submission)
   try {
-    await sendEmail(job);
+    if (process.env.SMTP_PASS && process.env.ADMIN_EMAIL) {
+      await sendEmail(job);
+      console.log('Job posting email sent successfully');
+    } else {
+      console.log('SMTP not configured - job posting received but email not sent:', JSON.stringify(job));
+    }
   } catch (err) {
-    console.error('Failed to send email:', err);
-    return { statusCode: 500, body: 'Failed to send notification email' };
+    // Log error but don't fail - at least log the job details
+    console.error('Failed to send email:', err.message);
+    console.log('Job posting data:', JSON.stringify(job));
   }
   return {
     statusCode: 200,
     headers: { 'Access-Control-Allow-Origin': '*' },
-    body: JSON.stringify({ success: true }),
+    body: JSON.stringify({ success: true, message: 'Job posting received' }),
   };
 };
