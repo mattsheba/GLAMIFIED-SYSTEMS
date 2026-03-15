@@ -8,6 +8,22 @@
 
   const PHONE = '260977669883';
   const SITE  = 'https://glamifiedsystems.com';
+  const LENCO_PUBLIC_KEY = 'pub-cd353f758b26d57cead328816d6e7691b9f0dcea6f5a9f7b';
+
+  /* ─── LOAD LENCO SDK ────────────────────────────────────── */
+  async function ensureLencoLoaded() {
+    if (window.LencoPay?.getPaid) return;
+    await new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://pay.lenco.co/js/v1/inline.js';
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+    // Wait a bit for LencoPay to initialize
+    await new Promise(r => setTimeout(r, 200));
+    if (!window.LencoPay?.getPaid) throw new Error('LencoPay failed to initialize');
+  }
 
   /* ─── NAV HTML ─────────────────────────────────────────── */
   function buildNav() {
@@ -281,31 +297,60 @@
     }
 
     const submitBtn = document.querySelector('#purchase-modal .form-submit');
-    submitBtn.textContent = 'Processing...';
+    submitBtn.textContent = 'Loading payment...';
     submitBtn.disabled = true;
 
     try {
-      const res = await fetch('/api/initiate-payment', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, phone, plan, paymentMethod: method, amount })
-      });
-      const data = await res.json();
+      // Load Lenco SDK
+      await ensureLencoLoaded();
 
-      if (data.paymentUrl) {
-        window.location.href = data.paymentUrl;
-      } else {
-        // Fallback: WhatsApp with order details
-        const msg = encodeURIComponent(
-          `Hi Glamified Systems, I'd like to purchase GlamifiedHR.\n\nPlan: ${plan}\nAmount: K${amount}\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPayment: ${method}`
-        );
-        window.open(`https://wa.me/${PHONE}?text=${msg}`, '_blank');
-        window.closePurchaseModal();
-      }
+      // Generate unique reference
+      const reference = 'GLAM-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7).toUpperCase();
+
+      // Map payment method to Lenco channel
+      const channelMap = {
+        'airtel': ['mobile-money'],
+        'mtn': ['mobile-money'],
+        'card': ['card']
+      };
+      const channels = channelMap[method] || ['mobile-money', 'card'];
+
+      // Close our modal before Lenco opens theirs
+      window.closePurchaseModal();
+
+      // Open Lenco payment popup
+      window.LencoPay.getPaid({
+        key: LENCO_PUBLIC_KEY,
+        reference: reference,
+        email: email,
+        amount: amount,
+        currency: 'ZMW',
+        channels: channels,
+        customer: {
+          name: name,
+          phone: phone
+        },
+        metadata: {
+          plan: plan,
+          product: 'GlamifiedHR'
+        },
+        onSuccess: function(response) {
+          // Payment successful - redirect to success page
+          // The webhook will generate license key and email it
+          const successUrl = `${SITE}/payment-success.html?ref=${reference}&plan=${encodeURIComponent(plan)}&email=${encodeURIComponent(email)}`;
+          window.location.href = successUrl;
+        },
+        onClose: function() {
+          // User closed the payment popup without completing
+          alert('Payment was cancelled. You can try again anytime.');
+        }
+      });
+
     } catch (err) {
-      // Fallback to WhatsApp if API fails
+      console.error('Payment error:', err);
+      // Fallback to WhatsApp if Lenco fails to load
       const msg = encodeURIComponent(
-        `Hi, I want to buy GlamifiedHR ${plan} (K${amount}). Name: ${name}, Email: ${email}`
+        `Hi, I want to buy GlamifiedHR ${plan} (K${amount}). Name: ${name}, Email: ${email}, Phone: ${phone}`
       );
       window.open(`https://wa.me/${PHONE}?text=${msg}`, '_blank');
       window.closePurchaseModal();
