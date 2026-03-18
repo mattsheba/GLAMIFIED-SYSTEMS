@@ -64,17 +64,17 @@
 
   <div id="tab-listings" class="tab-content active">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;">
-      <div style="font-size:.85rem;color:var(--muted);" id="results-count">Showing 8 jobs</div>
+      <div style="font-size:.85rem;color:var(--muted);" id="results-count"></div>
       <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <button class="btn btn-sm btn-outline" onclick="filterByType('all',this)" style="font-size:.8rem;padding:7px 16px;">All</button>
-        <button class="btn btn-sm btn-outline" onclick="filterByType('Full-time',this)" style="font-size:.8rem;padding:7px 16px;">Full-time</button>
-        <button class="btn btn-sm btn-outline" onclick="filterByType('Contract',this)" style="font-size:.8rem;padding:7px 16px;">Contract</button>
-        <button class="btn btn-sm btn-outline" onclick="filterByType('Part-time',this)" style="font-size:.8rem;padding:7px 16px;">Part-time</button>
+        <button class="btn btn-sm btn-outline" onclick="filterByType('full_time',this)" style="font-size:.8rem;padding:7px 16px;">Full-time</button>
+        <button class="btn btn-sm btn-outline" onclick="filterByType('contract',this)" style="font-size:.8rem;padding:7px 16px;">Contract</button>
+        <button class="btn btn-sm btn-outline" onclick="filterByType('part_time',this)" style="font-size:.8rem;padding:7px 16px;">Part-time</button>
       </div>
     </div>
     <div class="jobs-list" id="jobs-list"></div>
-    <div style="text-align:center;margin-top:2.5rem;">
-      <a href="https://cvprozambia.com" target="_blank" class="btn btn-outline-gold">View all jobs on CVPro Zambia →</a>
+    <div id="pagination" style="text-align:center;margin-top:2.5rem;display:none;">
+      <button onclick="loadMoreJobs()" class="btn btn-outline-gold" id="load-more-btn">Load more jobs →</button>
     </div>
   </div>
 
@@ -108,22 +108,38 @@
       </div>
       <div class="reveal">
         <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.75rem;">Submit your vacancy</h3>
-        <form onsubmit="window.handleContactForm(event)">
+        <form id="post-job-form" onsubmit="submitJobPosting(event)">
           <div class="form-row">
-            <div class="form-group"><label>Company name</label><input type="text" placeholder="Acme Ltd" required/></div>
-            <div class="form-group"><label>Your name</label><input type="text" placeholder="HR Manager" required/></div>
+            <div class="form-group"><label>Company name *</label><input type="text" name="company_name" placeholder="Acme Ltd" required/></div>
+            <div class="form-group"><label>Your name *</label><input type="text" name="employer_name" placeholder="HR Manager" required/></div>
           </div>
-          <div class="form-group"><label>Your email</label><input type="email" placeholder="hr@company.com" required/></div>
-          <div class="form-group"><label>Job title</label><input type="text" placeholder="e.g. Accounts Clerk" required/></div>
           <div class="form-row">
-            <div class="form-group"><label>Location</label><select><option>Lusaka</option><option>Ndola</option><option>Kitwe</option><option>Livingstone</option><option>Other</option></select></div>
-            <div class="form-group"><label>Job type</label><select><option>Full-time</option><option>Part-time</option><option>Contract</option></select></div>
+            <div class="form-group"><label>Your email *</label><input type="email" name="employer_email" placeholder="hr@company.com" required/></div>
+            <div class="form-group"><label>Phone (optional)</label><input type="tel" name="employer_phone" placeholder="097XXXXXXX"/></div>
           </div>
-          <div class="form-group"><label>Salary range (optional)</label><input type="text" placeholder="e.g. K5,000 – K8,000 per month"/></div>
-          <div class="form-group"><label>Job description &amp; requirements</label><textarea placeholder="Describe the role, key responsibilities, required qualifications, and experience..." style="min-height:150px;"></textarea></div>
-          <button type="submit" class="form-submit">Submit job posting →</button>
+          <div class="form-group"><label>Job title *</label><input type="text" name="title" placeholder="e.g. Accounts Clerk" required/></div>
+          <div class="form-row">
+            <div class="form-group"><label>Location *</label><select name="location" required><option value="Lusaka">Lusaka</option><option value="Ndola">Ndola</option><option value="Kitwe">Kitwe</option><option value="Livingstone">Livingstone</option><option value="Kabwe">Kabwe</option><option value="Chingola">Chingola</option><option value="Solwezi">Solwezi</option><option value="Other">Other</option></select></div>
+            <div class="form-group"><label>Job type *</label><select name="job_type" required><option value="full_time">Full-time</option><option value="part_time">Part-time</option><option value="contract">Contract</option><option value="internship">Internship</option><option value="volunteer">Volunteer</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Category</label><select name="category"><option value="">Select category</option><option value="Finance">Finance</option><option value="HR">HR</option><option value="IT">IT</option><option value="Operations">Operations</option><option value="Sales">Sales</option><option value="Administration">Administration</option><option value="Engineering">Engineering</option><option value="Healthcare">Healthcare</option><option value="Education">Education</option><option value="Other">Other</option></select></div>
+            <div class="form-group"><label>Application deadline</label><input type="date" name="deadline"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Min salary (ZMW)</label><input type="number" name="salary_min" placeholder="5000" min="0"/></div>
+            <div class="form-group"><label>Max salary (ZMW)</label><input type="number" name="salary_max" placeholder="8000" min="0"/></div>
+          </div>
+          <div class="form-group" style="display:flex;align-items:center;gap:.75rem;">
+            <input type="checkbox" name="salary_visible" id="salary_visible" checked style="width:auto;"/>
+            <label for="salary_visible" style="margin:0;cursor:pointer;">Show salary to job seekers</label>
+          </div>
+          <div class="form-group"><label>Job description *</label><textarea name="description" placeholder="Describe the role, key responsibilities..." style="min-height:120px;" required></textarea></div>
+          <div class="form-group"><label>Requirements</label><textarea name="requirements" placeholder="Required qualifications, experience, skills..." style="min-height:100px;"></textarea></div>
+          <div class="form-group"><label>Benefits (optional)</label><textarea name="benefits" placeholder="What you offer: salary benefits, health insurance, etc." style="min-height:80px;"></textarea></div>
+          <button type="submit" class="form-submit" id="post-job-btn">Submit job posting →</button>
         </form>
-        <div id="form-success" style="display:none;margin-top:1rem;padding:14px 16px;background:rgba(26,140,114,.15);border:1px solid rgba(26,140,114,.3);border-radius:8px;font-size:.88rem;color:var(--teal2);">✓ Job posting received! We'll publish it within 24 hours and confirm by email.</div>
+        <div id="post-job-result" style="display:none;margin-top:1rem;padding:14px 16px;border-radius:8px;font-size:.88rem;"></div>
       </div>
     </div>
   </div>
@@ -139,60 +155,401 @@
   </div>
 </div>
 
+<!-- Job Detail / Apply Modal -->
+<div id="job-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);padding:1rem;overflow-y:auto;">
+  <div style="max-width:700px;margin:2rem auto;background:var(--navy2);border-radius:var(--radius-xl);border:1px solid var(--border2);padding:2.5rem;position:relative;">
+    <button onclick="closeJobModal()" style="position:absolute;top:1rem;right:1.25rem;background:none;border:none;color:var(--muted);font-size:1.8rem;cursor:pointer;line-height:1;">&times;</button>
+    <div id="job-modal-content"></div>
+  </div>
+</div>
+
 <div id="footer-container"></div>
 <script src="assets/main.js"></script>
 <script>
-const JOBS = [
-  {title:"Accounts Clerk",company:"ABC Trading Ltd",location:"Lusaka",dept:"Finance",type:"Full-time",salary:"K5,000 – K7,000",posted:"2 days ago",isNew:true},
-  {title:"HR Officer",company:"Zambia Health NGO",location:"Lusaka",dept:"HR",type:"Full-time",salary:"K8,000 – K11,000",posted:"3 days ago",isNew:true},
-  {title:"IT Support Technician",company:"Telecom Company",location:"Ndola",dept:"IT",type:"Contract",salary:"K6,000 – K9,000",posted:"4 days ago",isNew:false},
-  {title:"Sales Representative",company:"FMCG Distributor",location:"Lusaka",dept:"Sales",type:"Full-time",salary:"K4,500 + Commission",posted:"5 days ago",isNew:false},
-  {title:"Receptionist / Admin Assistant",company:"Private Clinic",location:"Lusaka",dept:"Administration",type:"Full-time",salary:"K3,500 – K5,000",posted:"1 week ago",isNew:false},
-  {title:"Logistics Coordinator",company:"Construction Firm",location:"Kitwe",dept:"Operations",type:"Full-time",salary:"K7,000 – K10,000",posted:"1 week ago",isNew:false},
-  {title:"Bookkeeper",company:"Retail Chain",location:"Livingstone",dept:"Finance",type:"Part-time",salary:"K3,000 – K4,500",posted:"2 weeks ago",isNew:false},
-  {title:"Project Officer",company:"Development NGO",location:"Lusaka",dept:"Operations",type:"Contract",salary:"K9,000 – K13,000",posted:"2 weeks ago",isNew:false},
-];
+// ============================================================
+// JOBS PAGE — Connected to Supabase via /api/jobs & /api/job
+// ============================================================
+
+let JOBS = [];
+let currentPage = 1;
+const pageSize = 20;
+let totalJobs = 0;
+
+// Fetch jobs from database
+async function fetchJobs(append = false) {
+  const el = document.getElementById('jobs-list');
+  const pagination = document.getElementById('pagination');
+  
+  if (!append) {
+    el.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--muted);">Loading jobs...</div>';
+  }
+  
+  try {
+    const params = new URLSearchParams({ page: currentPage, limit: pageSize });
+    const search = document.getElementById('search-input').value.trim();
+    const location = document.getElementById('location-filter').value;
+    const type = window._typeFilter || 'all';
+    
+    if (search) params.set('search', search);
+    if (location) params.set('location', location);
+    if (type !== 'all') params.set('job_type', type);
+    
+    const res = await fetch('/api/jobs?' + params.toString());
+    const data = await res.json();
+    
+    if (data.error) throw new Error(data.error);
+    
+    totalJobs = data.total || 0;
+    
+    if (append) {
+      JOBS = [...JOBS, ...(data.jobs || [])];
+    } else {
+      JOBS = data.jobs || [];
+    }
+    
+    renderJobs(JOBS);
+    
+    // Update results count
+    const count = document.getElementById('results-count');
+    count.textContent = `Showing ${JOBS.length} of ${totalJobs} jobs`;
+    
+    // Show/hide load more button
+    if (JOBS.length < totalJobs) {
+      pagination.style.display = 'block';
+    } else {
+      pagination.style.display = 'none';
+    }
+    
+  } catch (err) {
+    console.error('Failed to fetch jobs:', err);
+    el.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--muted);">Failed to load jobs. Please try again later.</div>';
+  }
+}
+
+// Load more jobs (pagination)
+function loadMoreJobs() {
+  currentPage++;
+  const btn = document.getElementById('load-more-btn');
+  btn.textContent = 'Loading...';
+  btn.disabled = true;
+  fetchJobs(true).then(() => {
+    btn.textContent = 'Load more jobs →';
+    btn.disabled = false;
+  });
+}
+
+// Calculate relative time
+function timeAgo(dateStr) {
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diffMs = now - date;
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  
+  if (diffDays < 1) return 'Today';
+  if (diffDays === 1) return '1 day ago';
+  if (diffDays < 7) return `${diffDays} days ago`;
+  if (diffDays < 14) return '1 week ago';
+  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+  return `${Math.floor(diffDays / 30)} month${diffDays >= 60 ? 's' : ''} ago`;
+}
+
+// Check if job is new (within 3 days)
+function isNewJob(dateStr) {
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diffDays = (now - date) / (1000 * 60 * 60 * 24);
+  return diffDays <= 3;
+}
+
+// Format salary
+function formatSalary(job) {
+  if (!job.salary_visible) return 'Negotiable';
+  if (!job.salary_min && !job.salary_max) return 'Negotiable';
+  const curr = job.salary_currency || 'ZMW';
+  const symbol = curr === 'USD' ? '$' : 'K';
+  if (job.salary_min && job.salary_max) {
+    return `${symbol}${job.salary_min.toLocaleString()} – ${symbol}${job.salary_max.toLocaleString()}`;
+  }
+  if (job.salary_min) return `From ${symbol}${job.salary_min.toLocaleString()}`;
+  if (job.salary_max) return `Up to ${symbol}${job.salary_max.toLocaleString()}`;
+  return 'Negotiable';
+}
+
 function renderJobs(list) {
   const el = document.getElementById('jobs-list');
   const count = document.getElementById('results-count');
-  if (!list.length) { el.innerHTML='<div style="text-align:center;padding:3rem;color:var(--muted);">No jobs found. Try adjusting your search.</div>'; count.textContent='0 jobs found'; return; }
-  count.textContent = 'Showing '+list.length+' job'+(list.length>1?'s':'');
-  const typeClass = {'Full-time':'badge-ft','Contract':'badge-ct','Part-time':'badge-pt'};
+  
+  if (!list.length) {
+    el.innerHTML = '<div style="text-align:center;padding:3rem;color:var(--muted);">No jobs found. Try adjusting your search.</div>';
+    count.textContent = '0 jobs found';
+    return;
+  }
+  
+  // Map database job_type to display values
+  const typeLabels = {full_time:'Full-time', part_time:'Part-time', contract:'Contract', internship:'Internship', volunteer:'Volunteer'};
+  const typeClass = {full_time:'badge-ft', contract:'badge-ct', part_time:'badge-pt', internship:'badge-pt', volunteer:'badge-pt'};
+  
   el.innerHTML = list.map(j => `
     <div class="job-card">
       <div class="job-info">
-        <div class="job-title">${j.title} ${j.isNew ? '<span class="badge-new2" style="display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;background:rgba(201,153,42,.15);color:var(--gold2);border:1px solid rgba(201,153,42,.3);margin-left:6px;">NEW</span>' : ''}</div>
+        <div class="job-title">${j.title} ${isNewJob(j.created_at) ? '<span class="badge-new2" style="display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;background:rgba(201,153,42,.15);color:var(--gold2);border:1px solid rgba(201,153,42,.3);margin-left:6px;">NEW</span>' : ''}</div>
         <div class="job-meta">
-          <span class="job-tag">🏢 ${j.company}</span>
-          <span class="job-tag">📍 ${j.location}</span>
-          <span class="job-tag"><span class="job-badge ${typeClass[j.type]||'badge-ft'}">${j.type}</span></span>
-          <span class="job-tag">💰 ${j.salary}</span>
-          <span class="job-tag">🕒 ${j.posted}</span>
+          <span class="job-tag">🏢 ${j.company_name}</span>
+          <span class="job-tag">📍 ${j.location}${j.province ? ', ' + j.province : ''}</span>
+          <span class="job-tag"><span class="job-badge ${typeClass[j.job_type]||'badge-ft'}">${typeLabels[j.job_type] || j.job_type || 'Full-time'}</span></span>
+          <span class="job-tag">💰 ${formatSalary(j)}</span>
+          <span class="job-tag">🕒 ${timeAgo(j.created_at)}</span>
         </div>
       </div>
-      <a href="https://cvprozambia.com" target="_blank" class="job-apply">Apply →</a>
+      <button onclick="openJobModal('${j.id}')" class="job-apply">View & Apply →</button>
     </div>`).join('');
 }
+
+// Debounced filter
+let filterTimeout;
 function filterJobs() {
-  const q = document.getElementById('search-input').value.toLowerCase();
-  const loc = document.getElementById('location-filter').value;
-  const dept = document.getElementById('dept-filter').value;
-  const type = window._typeFilter||'all';
-  renderJobs(JOBS.filter(j => {
-    const matchQ = !q || j.title.toLowerCase().includes(q) || j.company.toLowerCase().includes(q);
-    const matchLoc = !loc || j.location===loc;
-    const matchDept = !dept || j.dept===dept;
-    const matchType = type==='all' || j.type===type;
-    return matchQ && matchLoc && matchDept && matchType;
-  }));
+  clearTimeout(filterTimeout);
+  filterTimeout = setTimeout(() => {
+    currentPage = 1;
+    fetchJobs();
+  }, 300);
 }
+
 window.filterByType = function(type, btn) {
   window._typeFilter = type;
   document.querySelectorAll('.tab-btn ~ * .btn-outline').forEach(b => b.classList.remove('btn-gold'));
+  if (btn) btn.classList.add('btn-gold');
   filterJobs();
 };
-renderJobs(JOBS);
-if (window.location.hash==='#post') { window.switchTab('post', document.getElementById('post-tab')); }
+
+// ============================================================
+// JOB DETAIL MODAL
+// ============================================================
+
+async function openJobModal(jobId) {
+  const modal = document.getElementById('job-modal');
+  const content = document.getElementById('job-modal-content');
+  
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  content.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--muted);">Loading job details...</div>';
+  
+  try {
+    const res = await fetch(`/api/job?id=${jobId}`);
+    const data = await res.json();
+    
+    if (data.error) throw new Error(data.error);
+    
+    const job = data.job;
+    const deadlineStr = job.deadline ? new Date(job.deadline).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : 'Open until filled';
+    const jobTypeLabel = {full_time:'Full-time', part_time:'Part-time', contract:'Contract', internship:'Internship', volunteer:'Volunteer'}[job.job_type] || job.job_type || 'Full-time';
+    
+    content.innerHTML = `
+      <span style="display:inline-block;padding:4px 12px;background:rgba(26,140,114,.15);color:var(--teal2);border-radius:20px;font-size:.75rem;font-weight:600;margin-bottom:1rem;">🔥 ${job.views || 0} views</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;">${job.title}</h2>
+      <p style="color:var(--muted);font-size:1rem;margin-bottom:1.5rem;">${job.company_name} • ${job.location}${job.province ? ', ' + job.province : ''}</p>
+      
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.5rem;">
+        <span style="padding:6px 14px;background:var(--navy3);border-radius:8px;font-size:.85rem;">📍 ${job.location}</span>
+        <span style="padding:6px 14px;background:var(--navy3);border-radius:8px;font-size:.85rem;">💼 ${jobTypeLabel}</span>
+        <span style="padding:6px 14px;background:var(--navy3);border-radius:8px;font-size:.85rem;">💰 ${formatSalary(job)}</span>
+        <span style="padding:6px 14px;background:var(--navy3);border-radius:8px;font-size:.85rem;">📅 Deadline: ${deadlineStr}</span>
+      </div>
+      
+      <div style="background:var(--navy3);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;">
+        <h4 style="font-size:.9rem;font-weight:700;margin-bottom:.75rem;color:var(--white);">Job Description</h4>
+        <div style="font-size:.9rem;line-height:1.8;color:var(--muted);white-space:pre-wrap;">${job.description || 'No description provided.'}</div>
+      </div>
+      
+      ${job.requirements ? `
+      <div style="background:var(--navy3);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;">
+        <h4 style="font-size:.9rem;font-weight:700;margin-bottom:.75rem;color:var(--white);">Requirements</h4>
+        <div style="font-size:.9rem;line-height:1.8;color:var(--muted);white-space:pre-wrap;">${job.requirements}</div>
+      </div>` : ''}
+      
+      ${job.benefits ? `
+      <div style="background:var(--navy3);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;">
+        <h4 style="font-size:.9rem;font-weight:700;margin-bottom:.75rem;color:var(--white);">Benefits</h4>
+        <div style="font-size:.9rem;line-height:1.8;color:var(--muted);white-space:pre-wrap;">${job.benefits}</div>
+      </div>` : ''}
+      
+      <hr style="border:none;border-top:1px solid var(--border2);margin:2rem 0;"/>
+      
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:1.25rem;">Apply for this position</h3>
+      <form onsubmit="submitApplication(event,'${job.id}')" id="apply-form-${job.id}">
+        <div class="form-row">
+          <div class="form-group"><label>Full name *</label><input type="text" name="full_name" placeholder="John Banda" required/></div>
+          <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="john@email.com" required/></div>
+        </div>
+        <div class="form-group"><label>Phone number</label><input type="tel" name="phone" placeholder="097XXXXXXX"/></div>
+        <div class="form-group">
+          <label>CV/Resume link *</label>
+          <input type="url" name="cv_url" placeholder="https://drive.google.com/... or https://cvprozambia.com/cv/..." required/>
+          <p style="font-size:.75rem;color:var(--muted);margin-top:.5rem;">Paste a link to your CV (Google Drive, Dropbox, or <a href="https://cvprozambia.com" target="_blank" style="color:var(--gold2);">create one on CVPro Zambia</a>)</p>
+        </div>
+        <div class="form-group"><label>Cover letter (optional)</label><textarea name="cover_letter" placeholder="Why are you a great fit for this role?" style="min-height:100px;"></textarea></div>
+        <button type="submit" class="form-submit" id="apply-btn-${job.id}">Submit application →</button>
+      </form>
+      <div id="apply-result-${job.id}" style="display:none;margin-top:1rem;padding:14px 16px;border-radius:8px;font-size:.88rem;"></div>
+    `;
+  } catch (err) {
+    content.innerHTML = `<div style="text-align:center;padding:2rem;color:#ff6b6b;">Failed to load job: ${err.message}</div>`;
+  }
+}
+
+function closeJobModal() {
+  document.getElementById('job-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Close modal on escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeJobModal();
+});
+
+// ============================================================
+// SUBMIT APPLICATION
+// ============================================================
+
+async function submitApplication(e, jobId) {
+  e.preventDefault();
+  
+  const form = e.target;
+  const btn = document.getElementById('apply-btn-' + jobId);
+  const result = document.getElementById('apply-result-' + jobId);
+  
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  result.style.display = 'none';
+  
+  const formData = new FormData(form);
+  const payload = {
+    job_id: jobId,
+    full_name: formData.get('full_name'),
+    email: formData.get('email'),
+    phone: formData.get('phone') || null,
+    cv_url: formData.get('cv_url'),
+    cover_letter: formData.get('cover_letter') || null,
+    source: 'glamifiedsystems'
+  };
+  
+  try {
+    const res = await fetch('/api/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    
+    const data = await res.json();
+    
+    if (!res.ok) throw new Error(data.error || 'Failed to submit application');
+    
+    result.style.display = 'block';
+    result.style.background = 'rgba(26,140,114,.15)';
+    result.style.border = '1px solid rgba(26,140,114,.3)';
+    result.style.color = 'var(--teal2)';
+    result.innerHTML = `✓ ${data.message || 'Application submitted successfully!'}<br><small>Application ID: ${data.application_id}</small>`;
+    
+    form.reset();
+    btn.textContent = 'Application submitted ✓';
+    
+  } catch (err) {
+    result.style.display = 'block';
+    result.style.background = 'rgba(255,107,107,.15)';
+    result.style.border = '1px solid rgba(255,107,107,.3)';
+    result.style.color = '#ff6b6b';
+    result.textContent = err.message;
+    
+    btn.disabled = false;
+    btn.textContent = 'Submit application →';
+  }
+}
+
+// ============================================================
+// SUBMIT JOB POSTING (Employer)
+// ============================================================
+
+async function submitJobPosting(e) {
+  e.preventDefault();
+  
+  const form = document.getElementById('post-job-form');
+  const btn = document.getElementById('post-job-btn');
+  const result = document.getElementById('post-job-result');
+  
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  result.style.display = 'none';
+  
+  const formData = new FormData(form);
+  
+  const payload = {
+    employer_name: formData.get('employer_name'),
+    employer_email: formData.get('employer_email'),
+    employer_phone: formData.get('employer_phone') || null,
+    company_name: formData.get('company_name'),
+    title: formData.get('title'),
+    location: formData.get('location'),
+    job_type: formData.get('job_type'),
+    category: formData.get('category') || null,
+    salary_min: formData.get('salary_min') ? parseInt(formData.get('salary_min')) : null,
+    salary_max: formData.get('salary_max') ? parseInt(formData.get('salary_max')) : null,
+    salary_visible: formData.get('salary_visible') === 'on',
+    description: formData.get('description'),
+    requirements: formData.get('requirements') || null,
+    benefits: formData.get('benefits') || null,
+    deadline: formData.get('deadline') || null,
+    posted_via: 'web'
+  };
+  
+  try {
+    const res = await fetch('/api/jobs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    
+    const data = await res.json();
+    
+    if (!res.ok) throw new Error(data.error || 'Failed to submit job posting');
+    
+    result.style.display = 'block';
+    result.style.background = 'rgba(26,140,114,.15)';
+    result.style.border = '1px solid rgba(26,140,114,.3)';
+    result.style.color = 'var(--teal2)';
+    result.innerHTML = `✓ Job posted successfully! <strong>${data.job?.title || payload.title}</strong> is now live and visible to job seekers.<br><small>Job ID: ${data.job?.id}</small>`;
+    
+    form.reset();
+    btn.textContent = 'Job posted ✓';
+    
+    // Refresh job listings
+    setTimeout(() => {
+      fetchJobs();
+      window.switchTab('listings', document.querySelector('.tab-btn'));
+    }, 2000);
+    
+  } catch (err) {
+    result.style.display = 'block';
+    result.style.background = 'rgba(255,107,107,.15)';
+    result.style.border = '1px solid rgba(255,107,107,.3)';
+    result.style.color = '#ff6b6b';
+    result.textContent = err.message;
+    
+    btn.disabled = false;
+    btn.textContent = 'Submit job posting →';
+  }
+}
+
+// ============================================================
+// INIT
+// ============================================================
+
+// Load jobs on page load
+fetchJobs();
+
+// Handle #post hash
+if (window.location.hash === '#post') {
+  window.switchTab('post', document.getElementById('post-tab'));
+}
 </script>
 </body>
 </html>
