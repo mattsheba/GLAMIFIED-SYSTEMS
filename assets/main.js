@@ -11,17 +11,36 @@
   const LENCO_PUBLIC_KEY = 'pub-cd353f758b26d57cead328816d6e7691b9f0dcea6f5a9f7b';
 
   /* ─── LOAD LENCO SDK ────────────────────────────────────── */
+  function preloadLencoSDK() {
+    if (window.LencoPay?.getPaid) return;
+    if (document.querySelector('script[src*="pay.lenco.co"]')) return;
+    const s = document.createElement('script');
+    s.src = 'https://pay.lenco.co/js/v1/inline.js';
+    s.async = true;
+    document.head.appendChild(s);
+  }
+
   async function ensureLencoLoaded() {
     if (window.LencoPay?.getPaid) return;
-    await new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = 'https://pay.lenco.co/js/v1/inline.js';
-      script.onload = resolve;
-      script.onerror = reject;
-      document.head.appendChild(script);
-    });
-    // Wait a bit for LencoPay to initialize
-    await new Promise(r => setTimeout(r, 200));
+    const existing = document.querySelector('script[src*="pay.lenco.co"]');
+    if (!existing) {
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://pay.lenco.co/js/v1/inline.js';
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    } else {
+      // Script already loading (preloaded at page init) — poll until SDK is ready
+      await new Promise((resolve, reject) => {
+        const t0 = Date.now();
+        const poll = setInterval(() => {
+          if (window.LencoPay?.getPaid) { clearInterval(poll); resolve(); }
+          else if (Date.now() - t0 > 5000) { clearInterval(poll); reject(new Error('LencoPay timed out')); }
+        }, 50);
+      });
+    }
     if (!window.LencoPay?.getPaid) throw new Error('LencoPay failed to initialize');
   }
 
@@ -36,7 +55,7 @@
     return `
 <nav id="site-nav">
   <a href="index.html" class="nav-logo" style="font-size:2.1rem;font-weight:800;letter-spacing:-1px;display:flex;align-items:center;gap:10px;">
-    <img src="assets/logo.png" alt="GlamifiedSystems" style="height:38px;width:38px;" />
+    <img src="assets/logo.png" alt="GlamifiedSystems" style="height:52px;width:52px;mix-blend-mode:lighten;" />
     <span class="nav-logo-text" style="font-size:2.1rem;font-weight:800;line-height:1;">
       <span style="color:#fff;">Glamified</span><span style="color:var(--gold2);">Systems</span>
     </span>
@@ -76,14 +95,14 @@
         <img src="assets/logo.png" alt="Glamified Systems" />
         <span>Glamified<em>Systems</em></span>
       </div>
-      <p>Zambia's HR technology company. Payroll software, talent management, and IT consulting — built specifically for Zambian businesses.</p>
+      <p>Zambia's technology company. We build HR software, career platforms, and provide IT consulting and business solutions for Zambian organisations.</p>
       <div class="footer-products">
         <a href="glamifiedhr.html" class="footer-product-tag">
-          <img src="assets/logo-hr.png" alt="GlamifiedHR" />
+          <img src="assets/logo-cv.png" alt="GlamifiedHR" />
           <span>GlamifiedHR</span>
         </a>
         <a href="cvpro.html" class="footer-product-tag">
-          <img src="assets/logo-cv.png" alt="CVPro Zambia" />
+          <img src="assets/logo-hr.png" alt="CVPro Zambia" />
           <span>CVPro Zambia</span>
         </a>
         <a href="jobs.html" class="footer-product-tag">
@@ -107,7 +126,7 @@
       <ul>
         <li><a href="jobs.html">Job listings</a></li>
         <li><a href="jobs.html#post">Post a job</a></li>
-        <li><a href="cvpro.html">CVPro Zambia</a></li>
+        <li><a href="https://cvprozambia.com/" target="_blank">Generate Cover Letter</a></li>
         <li><a href="https://cvprozambia.com" target="_blank">Build your CV</a></li>
       </ul>
     </div>
@@ -116,6 +135,8 @@
       <ul>
         <li><a href="consulting.html#it">IT Services</a></li>
         <li><a href="consulting.html#business">Business Consulting</a></li>
+        <li><a href="consulting.html#company-registration">Company Registration</a></li>
+        <li><a href="consulting.html#business-documents">Business Documents</a></li>
         <li><a href="consulting.html#hr-advisory">HR Advisory</a></li>
         <li><a href="consulting.html#digital">Digital Presence</a></li>
       </ul>
@@ -127,17 +148,12 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="https://wa.me/${PHONE}" target="_blank">WhatsApp us</a></li>
         <li><a href="contact.html#quote">Get a quote</a></li>
-        <li><a href="#">Privacy Policy</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Glamified Systems Limited. All rights reserved. Lusaka, Zambia.</span>
-    <div class="footer-bottom-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-      <a href="#">License Agreement</a>
-    </div>
+    <span>© 2026 Glamified Systems. All rights reserved. Lusaka, Zambia.</span>
+
   </div>
 </footer>`;
   }
@@ -208,6 +224,15 @@
     document.getElementById('purchase-modal').addEventListener('click', function (e) {
       if (e.target === this) window.closePurchaseModal();
     });
+
+    // Preconnect + background SDK preload so payment modal opens instantly
+    if (!document.querySelector('link[rel="preconnect"][href*="pay.lenco.co"]')) {
+      const pc = document.createElement('link');
+      pc.rel = 'preconnect';
+      pc.href = 'https://pay.lenco.co';
+      document.head.appendChild(pc);
+    }
+    preloadLencoSDK();
   }
 
   /* ─── SCROLL EFFECTS ────────────────────────────────────── */
@@ -269,7 +294,12 @@
   };
 
   /* ─── PURCHASE MODAL ────────────────────────────────────── */
+  // Guards against double-submission while a Lenco prompt is active
+  let _paymentInFlight = false;
+
   window.openPurchaseModal = function (plan, amount) {
+    // If a payment is already in flight, don't allow re-opening
+    if (_paymentInFlight) return;
     document.getElementById('modal-plan-label').textContent = plan + ' — K' + Number(amount).toLocaleString() + ' (one-time license)';
     document.getElementById('purchase-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -283,7 +313,19 @@
     document.body.style.overflow = '';
   };
 
+  function _resetPaymentBtn() {
+    const btn = document.querySelector('#purchase-modal .form-submit');
+    if (btn) {
+      btn.textContent = 'Proceed to payment →';
+      btn.disabled = false;
+    }
+    _paymentInFlight = false;
+  }
+
   window.submitPurchase = async function () {
+    // Prevent firing a second payment while one is already active
+    if (_paymentInFlight) return;
+
     const name     = (document.getElementById('buy-name').value + ' ' + document.getElementById('buy-lastname').value).trim();
     const email    = document.getElementById('buy-email').value.trim();
     const phone    = document.getElementById('buy-phone').value.trim();
@@ -295,10 +337,15 @@
       alert('Please fill in all fields to continue.');
       return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
 
     const submitBtn = document.querySelector('#purchase-modal .form-submit');
     submitBtn.textContent = 'Loading payment...';
     submitBtn.disabled = true;
+    _paymentInFlight = true;
 
     try {
       // Load Lenco SDK
@@ -318,7 +365,11 @@
       // Close our modal before Lenco opens theirs
       window.closePurchaseModal();
 
-      // Open Lenco payment popup
+      // Open Lenco payment popup.
+      // NOTE: getPaid() is callback-based and returns immediately — the button
+      // must NOT be re-enabled in a finally block or it will be ready to fire
+      // again while the phone prompt is still active. Only onSuccess / onClose
+      // are allowed to reset state.
       window.LencoPay.getPaid({
         key: LENCO_PUBLIC_KEY,
         reference: reference,
@@ -335,14 +386,17 @@
           product: 'GlamifiedHR'
         },
         onSuccess: function(response) {
-          // Payment successful - redirect to success page
+          _paymentInFlight = false;
+          // Payment successful — redirect to success page
           // The webhook will generate license key and email it
           const successUrl = `${SITE}/payment-success.html?ref=${reference}&plan=${encodeURIComponent(plan)}&email=${encodeURIComponent(email)}`;
           window.location.href = successUrl;
         },
         onClose: function() {
-          // User closed the payment popup without completing
-          alert('Payment was cancelled. You can try again anytime.');
+          // User cancelled or closed the Lenco screen — reset fully so they
+          // can try again, but only by explicitly re-opening the modal.
+          // Do NOT auto-resubmit — that would cause a second phone prompt.
+          _resetPaymentBtn();
         }
       });
 
@@ -354,10 +408,10 @@
       );
       window.open(`https://wa.me/${PHONE}?text=${msg}`, '_blank');
       window.closePurchaseModal();
-    } finally {
-      submitBtn.textContent = 'Proceed to payment →';
-      submitBtn.disabled = false;
+      _resetPaymentBtn();
     }
+    // No finally block — button state is managed exclusively by onSuccess/onClose/catch
+    // to prevent re-enabling the button while a Lenco phone prompt is still active.
   };
 
   /* ─── CONTACT & JOB POST FORM ───────────────────────────── */

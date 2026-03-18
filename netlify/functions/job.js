@@ -43,7 +43,8 @@ exports.handler = async (event) => {
         id, title, company_name, location, province, job_type,
         category, salary_min, salary_max, salary_currency,
         salary_visible, description, requirements, benefits,
-        deadline, views, created_at, status, posted_via
+        deadline, views, created_at, status, posted_via,
+        application_email, application_url
       `)
       .eq('id', id)
       .eq('status', 'active')

@@ -44,15 +44,17 @@ exports.handler = async (event) => {
           id, title, company_name, location, province, job_type,
           category, salary_min, salary_max, salary_currency,
           salary_visible, deadline, views, created_at,
-          description
+          description, application_email, application_url
         `, { count: 'exact' })
         .eq('status', 'active')
         .order('created_at', { ascending: false })
         .range(offset, offset + parseInt(limit) - 1);
 
       if (search) {
+        // Escape special PostgREST filter characters to prevent query injection
+        const safe = search.replace(/[%_\\()',]/g, '\\$&').slice(0, 100);
         query = query.or(
-          `title.ilike.%${search}%,company_name.ilike.%${search}%,description.ilike.%${search}%`
+          `title.ilike.%${safe}%,company_name.ilike.%${safe}%,description.ilike.%${safe}%`
         );
       }
       if (category)  query = query.eq('category', category);
@@ -67,7 +69,9 @@ exports.handler = async (event) => {
       // Trim description to snippet for listing view
       const jobs = data.map(j => ({
         ...j,
-        description: j.description.slice(0, 200) + (j.description.length > 200 ? '…' : ''),
+        description: j.description
+          ? j.description.slice(0, 200) + (j.description.length > 200 ? '…' : '')
+          : '',
       }));
 
       return {
@@ -116,8 +120,8 @@ exports.handler = async (event) => {
         description,
         requirements,
         benefits,
-        deadline,
-      } = body;
+        deadline,        application_email,
+        application_url,      } = body;
 
       // Validate required fields
       const required = { employer_name, employer_email, company_name, title, location, description };
@@ -167,6 +171,8 @@ exports.handler = async (event) => {
           requirements,
           benefits,
           deadline: deadline || null,
+          application_email: application_email || null,
+          application_url: application_url || null,
           posted_via,
           status: 'active',
         })

@@ -65,17 +65,23 @@ const DOWNLOAD_URLS = {
 function verifyLencoSignature(rawBody, signature) {
   const secret = process.env.LENCO_WEBHOOK_SECRET;
   if (!secret) {
-    console.warn("LENCO_WEBHOOK_SECRET not set — skipping signature verification");
-    return true; // Remove this in production once secret is configured
+    console.error("LENCO_WEBHOOK_SECRET is not set — rejecting webhook for security");
+    return false;
   }
+  if (!signature) return false;
   const expected = crypto
     .createHmac("sha256", secret)
     .update(rawBody)
     .digest("hex");
-  return crypto.timingSafeEqual(
-    Buffer.from(expected, "hex"),
-    Buffer.from(signature || "", "hex")
-  );
+  const expectedBuf = Buffer.from(expected, "hex");
+  let sigBuf;
+  try {
+    sigBuf = Buffer.from(signature, "hex");
+  } catch {
+    return false;
+  }
+  if (expectedBuf.length !== sigBuf.length) return false;
+  return crypto.timingSafeEqual(expectedBuf, sigBuf);
 }
 
 exports.handler = async (event) => {

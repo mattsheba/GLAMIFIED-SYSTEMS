@@ -238,7 +238,7 @@ button { font-family: 'DM Sans', sans-serif; }
                     linear-gradient(90deg, rgba(201,153,42,0.03) 1px, transparent 1px);
   background-size: 56px 56px;
 }
-.page-hero-content { position: relative; z-index: 2; }
+.page-hero-content { position: relative; }
 
 /* ── TESTIMONIAL ── */
 .testimonial-card {
@@ -295,7 +295,7 @@ button { font-family: 'DM Sans', sans-serif; }
   opacity: 0; transform: translateY(22px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.visible { opacity: 1; transform: none; }
 
 /* ── NAV ── */
 #site-nav {
@@ -312,7 +312,7 @@ button { font-family: 'DM Sans', sans-serif; }
   border-bottom-color: rgba(201,153,42,0.2);
 }
 .nav-logo { display: flex; align-items: center; gap: 10px; }
-.nav-logo img { height: 36px; width: auto; }
+.nav-logo img { height: 48px; width: auto; mix-blend-mode: lighten; }
 .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; }
 .nav-logo-text em { font-style: normal; color: var(--gold2); }
 
@@ -365,7 +365,7 @@ button { font-family: 'DM Sans', sans-serif; }
 }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
 .footer-brand-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 1.1rem; }
-.footer-brand-logo img { height: 34px; width: auto; }
+.footer-brand-logo img { height: 40px; width: 40px; object-fit: contain; mix-blend-mode: lighten; vertical-align: middle; }
 .footer-brand-logo span { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; }
 .footer-brand-logo em { font-style: normal; color: var(--gold2); }
 .footer-brand p { font-size: 0.84rem; color: var(--muted); line-height: 1.75; max-width: 260px; }
@@ -377,7 +377,7 @@ button { font-family: 'DM Sans', sans-serif; }
   border: 1px solid var(--border);
   border-radius: 8px;
 }
-.footer-product-tag img { width: 18px; height: 18px; object-fit: contain; }
+.footer-product-tag img { width: 28px; height: 28px; object-fit: contain; mix-blend-mode: lighten; }
 .footer-product-tag span { font-size: 0.75rem; font-weight: 600; color: var(--muted); }
 .footer-col h5 {
   font-family: 'DM Sans', sans-serif;

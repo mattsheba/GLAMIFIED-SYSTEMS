@@ -4,6 +4,16 @@
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Glamified Jobs — Find Work in Zambia | Post a Job</title>
 <meta name="description" content="Browse job listings across Zambia. Post a vacancy and find qualified candidates through Glamified Jobs, powered by CVPro Zambia."/>
+<link rel="canonical" href="https://glamifiedsystems.com/jobs.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://glamifiedsystems.com/jobs.html"/>
+<meta property="og:title" content="Glamified Jobs — Find Work in Zambia | Post a Job"/>
+<meta property="og:description" content="Browse job listings across Zambia. Post a vacancy and find qualified candidates through Glamified Jobs, powered by CVPro Zambia."/>
+<meta property="og:image" content="https://glamifiedsystems.com/assets/og.png"/>
+<meta property="og:site_name" content="Glamified Systems"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Glamified Jobs — Find Work in Zambia | Post a Job"/>
+<meta name="twitter:description" content="Browse job listings across Zambia. Post a vacancy and find qualified candidates through Glamified Jobs, powered by CVPro Zambia."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/style.css"/>
@@ -81,7 +91,7 @@
   <div id="tab-post" class="tab-content">
     <div class="grid-2" style="gap:3rem;align-items:start;">
       <div class="employer-box reveal">
-        <img src="assets/logo.png" alt="Glamified Systems" style="width:44px;height:44px;object-fit:contain;margin-bottom:1.25rem;border-radius:8px;background:rgba(255,255,255,.05);padding:6px;"/>
+        <img src="assets/logo.png" alt="Glamified Systems" style="width:60px;height:60px;object-fit:contain;margin-bottom:1.25rem;mix-blend-mode:lighten;"/>
         <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.75rem;">Post a job vacancy</h2>
         <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:2rem;">Reach qualified Zambian job seekers. Jobs are published on Glamified Jobs and listed on CVPro Zambia within 24 hours.</p>
         <div class="employer-step">
@@ -94,14 +104,14 @@
         </div>
         <div class="employer-step">
           <div class="estep-num">3</div>
-          <div><h4>Receive applications</h4><p>Candidates apply and their CVs are sent directly to <a href="mailto:info.glamifiedsystems@gmail.com">info.glamifiedsystems@gmail.com</a>.</p></div>
+          <div><h4>Receive applications</h4><p>Candidates apply via your specified email address, your company URL, or through the built-in application form — your choice.</p></div>
         </div>
         <div class="employer-step">
           <div class="estep-num">4</div>
           <div><h4>Hire &amp; onboard instantly</h4><p>Using GlamifiedHR? Import the hired candidate as an employee with one click.</p></div>
         </div>
         <div class="cvpro-promo" style="margin-top:1.5rem;">
-          <img src="assets/logo-cv.png" alt="CVPro Zambia"/>
+          <img src="assets/logo-hr.png" alt="CVPro Zambia" style="width:40px;height:40px;object-fit:contain;mix-blend-mode:lighten;"/>
           <p style="font-size:.85rem;color:var(--muted);line-height:1.7;">All listings are powered by <strong style="color:var(--white);">CVPro Zambia</strong> — Zambia's dedicated career and talent platform.</p>
           <a href="https://cvprozambia.com" target="_blank" class="btn btn-green btn-sm" style="margin-top:1rem;display:inline-flex;">Visit CVPro Zambia →</a>
         </div>
@@ -137,6 +147,20 @@
           <div class="form-group"><label>Job description *</label><textarea name="description" placeholder="Describe the role, key responsibilities..." style="min-height:120px;" required></textarea></div>
           <div class="form-group"><label>Requirements</label><textarea name="requirements" placeholder="Required qualifications, experience, skills..." style="min-height:100px;"></textarea></div>
           <div class="form-group"><label>Benefits (optional)</label><textarea name="benefits" placeholder="What you offer: salary benefits, health insurance, etc." style="min-height:80px;"></textarea></div>
+
+          <div style="border:1px solid rgba(201,153,42,.25);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.25rem;background:rgba(201,153,42,.04);">
+            <p style="font-size:.8rem;font-weight:700;color:var(--gold2);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em;">How should applicants apply? (optional)</p>
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;">Leave blank to use the built-in application form. Or specify an email address or URL to direct applicants there instead — email is the most common in Zambia.</p>
+            <div class="form-group" style="margin-bottom:.85rem;">
+              <label>Application email <span style="color:var(--muted);font-weight:400;">(applicants will email their CV here)</span></label>
+              <input type="email" name="application_email" placeholder="e.g. recruitment@yourcompany.com"/>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label>Application URL <span style="color:var(--muted);font-weight:400;">(link to apply on your company website)</span></label>
+              <input type="url" name="application_url" placeholder="e.g. https://yourcompany.com/careers/apply"/>
+            </div>
+          </div>
+
           <button type="submit" class="form-submit" id="post-job-btn">Submit job posting →</button>
         </form>
         <div id="post-job-result" style="display:none;margin-top:1rem;padding:14px 16px;border-radius:8px;font-size:.88rem;"></div>
@@ -301,7 +325,7 @@ function renderJobs(list) {
           <span class="job-tag">🕒 ${timeAgo(j.created_at)}</span>
         </div>
       </div>
-      <button onclick="openJobModal('${j.id}')" class="job-apply">View & Apply →</button>
+      <button onclick="openJobModal('${j.id}')" class="job-apply">${j.application_email ? '📧 Apply via Email' : j.application_url ? '🔗 Apply on Site' : 'View & Apply →'}</button>
     </div>`).join('');
 }
 
@@ -376,6 +400,17 @@ async function openJobModal(jobId) {
       <hr style="border:none;border-top:1px solid var(--border2);margin:2rem 0;"/>
       
       <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:1.25rem;">Apply for this position</h3>
+      
+      ${(job.application_email || job.application_url) ? `
+      <div style="background:rgba(201,153,42,.07);border:1px solid rgba(201,153,42,.25);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.25rem;">
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.7;">This employer has specified how they would like to receive applications. Please follow the instructions below:</p>
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          ${job.application_email ? `<a href="mailto:${job.application_email}?subject=Application%20for%20${encodeURIComponent(job.title)}&body=Dear%20Hiring%20Manager%2C%0D%0A%0D%0AI%20am%20writing%20to%20apply%20for%20the%20${encodeURIComponent(job.title)}%20position%20at%20${encodeURIComponent(job.company_name)}.%0D%0A%0D%0APlease%20find%20my%20CV%20attached%20%2F%20linked%20below.%0D%0A%0D%0AKind%20regards%2C" class="btn btn-gold" style="display:flex;align-items:center;gap:.5rem;justify-content:center;text-decoration:none;font-weight:700;">📧 Send CV to: ${job.application_email}</a>` : ''}
+          ${job.application_url ? `<a href="${job.application_url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold" style="display:flex;align-items:center;gap:.5rem;justify-content:center;text-decoration:none;">🔗 Apply on Company Website →</a>` : ''}
+        </div>
+        <p style="font-size:.75rem;color:var(--muted);margin-top:1rem;line-height:1.6;">💡 Don't have a CV yet? <a href="https://cvprozambia.com" target="_blank" style="color:var(--gold2);">Create a professional CV on CVPro Zambia</a> — free for job seekers.</p>
+      </div>
+      ` : `
       <form onsubmit="submitApplication(event,'${job.id}')" id="apply-form-${job.id}">
         <div class="form-row">
           <div class="form-group"><label>Full name *</label><input type="text" name="full_name" placeholder="John Banda" required/></div>
@@ -391,6 +426,7 @@ async function openJobModal(jobId) {
         <button type="submit" class="form-submit" id="apply-btn-${job.id}">Submit application →</button>
       </form>
       <div id="apply-result-${job.id}" style="display:none;margin-top:1rem;padding:14px 16px;border-radius:8px;font-size:.88rem;"></div>
+      `}
     `;
   } catch (err) {
     content.innerHTML = `<div style="text-align:center;padding:2rem;color:#ff6b6b;">Failed to load job: ${err.message}</div>`;
@@ -498,6 +534,8 @@ async function submitJobPosting(e) {
     requirements: formData.get('requirements') || null,
     benefits: formData.get('benefits') || null,
     deadline: formData.get('deadline') || null,
+    application_email: formData.get('application_email') || null,
+    application_url: formData.get('application_url') || null,
     posted_via: 'web'
   };
   
