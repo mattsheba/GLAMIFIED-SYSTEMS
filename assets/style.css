@@ -36,13 +36,13 @@
   --transition: all 0.25s ease;
 }
 
-html { scroll-behavior: smooth; font-size: 17px; }
+html { scroll-behavior: smooth; font-size: 18px; }
 
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--navy);
   color: var(--white);
-  line-height: 1.6;
+  line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -53,11 +53,11 @@ img { display: block; max-width: 100%; }
 button { font-family: 'DM Sans', sans-serif; }
 
 /* ── TYPOGRAPHY ── */
-.display-1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); font-weight: 700; line-height: 1.1; }
-.display-2 { font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.15; }
-.h1 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; }
-.h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; }
-.lead { font-size: 1.1rem; color: var(--muted); font-weight: 300; line-height: 1.8; }
+.display-1 { font-size: clamp(3rem, 5.5vw, 4.8rem); font-weight: 700; line-height: 1.1; }
+.display-2 { font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 700; line-height: 1.15; }
+.h1 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; }
+.h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight: 700; }
+.lead { font-size: 1.15rem; color: var(--muted); font-weight: 300; line-height: 1.85; }
 .small { font-size: 0.85rem; }
 .xs { font-size: 0.75rem; }
 .gold { color: var(--gold2); }
