@@ -15,12 +15,12 @@
 <meta name="twitter:title" content="Glamified Jobs — Find Work in Zambia | Post a Job"/>
 <meta name="twitter:description" content="Browse job listings across Zambia. Post a vacancy and find qualified candidates through Glamified Jobs, powered by CVPro Zambia."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
 .search-bar{display:flex;gap:1rem;max-width:700px;margin:2rem auto 0;flex-wrap:wrap;}
 .search-bar input,.search-bar select{flex:1;min-width:160px;background:var(--navy2);border:1px solid var(--border2);border-radius:10px;padding:13px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .2s;}
-.search-bar input:focus,.search-bar select:focus{border-color:rgba(201,153,42,.5);}
+.search-bar input:focus,.search-bar select:focus{border-color:rgba(201,162,39,.5);}
 .search-bar select option{background:var(--navy2);}
 .tab-bar{display:flex;gap:.5rem;margin-bottom:2.5rem;border-bottom:1px solid var(--border);padding-bottom:0;}
 .tab-btn{padding:10px 24px;background:transparent;border:none;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;color:var(--muted);cursor:pointer;transition:.2s;border-bottom:2px solid transparent;margin-bottom:-1px;}
@@ -29,10 +29,10 @@
 .jobs-list{display:flex;flex-direction:column;gap:1rem;}
 .job-badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:.7rem;font-weight:700;}
 .badge-ft{background:rgba(26,140,114,.15);color:var(--teal2);}
-.badge-ct{background:rgba(201,153,42,.15);color:var(--gold2);}
+.badge-ct{background:rgba(201,162,39,.15);color:var(--gold2);}
 .badge-pt{background:rgba(83,74,183,.15);color:#9C8FE8;}
-.badge-new2{background:rgba(201,153,42,.15);color:var(--gold2);border:1px solid rgba(201,153,42,.3);}
-.employer-box{background:linear-gradient(135deg,rgba(26,140,114,.1),rgba(201,153,42,.06));border:1px solid rgba(26,140,114,.2);border-radius:var(--radius-xl);padding:3rem;}
+.badge-new2{background:rgba(201,162,39,.15);color:var(--gold2);border:1px solid rgba(201,162,39,.3);}
+.employer-box{background:var(--navy2);border:1px solid rgba(22,163,74,.2);border-radius:var(--radius-xl);padding:3rem;}
 .employer-step{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.5rem;}
 .estep-num{width:32px;height:32px;border-radius:50%;background:var(--teal);color:#fff;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .employer-step h4{font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.25rem;}
@@ -48,7 +48,7 @@
   <div class="page-hero-grid"></div>
   <div class="page-hero-content" style="text-align:center;max-width:700px;margin:0 auto;">
     <span class="tag anim-1" style="justify-content:center;">Glamified Jobs</span>
-    <h1 class="display-2 anim-2" style="font-family:'Playfair Display',serif;">Find your next opportunity<br>or your next <span style="color:var(--gold2);">hire</span></h1>
+    <h1 class="display-2 anim-2" style="font-family:'Space Grotesk',sans-serif;">Find your next opportunity<br>or your next <span style="color:var(--gold2);">hire</span></h1>
     <p class="lead anim-3">Zambia's HR ecosystem — connecting job seekers with employers, powered by CVPro Zambia and GlamifiedHR.</p>
     <div class="search-bar anim-4">
       <input type="text" id="search-input" placeholder="Job title, company, or keyword..." oninput="filterJobs()"/>
@@ -92,7 +92,7 @@
     <div class="grid-2" style="gap:3rem;align-items:start;">
       <div class="employer-box reveal">
         <img src="assets/logo.png" alt="Glamified Systems" style="width:60px;height:60px;object-fit:contain;margin-bottom:1.25rem;mix-blend-mode:lighten;"/>
-        <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.75rem;">Post a job vacancy</h2>
+        <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.6rem;margin-bottom:.75rem;">Post a job vacancy</h2>
         <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:2rem;">Reach qualified Zambian job seekers. Jobs are published on Glamified Jobs and listed on CVPro Zambia within 24 hours.</p>
         <div class="employer-step">
           <div class="estep-num">1</div>
@@ -117,7 +117,7 @@
         </div>
       </div>
       <div class="reveal">
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:1.75rem;">Submit your vacancy</h3>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;margin-bottom:1.75rem;">Submit your vacancy</h3>
         <form id="post-job-form" onsubmit="submitJobPosting(event)">
           <div class="form-row">
             <div class="form-group"><label>Company name *</label><input type="text" name="company_name" placeholder="Acme Ltd" required/></div>
@@ -148,7 +148,7 @@
           <div class="form-group"><label>Requirements</label><textarea name="requirements" placeholder="Required qualifications, experience, skills..." style="min-height:100px;"></textarea></div>
           <div class="form-group"><label>Benefits (optional)</label><textarea name="benefits" placeholder="What you offer: salary benefits, health insurance, etc." style="min-height:80px;"></textarea></div>
 
-          <div style="border:1px solid rgba(201,153,42,.25);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.25rem;background:rgba(201,153,42,.04);">
+          <div style="border:1px solid rgba(201,162,39,.25);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.25rem;background:rgba(201,162,39,.04);">
             <p style="font-size:.8rem;font-weight:700;color:var(--gold2);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em;">How should applicants apply? (optional)</p>
             <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;">Leave blank to use the built-in application form. Or specify an email address or URL to direct applicants there instead — email is the most common in Zambia.</p>
             <div class="form-group" style="margin-bottom:.85rem;">
@@ -171,7 +171,7 @@
 
 <div class="cta-band reveal">
   <span class="tag" style="justify-content:center;">Are you a job seeker?</span>
-  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">Build a professional CV. Get hired faster.</h2>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">Build a professional CV. Get hired faster.</h2>
   <p>Create a standout CV on CVPro Zambia — free for job seekers.</p>
   <div class="cta-band-actions" style="margin-top:2rem;">
     <a href="https://cvprozambia.com" target="_blank" class="btn btn-gold btn-lg">Build your CV on CVPro →</a>
@@ -316,7 +316,7 @@ function renderJobs(list) {
   el.innerHTML = list.map(j => `
     <div class="job-card">
       <div class="job-info">
-        <div class="job-title">${j.title} ${isNewJob(j.created_at) ? '<span class="badge-new2" style="display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;background:rgba(201,153,42,.15);color:var(--gold2);border:1px solid rgba(201,153,42,.3);margin-left:6px;">NEW</span>' : ''}</div>
+        <div class="job-title">${j.title} ${isNewJob(j.created_at) ? '<span class="badge-new2" style="display:inline-block;padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:700;background:rgba(201,162,39,.15);color:var(--gold2);border:1px solid rgba(201,162,39,.3);margin-left:6px;">NEW</span>' : ''}</div>
         <div class="job-meta">
           <span class="job-tag">🏢 ${j.company_name}</span>
           <span class="job-tag">📍 ${j.location}${j.province ? ', ' + j.province : ''}</span>
@@ -370,7 +370,7 @@ async function openJobModal(jobId) {
     
     content.innerHTML = `
       <span style="display:inline-block;padding:4px 12px;background:rgba(26,140,114,.15);color:var(--teal2);border-radius:20px;font-size:.75rem;font-weight:600;margin-bottom:1rem;">🔥 ${job.views || 0} views</span>
-      <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;">${job.title}</h2>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;margin-bottom:.5rem;">${job.title}</h2>
       <p style="color:var(--muted);font-size:1rem;margin-bottom:1.5rem;">${job.company_name} • ${job.location}${job.province ? ', ' + job.province : ''}</p>
       
       <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.5rem;">
@@ -399,10 +399,10 @@ async function openJobModal(jobId) {
       
       <hr style="border:none;border-top:1px solid var(--border2);margin:2rem 0;"/>
       
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:1.25rem;">Apply for this position</h3>
+      <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;margin-bottom:1.25rem;">Apply for this position</h3>
       
       ${(job.application_email || job.application_url) ? `
-      <div style="background:rgba(201,153,42,.07);border:1px solid rgba(201,153,42,.25);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.25rem;">
+      <div style="background:rgba(201,162,39,.07);border:1px solid rgba(201,162,39,.25);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.25rem;">
         <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.7;">This employer has specified how they would like to receive applications. Please follow the instructions below:</p>
         <div style="display:flex;flex-direction:column;gap:.75rem;">
           ${job.application_email ? `<a href="mailto:${job.application_email}?subject=Application%20for%20${encodeURIComponent(job.title)}&body=Dear%20Hiring%20Manager%2C%0D%0A%0D%0AI%20am%20writing%20to%20apply%20for%20the%20${encodeURIComponent(job.title)}%20position%20at%20${encodeURIComponent(job.company_name)}.%0D%0A%0D%0APlease%20find%20my%20CV%20attached%20%2F%20linked%20below.%0D%0A%0D%0AKind%20regards%2C" class="btn btn-gold" style="display:flex;align-items:center;gap:.5rem;justify-content:center;text-decoration:none;font-weight:700;">📧 Send CV to: ${job.application_email}</a>` : ''}

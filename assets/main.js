@@ -153,7 +153,11 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 Glamified Systems. All rights reserved. Lusaka, Zambia.</span>
-
+    <div class="footer-bottom-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="contact.html">Support</a>
+    </div>
   </div>
 </footer>`;
   }
@@ -177,7 +181,7 @@
 <div id="purchase-modal">
   <div class="modal-box">
     <button class="modal-close" onclick="window.closePurchaseModal()">×</button>
-    <h3 style="font-size:1.3rem;margin-bottom:0.3rem;">Complete your purchase</h3>
+    <h3 style="font-size:1.3rem;margin-bottom:0.3rem;">Buy your license key</h3>
     <p id="modal-plan-label" class="modal-plan"></p>
     <div class="form-row">
       <div class="form-group"><label>First name</label><input type="text" id="buy-name" placeholder="John" /></div>
@@ -196,7 +200,33 @@
     </div>
     <button class="form-submit" onclick="window.submitPurchase()">Proceed to payment →</button>
     <p style="font-size:0.75rem;color:var(--muted);text-align:center;margin-top:1rem;line-height:1.6;">
-      Secure payment via Lenco. Your license key is emailed immediately after payment confirmation.
+      Secure payment via Lenco. Your license key is emailed immediately after payment — enter it in GlamifiedHR to activate.
+    </p>
+  </div>
+</div>`;
+  }
+
+  /* ─── TRIAL MODAL ──────────────────────────────────────── */
+  function buildTrialModal() {
+    return `
+<div id="trial-modal">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="window.closeTrialModal()">×</button>
+    <h3 style="font-size:1.3rem;margin-bottom:.3rem;">Try GlamifiedHR free</h3>
+    <p class="modal-plan">10-day trial license — no payment required</p>
+    <div class="form-row">
+      <div class="form-group"><label>First name</label><input type="text" id="trial-name" placeholder="John" /></div>
+      <div class="form-group"><label>Last name</label><input type="text" id="trial-lastname" placeholder="Banda" /></div>
+    </div>
+    <div class="form-group"><label>Email address</label><input type="email" id="trial-email" placeholder="john@company.com" /></div>
+    <div class="form-group"><label>Company / Business name</label><input type="text" id="trial-company" placeholder="Your business name" /></div>
+    <button type="button" class="form-submit" onclick="window.submitTrialRequest()">Send me my trial key →</button>
+    <div id="trial-success" style="display:none;margin-top:1.25rem;padding:16px 18px;background:rgba(26,140,114,.15);border:1px solid rgba(26,140,114,.3);border-radius:10px;font-size:.9rem;color:var(--teal2);">
+      ✓ Your 10-day trial key is on its way. Check your email — it should arrive within a minute.
+    </div>
+    <div id="trial-error" style="display:none;margin-top:1.25rem;padding:16px 18px;background:rgba(196,80,53,.1);border:1px solid rgba(196,80,53,.3);border-radius:10px;font-size:.9rem;color:#E06848;"></div>
+    <p style="font-size:0.75rem;color:var(--muted);text-align:center;margin-top:1rem;line-height:1.6;">
+      Your trial key unlocks GlamifiedHR for 10 days. No credit card needed. Upgrade to a full license anytime.
     </p>
   </div>
 </div>`;
@@ -223,6 +253,12 @@
     // Click outside modal to close
     document.getElementById('purchase-modal').addEventListener('click', function (e) {
       if (e.target === this) window.closePurchaseModal();
+    });
+
+    // Trial modal
+    document.body.insertAdjacentHTML('beforeend', buildTrialModal());
+    document.getElementById('trial-modal').addEventListener('click', function (e) {
+      if (e.target === this) window.closeTrialModal();
     });
 
     // Preconnect + background SDK preload so payment modal opens instantly
@@ -300,7 +336,7 @@
   window.openPurchaseModal = function (plan, amount) {
     // If a payment is already in flight, don't allow re-opening
     if (_paymentInFlight) return;
-    document.getElementById('modal-plan-label').textContent = plan + ' — K' + Number(amount).toLocaleString() + ' (one-time license)';
+    document.getElementById('modal-plan-label').textContent = plan + ' License Key — K' + Number(amount).toLocaleString() + ' (one-time, delivered by email)';
     document.getElementById('purchase-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
     // Store for submit
@@ -414,6 +450,66 @@
     // to prevent re-enabling the button while a Lenco phone prompt is still active.
   };
 
+  /* ─── TRIAL MODAL CONTROLS ─────────────────────────────── */
+  window.openTrialModal = function () {
+    document.getElementById('trial-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeTrialModal = function () {
+    document.getElementById('trial-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  window.submitTrialRequest = async function () {
+    const name     = (document.getElementById('trial-name').value + ' ' + document.getElementById('trial-lastname').value).trim();
+    const email    = document.getElementById('trial-email').value.trim();
+    const company  = document.getElementById('trial-company').value.trim();
+    const successEl = document.getElementById('trial-success');
+    const errorEl   = document.getElementById('trial-error');
+
+    errorEl.style.display = 'none';
+    successEl.style.display = 'none';
+
+    if (!name || !email) {
+      errorEl.textContent = 'Please enter your name and email address.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.style.display = 'block';
+      return;
+    }
+
+    const btn = document.querySelector('#trial-modal .form-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/trial-key', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, company })
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok) {
+        successEl.style.display = 'block';
+        btn.style.display = 'none';
+      } else {
+        errorEl.textContent = data.error || 'Something went wrong. Please WhatsApp us at +260 977 669 883.';
+        errorEl.style.display = 'block';
+        btn.textContent = 'Send me my trial key →';
+        btn.disabled = false;
+      }
+    } catch {
+      errorEl.textContent = 'Network error. Please WhatsApp us at +260 977 669 883 to get your trial key.';
+      errorEl.style.display = 'block';
+      btn.textContent = 'Send me my trial key →';
+      btn.disabled = false;
+    }
+  };
+
   /* ─── CONTACT & JOB POST FORM ───────────────────────────── */
   window.handleContactForm = async function (e) {
     e.preventDefault();
@@ -475,8 +571,48 @@
       return;
     }
 
-    // Default: contact form fallback
-    if (success) { success.style.display = 'block'; form.style.display = 'none'; }
+    // Contact form — collect fields and submit to mailer function
+    const textInputs = form.querySelectorAll('input[type="text"]');
+    const firstName  = textInputs[0]?.value.trim() || '';
+    const lastName   = textInputs[1]?.value.trim() || '';
+    const email      = form.querySelector('input[type="email"]')?.value.trim() || '';
+    const phone      = form.querySelector('input[type="tel"]')?.value.trim() || '';
+    const company    = textInputs[2]?.value.trim() || '';
+    const interest   = form.querySelector('select')?.value || '';
+    const message    = form.querySelector('textarea')?.value.trim() || '';
+
+    if (!firstName || !email || !message) {
+      alert('Please fill in your name, email, and message.');
+      return;
+    }
+
+    const submitBtn = form.querySelector('.form-submit, button[type="submit"]');
+    if (submitBtn) { submitBtn.textContent = 'Sending...'; submitBtn.disabled = true; }
+
+    try {
+      const res = await fetch('/api/mailer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: (firstName + ' ' + lastName).trim(),
+          email,
+          phone,
+          company,
+          interest,
+          message
+        })
+      });
+      if (res.ok) {
+        if (success) { success.style.display = 'block'; form.style.display = 'none'; }
+      } else {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error || 'Failed to send your message. Please WhatsApp us at +260 977 669 883 or email info.glamifiedsystems@gmail.com.');
+      }
+    } catch {
+      alert('Network error. Please reach us on WhatsApp at +260 977 669 883 or email info.glamifiedsystems@gmail.com.');
+    } finally {
+      if (submitBtn) { submitBtn.textContent = 'Send message →'; submitBtn.disabled = false; }
+    }
   };
 
   /* ─── TAB SWITCHER ──────────────────────────────────────── */

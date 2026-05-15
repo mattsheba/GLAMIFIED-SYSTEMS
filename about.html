@@ -15,27 +15,27 @@
 <meta name="twitter:title" content="About Glamified Systems — Zambia's HR Technology Company"/>
 <meta name="twitter:description" content="Glamified Systems is Zambia's technology company. We build HR software, career platforms, and provide IT consulting and business solutions for Zambian organisations."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/style.css"/>
 <style>
 .mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.vision-card{background:linear-gradient(135deg,rgba(201,153,42,.1),rgba(26,140,114,.06));border:1px solid rgba(201,153,42,.2);border-radius:var(--radius-xl);padding:3rem;}
+.vision-card{background:var(--navy2);border:1px solid rgba(201,122,24,.25);border-radius:var(--radius-xl);padding:3rem;}
 .vision-card h2{font-size:1.8rem;margin-bottom:1rem;}
 .vision-card p{color:var(--muted);font-size:.95rem;line-height:1.8;}
 .milestone-line{position:relative;padding-left:2.5rem;}
-.milestone-line::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:1px;background:linear-gradient(180deg,var(--gold2),transparent);}
+.milestone-line::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:1px;background:rgba(201,122,24,.3);}
 .milestone{position:relative;margin-bottom:2rem;}
 .milestone::before{content:'';position:absolute;left:-2.5rem;top:4px;width:10px;height:10px;border-radius:50%;background:var(--gold2);border:2px solid var(--navy2);}
 .milestone-year{font-size:.72rem;font-weight:700;color:var(--gold2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.25rem;}
 .milestone-text{font-size:.9rem;color:var(--muted);}
 .value-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;}
-.value-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--gold2);opacity:.3;margin-bottom:.75rem;}
+.value-num{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--gold2);opacity:.3;margin-bottom:.75rem;}
 .value-card h4{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;}
 .value-card p{font-size:.875rem;color:var(--muted);line-height:1.7;}
 .team-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:var(--transition);}
-.team-card:hover{border-color:rgba(201,153,42,.3);transform:translateY(-3px);}
-.team-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--navy3),var(--navy4));border:2px solid rgba(201,153,42,.3);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold2);margin:0 auto 1.25rem;}
-.team-name{font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;margin-bottom:.25rem;}
+.team-card:hover{border-color:rgba(201,162,39,.3);transform:translateY(-3px);}
+.team-avatar{width:72px;height:72px;border-radius:50%;background:var(--navy3);border:2px solid rgba(201,122,24,.3);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--gold2);margin:0 auto 1.25rem;}
+.team-name{font-size:1rem;font-weight:700;font-family:'Space Grotesk',sans-serif;margin-bottom:.25rem;}
 .team-role{font-size:.8rem;color:var(--gold2);font-weight:600;margin-bottom:.75rem;}
 .team-bio{font-size:.825rem;color:var(--muted);line-height:1.65;}
 @media(max-width:900px){.mission-grid{grid-template-columns:1fr;}}
@@ -49,7 +49,7 @@
   <div class="page-hero-content">
     <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>About</span></div>
     <span class="tag anim-1">Our story</span>
-    <h1 class="display-2 anim-2" style="font-family:'Playfair Display',serif;">Built by Zambians,<br>for <span style="color:var(--gold2);">Zambian business</span></h1>
+    <h1 class="display-2 anim-2" style="font-family:'Space Grotesk',sans-serif;">Built by Zambians,<br>for <span style="color:var(--gold2);">Zambian business</span></h1>
     <p class="lead anim-3" style="max-width:600px;">Technology in Zambia has always been imported — built elsewhere, adapted reluctantly, and never quite right. We started Glamified Systems to change that. HR software, career platforms, IT consulting: everything we build is designed from scratch, for how Zambia actually works.</p>
   </div>
 </div>
@@ -114,13 +114,30 @@
 
 <section class="section">
   <div class="section-header section-header-center reveal">
-    <span class="tag">The team</span>
-    <h2 class="section-title">The people behind Glamified Systems</h2>
+    <span class="tag">Who we are</span>
+    <h2 class="section-title">A small team with a focused mission</h2>
   </div>
-  <div class="team-summary-card reveal anim-1" style="max-width:700px;margin:2rem auto 0 auto;padding:2rem 2.5rem;background:rgba(255,255,255,0.03);border-radius:18px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.04);text-align:center;">
-    <p class="lead" style="line-height:1.7;">
-      At Glamified Systems, our team brings together expertise in product strategy, software engineering, and HR compliance. We are passionate about building technology that solves real problems for Zambian businesses. Our collective experience spans payroll, employment law, and digital transformation, ensuring that GlamifiedHR is accurate, compliant, and tailored for the local market. Together, we drive innovation, maintain legal standards, and deliver reliable solutions for our clients.
-    </p>
+  <div class="reveal" style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem;">
+    <p style="font-size:1rem;color:var(--muted);line-height:1.85;text-align:center;">Glamified Systems is a small, founder-led technology company based in Lusaka. We don't have a large team or a big office. What we have is a deep understanding of how Zambian businesses operate — and the discipline to build software that actually works for them.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);margin-bottom:.6rem;">What we value</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
+          <li style="font-size:.875rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--teal2);font-weight:700;flex-shrink:0;">✓</span>Shipping working software over perfect slides</li>
+          <li style="font-size:.875rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--teal2);font-weight:700;flex-shrink:0;">✓</span>Honest advice — even when it costs us a sale</li>
+          <li style="font-size:.875rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--teal2);font-weight:700;flex-shrink:0;">✓</span>Staying accessible — WhatsApp, call, or visit</li>
+        </ul>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;">
+        <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold2);margin-bottom:.6rem;">What that means for you</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
+          <li style="font-size:.875rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--teal2);font-weight:700;flex-shrink:0;">✓</span>You speak to the people who built the software</li>
+          <li style="font-size:.875rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--teal2);font-weight:700;flex-shrink:0;">✓</span>Issues get fixed fast — no ticket queues</li>
+          <li style="font-size:.875rem;color:var(--muted);display:flex;gap:8px;align-items:flex-start;"><span style="color:var(--teal2);font-weight:700;flex-shrink:0;">✓</span>We're invested in your business working, not just in your payment</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:.875rem;color:var(--muted);text-align:center;line-height:1.75;">We're actively growing and will publish individual team profiles as the company expands. If you want to know who you'd be working with before buying, <a href="contact.html" style="color:var(--teal2);font-weight:600;">just ask us directly</a>.</p>
   </div>
 </section>
 
@@ -145,15 +162,15 @@
       <h2 class="section-title">Three products. One ecosystem.</h2>
       <div style="display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem;">
         <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--navy2);border:1px solid rgba(26,140,114,.2);border-radius:var(--radius);">
-          <img src="assets/logo-cv.png" style="width:58px;height:58px;object-fit:contain;mix-blend-mode:lighten;flex-shrink:0;" alt="GlamifiedHR"/>
+          <img src="assets/logo-hr.png" style="width:58px;height:58px;object-fit:contain;mix-blend-mode:lighten;flex-shrink:0;" alt="GlamifiedHR"/>
           <div><h4 style="font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem;">GlamifiedHR</h4><p style="font-size:.85rem;color:var(--muted);">Complete HR &amp; payroll desktop software. PAYE, NAPSA, NHIMA compliant.</p><a href="glamifiedhr.html" style="font-size:.8rem;color:var(--teal2);font-weight:600;">Learn more →</a></div>
         </div>
         <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--navy2);border:1px solid rgba(68,160,71,.2);border-radius:var(--radius);">
-          <img src="assets/logo-hr.png" style="width:58px;height:58px;object-fit:contain;mix-blend-mode:lighten;flex-shrink:0;" alt="CVPro"/>
+          <img src="assets/logo-cv.png" style="width:58px;height:58px;object-fit:contain;mix-blend-mode:lighten;flex-shrink:0;" alt="CVPro"/>
           <div><h4 style="font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem;">CVPro Zambia</h4><p style="font-size:.85rem;color:var(--muted);">Zambia's dedicated CV builder and career platform. Free for job seekers.</p><a href="cvpro.html" style="font-size:.8rem;color:var(--green2);font-weight:600;">Learn more →</a></div>
         </div>
-        <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--navy2);border:1px solid rgba(201,153,42,.2);border-radius:var(--radius);">
-          <div style="width:44px;height:44px;border-radius:8px;background:rgba(201,153,42,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">💼</div>
+        <div style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.5rem;background:var(--navy2);border:1px solid rgba(201,162,39,.2);border-radius:var(--radius);">
+          <div style="width:44px;height:44px;border-radius:8px;background:rgba(201,162,39,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">💼</div>
           <div><h4 style="font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem;">Glamified Jobs</h4><p style="font-size:.85rem;color:var(--muted);">Zambian recruitment marketplace connecting employers with qualified candidates.</p><a href="jobs.html" style="font-size:.8rem;color:var(--gold2);font-weight:600;">Browse jobs →</a></div>
         </div>
       </div>
@@ -163,7 +180,7 @@
 
 <div class="cta-band reveal">
   <span class="tag" style="justify-content:center;">Work with us</span>
-  <h2 style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">Let's build something great together</h2>
+  <h2 style="font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">Let's build something great together</h2>
   <p>Whether you need our software, our consulting services, or just want to talk — we're a WhatsApp message away.</p>
   <div class="cta-band-actions" style="margin-top:2rem;">
     <a href="contact.html" class="btn btn-gold btn-lg">Get in touch</a>

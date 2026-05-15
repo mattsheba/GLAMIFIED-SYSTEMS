@@ -1,207 +1,138 @@
-/**
- * lenco-webhook.js
- * Netlify Function — endpoint: /.netlify/functions/lenco-webhook
- * (also accessible as /api/lenco-webhook via the redirect in netlify.toml)
- *
- * This function is called by Lenco whenever a payment is completed.
- * It:
- *   1. Verifies the request signature using your LENCO_WEBHOOK_SECRET
- *   2. Checks the payment status is "successful"
- *   3. Reads the plan from the payment metadata
- *   4. Generates a license key
- *   5. Emails the key to the customer
- *   6. Sends you an admin notification
- *
- * ─── ENVIRONMENT VARIABLES TO SET IN NETLIFY ───────────────────────────────
- *
- *   LENCO_WEBHOOK_SECRET     Your Lenco webhook signing secret
- *                            (Lenco Dashboard → Developers → Webhooks)
- *
- *   GLAMIFIED_KEYGEN_SECRET  Any long random string — used to sign license keys
- *                            Generate one at: https://generate-secret.vercel.app/64
- *
- *   DOWNLOAD_URL_BASIC       Direct download link for Basic HR .exe
- *   DOWNLOAD_URL_PAYROLL     Direct download link for HR + Payroll .exe
- *   DOWNLOAD_URL_SUITE       Direct download link for Full Suite .exe
- *                            (Host the .exe files on Cloudflare R2 or any storage)
- *
- *   SMTP_HOST                smtp.gmail.com  (or your mail provider)
- *   SMTP_PORT                587
- *   SMTP_USER                info.glamifiedsystems@gmail.com
- *   SMTP_PASS                Your Gmail App Password
- *                            (Google Account → Security → App Passwords)
- *   FROM_EMAIL               info.glamifiedsystems@gmail.com
- *   ADMIN_EMAIL              your personal email for sale notifications
- *
- * ────────────────────────────────────────────────────────────────────────────
- */
+﻿const crypto = require('crypto');
+const { createClient } = require('@supabase/supabase-js');
+const { sendKeyEmail } = require('./trial-key');
 
-const crypto = require("crypto");
-const { generateLicenseKey } = require("./keygen");
-const { sendLicenseEmail, sendAdminNotification } = require("./mailer");
-
-// Map Lenco product/plan names to our internal plan names
-// Adjust these to match exactly what you set in Lenco's product descriptions
-const PLAN_MAP = {
-  "basic-hr":      "Basic HR",
-  "hr-payroll":    "HR + Payroll",
-  "full-suite":    "Full Suite",
-  // Also match by amount as fallback
-  "1200":  "Basic HR",
-  "2500":  "HR + Payroll",
-  "3500":  "Full Suite",
-};
-
-const DOWNLOAD_URLS = {
-  "Basic HR":      process.env.DOWNLOAD_URL_BASIC,
-  "HR + Payroll":  process.env.DOWNLOAD_URL_PAYROLL,
-  "Full Suite":    process.env.DOWNLOAD_URL_SUITE,
-};
-
-/**
- * Verify Lenco webhook signature.
- * Lenco sends an X-Lenco-Signature header with HMAC-SHA256 of the raw body.
- */
-function verifyLencoSignature(rawBody, signature) {
-  const secret = process.env.LENCO_WEBHOOK_SECRET;
-  if (!secret) {
-    console.error("LENCO_WEBHOOK_SECRET is not set — rejecting webhook for security");
-    return false;
-  }
-  if (!signature) return false;
-  const expected = crypto
-    .createHmac("sha256", secret)
-    .update(rawBody)
-    .digest("hex");
-  const expectedBuf = Buffer.from(expected, "hex");
-  let sigBuf;
-  try {
-    sigBuf = Buffer.from(signature, "hex");
-  } catch {
-    return false;
-  }
-  if (expectedBuf.length !== sigBuf.length) return false;
-  return crypto.timingSafeEqual(expectedBuf, sigBuf);
-}
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_KEY
+);
 
 exports.handler = async (event) => {
-  // Only accept POST
-  if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 200, body: "" };
-  }
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method not allowed" };
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }
 
-  const rawBody = event.body;
-  const signature = event.headers["x-lenco-signature"] || "";
-
-  // 1. Verify signature
-  if (!verifyLencoSignature(rawBody, signature)) {
-    console.error("Invalid Lenco webhook signature");
-    return { statusCode: 401, body: "Unauthorized" };
+  const signature = event.headers['x-lenco-signature'] || event.headers['x-webhook-signature'];
+  if (process.env.LENCO_WEBHOOK_SECRET && signature) {
+    const expected = crypto
+      .createHmac('sha256', process.env.LENCO_WEBHOOK_SECRET)
+      .update(event.body)
+      .digest('hex');
+    if (signature !== expected && signature !== ('sha256=' + expected)) {
+      console.warn('Webhook signature mismatch');
+      return { statusCode: 401, body: JSON.stringify({ error: 'Invalid signature' }) };
+    }
   }
 
   let payload;
   try {
-    payload = JSON.parse(rawBody);
+    payload = JSON.parse(event.body);
   } catch {
-    return { statusCode: 400, body: "Invalid JSON" };
+    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid JSON' }) };
   }
 
-  console.log("Lenco webhook received:", JSON.stringify(payload, null, 2));
-
-  // 2. Check payment status
-  // Lenco webhook payload structure (adjust field names if Lenco uses different ones)
-  const status = payload?.data?.status || payload?.status;
-  if (status !== "successful" && status !== "success" && status !== "completed") {
-    console.log(`Payment status is "${status}" — ignoring`);
-    // Return 200 so Lenco doesn't retry
-    return { statusCode: 200, body: JSON.stringify({ received: true, action: "ignored", status }) };
+  const eventType = payload.event || payload.type || '';
+  if (!eventType.includes('success') && !eventType.includes('completed')) {
+    return { statusCode: 200, body: JSON.stringify({ received: true }) };
   }
 
-  // 3. Extract buyer details from Lenco payload
-  // Adjust these field paths to match Lenco's actual webhook structure
-  const data = payload?.data || payload;
-  const buyerEmail    = data?.customer?.email || data?.email || "";
-  const buyerName     = data?.customer?.name  || data?.name  || data?.customer?.firstName + " " + data?.customer?.lastName || "Customer";
-  const buyerPhone    = data?.customer?.phone || data?.phone || "";
-  const amountPaid    = parseFloat(data?.amount || data?.amountPaid || 0);
-  const paymentMethod = data?.paymentMethod   || data?.channel || "Lenco";
-  const transactionRef = data?.reference      || data?.transactionRef || data?.id || "";
+  const txn = payload.data || payload.transaction || payload;
+  const reference = txn.reference || txn.transactionReference || txn.id || '';
+  const amountRaw = txn.amount != null ? txn.amount : (txn.transactionAmount || 0);
+  const amountZMW = amountRaw > 10000 ? Math.round(amountRaw / 100) : amountRaw;
 
-  // Determine plan from metadata or amount
-  const metaPlan   = data?.metadata?.plan || data?.narration || data?.description || "";
-  const planKey    = metaPlan.toLowerCase().replace(/\s+/g, "-");
-  const amountKey  = String(Math.round(amountPaid));
+  const customer = txn.customer || txn.customerData || {};
+  const email = (customer.email || txn.email || '').toLowerCase();
+  const name = customer.name || txn.customerName || txn.name || '';
 
-  let plan = PLAN_MAP[planKey] || PLAN_MAP[amountKey];
-
-  if (!plan) {
-    console.error(`Could not determine plan from payload. planKey="${planKey}", amountKey="${amountKey}"`);
-    // Fallback: try to determine by amount range
-    if (amountPaid >= 3000) plan = "Full Suite";
-    else if (amountPaid >= 2000) plan = "HR + Payroll";
-    else plan = "Basic HR";
+  if (!email || !reference) {
+    console.error('Webhook missing email or reference:', { email, reference });
+    return { statusCode: 200, body: JSON.stringify({ received: true }) };
   }
 
-  if (!buyerEmail) {
-    console.error("No buyer email in payload — cannot send license key");
-    return { statusCode: 200, body: JSON.stringify({ received: true, error: "no_email" }) };
+  if (amountZMW < 2900) {
+    console.log('Skipping low-value transaction: K' + amountZMW + ' ref ' + reference);
+    return { statusCode: 200, body: JSON.stringify({ received: true }) };
   }
 
-  // 4. Generate license key
-  let licenseKey;
+  const { data: alreadyProcessed } = await supabase
+    .from('license_keys')
+    .select('id')
+    .eq('payment_ref', reference)
+    .maybeSingle();
+
+  if (alreadyProcessed) {
+    console.log('Reference ' + reference + ' already processed');
+    return { statusCode: 200, body: JSON.stringify({ received: true }) };
+  }
+
+  const { data: keyRow, error: fetchErr } = await supabase
+    .from('license_keys')
+    .select('id, key')
+    .eq('type', 'annual')
+    .eq('used', false)
+    .limit(1)
+    .maybeSingle();
+
+  if (fetchErr || !keyRow) {
+    console.error('No annual keys available for reference:', reference, fetchErr);
+    await alertAdmin(
+      'URGENT: Annual key stock empty. Payment from ' + email + ' (ref: ' + reference + ', K' + amountZMW + '). Send manually.',
+      email
+    );
+    return { statusCode: 200, body: JSON.stringify({ received: true }) };
+  }
+
+  const { error: updateErr } = await supabase
+    .from('license_keys')
+    .update({
+      used: true,
+      customer_name: name,
+      customer_email: email,
+      payment_ref: reference,
+      activated_at: new Date().toISOString()
+    })
+    .eq('id', keyRow.id);
+
+  if (updateErr) {
+    console.error('Failed to mark annual key as used:', updateErr);
+    await alertAdmin(
+      'Failed to mark key ' + keyRow.key + ' as used for ' + email + ' (ref: ' + reference + '). Update Supabase manually.',
+      email
+    );
+    return { statusCode: 200, body: JSON.stringify({ received: true }) };
+  }
+
   try {
-    licenseKey = generateLicenseKey(plan, buyerEmail);
-    console.log(`Generated key for ${buyerEmail}: ${licenseKey}`);
+    await sendKeyEmail({ name, email, key: keyRow.key, type: 'annual' });
+    console.log('Annual key ' + keyRow.key + ' delivered to ' + email);
   } catch (err) {
-    console.error("Key generation failed:", err.message);
-    return { statusCode: 500, body: "Key generation failed" };
+    console.error('Email delivery failed:', err);
+    await alertAdmin(
+      'Failed to email annual key ' + keyRow.key + ' to ' + email + ' (ref: ' + reference + '). Send manually.',
+      email
+    );
   }
 
-  // 5. Get download URL for this plan
-  const downloadUrl = DOWNLOAD_URLS[plan] || "https://glamifiedsystems.com/#download";
-
-  // 6. Send license email to customer
-  try {
-    await sendLicenseEmail({
-      toEmail:     buyerEmail,
-      toName:      buyerName,
-      plan,
-      licenseKey,
-      downloadUrl,
-      amountPaid,
-    });
-    console.log(`License email sent to ${buyerEmail}`);
-  } catch (err) {
-    console.error("Failed to send license email:", err.message);
-    // Don't fail the webhook — log and continue
-  }
-
-  // 7. Send admin notification
-  try {
-    await sendAdminNotification({
-      buyerName,
-      buyerEmail,
-      buyerPhone,
-      plan,
-      licenseKey,
-      amountPaid,
-      paymentMethod,
-      transactionRef,
-    });
-  } catch (err) {
-    console.error("Failed to send admin notification:", err.message);
-  }
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      received: true,
-      plan,
-      keyIssued: true,
-      reference: transactionRef,
-    }),
-  };
+  return { statusCode: 200, body: JSON.stringify({ received: true }) };
 };
+
+async function alertAdmin(message, triggerEmail) {
+  const nodemailer = require('nodemailer');
+  try {
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 587,
+      secure: false,
+      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS }
+    });
+    await transporter.sendMail({
+      from: '"GlamifiedHR System" <' + process.env.SMTP_USER + '>',
+      to: process.env.SMTP_USER,
+      subject: '[ACTION REQUIRED] GlamifiedHR: ' + message.slice(0, 60),
+      text: message + '\n\nTriggered by: ' + triggerEmail
+    });
+  } catch (err) {
+    console.error('Admin alert failed:', err);
+  }
+}
