@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -17,6 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="assets/style.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
 <style>
 .service-detail{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:4rem 0;border-top:1px solid var(--border);}
 .service-detail:first-child{border-top:none;}
@@ -29,6 +30,8 @@
 .service-visual{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2.5rem;min-height:260px;display:flex;flex-direction:column;justify-content:center;gap:1rem;}
 .svc-icon-row{display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--navy3);border-radius:10px;border:1px solid var(--border);}
 .svc-icon-box{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.svc-icon-gold{background:rgba(201,162,39,.14);color:var(--gold2);}
+.svc-icon-teal{background:var(--teal-dim);color:var(--teal2);}
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
 .process-step{padding:2rem;text-align:center;position:relative;}
 .process-step::after{content:'→';position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--gold2);font-size:1.2rem;z-index:1;}
@@ -83,10 +86,10 @@
         <a href="contact.html" class="btn btn-outline-gold" style="margin-top:1.5rem;">Get a quote →</a>
       </div>
       <div class="service-visual">
-        <div class="svc-icon-row"><div class="svc-icon-box" style="background:rgba(201,162,39,.12);">🌐</div><div><div style="font-size:.85rem;font-weight:600;">Network design</div><div style="font-size:.75rem;color:var(--muted);">LAN, WiFi, VPN setup</div></div></div>
-        <div class="svc-icon-row"><div class="svc-icon-box" style="background:var(--teal-dim);">🖥️</div><div><div style="font-size:.85rem;font-weight:600;">Server management</div><div style="font-size:.75rem;color:var(--muted);">On-site or cloud-based</div></div></div>
-        <div class="svc-icon-row"><div class="svc-icon-box" style="background:rgba(201,162,39,.12);">🔒</div><div><div style="font-size:.85rem;font-weight:600;">Security &amp; backups</div><div style="font-size:.75rem;color:var(--muted);">Protect your business data</div></div></div>
-        <div class="svc-icon-row"><div class="svc-icon-box" style="background:var(--teal-dim);">🛟</div><div><div style="font-size:.85rem;font-weight:600;">Ongoing support</div><div style="font-size:.75rem;color:var(--muted);">Monthly retainer available</div></div></div>
+        <div class="svc-icon-row"><div class="svc-icon-box svc-icon-gold"><i class="ti ti-wifi"></i></div><div><div style="font-size:.85rem;font-weight:600;">Network design</div><div style="font-size:.75rem;color:var(--muted);">LAN, WiFi, VPN setup</div></div></div>
+        <div class="svc-icon-row"><div class="svc-icon-box svc-icon-teal"><i class="ti ti-server"></i></div><div><div style="font-size:.85rem;font-weight:600;">Server management</div><div style="font-size:.75rem;color:var(--muted);">On-site or cloud-based</div></div></div>
+        <div class="svc-icon-row"><div class="svc-icon-box svc-icon-gold"><i class="ti ti-shield-lock"></i></div><div><div style="font-size:.85rem;font-weight:600;">Security &amp; backups</div><div style="font-size:.75rem;color:var(--muted);">Protect your business data</div></div></div>
+        <div class="svc-icon-row"><div class="svc-icon-box svc-icon-teal"><i class="ti ti-headset"></i></div><div><div style="font-size:.85rem;font-weight:600;">Ongoing support</div><div style="font-size:.75rem;color:var(--muted);">Monthly retainer available</div></div></div>
       </div>
     </div>
   </div>
@@ -196,9 +199,9 @@
       </div>
       <div class="service-visual">
         <div style="display:flex;flex-direction:column;gap:.75rem;">
-          <div style="padding:1rem 1.25rem;background:var(--navy3);border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;gap:1rem;"><div class="svc-icon-box" style="background:rgba(201,162,39,.12);">📄</div><div><div style="font-size:.85rem;font-weight:600;">Business Plan</div><div style="font-size:.72rem;color:var(--muted);">Funding-ready, market researched</div></div></div>
-          <div style="padding:1rem 1.25rem;background:var(--navy3);border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;gap:1rem;"><div class="svc-icon-box" style="background:var(--teal-dim);">🏢</div><div><div style="font-size:.85rem;font-weight:600;">Company Profile</div><div style="font-size:.72rem;color:var(--muted);">Professional, branded, print-ready</div></div></div>
-          <div style="padding:1rem 1.25rem;background:var(--navy3);border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;gap:1rem;"><div class="svc-icon-box" style="background:rgba(201,162,39,.12);">📋</div><div><div style="font-size:.85rem;font-weight:600;">Tender Proposal</div><div style="font-size:.72rem;color:var(--muted);">Structured for Zambian procurement</div></div></div>
+          <div style="padding:1rem 1.25rem;background:var(--navy3);border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;gap:1rem;"><div class="svc-icon-box svc-icon-gold"><i class="ti ti-chart-line"></i></div><div><div style="font-size:.85rem;font-weight:600;">Business Plan</div><div style="font-size:.72rem;color:var(--muted);">Funding-ready, market researched</div></div></div>
+          <div style="padding:1rem 1.25rem;background:var(--navy3);border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;gap:1rem;"><div class="svc-icon-box svc-icon-teal"><i class="ti ti-building"></i></div><div><div style="font-size:.85rem;font-weight:600;">Company Profile</div><div style="font-size:.72rem;color:var(--muted);">Professional, branded, print-ready</div></div></div>
+          <div style="padding:1rem 1.25rem;background:var(--navy3);border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;gap:1rem;"><div class="svc-icon-box svc-icon-gold"><i class="ti ti-file-text"></i></div><div><div style="font-size:.85rem;font-weight:600;">Tender Proposal</div><div style="font-size:.72rem;color:var(--muted);">Structured for Zambian procurement</div></div></div>
         </div>
       </div>
     </div>

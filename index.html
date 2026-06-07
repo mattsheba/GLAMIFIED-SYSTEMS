@@ -22,20 +22,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
   <style>
 .hero{min-height:100vh;display:flex;align-items:center;padding:100px 6% 80px;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:var(--navy);}
 .hero-grid{display:none;}
-.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(201,162,39,0.4);border-radius:100px;font-size:0.75rem;font-weight:600;color:var(--gold2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.75rem;}
-.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold2);}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 16px;border:1px solid rgba(201,162,39,0.4);border-radius:100px;font-size:0.75rem;font-weight:600;color:var(--gold2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.75rem;}
+.hero-badge::before{display:none;}
+.hero-badge .ti{font-size:.9rem;}
 .hero-actions{display:flex;flex-direction:column;gap:.6rem;margin-top:2.5rem;max-width:360px;}
-.hero-trust{display:flex;align-items:center;gap:1.5rem;margin-top:2.75rem;flex-wrap:wrap;}
-.hero-trust-item{display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--muted);}
-.hero-trust-item::before{content:'✓';color:var(--teal2);font-weight:700;}
+.hero-trust{display:grid;grid-template-columns:1fr 1fr;gap:.5rem .75rem;margin-top:2.5rem;max-width:360px;}
+.hero-trust-item{display:flex;align-items:center;gap:7px;font-size:.82rem;color:var(--muted);line-height:1.3;}
+.hero-trust-item::before{display:none;}
+.hero-trust-item .ti{color:var(--teal2);font-size:.95rem;flex-shrink:0;}
 .mockup-box{background:var(--navy3);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(201,162,39,0.1);}
-.mockup-bar{background:var(--navy4);padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border);}
-.mdot{width:10px;height:10px;border-radius:50%;}
+.mockup-bar{background:var(--navy4);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.app-label{font-size:.73rem;color:var(--white);font-weight:600;display:flex;align-items:center;gap:6px;}
+.app-label .ti{font-size:.85rem;color:var(--gold2);}
+.app-sublabel{font-size:.67rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;}
 .mockup-body{display:flex;}
 .mock-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1rem;}
 .mstat{background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:.75rem;}
@@ -58,34 +63,61 @@
 .prob-emoji{font-size:2rem;margin-bottom:1rem;display:block;}
 .prob-card h4{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;}
 .prob-card p{font-size:.875rem;color:var(--muted);line-height:1.7;}
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
-.feat-card{background:var(--navy2);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:var(--transition);}
-.feat-card:hover{border-color:rgba(201,162,39,.3);transform:translateY(-3px);}
-.feat-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.25rem;}
-.feat-card h4{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;}
-.feat-card p{font-size:.875rem;color:var(--muted);line-height:1.7;}
-.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.feat-row{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:5rem;}
+.feat-row-rev .feat-row-img{order:2;}
+.feat-row-rev .feat-row-text{order:1;}
+.feat-row-img{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border2);box-shadow:0 20px 60px rgba(0,0,0,0.35);}
+.feat-row-img img{width:100%;height:auto;display:block;}
+.feat-row-text h3{font-size:1.6rem;line-height:1.25;margin-bottom:.75rem;}
+.feat-row-text p{color:var(--muted);line-height:1.7;}
+.feat-band{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-top:4rem;}
+.feat-band-item{padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start;background:var(--navy2);}
+.feat-band-item+.feat-band-item{border-left:1px solid var(--border);}
+.feat-band-icon{font-size:1.4rem;color:var(--teal2);flex-shrink:0;margin-top:1px;}
+.feat-band-item h4{font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.4rem;}
+.feat-band-item p{font-size:.82rem;color:var(--muted);line-height:1.7;}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;position:relative;}
+.how-grid::before{content:'';position:absolute;top:22px;left:calc(12.5% + 22px);right:calc(12.5% + 22px);height:1px;background:rgba(201,162,39,.2);}
 .how-card{text-align:center;}
-.how-num{width:44px;height:44px;border-radius:50%;background:var(--navy2);border:2px solid rgba(201,162,39,.4);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--gold2);margin:0 auto 1.25rem;}
+.how-num{width:44px;height:44px;border-radius:50%;background:var(--navy2);border:2px solid rgba(201,162,39,.4);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--gold2);margin:0 auto 1.25rem;position:relative;z-index:1;}
 .how-card h4{font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.5rem;}
 .how-card p{font-size:.82rem;color:var(--muted);line-height:1.65;}
+.prob-num{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:700;color:var(--gold2);letter-spacing:.1em;margin-bottom:.75rem;display:block;}
+.price-group-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.35rem 0;border-bottom:1px solid var(--border);margin-bottom:.35rem;display:block;margin-top:.75rem;}
+.price-group-label::before{display:none;}
+.t-context{font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-bottom:.75rem;font-weight:500;}
+.t-right{display:flex;flex-direction:column;gap:1.75rem;}
+.featured-t{border-color:rgba(26,140,114,.3);}
+.featured-t .testimonial-text{font-size:1rem;line-height:1.75;}
 .comp-section{background:var(--navy2);}
-.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
-.comp-card{background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.25);border-radius:var(--radius-lg);padding:2.5rem;text-align:center;}
-.comp-icon{font-size:2.5rem;margin-bottom:1rem;display:block;}
-.comp-card h3{font-size:1.3rem;margin-bottom:.5rem;color:var(--teal2);}
-.comp-card p{font-size:.875rem;color:var(--muted);line-height:1.7;}
-.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
+.comp-table{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.comp-hdr{display:grid;grid-template-columns:140px 1fr 130px 160px;padding:.75rem 1.75rem;background:var(--navy3);border-bottom:1px solid var(--border);}
+.comp-hdr span{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.comp-row{display:grid;grid-template-columns:140px 1fr 130px 160px;align-items:start;padding:1.25rem 1.75rem;border-bottom:1px solid var(--border);}
+.comp-row:last-child{border-bottom:none;}
+.comp-row:nth-child(even){background:rgba(255,255,255,.02);}
+.comp-authority{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;color:var(--teal2);}
+.comp-detail{font-size:.875rem;color:var(--muted);line-height:1.6;}
+.comp-deadline{font-size:.82rem;font-weight:600;color:var(--gold2);}
+.comp-output{font-size:.82rem;color:var(--muted);text-align:right;}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;}
 .billing-toggle{display:flex;align-items:center;gap:0;background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:4px;width:fit-content;margin:0 auto 3rem;}
 .billing-btn{padding:9px 24px;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:.875rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:var(--transition);}
 .billing-btn.active{background:var(--navy3);color:var(--white);}
 .save-badge{background:var(--teal);color:#fff;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-left:6px;vertical-align:middle;}
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
 .faq-wrap{max-width:780px;margin:0 auto;}
+.testimonial-logo{width:80px;height:52px;background:#fff;border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:6px;}
+.testimonial-logo img{max-width:100%;max-height:100%;object-fit:contain;}
+.pay-methods{text-align:center;margin-top:2rem;}
+.pay-note{font-size:.75rem;color:var(--muted);margin-bottom:.75rem;}
+.pay-badges{display:flex;align-items:center;justify-content:center;gap:.65rem;flex-wrap:wrap;}
+.pay-badge{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:var(--muted);border:1px solid var(--border);border-radius:100px;padding:5px 12px;}
+.pay-badge .ti{font-size:.85rem;color:var(--teal2);}
 .final-cta{background:var(--navy2);border-top:1px solid var(--border);text-align:center;padding:100px 6%;}
 @media(max-width:1024px){.hero-inner{grid-template-columns:1fr;}.mockup-box{display:none;}.how-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:900px){.prob-grid,.feat-grid,.comp-grid,.pgrid,.tgrid{grid-template-columns:1fr 1fr;}}
-@media(max-width:640px){.prob-grid,.feat-grid,.comp-grid,.pgrid,.tgrid,.how-grid{grid-template-columns:1fr;}}
+@media(max-width:900px){.prob-grid,.pgrid{grid-template-columns:1fr 1fr;}.feat-row{grid-template-columns:1fr;gap:2rem;margin-bottom:3rem;}.feat-row-rev .feat-row-img{order:0;}.feat-row-rev .feat-row-text{order:0;}.feat-band{grid-template-columns:1fr;}.feat-band-item+.feat-band-item{border-left:none;border-top:1px solid var(--border);}.comp-hdr,.comp-row{grid-template-columns:110px 1fr 110px;}.comp-output{display:none;}.how-grid::before{display:none;}}
+@media(max-width:640px){.prob-grid,.pgrid,.tgrid,.how-grid{grid-template-columns:1fr;}.comp-hdr{display:none;}.comp-row{grid-template-columns:1fr;gap:.25rem;}.comp-authority{font-size:.875rem;}.comp-output{display:none;}.hero-trust{max-width:100%;grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -95,31 +127,31 @@
   <div class="hero-bg"></div><div class="hero-grid"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-badge anim-1">Built for Zambia · PAYE · NAPSA · NHIMA</div>
+      <div class="hero-badge anim-1"><i class="ti ti-map-pin"></i>Built for Zambia · PAYE · NAPSA · NHIMA</div>
       <h1 class="display-1 anim-2" style="font-family:'Space Grotesk',sans-serif;line-height:1.1;">Stop running<br>payroll on<br><span style="color:var(--gold2);">spreadsheets.</span></h1>
       <p class="lead anim-3" style="max-width:500px;margin-top:1.5rem;">GlamifiedHR automates your payroll, statutory deductions, and employee management — so you spend Fridays running your business, not fighting Excel.</p>
       <div class="hero-actions anim-4">
-        <a href="https://downloads.glamifiedsystems.com/GlamifiedHR-Setup-1.0.0.zip" class="btn btn-gold btn-lg" target="_blank" rel="noopener" style="justify-content:center;">Download GlamifiedHR — Free</a>
-        <button class="btn btn-outline btn-lg" onclick="window.openPurchaseModal('GlamifiedHR',3000)" style="justify-content:center;">Buy License Key — K3,000</button>
-        <button class="btn btn-outline-gold btn-lg" onclick="window.openTrialModal()" style="justify-content:center;">Try free for 10 days</button>
+        <a href="https://downloads.glamifiedsystems.com/GlamifiedHR-Setup-1.0.0.zip" class="btn btn-gold btn-lg" target="_blank" rel="noopener" style="justify-content:center;gap:.5rem;"><i class="ti ti-download"></i>Download GlamifiedHR — Free</a>
+        <button class="btn btn-outline btn-lg" onclick="window.openPurchaseModal('GlamifiedHR',3000)" style="justify-content:center;gap:.5rem;"><i class="ti ti-key"></i>Buy License Key — K 3,000</button>
+        <button class="btn btn-outline-gold btn-lg" onclick="window.openTrialModal()" style="justify-content:center;gap:.5rem;"><i class="ti ti-clock"></i>Try free for 10 days</button>
       </div>
       <p class="anim-4" style="font-size:.8rem;color:var(--muted);margin-top:.85rem;">Install free · License key to activate · 10-day trial available</p>
       <div class="hero-trust anim-5">
-        <div class="hero-trust-item">ZRA PAYE compliant</div>
-        <div class="hero-trust-item">NAPSA &amp; NHIMA built in</div>
-        <div class="hero-trust-item">Works offline</div>
-        <div class="hero-trust-item">Windows 10 / 11</div>
-        <div class="hero-trust-item">Payroll &amp; payslip generation</div>
-        <div class="hero-trust-item">Employee management</div>
+        <div class="hero-trust-item"><i class="ti ti-certificate"></i>ZRA PAYE compliant</div>
+        <div class="hero-trust-item"><i class="ti ti-shield-check"></i>NAPSA &amp; NHIMA built in</div>
+        <div class="hero-trust-item"><i class="ti ti-cloud-off"></i>Works offline</div>
+        <div class="hero-trust-item"><i class="ti ti-brand-windows"></i>Windows 10 / 11</div>
+        <div class="hero-trust-item"><i class="ti ti-calculator"></i>Payroll &amp; payslip generation</div>
+        <div class="hero-trust-item"><i class="ti ti-users"></i>Employee management</div>
       </div>
     </div>
     <div class="mockup-box anim-5">
       <div class="mockup-bar">
-        <div class="mdot" style="background:var(--border2);"></div><div class="mdot" style="background:var(--border2);"></div><div class="mdot" style="background:var(--border2);"></div>
-        <span style="font-size:.78rem;color:var(--muted);margin-left:6px;">GlamifiedHR — HR &amp; Payroll Management System</span>
+        <span class="app-label"><i class="ti ti-layout-dashboard"></i>GlamifiedHR</span>
+        <span class="app-sublabel">HR &amp; Payroll</span>
       </div>
       <div class="mockup-body">
-        <img src="assets/dashboard.png" alt="GlamifiedHR Dashboard" style="width:100%;height:auto;display:block;"/>
+        <img src="assets/dashboard.png" alt="GlamifiedHR Dashboard" style="width:100%;height:auto;display:block;" fetchpriority="high"/>
       </div>
     </div>
   </div>
@@ -129,35 +161,69 @@
 
 <section class="section prob-section">
   <div style="max-width:600px;margin:0 auto 3.5rem;text-align:center;" class="reveal">
-    <span class="tag">The problem</span>
+    <span class="tag">Why Excel breaks down</span>
     <h2 class="section-title" style="margin:0 auto 1rem;">Most Zambian businesses are one Excel crash away from a payroll disaster</h2>
     <p class="lead" style="max-width:540px;margin:0 auto;">Manual payroll isn't just slow — it exposes your business to ZRA penalties, NAPSA arrears, and costly errors every single month.</p>
   </div>
   <div class="prob-grid">
-    <div class="prob-card reveal"><span class="prob-emoji">📉</span><h4>Formula errors every month</h4><p>One wrong cell reference and your PAYE calculation is wrong. You only find out when ZRA knocks.</p></div>
-    <div class="prob-card reveal"><span class="prob-emoji">⏰</span><h4>Statutory deadlines missed</h4><p>NAPSA by the 10th. NHIMA by the 10th. PAYE by the 14th. Managing this manually is exhausting and error-prone.</p></div>
-    <div class="prob-card reveal"><span class="prob-emoji">📁</span><h4>No proper employment records</h4><p>When ZRA or NAPSA audits your business, scattered spreadsheets and paper files create serious compliance risk.</p></div>
-  </div>
-  <div style="text-align:center;padding:2.5rem 0;" class="reveal">
-    <div style="display:inline-flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--muted);font-size:.82rem;">
-      <span>There is a better way</span><span style="font-size:2rem;color:var(--gold2);line-height:1;">↓</span>
-    </div>
+    <div class="prob-card reveal"><span class="prob-num">01</span><h4>Formula errors every month</h4><p>One wrong cell reference and your PAYE calculation is wrong. You only find out when ZRA knocks.</p></div>
+    <div class="prob-card reveal"><span class="prob-num">02</span><h4>Statutory deadlines missed</h4><p>NAPSA by the 10th. NHIMA by the 10th. PAYE by the 14th. Managing this manually is exhausting and error-prone.</p></div>
+    <div class="prob-card reveal"><span class="prob-num">03</span><h4>No proper employment records</h4><p>When ZRA or NAPSA audits your business, scattered spreadsheets and paper files create serious compliance risk.</p></div>
   </div>
 </section>
 
 <section class="section" id="features">
   <div class="section-header section-header-center reveal">
     <span class="tag">What GlamifiedHR does</span>
-    <h2 class="section-title">Everything your HR department needs</h2>
-    <p class="lead">Built from scratch for Zambia. Every feature maps to how payroll actually works here.</p>
+    <h2 class="section-title">Built for how Zambian payroll actually works</h2>
+    <p class="lead">Every feature maps to a real compliance requirement or workflow — no generic extras.</p>
   </div>
-  <div class="feat-grid">
-    <div class="feat-card reveal"><div class="feat-icon" style="background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.2);">💰</div><h4>Automated Payroll Processing</h4><p>Process monthly payroll in minutes. PAYE, NAPSA, and NHIMA calculated automatically based on current Zambian rates.</p></div>
-    <div class="feat-card reveal"><div class="feat-icon" style="background:var(--teal-dim);border:1px solid rgba(26,140,114,.2);">👥</div><h4>Employee Management</h4><p>Full employee database with NRC, NAPSA, NHIMA numbers, bank details, employment history, and document storage.</p></div>
-    <div class="feat-card reveal"><div class="feat-icon" style="background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.2);">📄</div><h4>PDF Payslip Generation</h4><p>Generate professional, branded payslips for every employee with one click. Email or print — fully formatted.</p></div>
-    <div class="feat-card reveal"><div class="feat-icon" style="background:var(--teal-dim);border:1px solid rgba(26,140,114,.2);">🏖️</div><h4>Leave Management</h4><p>Annual, sick, maternity, and paternity leave tracking. Approval workflows and balance calculations built in.</p></div>
-    <div class="feat-card reveal"><div class="feat-icon" style="background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.2);">📊</div><h4>Statutory Returns</h4><p>Generate NAPSA, NHIMA, and ZRA PAYE returns in the exact format required. Filing time reduced from hours to minutes.</p></div>
-    <div class="feat-card reveal"><div class="feat-icon" style="background:var(--teal-dim);border:1px solid rgba(26,140,114,.2);">🔒</div><h4>Secure &amp; Offline-Ready</h4><p>Your data stays on your computer. No internet required to run payroll. Encrypted database with role-based access.</p></div>
+  <div class="feat-row reveal">
+    <div class="feat-row-img"><img src="assets/employees2.png" alt="Employee Management in GlamifiedHR" loading="lazy"></div>
+    <div class="feat-row-text">
+      <span class="tag" style="display:inline-flex;margin-bottom:.75rem;">Employee Management</span>
+      <h3>Every employee detail, in one place</h3>
+      <p>Full employee database with NRC, NAPSA numbers, NHIMA numbers, bank details, employment history, and document storage. No scattered spreadsheets.</p>
+    </div>
+  </div>
+  <div class="feat-row feat-row-rev reveal">
+    <div class="feat-row-img"><img src="assets/reports.png" alt="Payroll Processing in GlamifiedHR" loading="lazy"></div>
+    <div class="feat-row-text">
+      <span class="tag" style="display:inline-flex;margin-bottom:.75rem;">Automated Payroll</span>
+      <h3>Payroll done in minutes, not Friday afternoons</h3>
+      <p>Process monthly payroll automatically. PAYE, NAPSA, and NHIMA calculated on current Zambian rates. PDF payslips generated and ready to distribute with one click.</p>
+    </div>
+  </div>
+  <div class="feat-row reveal">
+    <div class="feat-row-img"><img src="assets/compliance.png" alt="Statutory Returns in GlamifiedHR" loading="lazy"></div>
+    <div class="feat-row-text">
+      <span class="tag" style="display:inline-flex;margin-bottom:.75rem;">Statutory Returns</span>
+      <h3>ZRA, NAPSA, NHIMA — every return, on time</h3>
+      <p>Generate returns in the exact format required. NAPSA by the 10th. NHIMA by the 10th. PAYE by the 14th. GlamifiedHR tracks the deadlines and produces the schedules.</p>
+    </div>
+  </div>
+  <div class="feat-band reveal">
+    <div class="feat-band-item">
+      <i class="ti ti-file-invoice feat-band-icon"></i>
+      <div>
+        <h4>PDF Payslip Generation</h4>
+        <p>Professional, branded payslips for every employee. Email or print — fully formatted and compliant.</p>
+      </div>
+    </div>
+    <div class="feat-band-item">
+      <i class="ti ti-calendar-time feat-band-icon"></i>
+      <div>
+        <h4>Leave Management</h4>
+        <p>Annual, sick, maternity, and paternity leave tracking. Approval workflows and balance calculations built in.</p>
+      </div>
+    </div>
+    <div class="feat-band-item">
+      <i class="ti ti-lock feat-band-icon"></i>
+      <div>
+        <h4>Secure &amp; Offline-Ready</h4>
+        <p>Your data stays on your computer. No internet required to run payroll. Encrypted database with role-based access.</p>
+      </div>
+    </div>
   </div>
   <div style="text-align:center;margin-top:2.5rem;" class="reveal">
     <a href="glamifiedhr.html" class="btn btn-outline">See all features in detail →</a>
@@ -172,50 +238,83 @@
     <h2 class="section-title">Every statutory requirement, handled</h2>
     <p class="lead">We built GlamifiedHR around Zambia's actual tax and statutory laws.</p>
   </div>
-  <div class="comp-grid">
-    <div class="comp-card reveal"><span class="comp-icon">🏛️</span><h3>ZRA PAYE</h3><p>Calculates PAYE tax based on current ZRA income tax bands. Generates P18 and P9 returns ready for submission.</p></div>
-    <div class="comp-card reveal"><span class="comp-icon">🛡️</span><h3>NAPSA</h3><p>Automatically deducts 5% employee and 5% employer NAPSA contributions. Monthly NAPSA schedules included.</p></div>
-    <div class="comp-card reveal"><span class="comp-icon">🏥</span><h3>NHIMA</h3><p>Handles 1% employee and 1% employer NHIMA health insurance with correct calculations and submission reports.</p></div>
+  <div class="comp-table reveal">
+    <div class="comp-hdr">
+      <span>Authority</span>
+      <span>What GlamifiedHR calculates</span>
+      <span>Deadline</span>
+      <span>Output</span>
+    </div>
+    <div class="comp-row">
+      <div class="comp-authority">ZRA PAYE</div>
+      <div class="comp-detail">Income tax on employment income — calculated on ZRA's current tax bands. P18 and P9 schedules ready for submission.</div>
+      <div class="comp-deadline">14th of month</div>
+      <div class="comp-output">P18 &amp; P9 returns</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-authority">NAPSA</div>
+      <div class="comp-detail">5% employee + 5% employer pension contributions, subject to the monthly ceiling. Monthly contribution schedules included.</div>
+      <div class="comp-deadline">10th of month</div>
+      <div class="comp-output">NAPSA schedules</div>
+    </div>
+    <div class="comp-row">
+      <div class="comp-authority">NHIMA</div>
+      <div class="comp-detail">1% employee + 1% employer health insurance. Correct contribution calculations with employer payment reports.</div>
+      <div class="comp-deadline">10th of month</div>
+      <div class="comp-output">Submission reports</div>
+    </div>
   </div>
 </section>
 
 <section class="section" id="pricing">
   <div class="section-header section-header-center reveal">
-    <span class="tag">Pricing</span>
-    <h2 class="section-title">Simple pricing. No monthly fees.</h2>
-    <p class="lead">Buy once, use forever. Every plan includes free updates for 12 months and WhatsApp support.</p>
+    <span class="tag">One payment, no subscription</span>
+    <h2 class="section-title">Pay K 3,000. Own it forever.</h2>
+    <p class="lead">Buy once, use it on up to 2 machines, and keep running payroll as long as you need. Free updates for 12 months included.</p>
   </div>
   <div style="max-width:480px;margin:0 auto;">
     <div class="pricing-card featured reveal">
       <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;">GlamifiedHR — License Key</div>
-      <div class="price-amount">K3,000</div><div class="price-period">One-time · up to 2 machines · activates your installed copy</div>
+      <div class="price-amount">K 3,000</div><div class="price-period">One-time · up to 2 machines · activates your installed copy</div>
       <ul class="price-features" style="margin-top:1.5rem;">
+        <li class="price-group-label">People</li>
         <li>Employee records &amp; profiles</li>
         <li>Department management</li>
         <li>Employee search &amp; export</li>
+        <li>Unlimited employees</li>
+        <li class="price-group-label">Payroll</li>
         <li>Full payroll processing</li>
         <li>Auto PAYE, NAPSA &amp; NHIMA</li>
         <li>PDF payslip generation</li>
         <li>Payroll history &amp; reports</li>
+        <li class="price-group-label">Leave</li>
         <li>Leave management</li>
         <li>Leave approval workflows</li>
+        <li class="price-group-label">Compliance</li>
         <li>NAPSA &amp; NHIMA returns</li>
         <li>ZRA PAYE schedules</li>
-        <li>Unlimited employees</li>
+        <li class="price-group-label">Support</li>
         <li>Free updates for 12 months</li>
         <li>WhatsApp support</li>
       </ul>
-      <button class="btn btn-gold" style="width:100%;justify-content:center;margin-top:1.5rem;" onclick="window.openPurchaseModal('GlamifiedHR',3000)">Buy GlamifiedHR — K3,000</button>
+      <button class="btn btn-gold" style="width:100%;justify-content:center;margin-top:1.5rem;" onclick="window.openPurchaseModal('GlamifiedHR',3000)">Buy GlamifiedHR — K 3,000</button>
     </div>
   </div>
-  <p class="reveal" style="text-align:center;font-size:.82rem;color:var(--muted);margin-top:2rem;">All prices in Zambian Kwacha (ZMW). Pay via Airtel Money, MTN MoMo, or bank card.</p>
+  <div class="pay-methods reveal">
+    <p class="pay-note">All prices in Zambian Kwacha (ZMW)</p>
+    <div class="pay-badges">
+      <span class="pay-badge"><i class="ti ti-device-mobile"></i>Airtel Money</span>
+      <span class="pay-badge"><i class="ti ti-device-mobile"></i>MTN MoMo</span>
+      <span class="pay-badge"><i class="ti ti-credit-card"></i>Bank / Debit Card</span>
+    </div>
+  </div>
 </section>
 
 <hr class="divider-gold" />
 
 <section class="section">
   <div class="section-header section-header-center reveal">
-    <span class="tag">Getting started</span>
+    <span class="tag">From purchase to payroll</span>
     <h2 class="section-title">Up and running in under an hour</h2>
   </div>
   <div class="how-grid">
@@ -230,13 +329,27 @@
 
 <section class="section section-navy2">
   <div class="section-header section-header-center reveal">
-    <span class="tag">From our clients</span>
+    <span class="tag">Zambian businesses</span>
     <h2 class="section-title">Businesses across Zambia work with us</h2>
   </div>
   <div class="tgrid">
-    <div class="testimonial-card reveal"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"Glamified Systems have been invaluable to us — from software setup and ZRA Smart Invoice integration to NAPSA compliance and ongoing business consultancy. They understand what a growing Zambian business actually needs."</p><div class="testimonial-author"><div class="testimonial-avatar">AK</div><div><div class="testimonial-name">AK Solar Solutions &amp; Security Systems</div><div class="testimonial-role">Lusaka</div></div></div></div>
-    <div class="testimonial-card reveal"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"They handled our ZRA Smart Invoice system, compliance requirements, and business consultancy from end to end. Professional, responsive, and they know the Zambian regulatory landscape inside out."</p><div class="testimonial-author"><div class="testimonial-avatar">CC</div><div><div class="testimonial-name">Crescent Crest Supplies</div><div class="testimonial-role">Chilanga</div></div></div></div>
-    <div class="testimonial-card reveal"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"We've engaged Glamified Systems across various business needs and they consistently deliver. Reliable, knowledgeable, and genuinely invested in helping our business operate properly."</p><div class="testimonial-author"><div class="testimonial-avatar">DC</div><div><div class="testimonial-name">Double C Logistics Ltd</div><div class="testimonial-role">Lusaka</div></div></div></div>
+    <div class="testimonial-card featured-t reveal">
+      <div class="t-context">Solar &amp; Security · 30+ employees · Payroll &amp; NAPSA</div>
+      <p class="testimonial-text">"GlamifiedHR completely changed how we handle payroll. Before, we were doing everything manually on Excel and always worried about NAPSA deadlines. Now payroll runs in minutes and our PAYE returns are always ready by the 14th. The system knows Zambian compliance — we don't have to think about it."</p>
+      <div class="testimonial-author"><div class="testimonial-logo"><img src="assets/AK.png" alt="AK Solar Solutions &amp; Security Systems" loading="lazy"></div><div><div class="testimonial-name">AK Solar Solutions &amp; Security Systems</div><div class="testimonial-role">Lusaka</div></div></div>
+    </div>
+    <div class="t-right">
+      <div class="testimonial-card reveal">
+        <div class="t-context">Trading &amp; Supplies · Payslips &amp; leave management</div>
+        <p class="testimonial-text">"Managing payslips, leave, and NAPSA contributions for our staff used to take most of month-end. GlamifiedHR handles all of it now. Setup was straightforward and WhatsApp support is always available when we need it."</p>
+        <div class="testimonial-author"><div class="testimonial-logo"><img src="assets/CC.png" alt="Crescent Crest Supplies" loading="lazy"></div><div><div class="testimonial-name">Crescent Crest Supplies</div><div class="testimonial-role">Chilanga</div></div></div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="t-context">Media · NHIMA &amp; PAYE compliance</div>
+        <p class="testimonial-text">"We switched from spreadsheets to GlamifiedHR and the difference was immediate. Payslips that used to take hours now take minutes. NHIMA and NAPSA calculations are automatic. It's built for how payroll actually works in Zambia."</p>
+        <div class="testimonial-author"><div class="testimonial-logo"><img src="assets/ZBT.jpg" alt="Zambia Business Times" loading="lazy"></div><div><div class="testimonial-name">Zambia Business Times</div><div class="testimonial-role">Lusaka</div></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -259,10 +372,10 @@
 
 <section class="final-cta reveal">
   <span class="tag" style="justify-content:center;">Get started today</span>
-  <h2 class="section-title" style="max-width:560px;margin:0 auto 1rem;font-family:'Space Grotesk',sans-serif;">Zambia's most complete HR &amp; payroll software</h2>
+  <h2 class="section-title" style="max-width:560px;margin:0 auto 1rem;font-family:'Space Grotesk',sans-serif;">Stop paying for payroll mistakes.</h2>
   <p class="lead" style="margin:0 auto 2.5rem;max-width:480px;">Join businesses across Zambia who have replaced Excel payroll with GlamifiedHR. Setup in under an hour.</p>
   <div class="cta-band-actions">
-    <button class="btn btn-gold btn-lg" onclick="window.openPurchaseModal('GlamifiedHR',3000)">Buy GlamifiedHR — K3,000</button>
+    <button class="btn btn-gold btn-lg" onclick="window.openPurchaseModal('GlamifiedHR',3000)">Buy GlamifiedHR — K 3,000</button>
     <a href="https://wa.me/260977669883" target="_blank" rel="noopener" class="btn btn-whatsapp btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Chat on WhatsApp</a>
     <a href="contact.html" class="btn btn-outline btn-lg">Book a free demo</a>
   </div>

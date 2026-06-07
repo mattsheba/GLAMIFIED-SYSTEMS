@@ -184,11 +184,11 @@
     <h3 style="font-size:1.3rem;margin-bottom:0.3rem;">Buy your license key</h3>
     <p id="modal-plan-label" class="modal-plan"></p>
     <div class="form-row">
-      <div class="form-group"><label>First name</label><input type="text" id="buy-name" placeholder="John" /></div>
+      <div class="form-group"><label>First name</label><input type="text" id="buy-name" placeholder="Chanda" /></div>
       <div class="form-group"><label>Last name</label><input type="text" id="buy-lastname" placeholder="Banda" /></div>
     </div>
-    <div class="form-group"><label>Email address</label><input type="email" id="buy-email" placeholder="john@company.com" /></div>
-    <div class="form-group"><label>Phone (mobile money)</label><input type="tel" id="buy-phone" placeholder="097XXXXXXX" /></div>
+    <div class="form-group"><label>Email address</label><input type="email" id="buy-email" placeholder="chanda@company.com" /></div>
+    <div class="form-group"><label>Phone (Airtel / MTN)</label><input type="tel" id="buy-phone" placeholder="097X XXX XXX" inputmode="numeric" /></div>
     <div class="form-group">
       <label>Payment method</label>
       <select id="buy-method">
@@ -215,10 +215,10 @@
     <h3 style="font-size:1.3rem;margin-bottom:.3rem;">Try GlamifiedHR free</h3>
     <p class="modal-plan">10-day trial license — no payment required</p>
     <div class="form-row">
-      <div class="form-group"><label>First name</label><input type="text" id="trial-name" placeholder="John" /></div>
+      <div class="form-group"><label>First name</label><input type="text" id="trial-name" placeholder="Chanda" /></div>
       <div class="form-group"><label>Last name</label><input type="text" id="trial-lastname" placeholder="Banda" /></div>
     </div>
-    <div class="form-group"><label>Email address</label><input type="email" id="trial-email" placeholder="john@company.com" /></div>
+    <div class="form-group"><label>Email address</label><input type="email" id="trial-email" placeholder="chanda@company.com" /></div>
     <div class="form-group"><label>Company / Business name</label><input type="text" id="trial-company" placeholder="Your business name" /></div>
     <button type="button" class="form-submit" onclick="window.submitTrialRequest()">Send me my trial key →</button>
     <div id="trial-success" style="display:none;margin-top:1.25rem;padding:16px 18px;background:rgba(26,140,114,.15);border:1px solid rgba(26,140,114,.3);border-radius:10px;font-size:.9rem;color:var(--teal2);">
@@ -336,7 +336,7 @@
   window.openPurchaseModal = function (plan, amount) {
     // If a payment is already in flight, don't allow re-opening
     if (_paymentInFlight) return;
-    document.getElementById('modal-plan-label').textContent = plan + ' License Key — K' + Number(amount).toLocaleString() + ' (one-time, delivered by email)';
+    document.getElementById('modal-plan-label').textContent = plan + ' License Key — K ' + Number(amount).toLocaleString('en-ZM') + ' (one-time, delivered by email)';
     document.getElementById('purchase-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
     // Store for submit
