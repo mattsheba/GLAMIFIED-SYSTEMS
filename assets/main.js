@@ -62,6 +62,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="glamifiedhr.html" class="${active('glamifiedhr.html')} nav-main-product" style="font-size:1.13em;font-weight:800;color:var(--gold2);letter-spacing:-.5px;">GlamifiedHR</a></li>
+    <li><a href="teachers.html" class="${active('teachers.html')}">Lesson Plans</a></li>
     <li><a href="jobs.html" class="${active('jobs.html')}">Jobs</a></li>
     <li><a href="cvpro.html" class="${active('cvpro.html')}">CVPro</a></li>
     <li><a href="consulting.html" class="${active('consulting.html')}">Consulting</a></li>
@@ -76,6 +77,7 @@
 <nav class="mobile-nav" id="mobile-nav">
   <a href="index.html" class="${active('index.html')}">Home</a>
   <a href="glamifiedhr.html" class="${active('glamifiedhr.html')} nav-main-product" style="font-weight:800;color:var(--gold2);">GlamifiedHR</a>
+  <a href="teachers.html" class="${active('teachers.html')}">Lesson Plans</a>
   <a href="jobs.html" class="${active('jobs.html')}">Jobs</a>
   <a href="cvpro.html" class="${active('cvpro.html')}">CVPro Zambia</a>
   <a href="consulting.html" class="${active('consulting.html')}">Consulting</a>
