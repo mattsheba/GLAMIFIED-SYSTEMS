@@ -106,7 +106,7 @@
           <span>CVPro Zambia</span>
         </a>
         <a href="jobs.html" class="footer-product-tag">
-          <span style="font-size:1rem;">💼</span>
+          <i class="ti ti-briefcase" style="font-size:1.2rem;color:var(--gold2);"></i>
           <span>Glamified Jobs</span>
         </a>
       </div>

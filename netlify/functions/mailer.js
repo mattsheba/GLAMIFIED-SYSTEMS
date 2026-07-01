@@ -52,7 +52,7 @@ async function sendLicenseEmail({ toEmail, toName, plan, licenseKey, downloadUrl
         
         <!-- Header -->
         <tr>
-          <td style="background:linear-gradient(135deg,#0F1E3C,#152444);padding:32px 40px;text-align:center;border-bottom:1px solid rgba(201,153,42,0.2);">
+          <td style="background:#0F1E3C;padding:32px 40px;text-align:center;border-bottom:1px solid rgba(201,153,42,0.2);">
             <div style="font-family:Georgia,serif;font-size:22px;font-weight:700;color:#F7F3EC;letter-spacing:-0.01em;">
               Glamified<span style="color:#E6B84A;">Systems</span>
             </div>
