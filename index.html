@@ -27,16 +27,18 @@
 .hero{min-height:100vh;display:flex;align-items:center;padding:100px 6% 80px;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:var(--navy);}
 .hero-grid{display:none;}
-.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;width:100%;}
+.hero-wrap{position:relative;z-index:2;width:100%;}
+.hero-inner{display:grid;grid-template-columns:1fr 1.15fr;gap:4rem;align-items:center;width:100%;}
 .hero-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 16px;border:1px solid rgba(201,162,39,0.4);border-radius:100px;font-size:0.75rem;font-weight:600;color:var(--gold2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.75rem;}
 .hero-badge::before{display:none;}
 .hero-badge .ti{font-size:.9rem;}
 .hero-actions{display:flex;flex-direction:column;gap:.7rem;margin-top:2.5rem;max-width:400px;}
 .hero-note{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted);margin-top:1rem;}
 .hero-note .ti{color:var(--teal2);font-size:1rem;}
-.hero-trust-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2.75rem;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;}
+.hero-trust-strip{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+.hero-trust-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;}
 .hero-trust-label::before{content:'';width:20px;height:2px;background:var(--gold2);border-radius:2px;}
-.hero-trust{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;max-width:560px;}
+.hero-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
 .hero-trust-item{display:flex;align-items:center;gap:.75rem;padding:.75rem .9rem;background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:12px;font-size:.92rem;font-weight:500;color:var(--white2);line-height:1.25;transition:var(--transition);}
 .hero-trust-item:hover{border-color:rgba(34,197,94,0.4);background:rgba(34,197,94,0.06);transform:translateY(-2px);}
 .hero-trust-item::before{display:none;}
@@ -63,11 +65,12 @@
 .sn{background:rgba(201,162,39,0.15);color:var(--gold2);}
 .prob-section{background:var(--navy2);}
 .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.prob-card{background:rgba(196,80,53,.06);border:1px solid rgba(196,80,53,.2);border-radius:var(--radius);padding:2rem;transition:var(--transition);}
+.prob-card{background:rgba(196,80,53,.06);border:1px solid rgba(196,80,53,.2);border-radius:var(--radius-lg);padding:2.25rem;transition:var(--transition);}
 .prob-card:hover{border-color:rgba(196,80,53,.4);transform:translateY(-3px);}
+.prob-icon{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:rgba(196,80,53,.12);border:1px solid rgba(196,80,53,.28);color:var(--coral2);font-size:1.4rem;margin-bottom:1.5rem;}
 .prob-emoji{font-size:2rem;margin-bottom:1rem;display:block;}
-.prob-card h4{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;}
-.prob-card p{font-size:.875rem;color:var(--muted);line-height:1.7;}
+.prob-card h4{font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.6rem;}
+.prob-card p{font-size:.9rem;color:var(--muted);line-height:1.75;}
 .feat-row{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:5rem;}
 .feat-row-rev .feat-row-img{order:2;}
 .feat-row-rev .feat-row-text{order:1;}
@@ -121,8 +124,8 @@
 .pay-badge .ti{font-size:.85rem;color:var(--teal2);}
 .final-cta{background:var(--navy2);border-top:1px solid var(--border);text-align:center;padding:100px 6%;}
 @media(max-width:1024px){.hero-inner{grid-template-columns:1fr;}.mockup-box{display:none;}.how-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:900px){.prob-grid,.pgrid{grid-template-columns:1fr 1fr;}.feat-row{grid-template-columns:1fr;gap:2rem;margin-bottom:3rem;}.feat-row-rev .feat-row-img{order:0;}.feat-row-rev .feat-row-text{order:0;}.feat-band{grid-template-columns:1fr;}.feat-band-item+.feat-band-item{border-left:none;border-top:1px solid var(--border);}.comp-hdr,.comp-row{grid-template-columns:110px 1fr 110px;}.comp-output{display:none;}.how-grid::before{display:none;}}
-@media(max-width:640px){.prob-grid,.pgrid,.tgrid,.how-grid{grid-template-columns:1fr;}.comp-hdr{display:none;}.comp-row{grid-template-columns:1fr;gap:.25rem;}.comp-authority{font-size:.875rem;}.comp-output{display:none;}.hero-trust{max-width:100%;grid-template-columns:1fr;}}
+@media(max-width:900px){.prob-grid,.pgrid{grid-template-columns:1fr 1fr;}.hero-trust{grid-template-columns:1fr 1fr;}.feat-row{grid-template-columns:1fr;gap:2rem;margin-bottom:3rem;}.feat-row-rev .feat-row-img{order:0;}.feat-row-rev .feat-row-text{order:0;}.feat-band{grid-template-columns:1fr;}.feat-band-item+.feat-band-item{border-left:none;border-top:1px solid var(--border);}.comp-hdr,.comp-row{grid-template-columns:110px 1fr 110px;}.comp-output{display:none;}.how-grid::before{display:none;}}
+@media(max-width:640px){.prob-grid,.pgrid,.tgrid,.how-grid{grid-template-columns:1fr;}.comp-hdr{display:none;}.comp-row{grid-template-columns:1fr;gap:.25rem;}.comp-authority{font-size:.875rem;}.comp-output{display:none;}.hero-trust{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -130,6 +133,7 @@
 
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-wrap">
   <div class="hero-inner">
     <div>
       <div class="hero-badge anim-1"><i class="ti ti-map-pin"></i>Built for Zambia · PAYE · NAPSA · NHIMA</div>
@@ -141,15 +145,6 @@
         <button class="btn btn-outline-gold btn-lg" onclick="window.openTrialModal()" style="justify-content:center;gap:.5rem;"><i class="ti ti-clock"></i>Try free for 10 days</button>
       </div>
       <p class="hero-note anim-4"><i class="ti ti-circle-check"></i>Install free · License key to activate · 10-day trial available</p>
-      <div class="hero-trust-label anim-5">Everything included — no add-ons</div>
-      <div class="hero-trust anim-5">
-        <div class="hero-trust-item"><i class="ti ti-certificate"></i><span>ZRA PAYE compliant</span></div>
-        <div class="hero-trust-item"><i class="ti ti-shield-check"></i><span>NAPSA &amp; NHIMA built in</span></div>
-        <div class="hero-trust-item"><i class="ti ti-cloud-off"></i><span>Works fully offline</span></div>
-        <div class="hero-trust-item"><i class="ti ti-brand-windows"></i><span>Windows 10 &amp; 11</span></div>
-        <div class="hero-trust-item"><i class="ti ti-calculator"></i><span>Payroll &amp; payslips</span></div>
-        <div class="hero-trust-item"><i class="ti ti-users"></i><span>Employee management</span></div>
-      </div>
     </div>
     <div class="mockup-box anim-5">
       <div class="mockup-bar">
@@ -160,6 +155,18 @@
         <img src="assets/dashboard.png" alt="GlamifiedHR Dashboard" style="width:100%;height:auto;display:block;" fetchpriority="high"/>
       </div>
     </div>
+  </div>
+  <div class="hero-trust-strip anim-5">
+    <div class="hero-trust-label">Everything included — no add-ons</div>
+    <div class="hero-trust">
+      <div class="hero-trust-item"><i class="ti ti-certificate"></i><span>ZRA PAYE compliant</span></div>
+      <div class="hero-trust-item"><i class="ti ti-shield-check"></i><span>NAPSA &amp; NHIMA built in</span></div>
+      <div class="hero-trust-item"><i class="ti ti-cloud-off"></i><span>Works fully offline</span></div>
+      <div class="hero-trust-item"><i class="ti ti-brand-windows"></i><span>Windows 10 &amp; 11</span></div>
+      <div class="hero-trust-item"><i class="ti ti-calculator"></i><span>Payroll &amp; payslips</span></div>
+      <div class="hero-trust-item"><i class="ti ti-users"></i><span>Employee management</span></div>
+    </div>
+  </div>
   </div>
 </section>
 
@@ -172,9 +179,9 @@
     <p class="lead" style="max-width:540px;margin:0 auto;">Manual payroll isn't just slow — it exposes your business to ZRA penalties, NAPSA arrears, and costly errors every single month.</p>
   </div>
   <div class="prob-grid">
-    <div class="prob-card reveal"><span class="prob-num">01</span><h4>Formula errors every month</h4><p>One wrong cell reference and your PAYE calculation is wrong. You only find out when ZRA knocks.</p></div>
-    <div class="prob-card reveal"><span class="prob-num">02</span><h4>Statutory deadlines missed</h4><p>NAPSA by the 10th. NHIMA by the 10th. PAYE by the 14th. Managing this manually is exhausting and error-prone.</p></div>
-    <div class="prob-card reveal"><span class="prob-num">03</span><h4>No proper employment records</h4><p>When ZRA or NAPSA audits your business, scattered spreadsheets and paper files create serious compliance risk.</p></div>
+    <div class="prob-card reveal"><div class="prob-icon"><i class="ti ti-alert-triangle"></i></div><h4>Formula errors every month</h4><p>One wrong cell reference and your PAYE calculation is wrong. You only find out when ZRA knocks.</p></div>
+    <div class="prob-card reveal"><div class="prob-icon"><i class="ti ti-calendar-x"></i></div><h4>Statutory deadlines missed</h4><p>NAPSA by the 10th. NHIMA by the 10th. PAYE by the 14th. Managing this manually is exhausting and error-prone.</p></div>
+    <div class="prob-card reveal"><div class="prob-icon"><i class="ti ti-folder-x"></i></div><h4>No proper employment records</h4><p>When ZRA or NAPSA audits your business, scattered spreadsheets and paper files create serious compliance risk.</p></div>
   </div>
 </section>
 

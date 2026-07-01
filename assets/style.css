@@ -229,7 +229,10 @@ button { font-family: 'DM Sans', sans-serif; }
 }
 .page-hero::before { display: none; }
 .page-hero-grid { display: none; }
-.page-hero-content { position: relative; }
+.page-hero-content { position: relative; max-width: 900px; margin-left: auto; margin-right: auto; text-align: center; }
+.page-hero-content .breadcrumb { justify-content: center; }
+.page-hero-content .lead { margin-left: auto; margin-right: auto; }
+.page-hero-content > div[style*="flex"] { justify-content: center; }
 
 /* ── TESTIMONIAL ── */
 .testimonial-card {
