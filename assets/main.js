@@ -184,11 +184,11 @@
     <h3 style="font-size:1.3rem;margin-bottom:0.3rem;">Buy your license key</h3>
     <p id="modal-plan-label" class="modal-plan"></p>
     <div class="form-row">
-      <div class="form-group"><label>First name</label><input type="text" id="buy-name" placeholder="Chanda" /></div>
-      <div class="form-group"><label>Last name</label><input type="text" id="buy-lastname" placeholder="Banda" /></div>
+      <div class="form-group"><label>First name</label><input type="text" id="buy-name" placeholder="Chanda" maxlength="60" autocomplete="given-name" /></div>
+      <div class="form-group"><label>Last name</label><input type="text" id="buy-lastname" placeholder="Banda" maxlength="60" autocomplete="family-name" /></div>
     </div>
-    <div class="form-group"><label>Email address</label><input type="email" id="buy-email" placeholder="chanda@company.com" /></div>
-    <div class="form-group"><label>Phone (Airtel / MTN)</label><input type="tel" id="buy-phone" placeholder="097X XXX XXX" inputmode="numeric" /></div>
+    <div class="form-group"><label>Email address</label><input type="email" id="buy-email" placeholder="chanda@company.com" maxlength="254" autocomplete="email" /></div>
+    <div class="form-group"><label>Phone (Airtel / MTN)</label><input type="tel" id="buy-phone" placeholder="097X XXX XXX" inputmode="numeric" maxlength="20" autocomplete="tel" /></div>
     <div class="form-group">
       <label>Payment method</label>
       <select id="buy-method">
@@ -215,11 +215,11 @@
     <h3 style="font-size:1.3rem;margin-bottom:.3rem;">Try GlamifiedHR free</h3>
     <p class="modal-plan">10-day trial license — no payment required</p>
     <div class="form-row">
-      <div class="form-group"><label>First name</label><input type="text" id="trial-name" placeholder="Chanda" /></div>
-      <div class="form-group"><label>Last name</label><input type="text" id="trial-lastname" placeholder="Banda" /></div>
+      <div class="form-group"><label>First name</label><input type="text" id="trial-name" placeholder="Chanda" maxlength="60" autocomplete="given-name" /></div>
+      <div class="form-group"><label>Last name</label><input type="text" id="trial-lastname" placeholder="Banda" maxlength="60" autocomplete="family-name" /></div>
     </div>
-    <div class="form-group"><label>Email address</label><input type="email" id="trial-email" placeholder="chanda@company.com" /></div>
-    <div class="form-group"><label>Company / Business name</label><input type="text" id="trial-company" placeholder="Your business name" /></div>
+    <div class="form-group"><label>Email address</label><input type="email" id="trial-email" placeholder="chanda@company.com" maxlength="254" autocomplete="email" /></div>
+    <div class="form-group"><label>Company / Business name</label><input type="text" id="trial-company" placeholder="Your business name" maxlength="100" autocomplete="organization" /></div>
     <button type="button" class="form-submit" onclick="window.submitTrialRequest()">Send me my trial key →</button>
     <div id="trial-success" style="display:none;margin-top:1.25rem;padding:16px 18px;background:rgba(26,140,114,.15);border:1px solid rgba(26,140,114,.3);border-radius:10px;font-size:.9rem;color:var(--teal2);">
       ✓ Your 10-day trial key is on its way. Check your email — it should arrive within a minute.

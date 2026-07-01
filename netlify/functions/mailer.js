@@ -184,4 +184,77 @@ Glamified Systems Automated Sales Alert
   });
 }
 
+// ── security: input validation & sanitization ──
+function cleanLine(v, max) {
+  if (typeof v !== "string") return "";
+  let out = "";
+  for (let i = 0; i < v.length; i++) { const c = v.charCodeAt(i); out += (c < 32 || c === 127) ? " " : v[i]; }
+  return out.trim().slice(0, max);
+}
+function cleanText(v, max) {
+  if (typeof v !== "string") return "";
+  const s = v.replace(/\r\n?/g, "\n");
+  let out = "";
+  for (let i = 0; i < s.length; i++) { const c = s.charCodeAt(i); out += (c === 9 || c === 10 || (c >= 32 && c !== 127)) ? s[i] : ""; }
+  return out.trim().slice(0, max);
+}
+function validEmail(v) { return typeof v === "string" && v.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+
+const CORS = { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" };
+
+/**
+ * Contact form handler — endpoint: /api/mailer
+ * Validates and sanitizes submissions, then emails the admin.
+ */
+exports.handler = async (event) => {
+  if (event.httpMethod === "OPTIONS") return { statusCode: 200, headers: CORS, body: "" };
+  if (event.httpMethod !== "POST") return { statusCode: 405, headers: CORS, body: JSON.stringify({ error: "Method not allowed" }) };
+  if (!event.body || event.body.length > 20000) return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: "Invalid request" }) };
+
+  let body;
+  try { body = JSON.parse(event.body); }
+  catch { return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: "Invalid request body" }) }; }
+
+  const name     = cleanLine(body.name, 100);
+  const email    = cleanLine(body.email, 254);
+  const phone    = cleanLine(body.phone, 30);
+  const company  = cleanLine(body.company, 150);
+  const interest = cleanLine(body.interest, 80);
+  const message  = cleanText(body.message, 5000);
+
+  if (!name || !email || !message) {
+    return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: "Name, email, and message are required." }) };
+  }
+  if (!validEmail(email)) {
+    return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: "Please enter a valid email address." }) };
+  }
+
+  try {
+    const transporter = createTransporter();
+    await transporter.sendMail({
+      from: `"Glamified Systems Website" <${process.env.FROM_EMAIL || process.env.SMTP_USER}>`,
+      to: process.env.ADMIN_EMAIL || process.env.SMTP_USER,
+      replyTo: email,
+      subject: `[Website Contact] ${name}${interest ? " — " + interest : ""}`,
+      html: `<h2>New contact form submission</h2>
+        <ul>
+          <li><b>Name:</b> ${esc(name)}</li>
+          <li><b>Email:</b> ${esc(email)}</li>
+          <li><b>Phone:</b> ${esc(phone) || "&mdash;"}</li>
+          <li><b>Company:</b> ${esc(company) || "&mdash;"}</li>
+          <li><b>Interest:</b> ${esc(interest) || "&mdash;"}</li>
+        </ul>
+        <p><b>Message:</b></p>
+        <p style="white-space:pre-wrap;">${esc(message)}</p>`,
+      text: `New contact form submission\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "-"}\nCompany: ${company || "-"}\nInterest: ${interest || "-"}\n\nMessage:\n${message}`,
+    });
+  } catch (err) {
+    console.error("Contact email failed:", err.message);
+    return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: "Could not send your message. Please WhatsApp us at +260 977 669 883." }) };
+  }
+
+  return { statusCode: 200, headers: CORS, body: JSON.stringify({ success: true }) };
+};
+
 module.exports = { sendLicenseEmail, sendAdminNotification };

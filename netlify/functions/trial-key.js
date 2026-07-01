@@ -6,11 +6,24 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
+// ── security: input validation & sanitization ──
+function cleanLine(v, max) {
+  if (typeof v !== 'string') return '';
+  let out = '';
+  for (let i = 0; i < v.length; i++) { const c = v.charCodeAt(i); out += (c < 32 || c === 127) ? ' ' : v[i]; }
+  return out.trim().slice(0, max);
+}
+function validEmail(v) { return typeof v === 'string' && v.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function esc(v) { return String(v == null ? '' : v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
   }
 
+  if (!event.body || event.body.length > 20000) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request' }) };
+  }
   let body;
   try {
     body = JSON.parse(event.body);
@@ -18,10 +31,15 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request body' }) };
   }
 
-  const { name, email, company } = body;
+  const name    = cleanLine(body.name, 100);
+  const email   = cleanLine(body.email, 254).toLowerCase();
+  const company = cleanLine(body.company, 150);
 
   if (!name || !email) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Name and email are required' }) };
+  }
+  if (!validEmail(email)) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Please enter a valid email address' }) };
   }
 
   // Check this email hasn't already claimed a trial key
@@ -119,7 +137,7 @@ async function sendKeyEmail({ name, email, company, key, type }) {
           <img src="https://glamifiedsystems.com/assets/logo.png" height="44" alt="Glamified Systems" style="mix-blend-mode:lighten;"/>
         </div>
         <div style="background:#f9f7f3;padding:32px;border-radius:0 0 12px 12px;border:1px solid #e8e2d9;border-top:none;">
-          <p style="margin:0 0 8px;">Hi ${firstName},</p>
+          <p style="margin:0 0 8px;">Hi ${esc(firstName)},</p>
           <p style="color:#555;margin:0 0 24px;">Thank you for trying GlamifiedHR. Here is your license key:</p>
           <div style="background:#0F1E3C;border-radius:10px;padding:20px;text-align:center;margin-bottom:24px;">
             <div style="font-size:11px;color:#8A93A8;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;">Your License Key</div>

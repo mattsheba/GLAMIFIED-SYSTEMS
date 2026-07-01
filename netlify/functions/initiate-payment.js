@@ -20,6 +20,17 @@ const PLAN_PRICES = {
   "Full Suite":   3500,
 };
 
+const ALLOWED_METHODS = ["airtel", "mtn", "card"];
+
+// ── security: input validation & sanitization ──
+function cleanLine(v, max) {
+  if (typeof v !== "string") return "";
+  let out = "";
+  for (let i = 0; i < v.length; i++) { const c = v.charCodeAt(i); out += (c < 32 || c === 127) ? " " : v[i]; }
+  return out.trim().slice(0, max);
+}
+function validEmail(v) { return typeof v === "string" && v.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
 exports.handler = async (event) => {
   if (event.httpMethod === "OPTIONS") {
     return {
@@ -37,6 +48,9 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: "Method not allowed" };
   }
 
+  if (!event.body || event.body.length > 20000) {
+    return { statusCode: 400, body: JSON.stringify({ error: "Invalid request" }) };
+  }
   let body;
   try {
     body = JSON.parse(event.body);
@@ -44,14 +58,25 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: "Invalid JSON" };
   }
 
-  const { name, email, phone, plan, paymentMethod } = body;
+  // Validate & sanitize inputs
+  const name  = cleanLine(body.name, 100);
+  const email = cleanLine(body.email, 254);
+  const phone = cleanLine(body.phone, 30);
+  const plan  = cleanLine(body.plan, 60);
+  const methodRaw = cleanLine(body.paymentMethod, 20).toLowerCase();
+  const paymentMethod = ALLOWED_METHODS.includes(methodRaw) ? methodRaw : null;
 
-  // Validate inputs
   if (!name || !email || !phone || !plan) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: "Missing required fields: name, email, phone, plan" }),
     };
+  }
+  if (!validEmail(email)) {
+    return { statusCode: 400, body: JSON.stringify({ error: "Please enter a valid email address" }) };
+  }
+  if (!/^[0-9+()\-\s]{6,20}$/.test(phone)) {
+    return { statusCode: 400, body: JSON.stringify({ error: "Please enter a valid phone number" }) };
   }
 
   const amount = PLAN_PRICES[plan];
