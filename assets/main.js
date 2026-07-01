@@ -55,7 +55,7 @@
     return `
 <nav id="site-nav">
   <a href="index.html" class="nav-logo" style="font-size:2.1rem;font-weight:800;letter-spacing:-1px;display:flex;align-items:center;gap:10px;">
-    <img src="assets/logo.png" alt="GlamifiedSystems" style="height:52px;width:52px;mix-blend-mode:lighten;filter:brightness(2.8) saturate(1.2);" />
+    <img src="assets/logo.png" alt="GlamifiedSystems" style="height:52px;width:52px;mix-blend-mode:lighten;filter:brightness(1.7) saturate(1.05);" />
     <span class="nav-logo-text" style="font-size:2.1rem;font-weight:800;line-height:1;">
       <span style="color:#fff;">Glamified</span><span style="color:var(--gold2);">Systems</span>
     </span>
@@ -92,7 +92,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <div class="footer-brand-logo">
-        <img src="assets/logo.png" alt="Glamified Systems" style="mix-blend-mode:lighten;filter:brightness(2.8) saturate(1.2);" />
+        <img src="assets/logo.png" alt="Glamified Systems" style="mix-blend-mode:lighten;filter:brightness(1.7) saturate(1.05);" />
         <span>Glamified<em>Systems</em></span>
       </div>
       <p>Zambia's technology company. We build HR software, career platforms, and provide IT consulting and business solutions for Zambian organisations.</p>
