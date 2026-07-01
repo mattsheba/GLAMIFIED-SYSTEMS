@@ -31,11 +31,16 @@
 .hero-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 16px;border:1px solid rgba(201,162,39,0.4);border-radius:100px;font-size:0.75rem;font-weight:600;color:var(--gold2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.75rem;}
 .hero-badge::before{display:none;}
 .hero-badge .ti{font-size:.9rem;}
-.hero-actions{display:flex;flex-direction:column;gap:.6rem;margin-top:2.5rem;max-width:360px;}
-.hero-trust{display:grid;grid-template-columns:1fr 1fr;gap:.5rem .75rem;margin-top:2.5rem;max-width:360px;}
-.hero-trust-item{display:flex;align-items:center;gap:7px;font-size:.82rem;color:var(--muted);line-height:1.3;}
+.hero-actions{display:flex;flex-direction:column;gap:.7rem;margin-top:2.5rem;max-width:400px;}
+.hero-note{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--muted);margin-top:1rem;}
+.hero-note .ti{color:var(--teal2);font-size:1rem;}
+.hero-trust-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2.75rem;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;}
+.hero-trust-label::before{content:'';width:20px;height:2px;background:var(--gold2);border-radius:2px;}
+.hero-trust{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;max-width:560px;}
+.hero-trust-item{display:flex;align-items:center;gap:.75rem;padding:.75rem .9rem;background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:12px;font-size:.92rem;font-weight:500;color:var(--white2);line-height:1.25;transition:var(--transition);}
+.hero-trust-item:hover{border-color:rgba(34,197,94,0.4);background:rgba(34,197,94,0.06);transform:translateY(-2px);}
 .hero-trust-item::before{display:none;}
-.hero-trust-item .ti{color:var(--teal2);font-size:.95rem;flex-shrink:0;}
+.hero-trust-item .ti{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;flex-shrink:0;border-radius:9px;background:var(--teal-dim);border:1px solid rgba(34,197,94,0.22);color:var(--teal2);font-size:1.15rem;}
 .mockup-box{background:var(--navy3);border:1px solid var(--border2);border-radius:16px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(201,162,39,0.1);}
 .mockup-bar{background:var(--navy4);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
 .app-label{font-size:.73rem;color:var(--white);font-weight:600;display:flex;align-items:center;gap:6px;}
@@ -135,14 +140,15 @@
         <button class="btn btn-outline btn-lg" onclick="window.openPurchaseModal('GlamifiedHR',3000)" style="justify-content:center;gap:.5rem;"><i class="ti ti-key"></i>Buy License Key — K 3,000</button>
         <button class="btn btn-outline-gold btn-lg" onclick="window.openTrialModal()" style="justify-content:center;gap:.5rem;"><i class="ti ti-clock"></i>Try free for 10 days</button>
       </div>
-      <p class="anim-4" style="font-size:.8rem;color:var(--muted);margin-top:.85rem;">Install free · License key to activate · 10-day trial available</p>
+      <p class="hero-note anim-4"><i class="ti ti-circle-check"></i>Install free · License key to activate · 10-day trial available</p>
+      <div class="hero-trust-label anim-5">Everything included — no add-ons</div>
       <div class="hero-trust anim-5">
-        <div class="hero-trust-item"><i class="ti ti-certificate"></i>ZRA PAYE compliant</div>
-        <div class="hero-trust-item"><i class="ti ti-shield-check"></i>NAPSA &amp; NHIMA built in</div>
-        <div class="hero-trust-item"><i class="ti ti-cloud-off"></i>Works offline</div>
-        <div class="hero-trust-item"><i class="ti ti-brand-windows"></i>Windows 10 / 11</div>
-        <div class="hero-trust-item"><i class="ti ti-calculator"></i>Payroll &amp; payslip generation</div>
-        <div class="hero-trust-item"><i class="ti ti-users"></i>Employee management</div>
+        <div class="hero-trust-item"><i class="ti ti-certificate"></i><span>ZRA PAYE compliant</span></div>
+        <div class="hero-trust-item"><i class="ti ti-shield-check"></i><span>NAPSA &amp; NHIMA built in</span></div>
+        <div class="hero-trust-item"><i class="ti ti-cloud-off"></i><span>Works fully offline</span></div>
+        <div class="hero-trust-item"><i class="ti ti-brand-windows"></i><span>Windows 10 &amp; 11</span></div>
+        <div class="hero-trust-item"><i class="ti ti-calculator"></i><span>Payroll &amp; payslips</span></div>
+        <div class="hero-trust-item"><i class="ti ti-users"></i><span>Employee management</span></div>
       </div>
     </div>
     <div class="mockup-box anim-5">
