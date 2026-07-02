@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CBC Lesson Plan Generator — Glamified Systems</title>
+  <meta name="description" content="Free CBC lesson plan generator for Zambian teachers. Build complete, Ministry of Education-compliant lesson plans for the 2024 Competence Based Curriculum in minutes." />
+  <link rel="canonical" href="https://glamifiedsystems.com/teachers.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://glamifiedsystems.com/teachers.html"/>
+  <meta property="og:title" content="CBC Lesson Plan Generator — Glamified Systems"/>
+  <meta property="og:description" content="Free CBC lesson plan generator for Zambian teachers. Build Ministry of Education-compliant lesson plans in minutes."/>
+  <meta property="og:site_name" content="Glamified Systems"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+/* ── PAGE HERO ── */
+.teachers-hero {
+  min-height: 72vh;
+  display: flex; align-items: center;
+  padding: 120px 6% 80px;
+  background: var(--navy2);
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.teachers-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(201,162,39,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.teachers-hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center; width: 100%;
+  max-width: 1200px;
+}
+.hero-badge-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.hero-badge-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; border: 1px solid rgba(201,162,39,0.35);
+  border-radius: 100px; font-size: 0.7rem; font-weight: 700;
+  color: var(--gold2); letter-spacing: 0.1em; text-transform: uppercase;
+}
+.hero-badge-pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold2); }
+.hero-badge-free {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; border: 1px solid rgba(34,197,94,0.35);
+  border-radius: 100px; font-size: 0.7rem; font-weight: 700;
+  color: var(--teal2); letter-spacing: 0.1em; text-transform: uppercase;
+}
+.hero-badge-free::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal2); }
+.teachers-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.4rem,4.5vw,3.6rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.25rem; }
+.teachers-hero .hero-actions { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 2rem; max-width: 340px; }
+.hero-trust { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.75rem; }
+.hero-trust-item { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--muted); }
+.hero-trust-item::before { content: '✓'; color: var(--teal2); font-weight: 700; }
+
+/* Mock lesson plan preview in hero */
+.lp-mockup {
+  background: var(--navy3); border: 1px solid var(--border2);
+  border-radius: 16px; overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,162,39,0.1);
+}
+.lp-mockup-bar {
+  background: var(--navy4); padding: 10px 14px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.lm-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--border2); }
+.lp-mockup-body { padding: 1.25rem; }
+.lm-header { background: rgba(201,162,39,0.08); border: 1px solid rgba(201,162,39,0.15); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; }
+.lm-header-title { font-family: 'Space Grotesk',sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--gold2); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.lm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+.lm-field { font-size: 0.62rem; color: var(--muted); }
+.lm-field strong { color: var(--white); font-weight: 500; display: block; font-size: 0.65rem; }
+.lm-section { margin-bottom: 0.75rem; }
+.lm-section-label { font-size: 0.6rem; font-weight: 700; color: var(--gold2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.35rem; }
+.lm-table { width: 100%; border-collapse: collapse; border-radius: 6px; overflow: hidden; }
+.lm-table th { background: var(--navy4); font-size: 0.55rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+.lm-table td { font-size: 0.6rem; color: var(--muted); padding: 5px 8px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: top; }
+.lm-table tr:last-child td { border-bottom: none; }
+.lm-phase { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.55rem; font-weight: 700; }
+.lm-phase-intro { background: rgba(26,140,114,0.15); color: var(--teal2); }
+.lm-phase-dev { background: rgba(201,162,39,0.15); color: var(--gold2); }
+.lm-phase-conc { background: rgba(91,79,191,0.2); color: #9B8FE0; }
+
+/* ── FEATURE STRIP ── */
+.feature-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; padding: 64px 6%; background: var(--navy); }
+.fstrip-card { background: var(--navy2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.fstrip-icon { font-size: 1.8rem; }
+.fstrip-card h4 { font-family: 'DM Sans',sans-serif; font-size: 0.95rem; font-weight: 700; }
+.fstrip-card p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+/* ── GENERATOR SECTION ── */
+.generator-section { padding: 80px 6%; background: var(--navy2); border-top: 1px solid var(--border); }
+.generator-wrap { max-width: 860px; margin: 0 auto; }
+.gen-section-block {
+  background: var(--navy3); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 1.5rem;
+}
+.gen-section-block:last-child { margin-bottom: 0; }
+.gen-section-head {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;
+  padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+}
+.gen-section-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(201,162,39,0.12); border: 1px solid rgba(201,162,39,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; color: var(--gold2); flex-shrink: 0;
+}
+.gen-section-head h3 { font-family: 'DM Sans',sans-serif; font-size: 1rem; font-weight: 700; }
+.gen-section-head p { font-size: 0.8rem; color: var(--muted); margin-top: 1px; }
+
+/* Outcomes */
+.outcomes-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.outcome-row { display: flex; align-items: flex-start; gap: 0.5rem; }
+.outcome-num { width: 22px; height: 22px; border-radius: 50%; background: var(--navy4); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; color: var(--gold2); flex-shrink: 0; margin-top: 11px; }
+.outcome-row textarea { flex: 1; min-height: 60px; }
+.outcome-remove { margin-top: 11px; width: 28px; height: 28px; border-radius: 6px; background: rgba(196,80,53,0.12); border: 1px solid rgba(196,80,53,0.2); color: #E06848; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); flex-shrink: 0; }
+.outcome-remove:hover { background: rgba(196,80,53,0.25); }
+.add-outcome-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: transparent; border: 1px dashed rgba(201,162,39,0.3); border-radius: 8px; color: var(--gold2); font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: var(--transition); margin-top: 0.5rem; }
+.add-outcome-btn:hover { background: var(--gold-dim); border-style: solid; }
+
+/* Checkbox groups */
+.checkbox-group { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cb-pill { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; background: var(--navy4); border: 1px solid var(--border); border-radius: 100px; font-size: 0.78rem; font-weight: 500; cursor: pointer; transition: var(--transition); user-select: none; color: var(--muted); }
+.cb-pill input { display: none; }
+.cb-pill:has(input:checked) { background: rgba(201,162,39,0.12); border-color: rgba(201,162,39,0.4); color: var(--gold2); }
+.cb-pill-teal:has(input:checked) { background: var(--teal-dim); border-color: rgba(26,140,114,0.4); color: var(--teal2); }
+
+/* Phase blocks */
+.phase-block { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 1rem; }
+.phase-block:last-child { margin-bottom: 0; }
+.phase-header { padding: 0.75rem 1rem; display: flex; align-items: center; gap: 10px; }
+.phase-header-intro { background: rgba(26,140,114,0.08); border-bottom: 1px solid rgba(26,140,114,0.15); }
+.phase-header-dev { background: rgba(201,162,39,0.08); border-bottom: 1px solid rgba(201,162,39,0.15); }
+.phase-header-conc { background: rgba(91,79,191,0.08); border-bottom: 1px solid rgba(91,79,191,0.15); }
+.phase-tag { padding: 3px 10px; border-radius: 100px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.phase-tag-intro { background: rgba(26,140,114,0.15); color: var(--teal2); }
+.phase-tag-dev { background: rgba(201,162,39,0.15); color: var(--gold2); }
+.phase-tag-conc { background: rgba(91,79,191,0.2); color: #9B8FE0; }
+.phase-hint { font-size: 0.75rem; color: var(--muted); }
+.phase-body { padding: 1rem; display: grid; grid-template-columns: 100px 1fr 1fr 1fr; gap: 0.75rem; }
+.phase-body .form-group { margin-bottom: 0; }
+
+/* Reflection block */
+.reflection-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+
+/* Signature row */
+.sign-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.sign-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.sign-field label { font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.sign-field input { background: var(--navy4); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--white); font-family: 'DM Sans',sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; }
+.sign-field input:focus { border-color: rgba(201,162,39,0.5); }
+
+/* Generate button */
+.generate-btn-wrap { text-align: center; padding: 2.5rem 0 1rem; }
+
+/* ── PRINT OVERLAY ── */
+#lp-overlay {
+  display: none; position: fixed; inset: 0; z-index: 700;
+  background: rgba(0,0,0,0.82); backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  overflow-y: auto;
+  align-items: flex-start; justify-content: center;
+}
+#lp-overlay.open { display: flex; }
+.lp-overlay-inner {
+  background: #fff; border-radius: 12px;
+  width: 100%; max-width: 900px;
+  padding: 0; overflow: hidden;
+  position: relative; margin: auto;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+}
+.lp-overlay-toolbar {
+  background: var(--navy2); padding: 0.85rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+}
+.lp-overlay-toolbar span { font-size: 0.82rem; font-weight: 500; color: var(--muted); }
+.lp-toolbar-actions { display: flex; gap: 0.6rem; }
+#lp-print-area { padding: 0; }
+
+/* ── PRINT DOCUMENT STYLES ── */
+.lp-doc {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px; color: #000;
+  background: #fff; padding: 24px 28px;
+  line-height: 1.4;
+}
+.lp-doc-header { text-align: center; border: 2px solid #000; padding: 10px 12px; margin-bottom: 0; }
+.lp-doc-header h1 { font-size: 13px; font-weight: 700; text-transform: uppercase; margin: 0 0 2px; }
+.lp-doc-header h2 { font-size: 12px; font-weight: 700; text-transform: uppercase; margin: 0; letter-spacing: 0.5px; }
+.lp-main-table { width: 100%; border-collapse: collapse; border: 1px solid #000; }
+.lp-main-table td, .lp-main-table th { border: 1px solid #000; padding: 5px 7px; vertical-align: top; }
+.lp-cell-label { font-size: 9px; font-weight: 700; text-transform: uppercase; color: #555; display: block; margin-bottom: 2px; letter-spacing: 0.04em; }
+.lp-cell-value { font-size: 11px; color: #000; font-weight: 500; min-height: 14px; }
+.lp-section-row td { background: #f0f0f0; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 7px; }
+.lp-phase-row td { background: #f8f8f8; font-weight: 700; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; padding: 4px 7px; color: #333; }
+.lp-activity-cell { font-size: 10.5px; line-height: 1.5; white-space: pre-wrap; min-height: 50px; }
+.lp-outcomes-list { padding-left: 14px; margin: 0; }
+.lp-outcomes-list li { font-size: 10.5px; margin-bottom: 2px; }
+.lp-outcomes-intro { font-size: 10px; color: #333; margin-bottom: 4px; font-style: italic; }
+.lp-tag-row { display: flex; flex-wrap: wrap; gap: 4px; }
+.lp-tag { display: inline-block; padding: 2px 7px; background: #e8e8e8; border-radius: 3px; font-size: 10px; }
+.lp-sign-table { width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 0; }
+.lp-sign-table td { border: 1px solid #000; padding: 6px 8px; }
+.lp-sign-label { font-size: 10px; color: #555; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; display: block; }
+.lp-sign-line { border-top: 1px solid #000; margin-top: 14px; }
+.lp-doc-footer { text-align: right; font-size: 9px; color: #888; margin-top: 6px; }
+
+/* ── PRINT MEDIA ── */
+@media print {
+  #lp-overlay { display: block !important; position: static !important; background: none !important; backdrop-filter: none !important; padding: 0 !important; overflow: visible !important; }
+  .lp-overlay-toolbar { display: none !important; }
+  .lp-overlay-inner { box-shadow: none !important; border-radius: 0 !important; max-width: 100% !important; }
+  body > *:not(#lp-overlay) { display: none !important; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .teachers-hero-inner { grid-template-columns: 1fr; }
+  .lp-mockup { display: none; }
+  .phase-body { grid-template-columns: 90px 1fr 1fr; }
+  .phase-body .form-group:last-child { grid-column: span 3; }
+}
+@media (max-width: 900px) {
+  .feature-strip { grid-template-columns: 1fr; }
+  .reflection-grid { grid-template-columns: 1fr; }
+  .sign-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .phase-body { grid-template-columns: 1fr 1fr; }
+  .phase-body .form-group:first-child { grid-column: span 2; }
+  .phase-body .form-group:last-child { grid-column: span 2; }
+}
+@media (max-width: 540px) {
+  .phase-body { grid-template-columns: 1fr; }
+  .phase-body .form-group:first-child, .phase-body .form-group:last-child { grid-column: span 1; }
+}
+  </style>
+</head>
+<body>
+<div id="nav-container"></div>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="teachers-hero">
+  <div class="teachers-hero-inner">
+    <div>
+      <div class="hero-badge-row">
+        <span class="hero-badge-pill">Zambia CBC 2024</span>
+        <span class="hero-badge-free">Free Tool</span>
+      </div>
+      <h1>Build CBC Lesson<br>Plans in <span style="color:var(--gold2);">minutes.</span></h1>
+      <p class="lead" style="max-width:480px;margin-top:1rem;">
+        A free, fully-structured lesson plan generator built around Zambia's 2024
+        Competence Based Curriculum. Cover every required field — from Learning
+        Outcomes to Cross-Cutting Issues — and print a clean, MoE-aligned plan instantly.
+      </p>
+      <div class="hero-actions">
+        <a href="#generator" class="btn btn-gold btn-lg" style="justify-content:center;">Create a Lesson Plan — Free</a>
+        <a href="#how-it-works" class="btn btn-outline btn-lg" style="justify-content:center;">See how it works</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">Aligned to the 2024 CBC framework</div>
+        <div class="hero-trust-item">All MoE fields covered — no field missing</div>
+        <div class="hero-trust-item">Print or Save as PDF instantly</div>
+        <div class="hero-trust-item">Works for all grades and all subjects</div>
+        <div class="hero-trust-item">100% free — no account required</div>
+      </div>
+    </div>
+    <!-- Mock lesson plan visual -->
+    <div class="lp-mockup">
+      <div class="lp-mockup-bar">
+        <div class="lm-dot"></div><div class="lm-dot"></div><div class="lm-dot"></div>
+        <span style="font-size:.7rem;color:var(--muted);margin-left:6px;">CBC Lesson Plan — Mathematics Grade 8 · Term 2 Week 3</span>
+      </div>
+      <div class="lp-mockup-body">
+        <div class="lm-header">
+          <div class="lm-header-title">Republic of Zambia — CBC Lesson Plan</div>
+          <div class="lm-grid">
+            <div class="lm-field"><strong>Musi Secondary School</strong>Teacher: Mr. K. Banda</div>
+            <div class="lm-field"><strong>Grade 8 · Mathematics</strong>Term 2 · Week 3 · Lesson 1</div>
+            <div class="lm-field"><strong>Duration:</strong> 40 minutes</div>
+            <div class="lm-field"><strong>Learners:</strong> 45 · Date: 16 Jun 2025</div>
+          </div>
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-label">Competence &amp; Learning Outcomes</div>
+          <div class="lm-grid">
+            <div class="lm-field"><strong>Topic:</strong> Algebra</div>
+            <div class="lm-field"><strong>Sub-Topic:</strong> Solving Linear Equations</div>
+            <div class="lm-field" style="grid-column:span 2"><strong>Competence:</strong> Apply algebraic reasoning to solve real-world problems</div>
+          </div>
+        </div>
+        <div class="lm-section">
+          <div class="lm-section-label">Lesson Activities</div>
+          <table class="lm-table">
+            <thead>
+              <tr>
+                <th>Time</th><th>Phase</th><th>Teacher</th><th>Learner</th><th>Assessment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8 min</td>
+                <td><span class="lm-phase lm-phase-intro">Intro</span></td>
+                <td>Reviews previous lesson on expressions</td>
+                <td>Answer oral questions</td>
+                <td>Q&amp;A observation</td>
+              </tr>
+              <tr>
+                <td>25 min</td>
+                <td><span class="lm-phase lm-phase-dev">Dev</span></td>
+                <td>Demonstrates solving equations with examples</td>
+                <td>Solve problems in pairs</td>
+                <td>Peer checking</td>
+              </tr>
+              <tr>
+                <td>7 min</td>
+                <td><span class="lm-phase lm-phase-conc">Concl.</span></td>
+                <td>Summarises key steps; assigns homework</td>
+                <td>State key steps learnt</td>
+                <td>Exit summary</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="lm-section" style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:0;">
+          <span style="font-size:.6rem;color:var(--muted);">Values:</span>
+          <span class="lm-phase lm-phase-intro" style="font-size:.58rem;">Respect</span>
+          <span class="lm-phase lm-phase-intro" style="font-size:.58rem;">Responsibility</span>
+          <span style="font-size:.6rem;color:var(--muted);margin-left:.35rem;">CCIs:</span>
+          <span class="lm-phase lm-phase-dev" style="font-size:.58rem;">Financial Literacy</span>
+          <span class="lm-phase lm-phase-dev" style="font-size:.58rem;">Gender Equity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-gold" />
+
+<!-- ═══════════════════════════ HOW IT WORKS ══════════════════════════ -->
+<section class="section" id="how-it-works">
+  <div class="section-header section-header-center reveal">
+    <span class="tag">How it works</span>
+    <h2 class="section-title">Three steps to a complete CBC lesson plan</h2>
+    <p class="lead">No account, no download, no cost. Fill in the form and get a print-ready plan in minutes.</p>
+  </div>
+  <div class="feature-strip" style="padding:0;background:transparent;">
+    <div class="fstrip-card reveal">
+      <div class="fstrip-icon">📋</div>
+      <h4>1. Fill in the details</h4>
+      <p>Enter your school info, grade, subject, topic, competencies, learning outcomes, values, and cross-cutting issues. The form covers every field required by the MoE.</p>
+    </div>
+    <div class="fstrip-card reveal">
+      <div class="fstrip-icon">✏️</div>
+      <h4>2. Write your lesson activities</h4>
+      <p>Describe what you and your learners will do across the three phases — Introduction, Development, and Conclusion — with time allocations and assessment strategies.</p>
+    </div>
+    <div class="fstrip-card reveal">
+      <div class="fstrip-icon">🖨️</div>
+      <h4>3. Generate &amp; print</h4>
+      <p>Click "Generate Lesson Plan" to get a clean, formatted document. Print it directly or save it as a PDF — ready for your HOD and Head Teacher to sign.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider-gold" />
+
+<!-- ═══════════════════════════ GENERATOR ════════════════════════════ -->
+<section class="generator-section" id="generator">
+  <div class="generator-wrap">
+    <div class="section-header section-header-center reveal" style="margin-bottom:2.5rem;">
+      <span class="tag">CBC Lesson Plan Generator</span>
+      <h2 class="section-title">Create your lesson plan</h2>
+      <p class="lead">All fields below map directly to the official MoE CBC lesson plan format.</p>
+    </div>
+
+    <!-- ── SECTION A: LESSON IDENTIFICATION ── -->
+    <div class="gen-section-block reveal">
+      <div class="gen-section-head">
+        <div class="gen-section-num">A</div>
+        <div>
+          <h3>Lesson Identification</h3>
+          <p>Basic details that appear at the top of your lesson plan</p>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>School Name</label><input type="text" id="f-school" placeholder="e.g. Kabulonga Boys Secondary" /></div>
+        <div class="form-group"><label>Teacher's Full Name</label><input type="text" id="f-teacher" placeholder="e.g. Mr. K. Banda" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Grade / Form</label>
+          <select id="f-grade">
+            <option value="">Select grade or form</option>
+            <optgroup label="Primary School">
+              <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option>
+              <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option><option>Grade 7</option>
+            </optgroup>
+            <optgroup label="Junior Secondary">
+              <option>Grade 8</option><option>Grade 9</option>
+            </optgroup>
+            <optgroup label="Senior Secondary">
+              <option>Form 1</option><option>Form 2</option><option>Form 3</option>
+              <option>Form 4</option><option>Form 5</option><option>Form 6</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select id="f-subject">
+            <option value="">Select subject</option>
+            <optgroup label="Languages &amp; Literacy">
+              <option>Literacy in English</option><option>Literature in English</option>
+              <option>Literacy in Bemba</option><option>Literacy in Nyanja</option>
+              <option>Literacy in Tonga</option><option>Literacy in Lozi (Silozi)</option>
+              <option>Literacy in Kaonde</option><option>Literacy in Luvale</option>
+              <option>Literacy in Lunda</option><option>French</option>
+            </optgroup>
+            <optgroup label="Sciences &amp; Mathematics">
+              <option>Mathematics</option><option>Integrated Science</option>
+              <option>Biology</option><option>Chemistry</option><option>Physics</option>
+              <option>Environmental Science</option>
+            </optgroup>
+            <optgroup label="Social Sciences">
+              <option>Social Studies</option><option>History</option>
+              <option>Geography</option><option>Civic Education</option>
+              <option>Religious Education</option>
+            </optgroup>
+            <optgroup label="Technology &amp; Business">
+              <option>Information &amp; Communication Technology (ICT)</option>
+              <option>Commerce</option><option>Principles of Accounts</option>
+              <option>Business Studies</option>
+              <option>Creative and Technology Studies (CTS)</option>
+              <option>Fashion &amp; Fabrics</option>
+              <option>Food &amp; Nutrition</option>
+            </optgroup>
+            <optgroup label="Arts &amp; Physical Education">
+              <option>Creative Arts</option><option>Music</option>
+              <option>Physical Education</option><option>Visual Art &amp; Design</option>
+            </optgroup>
+            <optgroup label="Other">
+              <option>Other (specify in topic)</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;">
+        <div class="form-group"><label>Term</label><select id="f-term"><option value="">Term</option><option>Term 1</option><option>Term 2</option><option>Term 3</option></select></div>
+        <div class="form-group"><label>Week No.</label><input type="text" id="f-week" placeholder="e.g. 3" style="text-align:center;" /></div>
+        <div class="form-group"><label>Lesson No.</label><input type="text" id="f-lesson" placeholder="e.g. 1" style="text-align:center;" /></div>
+        <div class="form-group"><label>Duration</label><select id="f-duration"><option>30 minutes</option><option>35 minutes</option><option selected>40 minutes</option><option>45 minutes</option><option>60 minutes</option><option>70 minutes</option><option>80 minutes</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Date</label><input type="date" id="f-date" /></div>
+        <div class="form-group"><label>Number of Learners / Enrollment</label><input type="text" id="f-learners" placeholder="e.g. 45" /></div>
+      </div>
+    </div>
+
+    <!-- ── SECTION B: CURRICULUM ALIGNMENT ── -->
+    <div class="gen-section-block reveal">
+      <div class="gen-section-head">
+        <div class="gen-section-num">B</div>
+        <div>
+          <h3>Curriculum Alignment</h3>
+          <p>Links your lesson to the CBC syllabus — competencies, outcomes, values and cross-cutting issues</p>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Topic</label><input type="text" id="f-topic" placeholder="e.g. Algebra" /></div>
+        <div class="form-group"><label>Sub-Topic</label><input type="text" id="f-subtopic" placeholder="e.g. Solving Linear Equations" /></div>
+      </div>
+      <div class="form-group">
+        <label>Competence(s)</label>
+        <textarea id="f-competence" placeholder="State the competence(s) from the syllabus this lesson addresses, e.g. 'Apply algebraic reasoning to solve real-world problems'" style="min-height:70px;"></textarea>
+      </div>
+      <div class="form-group" style="margin-bottom:0.5rem;">
+        <label>Learning Outcomes <span style="text-transform:none;font-weight:400;color:var(--muted);font-size:0.72rem;"> — By the end of the lesson, learners should be able to...</span></label>
+        <div class="outcomes-list" id="outcomes-list">
+          <div class="outcome-row">
+            <div class="outcome-num">1</div>
+            <textarea class="outcome-input" placeholder="e.g. Solve linear equations with one unknown" style="background:var(--navy3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;width:100%;min-height:60px;resize:vertical;"></textarea>
+          </div>
+          <div class="outcome-row">
+            <div class="outcome-num">2</div>
+            <textarea class="outcome-input" placeholder="e.g. Apply equations to solve real-life problems" style="background:var(--navy3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;width:100%;min-height:60px;resize:vertical;"></textarea>
+          </div>
+        </div>
+        <button type="button" class="add-outcome-btn" onclick="addOutcome()">+ Add another outcome</button>
+      </div>
+      <div style="height:1rem;"></div>
+
+      <!-- Values -->
+      <div class="form-group">
+        <label>Values <span style="text-transform:none;font-weight:400;font-size:.72rem;color:var(--muted);"> — select all that apply</span></label>
+        <div class="checkbox-group" id="values-group">
+          <label class="cb-pill"><input type="checkbox" value="Honesty"> Honesty</label>
+          <label class="cb-pill"><input type="checkbox" value="Respect"> Respect</label>
+          <label class="cb-pill"><input type="checkbox" value="Responsibility"> Responsibility</label>
+          <label class="cb-pill"><input type="checkbox" value="Tolerance"> Tolerance</label>
+          <label class="cb-pill"><input type="checkbox" value="Patriotism"> Patriotism</label>
+          <label class="cb-pill"><input type="checkbox" value="Integrity"> Integrity</label>
+          <label class="cb-pill"><input type="checkbox" value="Compassion"> Compassion</label>
+          <label class="cb-pill"><input type="checkbox" value="Teamwork"> Teamwork</label>
+          <label class="cb-pill"><input type="checkbox" value="Diligence"> Diligence</label>
+          <label class="cb-pill"><input type="checkbox" value="Fairness"> Fairness</label>
+        </div>
+      </div>
+
+      <!-- Cross-Cutting Issues -->
+      <div class="form-group">
+        <label>Cross-Cutting Issues (CCIs) <span style="text-transform:none;font-weight:400;font-size:.72rem;color:var(--muted);"> — select all that apply</span></label>
+        <div class="checkbox-group" id="cci-group">
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="Gender Equity"> Gender Equity</label>
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="HIV/AIDS Education"> HIV/AIDS Education</label>
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="Environmental Education"> Environmental Education</label>
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="Financial Literacy"> Financial Literacy</label>
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="ICT Integration"> ICT Integration</label>
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="Inclusive Education"> Inclusive Education</label>
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="Drug &amp; Alcohol Abuse Prevention"> Drug Abuse Prevention</label>
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="Entrepreneurship"> Entrepreneurship</label>
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="Nutrition &amp; Health"> Nutrition &amp; Health</label>
+          <label class="cb-pill cb-pill-teal"><input type="checkbox" value="Child Protection"> Child Protection</label>
+        </div>
+      </div>
+
+      <!-- Key Skills -->
+      <div class="form-group">
+        <label>Key Skills <span style="text-transform:none;font-weight:400;font-size:.72rem;color:var(--muted);"> — select all that apply</span></label>
+        <div class="checkbox-group" id="skills-group">
+          <label class="cb-pill"><input type="checkbox" value="Critical Thinking"> Critical Thinking</label>
+          <label class="cb-pill"><input type="checkbox" value="Communication"> Communication</label>
+          <label class="cb-pill"><input type="checkbox" value="Collaboration"> Collaboration</label>
+          <label class="cb-pill"><input type="checkbox" value="Creativity"> Creativity</label>
+          <label class="cb-pill"><input type="checkbox" value="Problem Solving"> Problem Solving</label>
+          <label class="cb-pill"><input type="checkbox" value="Digital Literacy"> Digital Literacy</label>
+          <label class="cb-pill"><input type="checkbox" value="Numeracy"> Numeracy</label>
+          <label class="cb-pill"><input type="checkbox" value="Literacy"> Literacy</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group"><label>Teaching / Learning Materials (TLMs)</label><textarea id="f-materials" placeholder="e.g. Chalkboard, charts, textbooks, real objects, flashcards, coloured pencils" style="min-height:70px;"></textarea></div>
+        <div class="form-group"><label>Reference / Source</label><textarea id="f-reference" placeholder="e.g. Mathematics Syllabus Grade 8 p.14; Oxford Mathematics for Zambia Form 2 Ch.3" style="min-height:70px;"></textarea></div>
+      </div>
+    </div>
+
+    <!-- ── SECTION C: LESSON ACTIVITIES ── -->
+    <div class="gen-section-block reveal">
+      <div class="gen-section-head">
+        <div class="gen-section-num">C</div>
+        <div>
+          <h3>Lesson Activities</h3>
+          <p>Describe what happens in each phase — Teacher's Activity, Learner's Activity, and how you will assess</p>
+        </div>
+      </div>
+
+      <!-- INTRODUCTION -->
+      <div class="phase-block">
+        <div class="phase-header phase-header-intro">
+          <span class="phase-tag phase-tag-intro">Introduction</span>
+          <span class="phase-hint">Review previous lesson · Link to new topic · State outcomes to learners</span>
+        </div>
+        <div class="phase-body">
+          <div class="form-group"><label>Time</label><input type="text" id="ph-intro-time" placeholder="e.g. 8 min" /></div>
+          <div class="form-group"><label>Teacher's Activity</label><textarea id="ph-intro-teacher" placeholder="What you will do and say — including how you will review the previous lesson and introduce today's topic" style="min-height:90px;"></textarea></div>
+          <div class="form-group"><label>Learner's Activity</label><textarea id="ph-intro-learner" placeholder="What learners will do and say in response" style="min-height:90px;"></textarea></div>
+          <div class="form-group"><label>Assessment</label><textarea id="ph-intro-assess" placeholder="How you know learners are ready, e.g. Oral questioning, observation" style="min-height:90px;"></textarea></div>
+        </div>
+      </div>
+
+      <!-- DEVELOPMENT -->
+      <div class="phase-block">
+        <div class="phase-header phase-header-dev">
+          <span class="phase-tag phase-tag-dev">Development</span>
+          <span class="phase-hint">Main content · Learner-centred activities · Group/pair/individual work</span>
+        </div>
+        <div class="phase-body">
+          <div class="form-group"><label>Time</label><input type="text" id="ph-dev-time" placeholder="e.g. 25 min" /></div>
+          <div class="form-group"><label>Teacher's Activity</label><textarea id="ph-dev-teacher" placeholder="Step-by-step: how you present content, demonstrate, and guide learners through activities" style="min-height:120px;"></textarea></div>
+          <div class="form-group"><label>Learner's Activity</label><textarea id="ph-dev-learner" placeholder="What learners do — individual tasks, group discussions, experiments, problem-solving, presentations" style="min-height:120px;"></textarea></div>
+          <div class="form-group"><label>Assessment</label><textarea id="ph-dev-assess" placeholder="Formative assessment strategies, e.g. Peer marking, teacher circulating and checking, Q&amp;A" style="min-height:120px;"></textarea></div>
+        </div>
+      </div>
+
+      <!-- CONCLUSION -->
+      <div class="phase-block">
+        <div class="phase-header phase-header-conc">
+          <span class="phase-tag phase-tag-conc">Conclusion</span>
+          <span class="phase-hint">Summarise key points · Check understanding · Assign homework · Preview next lesson</span>
+        </div>
+        <div class="phase-body">
+          <div class="form-group"><label>Time</label><input type="text" id="ph-conc-time" placeholder="e.g. 7 min" /></div>
+          <div class="form-group"><label>Teacher's Activity</label><textarea id="ph-conc-teacher" placeholder="How you summarise, reinforce key points, assign homework, and preview the next lesson" style="min-height:90px;"></textarea></div>
+          <div class="form-group"><label>Learner's Activity</label><textarea id="ph-conc-learner" placeholder="How learners demonstrate understanding — summarising, answering closing questions, writing homework" style="min-height:90px;"></textarea></div>
+          <div class="form-group"><label>Assessment</label><textarea id="ph-conc-assess" placeholder="e.g. Exit questions, summary task, observation" style="min-height:90px;"></textarea></div>
+        </div>
+      </div>
+
+      <!-- HOMEWORK -->
+      <div class="form-group" style="margin-top:1rem;margin-bottom:0;">
+        <label>Homework Assignment</label>
+        <textarea id="f-homework" placeholder="Describe the homework or independent practice task set for learners (optional)" style="min-height:70px;"></textarea>
+      </div>
+    </div>
+
+    <!-- ── SECTION D: REFLECTION ── -->
+    <div class="gen-section-block reveal">
+      <div class="gen-section-head">
+        <div class="gen-section-num">D</div>
+        <div>
+          <h3>Teacher's Reflection</h3>
+          <p>Complete this section after delivering the lesson</p>
+        </div>
+      </div>
+      <div class="reflection-grid">
+        <div class="form-group" style="margin-bottom:0;"><label>What went well</label><textarea id="f-ref-good" placeholder="Aspects of the lesson that were successful" style="min-height:100px;"></textarea></div>
+        <div class="form-group" style="margin-bottom:0;"><label>What did not go well</label><textarea id="f-ref-bad" placeholder="Challenges encountered — content, timing, learner engagement" style="min-height:100px;"></textarea></div>
+        <div class="form-group" style="margin-bottom:0;"><label>Action for improvement</label><textarea id="f-ref-action" placeholder="What you will do differently in the next lesson" style="min-height:100px;"></textarea></div>
+      </div>
+    </div>
+
+    <!-- ── SECTION E: SIGN-OFF ── -->
+    <div class="gen-section-block reveal">
+      <div class="gen-section-head">
+        <div class="gen-section-num">E</div>
+        <div>
+          <h3>Sign-off</h3>
+          <p>For HOD and Head Teacher verification — signatures are added on the printed copy</p>
+        </div>
+      </div>
+      <div class="sign-grid">
+        <div class="sign-field"><label>Teacher's Name (for signature block)</label><input type="text" id="f-sign-teacher" placeholder="Full name" /></div>
+        <div class="sign-field"><label>HOD's Name (optional)</label><input type="text" id="f-sign-hod" placeholder="Head of Department name" /></div>
+        <div class="sign-field"><label>Head Teacher's Name (optional)</label><input type="text" id="f-sign-head" placeholder="Head Teacher name" /></div>
+      </div>
+    </div>
+
+    <!-- ── GENERATE BUTTON ── -->
+    <div class="generate-btn-wrap reveal">
+      <button class="btn btn-gold btn-lg" onclick="generateLessonPlan()" style="padding:18px 56px;font-size:1.1rem;">
+        Generate Lesson Plan →
+      </button>
+      <p style="font-size:0.8rem;color:var(--muted);margin-top:1rem;">
+        A formatted, print-ready CBC lesson plan will appear — then click Print or Save as PDF.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PRINT OVERLAY ═══════════════════ -->
+<div id="lp-overlay">
+  <div class="lp-overlay-inner">
+    <div class="lp-overlay-toolbar">
+      <span>Your CBC lesson plan is ready</span>
+      <div class="lp-toolbar-actions">
+        <button class="btn btn-teal btn-sm" onclick="window.print()">🖨️ Print / Save as PDF</button>
+        <button class="btn btn-outline btn-sm" onclick="closeLessonPlan()">✕ Close</button>
+      </div>
+    </div>
+    <div id="lp-print-area"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ CTA ════════════════════ -->
+<hr class="divider-gold" />
+<section class="cta-band reveal">
+  <span class="tag" style="justify-content:center;">Also from Glamified Systems</span>
+  <h2 class="section-title" style="max-width:560px;margin:0 auto 1rem;font-family:'Space Grotesk',sans-serif;">Zambia's tools for work, study and business</h2>
+  <p>From HR &amp; payroll software to CV builders and IT consulting — built in Zambia, for Zambia.</p>
+  <div class="cta-band-actions" style="margin-top:2rem;">
+    <a href="glamifiedhr.html" class="btn btn-gold btn-lg">GlamifiedHR — Payroll Software</a>
+    <a href="cvpro.html" class="btn btn-outline btn-lg">CVPro Zambia</a>
+    <a href="contact.html" class="btn btn-outline btn-lg">Talk to us</a>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+<script src="assets/main.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Outcome rows ── */
+  let outcomeCount = 2;
+
+  window.addOutcome = function () {
+    if (outcomeCount >= 6) return;
+    outcomeCount++;
+    const list = document.getElementById('outcomes-list');
+    const row = document.createElement('div');
+    row.className = 'outcome-row';
+    row.innerHTML = `
+      <div class="outcome-num">${outcomeCount}</div>
+      <textarea class="outcome-input" placeholder="Learning outcome ${outcomeCount}" style="background:var(--navy3);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;width:100%;min-height:60px;resize:vertical;"></textarea>
+      <button type="button" class="outcome-remove" onclick="removeOutcome(this)">×</button>`;
+    list.appendChild(row);
+    renumberOutcomes();
+  };
+
+  window.removeOutcome = function (btn) {
+    btn.closest('.outcome-row').remove();
+    renumberOutcomes();
+  };
+
+  function renumberOutcomes() {
+    document.querySelectorAll('#outcomes-list .outcome-num').forEach((el, i) => {
+      el.textContent = i + 1;
+    });
+    outcomeCount = document.querySelectorAll('#outcomes-list .outcome-row').length;
+  }
+
+  /* ── Collect checked values ── */
+  function getChecked(groupId) {
+    return Array.from(document.querySelectorAll('#' + groupId + ' input:checked')).map(i => i.value);
+  }
+
+  /* ── Format date ── */
+  function fmtDate(val) {
+    if (!val) return '';
+    const d = new Date(val + 'T00:00:00');
+    return d.toLocaleDateString('en-ZM', { day: '2-digit', month: 'long', year: 'numeric' });
+  }
+
+  /* ── Collect all outcomes ── */
+  function getOutcomes() {
+    return Array.from(document.querySelectorAll('#outcomes-list .outcome-input'))
+      .map(t => t.value.trim()).filter(Boolean);
+  }
+
+  /* ── Build the printable HTML ── */
+  window.generateLessonPlan = function () {
+    const v = {
+      school:      document.getElementById('f-school').value.trim(),
+      teacher:     document.getElementById('f-teacher').value.trim(),
+      grade:       document.getElementById('f-grade').value,
+      subject:     document.getElementById('f-subject').value,
+      term:        document.getElementById('f-term').value,
+      week:        document.getElementById('f-week').value.trim(),
+      lesson:      document.getElementById('f-lesson').value.trim(),
+      duration:    document.getElementById('f-duration').value,
+      date:        fmtDate(document.getElementById('f-date').value),
+      learners:    document.getElementById('f-learners').value.trim(),
+      topic:       document.getElementById('f-topic').value.trim(),
+      subtopic:    document.getElementById('f-subtopic').value.trim(),
+      competence:  document.getElementById('f-competence').value.trim(),
+      outcomes:    getOutcomes(),
+      values:      getChecked('values-group'),
+      ccis:        getChecked('cci-group'),
+      skills:      getChecked('skills-group'),
+      materials:   document.getElementById('f-materials').value.trim(),
+      reference:   document.getElementById('f-reference').value.trim(),
+      introTime:   document.getElementById('ph-intro-time').value.trim(),
+      introTeacher:document.getElementById('ph-intro-teacher').value.trim(),
+      introLearner:document.getElementById('ph-intro-learner').value.trim(),
+      introAssess: document.getElementById('ph-intro-assess').value.trim(),
+      devTime:     document.getElementById('ph-dev-time').value.trim(),
+      devTeacher:  document.getElementById('ph-dev-teacher').value.trim(),
+      devLearner:  document.getElementById('ph-dev-learner').value.trim(),
+      devAssess:   document.getElementById('ph-dev-assess').value.trim(),
+      concTime:    document.getElementById('ph-conc-time').value.trim(),
+      concTeacher: document.getElementById('ph-conc-teacher').value.trim(),
+      concLearner: document.getElementById('ph-conc-learner').value.trim(),
+      concAssess:  document.getElementById('ph-conc-assess').value.trim(),
+      homework:    document.getElementById('f-homework').value.trim(),
+      refGood:     document.getElementById('f-ref-good').value.trim(),
+      refBad:      document.getElementById('f-ref-bad').value.trim(),
+      refAction:   document.getElementById('f-ref-action').value.trim(),
+      signTeacher: document.getElementById('f-sign-teacher').value.trim(),
+      signHod:     document.getElementById('f-sign-hod').value.trim(),
+      signHead:    document.getElementById('f-sign-head').value.trim(),
+    };
+
+    if (!v.grade || !v.subject || !v.topic) {
+      alert('Please fill in at least Grade, Subject, and Topic before generating.');
+      return;
+    }
+
+    function tags(arr) {
+      if (!arr.length) return '<span style="color:#999;font-style:italic;">—</span>';
+      return '<div class="lp-tag-row">' + arr.map(t => `<span class="lp-tag">${t}</span>`).join('') + '</div>';
+    }
+
+    function outcomes(arr) {
+      if (!arr.length) return '<span style="color:#999;font-style:italic;">—</span>';
+      return '<p class="lp-outcomes-intro">By the end of the lesson, learners should be able to:</p>' +
+        '<ol class="lp-outcomes-list">' + arr.map(o => `<li>${o}</li>`).join('') + '</ol>';
+    }
+
+    function cell(label, val) {
+      return `<span class="lp-cell-label">${label}</span><div class="lp-cell-value">${val || '<span style="color:#bbb;">—</span>'}</div>`;
+    }
+
+    function actCell(val) {
+      return `<div class="lp-activity-cell">${(val || '').replace(/\n/g,'<br/>')}</div>`;
+    }
+
+    const html = `
+<div class="lp-doc">
+  <div class="lp-doc-header">
+    <h1>Republic of Zambia — Ministry of Education</h1>
+    <h2>Competence Based Curriculum — Lesson Plan</h2>
+  </div>
+
+  <table class="lp-main-table">
+    <!-- Identification -->
+    <tr>
+      <td style="width:50%;">${cell('School Name', v.school)}</td>
+      <td style="width:50%;">${cell("Teacher's Name", v.teacher)}</td>
+    </tr>
+    <tr>
+      <td>${cell('Grade / Form', v.grade)}</td>
+      <td>${cell('Subject', v.subject)}</td>
+    </tr>
+    <tr>
+      <td>${cell('Term', v.term)}</td>
+      <td>${cell('Week No.', v.week)}</td>
+    </tr>
+    <tr>
+      <td>${cell('Lesson No.', v.lesson)}</td>
+      <td>${cell('Duration', v.duration)}</td>
+    </tr>
+    <tr>
+      <td>${cell('Date', v.date)}</td>
+      <td>${cell('Number of Learners', v.learners)}</td>
+    </tr>
+
+    <!-- Section divider -->
+    <tr class="lp-section-row"><td colspan="2">B. Curriculum Alignment</td></tr>
+
+    <tr>
+      <td>${cell('Topic', v.topic)}</td>
+      <td>${cell('Sub-Topic', v.subtopic)}</td>
+    </tr>
+    <tr>
+      <td colspan="2">${cell('Competence(s)', v.competence)}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <span class="lp-cell-label">Learning Outcomes</span>
+        ${outcomes(v.outcomes)}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="lp-cell-label">Values</span>
+        ${tags(v.values)}
+      </td>
+      <td>
+        <span class="lp-cell-label">Cross-Cutting Issues (CCIs)</span>
+        ${tags(v.ccis)}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="lp-cell-label">Key Skills</span>
+        ${tags(v.skills)}
+      </td>
+      <td>${cell('Teaching / Learning Materials', v.materials)}</td>
+    </tr>
+    <tr>
+      <td colspan="2">${cell('Reference / Source', v.reference)}</td>
+    </tr>
+
+    <!-- Section divider -->
+    <tr class="lp-section-row"><td colspan="2">C. Lesson Activities</td></tr>
+
+    <!-- Activities header -->
+    <tr>
+      <th style="width:8%;">Time</th>
+      <th style="width:30%;">Teacher's Activity</th>
+      <th style="width:30%;">Learner's Activity</th>
+      <th style="width:32%;">Assessment</th>
+    </tr>
+
+    <!-- Introduction -->
+    <tr class="lp-phase-row"><td colspan="4">Phase 1: Introduction</td></tr>
+    <tr>
+      <td>${v.introTime || '—'}</td>
+      <td>${actCell(v.introTeacher)}</td>
+      <td>${actCell(v.introLearner)}</td>
+      <td>${actCell(v.introAssess)}</td>
+    </tr>
+
+    <!-- Development -->
+    <tr class="lp-phase-row"><td colspan="4">Phase 2: Development</td></tr>
+    <tr>
+      <td>${v.devTime || '—'}</td>
+      <td>${actCell(v.devTeacher)}</td>
+      <td>${actCell(v.devLearner)}</td>
+      <td>${actCell(v.devAssess)}</td>
+    </tr>
+
+    <!-- Conclusion -->
+    <tr class="lp-phase-row"><td colspan="4">Phase 3: Conclusion</td></tr>
+    <tr>
+      <td>${v.concTime || '—'}</td>
+      <td>${actCell(v.concTeacher)}</td>
+      <td>${actCell(v.concLearner)}</td>
+      <td>${actCell(v.concAssess)}</td>
+    </tr>
+
+    ${v.homework ? `
+    <tr class="lp-phase-row"><td colspan="4">Homework Assignment</td></tr>
+    <tr><td colspan="4"><div class="lp-activity-cell">${v.homework.replace(/\n/g,'<br/>')}</div></td></tr>
+    ` : ''}
+
+    <!-- Reflection -->
+    <tr class="lp-section-row"><td colspan="2">D. Teacher's Reflection (complete after lesson)</td></tr>
+    <tr>
+      <td colspan="2">
+        <span class="lp-cell-label">What went well</span>
+        <div class="lp-activity-cell" style="min-height:36px;">${(v.refGood || '').replace(/\n/g,'<br/>')}&nbsp;</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <span class="lp-cell-label">What did not go well / Challenges</span>
+        <div class="lp-activity-cell" style="min-height:36px;">${(v.refBad || '').replace(/\n/g,'<br/>')}&nbsp;</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <span class="lp-cell-label">Action for improvement / Way forward</span>
+        <div class="lp-activity-cell" style="min-height:36px;">${(v.refAction || '').replace(/\n/g,'<br/>')}&nbsp;</div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Sign-off -->
+  <table class="lp-sign-table" style="margin-top:0;">
+    <tr>
+      <td style="width:33%;">
+        <span class="lp-sign-label">Teacher's Signature</span>
+        <div style="font-size:11px;margin-bottom:4px;">${v.signTeacher || '&nbsp;'}</div>
+        <div class="lp-sign-line"></div>
+        <div style="font-size:9px;color:#888;margin-top:4px;">Date: ____________________</div>
+      </td>
+      <td style="width:33%;">
+        <span class="lp-sign-label">Head of Department (HOD)</span>
+        <div style="font-size:11px;margin-bottom:4px;">${v.signHod || '&nbsp;'}</div>
+        <div class="lp-sign-line"></div>
+        <div style="font-size:9px;color:#888;margin-top:4px;">Date: ____________________</div>
+      </td>
+      <td style="width:34%;">
+        <span class="lp-sign-label">Head Teacher</span>
+        <div style="font-size:11px;margin-bottom:4px;">${v.signHead || '&nbsp;'}</div>
+        <div class="lp-sign-line"></div>
+        <div style="font-size:9px;color:#888;margin-top:4px;">Date: ____________________</div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="lp-doc-footer">Generated by Glamified Systems CBC Lesson Plan Tool — glamifiedsystems.com</div>
+</div>`;
+
+    document.getElementById('lp-print-area').innerHTML = html;
+    document.getElementById('lp-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeLessonPlan = function () {
+    document.getElementById('lp-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  // Close overlay on background click
+  document.getElementById('lp-overlay').addEventListener('click', function (e) {
+    if (e.target === this) window.closeLessonPlan();
+  });
+
+})();
+</script>
+</body>
+</html>
