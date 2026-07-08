@@ -72,6 +72,39 @@ Host the GlamifiedHR installer files somewhere private.
 
 ---
 
+## Step 4b — Set up the download counter (one-time)
+
+The site shows a live download counter for GlamifiedHR, backed by Supabase.
+Run this once in **Supabase → SQL Editor**:
+
+```sql
+create table if not exists download_counts (
+  product    text primary key,
+  count      bigint not null default 0,
+  updated_at timestamptz not null default now()
+);
+
+create or replace function increment_download_count(p_product text)
+returns bigint
+language sql
+security definer
+as $$
+  insert into download_counts (product, count)
+  values (p_product, 1)
+  on conflict (product) do update
+    set count = download_counts.count + 1,
+        updated_at = now()
+  returning count;
+$$;
+```
+
+How it works:
+- Every click on a "Download GlamifiedHR" link fires `POST /api/download-count`, which increments the count atomically
+- The pages fetch `GET /api/download-count` and display the total next to the download buttons (hidden until the count is at least 1)
+- To set a starting number: `update download_counts set count = 250 where product = 'glamifiedhr';`
+
+---
+
 ## Step 5 — Configure Lenco webhook
 
 1. Log into your Lenco Dashboard

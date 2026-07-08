@@ -294,6 +294,40 @@
     els.forEach(el => obs.observe(el));
   }
 
+  /* ─── DOWNLOAD COUNTER ──────────────────────────────────── */
+  function initDownloadCounter() {
+    const links = document.querySelectorAll('a[href*="GlamifiedHR-Setup"]');
+    const displays = document.querySelectorAll('[data-download-count]');
+    if (!links.length && !displays.length) return;
+
+    // Record a download whenever an installer link is clicked.
+    // keepalive lets the request complete even though the download
+    // opens in a new tab / the user navigates away.
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        fetch('/api/download-count?product=glamifiedhr', {
+          method: 'POST',
+          keepalive: true
+        }).catch(() => {});
+      });
+    });
+
+    // Show the running total next to the download buttons
+    if (displays.length) {
+      fetch('/api/download-count?product=glamifiedhr')
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (!data || !data.count) return;
+          displays.forEach(el => {
+            el.textContent = Number(data.count).toLocaleString('en-ZM');
+            const wrap = el.closest('[data-download-count-wrap]');
+            if (wrap) wrap.style.display = '';
+          });
+        })
+        .catch(() => {});
+    }
+  }
+
   /* ─── FAQ ACCORDION ─────────────────────────────────────── */
   function initFaq() {
     document.querySelectorAll('.faq-q').forEach(q => {
@@ -626,9 +660,9 @@
 
   /* ─── INIT ──────────────────────────────────────────────── */
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => { init(); initScroll(); initReveal(); initFaq(); });
+    document.addEventListener('DOMContentLoaded', () => { init(); initScroll(); initReveal(); initFaq(); initDownloadCounter(); });
   } else {
-    init(); initScroll(); initReveal(); initFaq();
+    init(); initScroll(); initReveal(); initFaq(); initDownloadCounter();
   }
 
 })();
