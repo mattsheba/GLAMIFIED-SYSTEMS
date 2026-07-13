@@ -11,5 +11,8 @@
   },
   "devDependencies": {
     "netlify-cli": "^26.1.0"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
   }
 }
