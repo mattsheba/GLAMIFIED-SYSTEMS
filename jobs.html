@@ -9,7 +9,7 @@
 <meta property="og:url" content="https://glamifiedsystems.com/jobs.html"/>
 <meta property="og:title" content="Glamified Jobs — Find Work in Zambia | Post a Job"/>
 <meta property="og:description" content="Browse job listings across Zambia. Post a vacancy and find qualified candidates through Glamified Jobs, powered by CVPro Zambia."/>
-<meta property="og:image" content="https://glamifiedsystems.com/assets/og.png"/>
+<meta property="og:image" content="https://glamifiedsystems.com/assets/dashboard.png"/>
 <meta property="og:site_name" content="Glamified Systems"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Glamified Jobs — Find Work in Zambia | Post a Job"/>
@@ -49,7 +49,7 @@
   <div class="page-hero-content" style="text-align:center;max-width:700px;margin:0 auto;">
     <span class="tag anim-1" style="justify-content:center;">Glamified Jobs</span>
     <h1 class="display-2 anim-2" style="font-family:'Space Grotesk',sans-serif;">Find your next opportunity<br>or your next <span style="color:var(--gold2);">hire</span></h1>
-    <p class="lead anim-3">Zambia's HR ecosystem — connecting job seekers with employers, powered by CVPro Zambia and GlamifiedHR.</p>
+    <p class="lead anim-3">Connecting Zambian job seekers with employers, powered by CVPro Zambia and GlamifiedHR.</p>
     <div class="search-bar anim-4">
       <input type="text" id="search-input" placeholder="Job title, company, or keyword..." oninput="filterJobs()"/>
       <select id="location-filter" onchange="filterJobs()">
@@ -104,15 +104,15 @@
         </div>
         <div class="employer-step">
           <div class="estep-num">3</div>
-          <div><h4>Receive applications</h4><p>Candidates apply via your specified email address, your company URL, or through the built-in application form — your choice.</p></div>
+          <div><h4>Receive applications</h4><p>Candidates apply via your specified email address, your company URL, or through the built-in application form. Your choice.</p></div>
         </div>
         <div class="employer-step">
           <div class="estep-num">4</div>
           <div><h4>Hire &amp; onboard instantly</h4><p>Using GlamifiedHR? Import the hired candidate as an employee with one click.</p></div>
         </div>
         <div class="cvpro-promo" style="margin-top:1.5rem;">
-          <img src="assets/logo-hr.png" alt="CVPro Zambia" style="width:40px;height:40px;object-fit:contain;mix-blend-mode:lighten;"/>
-          <p style="font-size:.85rem;color:var(--muted);line-height:1.7;">All listings are powered by <strong style="color:var(--white);">CVPro Zambia</strong> — Zambia's dedicated career and talent platform.</p>
+          <img src="assets/logo-cvpro.png" alt="CVPro Zambia" style="width:40px;height:40px;object-fit:contain;mix-blend-mode:lighten;"/>
+          <p style="font-size:.85rem;color:var(--muted);line-height:1.7;">All listings are powered by <strong style="color:var(--white);">CVPro Zambia</strong>, Zambia's dedicated career and talent platform.</p>
           <a href="https://cvprozambia.com" target="_blank" class="btn btn-green btn-sm" style="margin-top:1rem;display:inline-flex;">Visit CVPro Zambia →</a>
         </div>
       </div>
@@ -120,7 +120,7 @@
         <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;margin-bottom:1.75rem;">Submit your vacancy</h3>
         <form id="post-job-form" onsubmit="submitJobPosting(event)">
           <div class="form-row">
-            <div class="form-group"><label>Company name *</label><input type="text" name="company_name" placeholder="Acme Ltd" required/></div>
+            <div class="form-group"><label>Company name *</label><input type="text" name="company_name" placeholder="Mwamba Trading Ltd" required/></div>
             <div class="form-group"><label>Your name</label><input type="text" name="employer_name" placeholder="HR Manager"/></div>
           </div>
           <div class="form-row">
@@ -150,7 +150,7 @@
 
           <div style="border:1px solid rgba(172,136,41,.25);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.25rem;background:rgba(172,136,41,.04);">
             <p style="font-size:.8rem;font-weight:700;color:var(--gold2);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.06em;">How should applicants apply? (optional)</p>
-            <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;">Leave blank to use the built-in application form. Or specify an email address or URL to direct applicants there instead — email is the most common in Zambia.</p>
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;">Leave blank to use the built-in application form. Or specify an email address or URL to direct applicants there instead. Email is the most common in Zambia.</p>
             <div class="form-group" style="margin-bottom:.85rem;">
               <label>Application email <span style="color:var(--muted);font-weight:400;">(applicants will email their CV here)</span></label>
               <input type="email" name="application_email" placeholder="e.g. recruitment@yourcompany.com"/>
@@ -172,7 +172,7 @@
 <div class="cta-band reveal">
   <span class="tag" style="justify-content:center;">Are you a job seeker?</span>
   <h2 style="font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;margin-bottom:1rem;">Build a professional CV. Get hired faster.</h2>
-  <p>Create a standout CV on CVPro Zambia — free for job seekers.</p>
+  <p>Create a standout CV on CVPro Zambia, free for job seekers.</p>
   <div class="cta-band-actions" style="margin-top:2rem;">
     <a href="https://cvprozambia.com" target="_blank" class="btn btn-gold btn-lg">Build your CV on CVPro →</a>
     <a href="cvpro.html" class="btn btn-outline btn-lg">Learn more about CVPro</a>
@@ -408,13 +408,13 @@ async function openJobModal(jobId) {
           ${job.application_email ? `<a href="mailto:${job.application_email}?subject=Application%20for%20${encodeURIComponent(job.title)}&body=Dear%20Hiring%20Manager%2C%0D%0A%0D%0AI%20am%20writing%20to%20apply%20for%20the%20${encodeURIComponent(job.title)}%20position%20at%20${encodeURIComponent(job.company_name)}.%0D%0A%0D%0APlease%20find%20my%20CV%20attached%20%2F%20linked%20below.%0D%0A%0D%0AKind%20regards%2C" class="btn btn-gold" style="display:flex;align-items:center;gap:.5rem;justify-content:center;text-decoration:none;font-weight:700;">📧 Send CV to: ${job.application_email}</a>` : ''}
           ${job.application_url ? `<a href="${job.application_url}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold" style="display:flex;align-items:center;gap:.5rem;justify-content:center;text-decoration:none;">🔗 Apply on Company Website →</a>` : ''}
         </div>
-        <p style="font-size:.75rem;color:var(--muted);margin-top:1rem;line-height:1.6;">💡 Don't have a CV yet? <a href="https://cvprozambia.com" target="_blank" style="color:var(--gold2);">Create a professional CV on CVPro Zambia</a> — free for job seekers.</p>
+        <p style="font-size:.75rem;color:var(--muted);margin-top:1rem;line-height:1.6;">💡 Don't have a CV yet? <a href="https://cvprozambia.com" target="_blank" style="color:var(--gold2);">Create a professional CV on CVPro Zambia</a>, free for job seekers.</p>
       </div>
       ` : `
       <form onsubmit="submitApplication(event,'${job.id}')" id="apply-form-${job.id}">
         <div class="form-row">
-          <div class="form-group"><label>Full name *</label><input type="text" name="full_name" placeholder="John Banda" required/></div>
-          <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="john@email.com" required/></div>
+          <div class="form-group"><label>Full name *</label><input type="text" name="full_name" placeholder="Chanda Mwamba" required/></div>
+          <div class="form-group"><label>Email *</label><input type="email" name="email" placeholder="chanda@email.com" required/></div>
         </div>
         <div class="form-group"><label>Phone number</label><input type="tel" name="phone" placeholder="097XXXXXXX"/></div>
         <div class="form-group">

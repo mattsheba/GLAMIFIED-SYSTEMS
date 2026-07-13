@@ -54,14 +54,14 @@
     };
     return `
 <nav id="site-nav">
-  <a href="index.html" class="nav-logo" style="font-size:2.1rem;font-weight:800;letter-spacing:-1px;display:flex;align-items:center;gap:10px;">
-    <img src="assets/logo.png" alt="GlamifiedSystems" style="height:52px;width:52px;mix-blend-mode:lighten;filter:brightness(1.7) saturate(1.05);" />
-    <span class="nav-logo-text" style="font-size:2.1rem;font-weight:800;line-height:1;">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo.png" alt="GlamifiedSystems" style="filter:brightness(1.7) saturate(1.05);" />
+    <span class="nav-logo-text">
       <span style="color:#fff;">Glamified</span><span style="color:var(--gold2);">Systems</span>
     </span>
   </a>
   <ul class="nav-links">
-    <li><a href="glamifiedhr.html" class="${active('glamifiedhr.html')} nav-main-product" style="font-size:1.13em;font-weight:800;color:var(--gold2);letter-spacing:-.5px;">GlamifiedHR</a></li>
+    <li><a href="glamifiedhr.html" class="${active('glamifiedhr.html')} nav-main-product">GlamifiedHR</a></li>
     <li><a href="jobs.html" class="${active('jobs.html')}">Jobs</a></li>
     <li><a href="cvpro.html" class="${active('cvpro.html')}">CVPro</a></li>
     <li><a href="consulting.html" class="${active('consulting.html')}">Consulting</a></li>
@@ -75,7 +75,7 @@
 </nav>
 <nav class="mobile-nav" id="mobile-nav">
   <a href="index.html" class="${active('index.html')}">Home</a>
-  <a href="glamifiedhr.html" class="${active('glamifiedhr.html')} nav-main-product" style="font-weight:800;color:var(--gold2);">GlamifiedHR</a>
+  <a href="glamifiedhr.html" class="${active('glamifiedhr.html')} nav-main-product">GlamifiedHR</a>
   <a href="jobs.html" class="${active('jobs.html')}">Jobs</a>
   <a href="cvpro.html" class="${active('cvpro.html')}">CVPro Zambia</a>
   <a href="consulting.html" class="${active('consulting.html')}">Consulting</a>
@@ -95,21 +95,7 @@
         <img src="assets/logo.png" alt="Glamified Systems" style="mix-blend-mode:lighten;filter:brightness(1.7) saturate(1.05);" />
         <span>Glamified<em>Systems</em></span>
       </div>
-      <p>Zambia's technology company. We build HR software, career platforms, and provide IT consulting and business solutions for Zambian organisations.</p>
-      <div class="footer-products">
-        <a href="glamifiedhr.html" class="footer-product-tag">
-          <img src="assets/logo-cv.png" alt="GlamifiedHR" />
-          <span>GlamifiedHR</span>
-        </a>
-        <a href="cvpro.html" class="footer-product-tag">
-          <img src="assets/logo-hr.png" alt="CVPro Zambia" />
-          <span>CVPro Zambia</span>
-        </a>
-        <a href="jobs.html" class="footer-product-tag">
-          <i class="ti ti-briefcase" style="font-size:1.2rem;color:var(--gold2);"></i>
-          <span>Glamified Jobs</span>
-        </a>
-      </div>
+      <p>Zambia's technology company. HR software, career platforms, and IT consulting for Zambian organisations.</p>
     </div>
     <div class="footer-col">
       <h5>GlamifiedHR</h5>
@@ -117,37 +103,24 @@
         <li><a href="glamifiedhr.html#features">Features</a></li>
         <li><a href="glamifiedhr.html#pricing">Pricing</a></li>
         <li><a href="glamifiedhr.html#download">Download</a></li>
-        <li><a href="glamifiedhr.html#compliance">Compliance</a></li>
-        <li><a href="contact.html">Request demo</a></li>
+        <li><a href="contact.html">Request a demo</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h5>Platform</h5>
+      <h5>Careers</h5>
       <ul>
         <li><a href="jobs.html">Job listings</a></li>
         <li><a href="jobs.html#post">Post a job</a></li>
-        <li><a href="https://cvprozambia.com/" target="_blank">Generate Cover Letter</a></li>
-        <li><a href="https://cvprozambia.com" target="_blank">Build your CV</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h5>Consulting</h5>
-      <ul>
-        <li><a href="consulting.html#it">IT Services</a></li>
-        <li><a href="consulting.html#business">Business Consulting</a></li>
-        <li><a href="consulting.html#company-registration">Company Registration</a></li>
-        <li><a href="consulting.html#business-documents">Business Documents</a></li>
-        <li><a href="consulting.html#hr-advisory">HR Advisory</a></li>
-        <li><a href="consulting.html#digital">Digital Presence</a></li>
+        <li><a href="https://cvprozambia.com" target="_blank" rel="noopener">Build your CV</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Company</h5>
       <ul>
         <li><a href="about.html">About us</a></li>
+        <li><a href="consulting.html">Consulting</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="https://wa.me/${PHONE}" target="_blank">WhatsApp us</a></li>
-        <li><a href="contact.html#quote">Get a quote</a></li>
+        <li><a href="https://wa.me/${PHONE}" target="_blank" rel="noopener">WhatsApp us</a></li>
       </ul>
     </div>
   </div>
@@ -213,7 +186,7 @@
   <div class="modal-box">
     <button type="button" class="modal-close" onclick="window.closeTrialModal()">×</button>
     <h3 style="font-size:1.3rem;margin-bottom:.3rem;">Try GlamifiedHR free</h3>
-    <p class="modal-plan">10-day trial license — no payment required</p>
+    <p class="modal-plan">10-day trial license · no payment required</p>
     <div class="form-row">
       <div class="form-group"><label>First name</label><input type="text" id="trial-name" placeholder="Chanda" maxlength="60" autocomplete="given-name" /></div>
       <div class="form-group"><label>Last name</label><input type="text" id="trial-lastname" placeholder="Banda" maxlength="60" autocomplete="family-name" /></div>
@@ -295,6 +268,17 @@
   }
 
   /* ─── DOWNLOAD COUNTER ──────────────────────────────────── */
+  const DL_COUNT_CACHE_KEY = 'glam-dl-count';
+
+  function showDownloadCount(count) {
+    if (!count) return;
+    document.querySelectorAll('[data-download-count]').forEach(el => {
+      el.textContent = Number(count).toLocaleString('en-ZM');
+      const wrap = el.closest('[data-download-count-wrap]');
+      if (wrap) wrap.style.display = '';
+    });
+  }
+
   function initDownloadCounter() {
     const links = document.querySelectorAll('a[href*="GlamifiedHR-Setup"]');
     const displays = document.querySelectorAll('[data-download-count]');
@@ -303,8 +287,14 @@
     // Record a download whenever an installer link is clicked.
     // keepalive lets the request complete even though the download
     // opens in a new tab / the user navigates away.
+    // Optimistically bump the visible total so the click registers instantly.
     links.forEach(link => {
       link.addEventListener('click', () => {
+        const current = parseInt(localStorage.getItem(DL_COUNT_CACHE_KEY) || '0', 10);
+        if (current) {
+          try { localStorage.setItem(DL_COUNT_CACHE_KEY, String(current + 1)); } catch {}
+          showDownloadCount(current + 1);
+        }
         fetch('/api/download-count?product=glamifiedhr', {
           method: 'POST',
           keepalive: true
@@ -312,20 +302,18 @@
       });
     });
 
-    // Show the running total next to the download buttons
-    if (displays.length) {
-      fetch('/api/download-count?product=glamifiedhr')
-        .then(res => res.ok ? res.json() : null)
-        .then(data => {
-          if (!data || !data.count) return;
-          displays.forEach(el => {
-            el.textContent = Number(data.count).toLocaleString('en-ZM');
-            const wrap = el.closest('[data-download-count-wrap]');
-            if (wrap) wrap.style.display = '';
-          });
-        })
-        .catch(() => {});
-    }
+    if (!displays.length) return;
+
+    // Show the last-known total immediately, then refresh from the API
+    showDownloadCount(parseInt(localStorage.getItem(DL_COUNT_CACHE_KEY) || '0', 10));
+    fetch('/api/download-count?product=glamifiedhr')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (!data || !data.count) return;
+        try { localStorage.setItem(DL_COUNT_CACHE_KEY, String(data.count)); } catch {}
+        showDownloadCount(data.count);
+      })
+      .catch(() => {});
   }
 
   /* ─── FAQ ACCORDION ─────────────────────────────────────── */
@@ -370,7 +358,7 @@
   window.openPurchaseModal = function (plan, amount) {
     // If a payment is already in flight, don't allow re-opening
     if (_paymentInFlight) return;
-    document.getElementById('modal-plan-label').textContent = plan + ' License Key — K ' + Number(amount).toLocaleString('en-ZM') + ' (one-time, delivered by email)';
+    document.getElementById('modal-plan-label').textContent = plan + ' License Key · K ' + Number(amount).toLocaleString('en-ZM') + ' (one-time, delivered by email)';
     document.getElementById('purchase-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
     // Store for submit
