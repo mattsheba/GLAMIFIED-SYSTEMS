@@ -10,7 +10,7 @@
     "nodemailer": "^9.0.3"
   },
   "devDependencies": {
-    "netlify-cli": "^26.1.0"
+    "netlify-cli": "^27.0.1"
   },
   "overrides": {
     "esbuild": "^0.28.1"
