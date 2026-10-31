@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track your order — iVogue Lusaka</title>
+<meta name="description" content="Track an iVogue Lusaka order with your reference and mobile number.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav-root"></div>
+
+<main>
+  <section class="section-tight" style="padding-top:2.5rem">
+    <div class="wrap-narrow">
+      <div class="steps"><span>1. Basket</span><i>→</i><span>2. Details</span><i>→</i><b>3. Payment</b></div>
+      <h1 class="display-2" id="page-title">Your order</h1>
+    </div>
+  </section>
+
+  <section style="padding-top:1.5rem">
+    <div class="wrap-narrow" id="root">
+      <div class="skeleton" style="height:260px"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer-root"></footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/zm.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  const IV = window.IV, ZM = window.ZM;
+  const { esc, money, qs, waLink, cfg } = IV;
+  const root = document.getElementById('root');
+
+  const STAGES = [
+    { id: 'pending',   label: 'Payment prompt sent',   note: 'Approve the prompt on your phone with your mobile money PIN.' },
+    { id: 'paid',      label: 'Paid',                  note: 'Payment confirmed. We are packing it now.' },
+    { id: 'preparing', label: 'Being prepared',        note: 'Unboxed, IMEI logged, screen protector fitted.' },
+    { id: 'dispatched',label: 'On the way / ready',    note: 'With the rider, or waiting at the counter for you.' },
+    { id: 'completed', label: 'Delivered',             note: 'Enjoy it. Your warranty starts today.' },
+  ];
+
+  let stored = {};
+  try { stored = JSON.parse(sessionStorage.getItem('ivogue.lastOrder') || '{}'); } catch {}
+
+  const reference = (qs('ref') || stored.reference || '').toUpperCase();
+  let phone = stored.phone || '';
+  let pollTimer = null, polls = 0;
+
+  function lookupForm(message, kind) {
+    root.innerHTML = `
+      ${message ? `<div class="notice notice-${kind || 'warn'}" style="margin-bottom:1.2rem">${esc(message)}</div>` : ''}
+      <div class="panel">
+        <h2 class="h3">Find an order</h2>
+        <p class="small muted" style="margin-top:.4rem">Use the reference from your confirmation (it looks like IVG-261031-AB7K) and the mobile number on the order.</p>
+        <form id="lookup" class="stack" style="margin-top:1.2rem">
+          <div class="field"><label for="ref">Order reference</label>
+            <input class="input" id="ref" value="${esc(reference)}" placeholder="IVG-261031-AB7K" autocomplete="off"></div>
+          <div class="field"><label for="ph">Mobile number on the order</label>
+            <input class="input" id="ph" type="tel" inputmode="tel" value="${esc(phone ? ZM.formatMsisdn(phone) : '')}" placeholder="0977 123 456"></div>
+          <span class="err" id="lk-err" hidden></span>
+          <button class="btn btn-primary" type="submit">Track it</button>
+        </form>
+        <p class="small muted" style="margin-top:1.2rem">Stuck? <a class="link-underline" href="${waLink('Hi iVogue, I need help with my order ')}" target="_blank" rel="noopener">Message us on WhatsApp</a> and we will check it by hand.</p>
+      </div>`;
+    document.getElementById('lookup').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const ref = document.getElementById('ref').value.trim().toUpperCase();
+      const ph = ZM.normalizeMsisdn(document.getElementById('ph').value);
+      const err = document.getElementById('lk-err');
+      if (!/^IVG-\d{6}-[A-Z0-9]{4}$/.test(ref) || !ph) {
+        err.textContent = 'Check the reference and the mobile number.';
+        err.hidden = false;
+        return;
+      }
+      phone = ph;
+      try { sessionStorage.setItem('ivogue.lastOrder', JSON.stringify({ reference: ref, phone: ph })); } catch {}
+      location.href = `order.html?ref=${encodeURIComponent(ref)}`;
+    });
+  }
+
+  function timeline(status) {
+    const current = Math.max(0, STAGES.findIndex((s) => s.id === status));
+    return `<div class="stack" style="margin-top:1.2rem">
+      ${STAGES.map((s, i) => {
+        const done = i < current, now = i === current;
+        return `<div class="row" style="gap:.9rem;align-items:flex-start;opacity:${i <= current ? 1 : 0.4}">
+          <span style="width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:2px;display:grid;place-items:center;
+                       background:${done ? 'var(--ok)' : now ? 'var(--clay)' : 'transparent'};
+                       border:1px solid ${i <= current ? 'transparent' : 'var(--line)'};color:#fff;font-size:.7rem">${done ? '✓' : now ? '•' : ''}</span>
+          <span><b class="small">${esc(s.label)}</b><br><span class="xs muted">${esc(s.note)}</span></span>
+        </div>`;
+      }).join('')}
+    </div>`;
+  }
+
+  function renderOrder(order) {
+    const failed = order.status === 'failed' || order.status === 'cancelled';
+    const collecting = order.zone && order.zone.id === 'collect';
+    document.getElementById('page-title').textContent = failed ? 'Payment did not go through' : 'Order ' + order.reference;
+
+    root.innerHTML = `
+      <div class="panel">
+        <div class="spread">
+          <div>
+            <div class="eyebrow">${esc(order.reference)}</div>
+            <h2 class="h2" style="margin-top:.5rem">${failed ? 'We could not take the payment' : order.status === 'pending' ? 'Waiting for your approval' : 'Thank you — we have it'}</h2>
+          </div>
+          <span class="badge ${failed ? 'badge-sale' : order.status === 'pending' ? 'badge-warn' : 'badge-ok'}">${esc(order.statusLabel || order.status)}</span>
+        </div>
+
+        ${order.status === 'pending' && order.payment.method === 'momo' ? `
+          <div class="notice notice-warn" style="margin-top:1.2rem">
+            Check ${esc(ZM.formatMsisdn(order.payment.momoNumber || order.customer.phone))} for the ${esc(order.payment.operatorName || 'mobile money')} prompt and approve it with your PIN.
+            This page updates by itself.
+          </div>` : ''}
+
+        ${order.status === 'pending' && order.payment.method === 'cash' ? `
+          <div class="notice notice-ok" style="margin-top:1.2rem">
+            Reserved. We hold your items at the counter for 24 hours — pay when you collect.
+          </div>` : ''}
+
+        ${failed ? `
+          <div class="notice notice-err" style="margin-top:1.2rem">
+            No money has left your account. Try again, or send us the reference on WhatsApp and we will take it manually.
+          </div>
+          <div class="row" style="margin-top:1rem">
+            <a class="btn btn-primary" href="checkout.html">Try the payment again</a>
+            <a class="btn btn-wa" target="_blank" rel="noopener" href="${waLink('Hi iVogue, my payment for ' + order.reference + ' failed.')}">WhatsApp us</a>
+          </div>` : timeline(order.status)}
+      </div>
+
+      <div class="panel">
+        <h2 class="h3">What you ordered</h2>
+        ${order.items.map((l) => `
+          <div class="line">
+            <div class="line-media"><img src="${esc(l.art)}" alt=""></div>
+            <div class="line-main spread" style="align-items:flex-start">
+              <span class="small"><b>${esc(l.name)}</b><br><span class="muted">${esc(l.optionLabel)} · ${esc(l.colorName)} · ×${l.qty}</span></span>
+              <b class="small">${money(l.lineTotal)}</b>
+            </div>
+          </div>`).join('')}
+        <div class="totals">
+          <div><span>Subtotal</span><span>${money(order.subtotal)}</span></div>
+          ${order.discount ? `<div style="color:var(--ok)"><span>Discount</span><span>−${money(order.discount)}</span></div>` : ''}
+          <div><span>${collecting ? 'Collection' : 'Delivery'}</span><span>${order.delivery ? money(order.delivery) : 'Free'}</span></div>
+          <div class="grand"><span>${order.status === 'pending' ? 'To pay' : 'Paid'}</span><span>${money(order.total)}</span></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 class="h3">${collecting ? 'Collecting it' : 'Delivery'}</h2>
+        <p class="small" style="margin-top:.6rem">
+          ${collecting
+            ? `${esc(cfg.store.addressLines.join(', '))}<br>Bring your NRC or this reference. ${esc(order.zone ? order.zone.eta : '')}`
+            : `${esc(order.customer.address || '')}${order.customer.landmark ? '<br>Near ' + esc(order.customer.landmark) : ''}<br>${esc(order.zone ? order.zone.eta : '')}`}
+        </p>
+        <p class="small muted" style="margin-top:.8rem">We call ${esc(ZM.formatMsisdn(order.customer.phone))} before the rider leaves.</p>
+        <div class="row" style="margin-top:1rem">
+          <a class="btn btn-wa btn-sm" target="_blank" rel="noopener" href="${waLink('Hi iVogue, about order ' + order.reference + ': ')}">Message us about this order</a>
+          <button class="btn btn-ghost btn-sm no-print" onclick="window.print()">Print</button>
+        </div>
+      </div>`;
+  }
+
+  async function poll() {
+    try {
+      const res = await fetch(`/api/order-status?ref=${encodeURIComponent(reference)}&phone=${encodeURIComponent(phone)}`);
+      if (res.status === 404) { lookupForm('We could not find that order. Check the reference and the number.'); return; }
+      if (!res.ok) throw new Error('lookup failed');
+      const order = await res.json();
+      renderOrder(order);
+      if (order.status === 'pending' && polls < 36) {
+        polls++;
+        pollTimer = setTimeout(poll, 5000);
+      }
+    } catch {
+      clearTimeout(pollTimer);
+      lookupForm('We could not reach the order service just now. Try again in a moment, or message us on WhatsApp.', 'err');
+    }
+  }
+
+  if (reference && phone) poll();
+  else lookupForm(reference ? 'Confirm the mobile number on this order.' : '');
+})();
+</script>
+</body>
+</html>

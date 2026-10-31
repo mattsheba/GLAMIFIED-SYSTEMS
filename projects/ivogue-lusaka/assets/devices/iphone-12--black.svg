@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="iPhone 12 in Black">
+  <title>iPhone 12 — Black</title>
+  <defs>
+    <linearGradient id="body-iphone-12-black" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#575759"/>
+      <stop offset="45%" stop-color="#28282A"/>
+      <stop offset="100%" stop-color="#1f1f21"/>
+    </linearGradient>
+    <linearGradient id="frame-iphone-12-black" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#69696a"/>
+      <stop offset="50%" stop-color="#28282A"/>
+      <stop offset="100%" stop-color="#1c1c1d"/>
+    </linearGradient>
+    <linearGradient id="wall-iphone-12-black" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#121213"/>
+      <stop offset="55%" stop-color="#606061"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-iphone-12-black" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-iphone-12-black" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-iphone-12-black" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="776" rx="306.6" ry="34" fill="url(#floor-iphone-12-black)"/>
+  <g transform="translate(78 184)">
+    <rect x="0" y="0" width="292" height="596" rx="45" fill="url(#body-iphone-12-black)" stroke="#1c1c1d" stroke-width="2"/>
+    <rect x="6" y="6" width="280" height="584" rx="39" fill="none" stroke="#737375" stroke-width="1.2" opacity="0.55"/>
+    <path d="M45 6 H247 A39 39 0 0 1 286 45" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.35"/>
+    <rect x="23.599999999999994" y="22.419999999999987" width="128" height="128" rx="40" fill="#373739" stroke="#1e1e20" stroke-width="1.5"/>
+    <circle cx="63.599999999999994" cy="62.41999999999999" r="27" fill="#4f4f50" opacity="0.9"/>
+    <circle cx="63.599999999999994" cy="62.41999999999999" r="24" fill="#0b0b0c"/>
+    <circle cx="63.599999999999994" cy="62.41999999999999" r="19" fill="url(#lens-iphone-12-black)"/>
+    <circle cx="56.849999999999994" cy="55.66999999999999" r="4.5" fill="#ffffff" opacity="0.5"/>
+    <circle cx="111.6" cy="110.41999999999999" r="27" fill="#4f4f50" opacity="0.9"/>
+    <circle cx="111.6" cy="110.41999999999999" r="24" fill="#0b0b0c"/>
+    <circle cx="111.6" cy="110.41999999999999" r="19" fill="url(#lens-iphone-12-black)"/>
+    <circle cx="104.85" cy="103.66999999999999" r="4.5" fill="#ffffff" opacity="0.5"/><circle cx="115.6" cy="58.41999999999999" r="7" fill="#F6E6B8" opacity="0.8"/>
+    <circle cx="146" cy="309.92" r="30" fill="none" stroke="#69696a" stroke-width="1.2" opacity="0.4"/>
+    <circle cx="146" cy="309.92" r="46" fill="none" stroke="#69696a" stroke-width="1" opacity="0.22"/>
+    <text x="146" y="464.88" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif"
+          font-size="17" letter-spacing="2" fill="#a9a9aa" opacity="0.7">iPhone</text>
+  </g>
+  <g transform="translate(390 140)">
+    <rect x="0" y="0" width="292" height="596" rx="45" fill="url(#frame-iphone-12-black)" stroke="#181819" stroke-width="2"/>
+    <rect x="11" y="11" width="270" height="574" rx="36" fill="#05060A"/>
+    <rect x="11" y="11" width="270" height="574" rx="36" fill="url(#wall-iphone-12-black)"/>
+    <rect x="11" y="11" width="270" height="574" rx="36" fill="url(#gloss-iphone-12-black)"/>
+    <path d="M68 11 h156 a10 10 0 0 1 -10 10 h-18 a12 12 0 0 0 -12 12 v4 a12 12 0 0 1 -12 12 h-52 a12 12 0 0 1 -12 -12 v-4 a12 12 0 0 0 -12 -12 h-18 a10 10 0 0 1 -10 -10 z" fill="#07070A"/>
+    <g opacity="0.92" font-family="Inter, Helvetica, Arial, sans-serif" fill="#ffffff" text-anchor="middle">
+      <text x="146" y="178.79999999999998" font-size="58" font-weight="300" letter-spacing="-1">09:41</text>
+      <text x="146" y="205.61999999999998" font-size="16" opacity="0.72">Saturday, Lusaka</text>
+    </g>
+    <g opacity="0.9">
+      <rect x="58.400000000000006" y="476.8" width="35.04" height="35.04" rx="9.344" fill="#ffffff" opacity="0.14"/><rect x="116.80000000000001" y="476.8" width="35.04" height="35.04" rx="9.344" fill="#ffffff" opacity="0.17"/><rect x="175.20000000000002" y="476.8" width="35.04" height="35.04" rx="9.344" fill="#ffffff" opacity="0.2"/><rect x="233.60000000000002" y="476.8" width="35.04" height="35.04" rx="9.344" fill="#ffffff" opacity="0.23"/>
+      <rect x="58.400000000000006" y="524.48" width="175.2" height="37.96" rx="13.139999999999999" fill="#ffffff" opacity="0.12"/>
+      <rect x="96.36" y="569" width="99.28" height="5" rx="2.5" fill="#ffffff" opacity="0.6"/>
+    </g>
+    <rect x="290" y="131.12" width="4" height="41.720000000000006" rx="2" fill="#202022"/>
+    <rect x="290" y="196.68" width="4" height="71.52" rx="2" fill="#202022"/>
+    <rect x="-2" y="119.2" width="4" height="29.8" rx="2" fill="#202022"/>
+    <rect x="-2" y="166.88000000000002" width="4" height="53.64" rx="2" fill="#202022"/>
+  </g>
+</svg>

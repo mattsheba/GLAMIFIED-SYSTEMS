@@ -1,0 +1,734 @@
+{
+  "currency": "ZMW",
+  "unit": "ngwee",
+  "note": "All prices are integers in ngwee (1 ZMW = 100 ngwee). Source of truth for the storefront and for server-side order pricing.",
+  "updated": "2026-10-31",
+  "categories": [
+    { "id": "new-iphone",  "name": "New iPhone",        "blurb": "Sealed, Apple-warranty units with a Zambian receipt." },
+    { "id": "preowned",    "name": "Certified Pre-Owned","blurb": "Graded, battery-tested, 90-day shop warranty." },
+    { "id": "accessories", "name": "Accessories",       "blurb": "Cases, audio, charging and screen armour." },
+    { "id": "bundles",     "name": "Styled Bundles",    "blurb": "Phone, case and audio styled as one look." }
+  ],
+  "collections": [
+    { "id": "pro-edit",    "name": "The Pro Edit",     "blurb": "Titanium and aluminium flagships for people who shoot for a living.", "productIds": ["iphone-17-pro-max", "iphone-17-pro", "iphone-16-pro-max"] },
+    { "id": "colour-story","name": "Colour Story",     "blurb": "Lavender, sage, ultramarine — phones chosen the way you choose a jacket.", "productIds": ["iphone-17", "iphone-16", "iphone-15"] },
+    { "id": "first-iphone","name": "Your First iPhone", "blurb": "Certified pre-owned, honest grading, real warranty.", "productIds": ["iphone-13", "iphone-12", "iphone-11", "iphone-16e"] }
+  ],
+  "products": [
+    {
+      "id": "iphone-17-pro-max",
+      "name": "iPhone 17 Pro Max",
+      "category": "new-iphone",
+      "condition": "new",
+      "featured": true,
+      "badges": ["Flagship", "In stock"],
+      "tagline": "The one that ends the camera argument.",
+      "fashionNote": "Cosmic Orange is the statement piece of the season — it photographs like a bag, not a gadget.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "256", "label": "256GB", "price": 3150000, "compareAt": 3390000, "stock": 4 },
+        { "id": "512", "label": "512GB", "price": 3690000, "compareAt": 3920000, "stock": 2 },
+        { "id": "1tb", "label": "1TB",   "price": 4250000, "compareAt": 4480000, "stock": 1 }
+      ],
+      "colors": [
+        { "id": "cosmic-orange", "name": "Cosmic Orange", "hex": "#C4622C" },
+        { "id": "deep-blue",     "name": "Deep Blue",     "hex": "#2B3F62" },
+        { "id": "silver",        "name": "Silver",        "hex": "#D4D6D8" }
+      ],
+      "highlights": [
+        "6.9\" Super Retina XDR with ProMotion up to 120Hz",
+        "A19 Pro chip with vapour-chamber cooling",
+        "48MP Fusion main, ultra wide and 4x telephoto",
+        "Up to 37 hours of video playback"
+      ],
+      "specs": {
+        "Display": "6.9\" Super Retina XDR OLED, 120Hz ProMotion, Always-On",
+        "Chip": "A19 Pro, 6-core GPU",
+        "Rear camera": "48MP Fusion main + 48MP ultra wide + 48MP 4x telephoto",
+        "Front camera": "18MP Center Stage",
+        "Build": "Aluminium unibody, Ceramic Shield 2 front",
+        "Water resistance": "IP68",
+        "Charging": "USB-C, MagSafe, fast charge",
+        "SIM": "Dual eSIM + nano-SIM (Zambian-market unit)"
+      },
+      "includes": ["iPhone 17 Pro Max", "USB-C to USB-C cable", "Documentation", "Free fitted ceramic screen protector"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    },
+    {
+      "id": "iphone-17-pro",
+      "name": "iPhone 17 Pro",
+      "category": "new-iphone",
+      "condition": "new",
+      "featured": true,
+      "badges": ["Pro camera"],
+      "tagline": "Flagship camera, pocket-sized frame.",
+      "fashionNote": "Same camera story as the Max in a body that still fits a small clutch.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "256", "label": "256GB", "price": 2790000, "compareAt": 2980000, "stock": 5 },
+        { "id": "512", "label": "512GB", "price": 3250000, "compareAt": null, "stock": 2 }
+      ],
+      "colors": [
+        { "id": "cosmic-orange", "name": "Cosmic Orange", "hex": "#C4622C" },
+        { "id": "deep-blue",     "name": "Deep Blue",     "hex": "#2B3F62" },
+        { "id": "silver",        "name": "Silver",        "hex": "#D4D6D8" }
+      ],
+      "highlights": [
+        "6.3\" Super Retina XDR with ProMotion",
+        "A19 Pro chip",
+        "Triple 48MP rear system with 4x telephoto",
+        "Aluminium unibody with vapour chamber"
+      ],
+      "specs": {
+        "Display": "6.3\" Super Retina XDR OLED, 120Hz ProMotion",
+        "Chip": "A19 Pro",
+        "Rear camera": "48MP Fusion main + 48MP ultra wide + 48MP 4x telephoto",
+        "Front camera": "18MP Center Stage",
+        "Build": "Aluminium unibody, Ceramic Shield 2 front",
+        "Water resistance": "IP68",
+        "Charging": "USB-C, MagSafe",
+        "SIM": "Dual eSIM + nano-SIM"
+      },
+      "includes": ["iPhone 17 Pro", "USB-C to USB-C cable", "Documentation", "Free fitted ceramic screen protector"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    },
+    {
+      "id": "iphone-17",
+      "name": "iPhone 17",
+      "category": "new-iphone",
+      "condition": "new",
+      "featured": true,
+      "badges": ["Best seller"],
+      "tagline": "The colour-first iPhone.",
+      "fashionNote": "Lavender and Sage are the two we restock most — they sell the way a good sandal sells.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "256", "label": "256GB", "price": 2190000, "compareAt": 2350000, "stock": 8 },
+        { "id": "512", "label": "512GB", "price": 2590000, "compareAt": null, "stock": 3 }
+      ],
+      "colors": [
+        { "id": "lavender",  "name": "Lavender",  "hex": "#C7BBE6" },
+        { "id": "mist-blue", "name": "Mist Blue", "hex": "#AEC6DC" },
+        { "id": "sage",      "name": "Sage",      "hex": "#BCCBB2" },
+        { "id": "white",     "name": "White",     "hex": "#EFEFEF" },
+        { "id": "black",     "name": "Black",     "hex": "#1C1C1E" }
+      ],
+      "highlights": [
+        "6.3\" display with ProMotion up to 120Hz",
+        "A19 chip",
+        "Dual 48MP Fusion camera system",
+        "18MP Center Stage front camera"
+      ],
+      "specs": {
+        "Display": "6.3\" Super Retina XDR OLED, 120Hz ProMotion",
+        "Chip": "A19",
+        "Rear camera": "48MP Fusion main + 48MP ultra wide",
+        "Front camera": "18MP Center Stage",
+        "Build": "Aluminium frame, Ceramic Shield 2 front",
+        "Water resistance": "IP68",
+        "Charging": "USB-C, MagSafe",
+        "SIM": "Dual eSIM + nano-SIM"
+      },
+      "includes": ["iPhone 17", "USB-C to USB-C cable", "Documentation", "Free fitted ceramic screen protector"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    },
+    {
+      "id": "iphone-air",
+      "name": "iPhone Air",
+      "category": "new-iphone",
+      "condition": "new",
+      "featured": true,
+      "badges": ["5.6mm"],
+      "tagline": "Titanium, and almost nothing of it.",
+      "fashionNote": "The only iPhone that disappears in a jacket pocket. Our most-asked-for unit by stylists.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "256", "label": "256GB", "price": 2490000, "compareAt": null, "stock": 3 },
+        { "id": "512", "label": "512GB", "price": 2890000, "compareAt": null, "stock": 1 }
+      ],
+      "colors": [
+        { "id": "sky-blue",    "name": "Sky Blue",    "hex": "#A9BDD1" },
+        { "id": "light-gold",  "name": "Light Gold",  "hex": "#D8C7A4" },
+        { "id": "cloud-white", "name": "Cloud White", "hex": "#E8E6E1" },
+        { "id": "space-black", "name": "Space Black", "hex": "#26272B" }
+      ],
+      "highlights": [
+        "5.6mm titanium frame",
+        "6.5\" Super Retina XDR with ProMotion",
+        "A19 Pro chip",
+        "48MP Fusion camera with 2x telephoto crop"
+      ],
+      "specs": {
+        "Display": "6.5\" Super Retina XDR OLED, 120Hz ProMotion",
+        "Chip": "A19 Pro",
+        "Rear camera": "48MP Fusion",
+        "Front camera": "18MP Center Stage",
+        "Build": "Grade 5 titanium, 5.6mm",
+        "Water resistance": "IP68",
+        "Charging": "USB-C, MagSafe",
+        "SIM": "eSIM only"
+      },
+      "includes": ["iPhone Air", "USB-C to USB-C cable", "Documentation", "Free fitted ceramic screen protector"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    },
+    {
+      "id": "iphone-16-pro-max",
+      "name": "iPhone 16 Pro Max",
+      "category": "new-iphone",
+      "condition": "new",
+      "badges": ["Titanium", "Value flagship"],
+      "tagline": "Last season's flagship, this season's price.",
+      "fashionNote": "Desert Titanium is the quiet-luxury pick — warm, matte, goes with everything.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "256", "label": "256GB", "price": 2450000, "compareAt": 2690000, "stock": 4 },
+        { "id": "512", "label": "512GB", "price": 2850000, "compareAt": null, "stock": 2 }
+      ],
+      "colors": [
+        { "id": "desert-titanium", "name": "Desert Titanium", "hex": "#BBA07E" },
+        { "id": "natural-titanium","name": "Natural Titanium","hex": "#C2BCB2" },
+        { "id": "black-titanium",  "name": "Black Titanium",  "hex": "#3B3B3D" }
+      ],
+      "highlights": [
+        "6.9\" Super Retina XDR with ProMotion",
+        "A18 Pro chip",
+        "48MP Fusion main with 5x telephoto",
+        "Camera Control button"
+      ],
+      "specs": {
+        "Display": "6.9\" Super Retina XDR OLED, 120Hz ProMotion",
+        "Chip": "A18 Pro",
+        "Rear camera": "48MP Fusion + 48MP ultra wide + 12MP 5x telephoto",
+        "Front camera": "12MP TrueDepth",
+        "Build": "Grade 5 titanium, Ceramic Shield front",
+        "Water resistance": "IP68",
+        "Charging": "USB-C, MagSafe",
+        "SIM": "Dual eSIM + nano-SIM"
+      },
+      "includes": ["iPhone 16 Pro Max", "USB-C to USB-C cable", "Documentation", "Free fitted ceramic screen protector"],
+      "warrantyMonths": 12,
+      "releaseYear": 2024
+    },
+    {
+      "id": "iphone-16",
+      "name": "iPhone 16",
+      "category": "new-iphone",
+      "condition": "new",
+      "badges": ["In stock"],
+      "tagline": "Ultramarine, Teal, Pink — pick a mood.",
+      "fashionNote": "Still the best colour range Apple has shipped. Ultramarine photographs beautifully.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "128", "label": "128GB", "price": 1590000, "compareAt": 1750000, "stock": 6 },
+        { "id": "256", "label": "256GB", "price": 1790000, "compareAt": null, "stock": 4 }
+      ],
+      "colors": [
+        { "id": "ultramarine", "name": "Ultramarine", "hex": "#8395C9" },
+        { "id": "teal",        "name": "Teal",        "hex": "#A8C3BC" },
+        { "id": "pink",        "name": "Pink",        "hex": "#E6C8CD" },
+        { "id": "white",       "name": "White",       "hex": "#F0F0EF" },
+        { "id": "black",       "name": "Black",       "hex": "#232324" }
+      ],
+      "highlights": [
+        "6.1\" Super Retina XDR display",
+        "A18 chip with Apple Intelligence",
+        "48MP Fusion main with 2x telephoto crop",
+        "Action button and Camera Control"
+      ],
+      "specs": {
+        "Display": "6.1\" Super Retina XDR OLED",
+        "Chip": "A18",
+        "Rear camera": "48MP Fusion + 12MP ultra wide",
+        "Front camera": "12MP TrueDepth",
+        "Build": "Aluminium frame, colour-infused glass back",
+        "Water resistance": "IP68",
+        "Charging": "USB-C, MagSafe",
+        "SIM": "Dual eSIM + nano-SIM"
+      },
+      "includes": ["iPhone 16", "USB-C to USB-C cable", "Documentation", "Free fitted ceramic screen protector"],
+      "warrantyMonths": 12,
+      "releaseYear": 2024
+    },
+    {
+      "id": "iphone-16e",
+      "name": "iPhone 16e",
+      "category": "new-iphone",
+      "condition": "new",
+      "badges": ["Entry flagship"],
+      "tagline": "The cheapest way into a new iPhone.",
+      "fashionNote": "Clean, two-colour, no fuss. We sell it with a bold case to make up for the quiet body.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "128", "label": "128GB", "price": 1290000, "compareAt": null, "stock": 5 },
+        { "id": "256", "label": "256GB", "price": 1490000, "compareAt": null, "stock": 2 }
+      ],
+      "colors": [
+        { "id": "white", "name": "White", "hex": "#F1F1F0" },
+        { "id": "black", "name": "Black", "hex": "#1F1F21" }
+      ],
+      "highlights": [
+        "6.1\" Super Retina XDR display",
+        "A18 chip",
+        "48MP 2-in-1 camera",
+        "Face ID, USB-C and Action button"
+      ],
+      "specs": {
+        "Display": "6.1\" Super Retina XDR OLED",
+        "Chip": "A18",
+        "Rear camera": "48MP Fusion",
+        "Front camera": "12MP TrueDepth",
+        "Build": "Aluminium frame, glass back",
+        "Water resistance": "IP68",
+        "Charging": "USB-C, 20W fast charge",
+        "SIM": "Dual eSIM + nano-SIM"
+      },
+      "includes": ["iPhone 16e", "USB-C to USB-C cable", "Documentation", "Free fitted ceramic screen protector"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    },
+    {
+      "id": "iphone-15",
+      "name": "iPhone 15",
+      "category": "new-iphone",
+      "condition": "new",
+      "badges": ["Sealed"],
+      "tagline": "Dynamic Island, USB-C, soft colours.",
+      "fashionNote": "The pastel generation. Pink still outsells every other colour we stock in this model.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "128", "label": "128GB", "price": 1350000, "compareAt": 1490000, "stock": 4 },
+        { "id": "256", "label": "256GB", "price": 1550000, "compareAt": null, "stock": 2 }
+      ],
+      "colors": [
+        { "id": "pink",     "name": "Pink",     "hex": "#EBD3D6" },
+        { "id": "blue",     "name": "Blue",     "hex": "#D0DCE0" },
+        { "id": "green",    "name": "Green",    "hex": "#D0DED3" },
+        { "id": "black",    "name": "Black",    "hex": "#2A2A2C" }
+      ],
+      "highlights": [
+        "6.1\" Super Retina XDR with Dynamic Island",
+        "A16 Bionic chip",
+        "48MP main camera with 2x telephoto crop",
+        "USB-C charging"
+      ],
+      "specs": {
+        "Display": "6.1\" Super Retina XDR OLED, Dynamic Island",
+        "Chip": "A16 Bionic",
+        "Rear camera": "48MP main + 12MP ultra wide",
+        "Front camera": "12MP TrueDepth",
+        "Build": "Aluminium frame, colour-infused glass back",
+        "Water resistance": "IP68",
+        "Charging": "USB-C, MagSafe",
+        "SIM": "Dual eSIM + nano-SIM"
+      },
+      "includes": ["iPhone 15", "USB-C to USB-C cable", "Documentation", "Free fitted ceramic screen protector"],
+      "warrantyMonths": 12,
+      "releaseYear": 2023
+    },
+    {
+      "id": "iphone-13",
+      "name": "iPhone 13",
+      "category": "preowned",
+      "condition": "certified-preowned",
+      "badges": ["Grade A", "90-day warranty"],
+      "tagline": "Certified pre-owned, 85%+ battery guaranteed.",
+      "fashionNote": "Our bestselling first iPhone. Pink in Grade A barely looks used.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "128", "label": "128GB", "price": 790000, "compareAt": 890000, "stock": 6 },
+        { "id": "256", "label": "256GB", "price": 920000, "compareAt": null, "stock": 2 }
+      ],
+      "colors": [
+        { "id": "pink",     "name": "Pink",     "hex": "#F0D7D9" },
+        { "id": "midnight", "name": "Midnight", "hex": "#26282C" },
+        { "id": "blue",     "name": "Blue",     "hex": "#3C5A7A" },
+        { "id": "starlight","name": "Starlight","hex": "#EDE7DD" }
+      ],
+      "highlights": [
+        "Battery health 85% or better, tested in-store",
+        "Face ID, camera and speakers verified on a 40-point check",
+        "90-day Glamified-backed shop warranty",
+        "Factory unlocked, iCloud clear"
+      ],
+      "specs": {
+        "Display": "6.1\" Super Retina XDR OLED",
+        "Chip": "A15 Bionic",
+        "Rear camera": "12MP dual with sensor-shift OIS",
+        "Front camera": "12MP TrueDepth",
+        "Condition": "Grade A — light signs of use, no cracks or dents",
+        "Battery": "85%+ health, documented on the receipt",
+        "Charging": "Lightning, MagSafe",
+        "SIM": "Nano-SIM + eSIM, factory unlocked"
+      },
+      "includes": ["iPhone 13", "New Lightning cable", "90-day warranty card", "Free fitted screen protector"],
+      "warrantyMonths": 3,
+      "releaseYear": 2021
+    },
+    {
+      "id": "iphone-12",
+      "name": "iPhone 12",
+      "category": "preowned",
+      "condition": "certified-preowned",
+      "badges": ["Grade A"],
+      "tagline": "Flat edges, MagSafe, honest price.",
+      "fashionNote": "The flat-edge silhouette that started the current look. Purple is the collector's colour.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "64",  "label": "64GB",  "price": 560000, "compareAt": 640000, "stock": 5 },
+        { "id": "128", "label": "128GB", "price": 650000, "compareAt": null, "stock": 3 }
+      ],
+      "colors": [
+        { "id": "purple", "name": "Purple", "hex": "#D4CBE4" },
+        { "id": "black",  "name": "Black",  "hex": "#28282A" },
+        { "id": "white",  "name": "White",  "hex": "#EEEEEC" },
+        { "id": "blue",   "name": "Blue",   "hex": "#2F4A6E" }
+      ],
+      "highlights": [
+        "Battery health 85% or better",
+        "40-point in-store check before it goes on the shelf",
+        "90-day shop warranty",
+        "Factory unlocked, iCloud clear"
+      ],
+      "specs": {
+        "Display": "6.1\" Super Retina XDR OLED",
+        "Chip": "A14 Bionic",
+        "Rear camera": "12MP dual",
+        "Front camera": "12MP TrueDepth",
+        "Condition": "Grade A — light signs of use",
+        "Battery": "85%+ health",
+        "Charging": "Lightning, MagSafe",
+        "SIM": "Nano-SIM + eSIM, factory unlocked"
+      },
+      "includes": ["iPhone 12", "New Lightning cable", "90-day warranty card", "Free fitted screen protector"],
+      "warrantyMonths": 3,
+      "releaseYear": 2020
+    },
+    {
+      "id": "iphone-11",
+      "name": "iPhone 11",
+      "category": "preowned",
+      "condition": "certified-preowned",
+      "badges": ["Grade A/B"],
+      "tagline": "The budget iPhone that still takes a good photo.",
+      "fashionNote": "Yellow and purple in Grade A are the fun ones — we pair them with a clear case.",
+      "optionLabel": "Storage",
+      "options": [
+        { "id": "64",  "label": "64GB",  "price": 430000, "compareAt": 490000, "stock": 7 },
+        { "id": "128", "label": "128GB", "price": 510000, "compareAt": null, "stock": 3 }
+      ],
+      "colors": [
+        { "id": "black",  "name": "Black",  "hex": "#2B2B2D" },
+        { "id": "white",  "name": "White",  "hex": "#EFEFED" },
+        { "id": "yellow", "name": "Yellow", "hex": "#F2DF9B" },
+        { "id": "purple", "name": "Purple", "hex": "#D8CEE8" }
+      ],
+      "highlights": [
+        "Battery health 80% or better, stated per unit",
+        "Grade and battery health printed on your receipt",
+        "90-day shop warranty",
+        "Factory unlocked, iCloud clear"
+      ],
+      "specs": {
+        "Display": "6.1\" Liquid Retina LCD",
+        "Chip": "A13 Bionic",
+        "Rear camera": "12MP dual (wide + ultra wide)",
+        "Front camera": "12MP TrueDepth",
+        "Condition": "Grade A or B — stated per unit before you pay",
+        "Battery": "80%+ health",
+        "Charging": "Lightning",
+        "SIM": "Nano-SIM + eSIM, factory unlocked"
+      },
+      "includes": ["iPhone 11", "New Lightning cable", "90-day warranty card", "Free fitted screen protector"],
+      "warrantyMonths": 3,
+      "releaseYear": 2019
+    },
+    {
+      "id": "airpods-pro-3",
+      "name": "AirPods Pro 3",
+      "category": "accessories",
+      "condition": "new",
+      "featured": true,
+      "badges": ["Sealed"],
+      "tagline": "Noise cancellation and heart-rate sensing.",
+      "fashionNote": "Worn as much as carried. We sell more of these than any case.",
+      "optionLabel": "Variant",
+      "options": [
+        { "id": "std", "label": "USB-C charging case", "price": 490000, "compareAt": 540000, "stock": 9 }
+      ],
+      "colors": [ { "id": "white", "name": "White", "hex": "#F3F3F1" } ],
+      "highlights": [
+        "Active Noise Cancellation",
+        "Live Translation with Apple Intelligence",
+        "Heart-rate sensing during workouts",
+        "IP57 sweat and water resistance"
+      ],
+      "specs": {
+        "Fit": "Foam-infused tips, five sizes",
+        "Battery": "Up to 8 hours listening with ANC",
+        "Case": "USB-C, MagSafe and Qi charging",
+        "Water resistance": "IP57"
+      },
+      "includes": ["AirPods Pro 3", "Charging case", "Five tip sizes", "USB-C cable"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    },
+    {
+      "id": "airpods-4",
+      "name": "AirPods 4",
+      "category": "accessories",
+      "condition": "new",
+      "badges": ["Sealed"],
+      "tagline": "Open-fit, featherweight, all-day.",
+      "optionLabel": "Variant",
+      "options": [
+        { "id": "anc",  "label": "With Active Noise Cancellation", "price": 350000, "compareAt": null, "stock": 5 },
+        { "id": "base", "label": "Standard", "price": 310000, "compareAt": null, "stock": 6 }
+      ],
+      "colors": [ { "id": "white", "name": "White", "hex": "#F3F3F1" } ],
+      "highlights": [
+        "Open-fit design, no tips",
+        "Personalised Spatial Audio",
+        "USB-C charging case",
+        "Up to 30 hours total listening"
+      ],
+      "specs": {
+        "Fit": "Open, one size",
+        "Battery": "Up to 5 hours per charge",
+        "Case": "USB-C",
+        "Water resistance": "IP54"
+      },
+      "includes": ["AirPods 4", "Charging case", "USB-C cable"],
+      "warrantyMonths": 12,
+      "releaseYear": 2024
+    },
+    {
+      "id": "apple-watch-series-11",
+      "name": "Apple Watch Series 11",
+      "category": "accessories",
+      "condition": "new",
+      "featured": true,
+      "badges": ["GPS"],
+      "tagline": "The wrist half of the look.",
+      "fashionNote": "Change the band, change the outfit. We keep sport loops and milanese in stock.",
+      "optionLabel": "Case size",
+      "options": [
+        { "id": "42", "label": "42mm GPS", "price": 790000, "compareAt": null, "stock": 3 },
+        { "id": "46", "label": "46mm GPS", "price": 890000, "compareAt": null, "stock": 2 }
+      ],
+      "colors": [
+        { "id": "jet-black",  "name": "Jet Black",  "hex": "#1D1D1F" },
+        { "id": "rose-gold",  "name": "Rose Gold",  "hex": "#D9B2A6" },
+        { "id": "silver",     "name": "Silver",     "hex": "#D7D9DB" }
+      ],
+      "highlights": [
+        "Always-On Retina display",
+        "Sleep score and hypertension notifications",
+        "Up to 24 hours battery",
+        "5G-free GPS model — pairs over Bluetooth"
+      ],
+      "specs": {
+        "Display": "Always-On LTPO3 Retina",
+        "Battery": "Up to 24 hours",
+        "Water resistance": "50m",
+        "Band": "Sport band included, loops sold separately"
+      },
+      "includes": ["Apple Watch Series 11", "Sport band", "USB-C charge cable"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    },
+    {
+      "id": "magsafe-case",
+      "name": "MagSafe Silicone Case",
+      "category": "accessories",
+      "condition": "new",
+      "badges": ["Fitted free"],
+      "tagline": "Soft-touch, magnet-aligned, six colours.",
+      "fashionNote": "Buy two: one quiet, one loud. We fit it for you at the counter.",
+      "optionLabel": "Fits",
+      "options": [
+        { "id": "17pm", "label": "iPhone 17 Pro Max", "price": 45000, "compareAt": null, "stock": 14 },
+        { "id": "17p",  "label": "iPhone 17 Pro",     "price": 45000, "compareAt": null, "stock": 12 },
+        { "id": "17",   "label": "iPhone 17",         "price": 45000, "compareAt": null, "stock": 16 },
+        { "id": "air",  "label": "iPhone Air",        "price": 48000, "compareAt": null, "stock": 7 },
+        { "id": "16pm", "label": "iPhone 16 Pro Max", "price": 42000, "compareAt": null, "stock": 10 },
+        { "id": "16",   "label": "iPhone 16",         "price": 42000, "compareAt": null, "stock": 11 }
+      ],
+      "colors": [
+        { "id": "ink",      "name": "Ink",       "hex": "#1E1E20" },
+        { "id": "bone",     "name": "Bone",      "hex": "#E7E0D4" },
+        { "id": "clay",     "name": "Clay",      "hex": "#B5705A" },
+        { "id": "olive",    "name": "Olive",     "hex": "#6B7050" },
+        { "id": "lilac",    "name": "Lilac",     "hex": "#C9BBDD" },
+        { "id": "cobalt",   "name": "Cobalt",    "hex": "#2F4C8C" }
+      ],
+      "highlights": ["Soft-touch silicone", "Magnet ring, MagSafe-aligned", "Raised camera lip", "Microfibre lining"],
+      "specs": { "Material": "Silicone with microfibre interior", "Fitment": "Model-specific", "Fitting": "Free at the counter" },
+      "includes": ["MagSafe silicone case"],
+      "warrantyMonths": 3,
+      "releaseYear": 2025
+    },
+    {
+      "id": "ceramic-protector",
+      "name": "Ceramic Screen Protector",
+      "category": "accessories",
+      "condition": "new",
+      "badges": ["Fitted free"],
+      "tagline": "Fitted dust-free, or it's replaced free.",
+      "optionLabel": "Fits",
+      "options": [
+        { "id": "pro-max", "label": "Pro Max / Plus sizes", "price": 18000, "compareAt": null, "stock": 30 },
+        { "id": "standard","label": "Standard / Pro sizes", "price": 18000, "compareAt": null, "stock": 34 }
+      ],
+      "colors": [ { "id": "clear", "name": "Clear", "hex": "#DDE3E8" } ],
+      "highlights": ["9H ceramic hardness", "Oleophobic coating", "Fitted in-store, dust-free", "Free re-fit if it bubbles"],
+      "specs": { "Hardness": "9H", "Finish": "Clear, oleophobic", "Fitting": "Free, while you wait" },
+      "includes": ["Protector", "Alignment frame", "Cleaning kit"],
+      "warrantyMonths": 1,
+      "releaseYear": 2025
+    },
+    {
+      "id": "charger-20w",
+      "name": "20W USB-C Power Adapter",
+      "category": "accessories",
+      "condition": "new",
+      "badges": ["Genuine"],
+      "tagline": "The brick Apple stopped including.",
+      "optionLabel": "Variant",
+      "options": [ { "id": "std", "label": "20W, UK 3-pin", "price": 29000, "compareAt": null, "stock": 22 } ],
+      "colors": [ { "id": "white", "name": "White", "hex": "#F4F4F2" } ],
+      "highlights": ["Fast-charges to 50% in around 30 minutes", "UK 3-pin, Zambian socket-ready", "Genuine Apple adapter"],
+      "specs": { "Output": "20W USB-C PD", "Plug": "UK 3-pin (Type G)" },
+      "includes": ["20W USB-C adapter"],
+      "warrantyMonths": 12,
+      "releaseYear": 2024
+    },
+    {
+      "id": "braided-cable",
+      "name": "Braided USB-C Cable",
+      "category": "accessories",
+      "condition": "new",
+      "badges": ["2m"],
+      "tagline": "The cable that survives a handbag.",
+      "optionLabel": "Length",
+      "options": [
+        { "id": "1m", "label": "1 metre", "price": 16000, "compareAt": null, "stock": 25 },
+        { "id": "2m", "label": "2 metres", "price": 24000, "compareAt": null, "stock": 18 }
+      ],
+      "colors": [
+        { "id": "ink",  "name": "Ink",  "hex": "#1F1F21" },
+        { "id": "bone", "name": "Bone", "hex": "#E7E0D4" }
+      ],
+      "highlights": ["Braided jacket", "60W charging, USB 2.0 data", "Reinforced strain relief"],
+      "specs": { "Power": "Up to 60W", "Connectors": "USB-C to USB-C" },
+      "includes": ["Braided USB-C cable"],
+      "warrantyMonths": 6,
+      "releaseYear": 2025
+    },
+    {
+      "id": "magsafe-powerbank",
+      "name": "MagSafe Power Bank",
+      "category": "accessories",
+      "condition": "new",
+      "badges": ["10,000mAh"],
+      "tagline": "For load-shedding days.",
+      "fashionNote": "Slim enough to stay attached while you walk around East Park.",
+      "optionLabel": "Variant",
+      "options": [ { "id": "10k", "label": "10,000mAh, magnetic", "price": 69000, "compareAt": 79000, "stock": 12 } ],
+      "colors": [
+        { "id": "ink",  "name": "Ink",  "hex": "#1F1F21" },
+        { "id": "bone", "name": "Bone", "hex": "#E7E0D4" }
+      ],
+      "highlights": ["10,000mAh — roughly two full iPhone charges", "Magnetic alignment, 15W wireless", "USB-C 20W wired out", "Pass-through charging"],
+      "specs": { "Capacity": "10,000mAh", "Wireless": "15W magnetic", "Wired": "20W USB-C in/out" },
+      "includes": ["Power bank", "USB-C cable"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    },
+    {
+      "id": "bundle-colour-story",
+      "name": "The Colour Story Bundle",
+      "category": "bundles",
+      "condition": "new",
+      "featured": true,
+      "badges": ["Save K1,430"],
+      "tagline": "iPhone 17 in Lavender, a lilac case, AirPods 4 and armour.",
+      "fashionNote": "Everything matched at the counter, boxed as one gift.",
+      "optionLabel": "Bundle",
+      "options": [ { "id": "std", "label": "iPhone 17 256GB + case + AirPods 4 + protector", "price": 2640000, "compareAt": 2783000, "stock": 3 } ],
+      "colors": [
+        { "id": "lavender", "name": "Lavender", "hex": "#C7BBE6" },
+        { "id": "sage",     "name": "Sage",     "hex": "#BCCBB2" },
+        { "id": "mist-blue","name": "Mist Blue","hex": "#AEC6DC" }
+      ],
+      "highlights": ["iPhone 17 256GB", "MagSafe silicone case in a matched colour", "AirPods 4", "Fitted ceramic protector"],
+      "specs": { "Contents": "4 items", "Warranty": "12 months on the iPhone and AirPods" },
+      "includes": ["iPhone 17 256GB", "MagSafe silicone case", "AirPods 4", "Fitted ceramic protector", "Gift box"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    },
+    {
+      "id": "bundle-pro-edit",
+      "name": "The Pro Edit Bundle",
+      "category": "bundles",
+      "condition": "new",
+      "badges": ["Save K2,120"],
+      "tagline": "16 Pro Max, AirPods Pro 3, MagSafe power and a case.",
+      "optionLabel": "Bundle",
+      "options": [ { "id": "std", "label": "iPhone 16 Pro Max 256GB + AirPods Pro 3 + power bank + case", "price": 3190000, "compareAt": 3402000, "stock": 2 } ],
+      "colors": [
+        { "id": "desert-titanium", "name": "Desert Titanium", "hex": "#BBA07E" },
+        { "id": "black-titanium",  "name": "Black Titanium",  "hex": "#3B3B3D" }
+      ],
+      "highlights": ["iPhone 16 Pro Max 256GB", "AirPods Pro 3", "MagSafe power bank", "MagSafe silicone case"],
+      "specs": { "Contents": "4 items", "Warranty": "12 months on the iPhone and AirPods" },
+      "includes": ["iPhone 16 Pro Max 256GB", "AirPods Pro 3", "MagSafe power bank", "MagSafe silicone case", "Gift box"],
+      "warrantyMonths": 12,
+      "releaseYear": 2025
+    }
+  ],
+  "deliveryZones": [
+    { "id": "collect",     "name": "Collect in store — East Park Mall", "fee": 0,     "eta": "Ready in 1 hour during opening hours" },
+    { "id": "lsk-central", "name": "Lusaka — CBD, Rhodes Park, Northmead, Kabulonga, Woodlands", "fee": 8000,  "eta": "Same day if ordered before 15:00" },
+    { "id": "lsk-outer",   "name": "Lusaka — Chilenje, Kabwata, Matero, Chelstone, Avondale, Meanwood", "fee": 12000, "eta": "Same day or next morning" },
+    { "id": "lsk-far",     "name": "Greater Lusaka — Chongwe, Chilanga, Kafue, Airport road", "fee": 20000, "eta": "Next day" },
+    { "id": "nationwide",  "name": "Rest of Zambia — courier, insured", "fee": 35000, "eta": "1–3 working days" }
+  ],
+  "promos": [
+    { "code": "LUSAKA10",  "type": "percent", "value": 10, "appliesTo": "accessories", "minSubtotal": 50000,  "label": "10% off accessories", "expires": "2026-12-31" },
+    { "code": "FREEDROP",  "type": "shipping","value": 0,  "appliesTo": "all",         "minSubtotal": 1500000,"label": "Free Lusaka delivery over K15,000", "expires": "2026-12-31" },
+    { "code": "STUDENT5",  "type": "percent", "value": 5,  "appliesTo": "preowned",    "minSubtotal": 0,      "label": "5% student discount on pre-owned", "expires": "2026-12-31" }
+  ],
+  "tradeIn": {
+    "intro": "We buy and swap. Bring your old iPhone, we test it in front of you, and the value comes straight off your new one.",
+    "models": [
+      { "id": "iphone-16-pro-max", "name": "iPhone 16 Pro Max", "base": 1450000 },
+      { "id": "iphone-16-pro",     "name": "iPhone 16 Pro",     "base": 1250000 },
+      { "id": "iphone-16",         "name": "iPhone 16",         "base": 900000 },
+      { "id": "iphone-15-pro-max", "name": "iPhone 15 Pro Max", "base": 1100000 },
+      { "id": "iphone-15",         "name": "iPhone 15",         "base": 720000 },
+      { "id": "iphone-14-pro",     "name": "iPhone 14 Pro",     "base": 780000 },
+      { "id": "iphone-14",         "name": "iPhone 14",         "base": 560000 },
+      { "id": "iphone-13",         "name": "iPhone 13",         "base": 420000 },
+      { "id": "iphone-12",         "name": "iPhone 12",         "base": 270000 },
+      { "id": "iphone-11",         "name": "iPhone 11",         "base": 190000 },
+      { "id": "iphone-xr",         "name": "iPhone XR",         "base": 120000 },
+      { "id": "other",             "name": "Older or other model", "base": 70000 }
+    ],
+    "grades": [
+      { "id": "a", "name": "Like new", "factor": 1,    "desc": "No scratches, screen perfect, battery 90%+" },
+      { "id": "b", "name": "Good",     "factor": 0.82, "desc": "Light marks, no cracks, battery 85%+" },
+      { "id": "c", "name": "Fair",     "factor": 0.6,  "desc": "Visible wear or a chipped corner, everything works" },
+      { "id": "d", "name": "Damaged",  "factor": 0.32, "desc": "Cracked glass, weak battery or a faulty camera" }
+    ],
+    "storageBonus": { "64": 0, "128": 0, "256": 40000, "512": 90000, "1tb": 140000 },
+    "deductions": [
+      { "id": "no-faceid", "label": "Face ID not working", "amount": 90000 },
+      { "id": "icloud",    "label": "Still locked to an iCloud account", "amount": 1000000 },
+      { "id": "no-box",    "label": "No box or charger", "amount": 10000 }
+    ]
+  }
+}

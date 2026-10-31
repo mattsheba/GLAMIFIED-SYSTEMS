@@ -1,0 +1,24 @@
+{
+  "name": "ivogue-lusaka",
+  "version": "1.0.0",
+  "private": true,
+  "description": "iVogue Lusaka — iPhone boutique storefront: static site plus Netlify Functions, Supabase and Lenco mobile money.",
+  "scripts": {
+    "build": "node tools/build-config.mjs && node tools/generate-art.mjs",
+    "build:config": "node tools/build-config.mjs",
+    "build:art": "node tools/generate-art.mjs",
+    "test": "node tools/test.cjs",
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.110.0",
+    "nodemailer": "^9.0.3"
+  },
+  "devDependencies": {
+    "netlify-cli": "^26.1.0"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
+  },
+  "engines": { "node": ">=20" }
+}

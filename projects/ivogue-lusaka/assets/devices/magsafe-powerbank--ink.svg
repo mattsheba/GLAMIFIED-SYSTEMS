@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="MagSafe Power Bank in Ink">
+  <title>MagSafe Power Bank in Ink</title>
+  <defs>
+    <linearGradient id="body-magsafe-powerbank-ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#505052"/>
+      <stop offset="45%" stop-color="#1F1F21"/>
+      <stop offset="100%" stop-color="#18181a"/>
+    </linearGradient>
+    <linearGradient id="frame-magsafe-powerbank-ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#626264"/>
+      <stop offset="50%" stop-color="#1F1F21"/>
+      <stop offset="100%" stop-color="#161617"/>
+    </linearGradient>
+    <linearGradient id="wall-magsafe-powerbank-ink" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#0e0e0f"/>
+      <stop offset="55%" stop-color="#5c5c5d"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-magsafe-powerbank-ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-magsafe-powerbank-ink" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-magsafe-powerbank-ink" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="772.8" rx="250" ry="38" fill="url(#floor-magsafe-powerbank-ink)"/>
+      <rect x="220" y="230" width="320" height="460" rx="46" fill="url(#body-magsafe-powerbank-ink)" stroke="#171719" stroke-width="2.5"/>
+      <circle cx="380" cy="420" r="92" fill="none" stroke="#6d6d6f" stroke-width="4" opacity="0.5"/>
+      <circle cx="380" cy="420" r="62" fill="none" stroke="#6d6d6f" stroke-width="3" opacity="0.32"/>
+      <g fill="#a5a5a6" opacity="0.8">
+        <rect x="328" y="570" width="18" height="30" rx="5" opacity="0.9"/><rect x="356" y="570" width="18" height="30" rx="5" opacity="0.9"/><rect x="384" y="570" width="18" height="30" rx="5" opacity="0.9"/><rect x="412" y="570" width="18" height="30" rx="5" opacity="0.25"/>
+      </g>
+      <text x="380" y="642" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif" font-size="17" letter-spacing="2"
+            fill="#9a9a9b" opacity="0.65">10,000 mAh</text>
+      <rect x="356" y="686" width="48" height="12" rx="6" fill="#111112"/>
+    </svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="AirPods Pro 3 in White">
+  <title>AirPods Pro 3 in White</title>
+  <defs>
+    <linearGradient id="body-airpods-pro-3-white" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6f6f4"/>
+      <stop offset="45%" stop-color="#F3F3F1"/>
+      <stop offset="100%" stop-color="#bebebc"/>
+    </linearGradient>
+    <linearGradient id="frame-airpods-pro-3-white" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7f7f5"/>
+      <stop offset="50%" stop-color="#F3F3F1"/>
+      <stop offset="100%" stop-color="#aaaaa9"/>
+    </linearGradient>
+    <linearGradient id="wall-airpods-pro-3-white" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#6d6d6c"/>
+      <stop offset="55%" stop-color="#6f6f6e"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-airpods-pro-3-white" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-airpods-pro-3-white" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-airpods-pro-3-white" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="772.8" rx="250" ry="38" fill="url(#floor-airpods-pro-3-white)"/>
+      <rect x="240" y="500" width="280" height="210" rx="70" fill="url(#body-airpods-pro-3-white)" stroke="#c2c2c1" stroke-width="2.5"/>
+      <rect x="240" y="500" width="280" height="22" rx="11" fill="#e0e0de" opacity="0.5"/>
+      <circle cx="380" cy="610" r="16" fill="none" stroke="#c2c2c1" stroke-width="2.5" opacity="0.6"/>
+      <circle cx="380" cy="610" r="5" fill="#b6b6b5" opacity="0.6"/>
+      <g transform="translate(288 300) scale(1 1)">
+        <ellipse cx="0" cy="0" rx="46" ry="40" fill="url(#body-airpods-pro-3-white)" stroke="#c2c2c1" stroke-width="2"/>
+        <ellipse cx="-12" cy="-10" rx="16" ry="12" fill="#ffffff" opacity="0.5"/>
+        <rect x="-16" y="26" width="32" height="118" rx="16" fill="url(#body-airpods-pro-3-white)" stroke="#c2c2c1" stroke-width="2"/>
+        <ellipse cx="34" cy="-6" rx="24" ry="20" fill="#d6d6d4" stroke="#b6b6b5" stroke-width="1.5"/>
+        <rect x="-10" y="120" width="20" height="10" rx="5" fill="#aaaaa9" opacity="0.5"/>
+      </g>
+      <g transform="translate(472 300) scale(-1 1)">
+        <ellipse cx="0" cy="0" rx="46" ry="40" fill="url(#body-airpods-pro-3-white)" stroke="#c2c2c1" stroke-width="2"/>
+        <ellipse cx="-12" cy="-10" rx="16" ry="12" fill="#ffffff" opacity="0.5"/>
+        <rect x="-16" y="26" width="32" height="118" rx="16" fill="url(#body-airpods-pro-3-white)" stroke="#c2c2c1" stroke-width="2"/>
+        <ellipse cx="34" cy="-6" rx="24" ry="20" fill="#d6d6d4" stroke="#b6b6b5" stroke-width="1.5"/>
+        <rect x="-10" y="120" width="20" height="10" rx="5" fill="#aaaaa9" opacity="0.5"/>
+      </g>
+    </svg>

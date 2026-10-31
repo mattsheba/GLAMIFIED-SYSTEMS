@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visit the shop — East Park Mall, Lusaka | iVogue Lusaka</title>
+<meta name="description" content="Find iVogue Lusaka at Shop 22, East Park Mall, Great East Road. Opening hours, directions, parking and what to bring.">
+<link rel="canonical" href="https://ivoguelusaka.com/visit.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Visit the shop — East Park Mall, Lusaka | iVogue Lusaka">
+<meta property="og:description" content="Find iVogue Lusaka at Shop 22, East Park Mall, Great East Road. Opening hours, directions, parking and what to bring.">
+<meta property="og:image" content="https://ivoguelusaka.com/assets/og.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav-root"></div>
+<main>
+  <section class="section-tight" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="eyebrow">Come and hold one</div>
+      <h1 class="display-2" style="margin:.6rem 0 .8rem">Shop 22, East Park Mall</h1>
+      <p class="lead" style="max-width:58ch">Great East Road, Lusaka — opposite the University of Zambia. First floor, past the food court. Free parking at the mall.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem">
+    <div class="wrap split">
+      <div class="panel">
+        <h2 class="h3">Opening hours</h2>
+        <table class="plain-table" id="hours" style="margin-top:.8rem"></table>
+        <p class="small muted" style="margin-top:1rem" id="open-state"></p>
+        <div class="row" style="margin-top:1.2rem">
+          <a class="btn btn-primary" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&query=East+Park+Mall%2C+Great+East+Road%2C+Lusaka">Directions</a>
+          <a class="btn btn-ghost" id="call" href="#">Call the shop</a>
+        </div>
+      </div>
+      <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line-2);min-height:340px">
+        <iframe title="Map to East Park Mall, Lusaka" width="100%" height="380" style="border:0;display:block"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=East%20Park%20Mall%2C%20Great%20East%20Road%2C%20Lusaka&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Before you come</div><h2 class="h2">What to bring</h2></div>
+      <div class="trust-grid">
+        <div class="trust-item"><h3>Buying</h3><p>Your NRC or passport if you are paying by card, and the phone that holds your mobile money wallet. We'll set the phone up, move your data across and fit the screen protector before you leave.</p></div>
+        <div class="trust-item"><h3>Trading in</h3><p>The old phone, its Apple ID password, and the charger and box if you still have them. Sign out of iCloud before you come if you can — it saves about ten minutes.</p></div>
+        <div class="trust-item"><h3>Collecting an order</h3><p>Your order reference and the NRC of the person named on the order. Someone else collecting? Send us their name on WhatsApp first.</p></div>
+        <div class="trust-item"><h3>Repairs and warranty</h3><p>The receipt we gave you — it carries the IMEI and the warranty terms. No receipt? We can look the IMEI up in our records.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap panel spread">
+      <div>
+        <h2 class="h3">Can't make it into town?</h2>
+        <p class="small muted" style="margin-top:.4rem">Order online before 15:00 and a rider brings it anywhere in Lusaka the same day, insured. Rest of Zambia goes by courier in 1–3 working days.</p>
+      </div>
+      <a class="btn btn-primary" href="shop.html">Shop online</a>
+    </div>
+  </section>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var IV = window.IV, cfg = IV.cfg;
+  document.getElementById('hours').innerHTML = cfg.store.hours
+    .map(function (h) { return '<tr><td>' + h.days + '</td><td>' + h.open + ' – ' + h.close + '</td></tr>'; }).join('') +
+    '<tr><td>Public holidays</td><td>10:00 – 15:00</td></tr>';
+  var st = IV.openState();
+  document.getElementById('open-state').textContent = st.open
+    ? 'Open right now — closes at ' + st.closesAt + ' Lusaka time.'
+    : 'Closed right now — opens at ' + st.opensAt + '. WhatsApp is answered until late.';
+  document.getElementById('call').href = 'tel:' + cfg.contact.phoneDial;
+});
+</script>
+<footer id="footer-root"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

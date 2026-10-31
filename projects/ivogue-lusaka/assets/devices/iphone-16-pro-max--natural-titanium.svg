@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="iPhone 16 Pro Max in Natural Titanium">
+  <title>iPhone 16 Pro Max — Natural Titanium</title>
+  <defs>
+    <linearGradient id="body-iphone-16-pro-max-natural-titanium" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#cfcbc3"/>
+      <stop offset="45%" stop-color="#C2BCB2"/>
+      <stop offset="100%" stop-color="#97938b"/>
+    </linearGradient>
+    <linearGradient id="frame-iphone-16-pro-max-natural-titanium" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4d0c9"/>
+      <stop offset="50%" stop-color="#C2BCB2"/>
+      <stop offset="100%" stop-color="#88847d"/>
+    </linearGradient>
+    <linearGradient id="wall-iphone-16-pro-max-natural-titanium" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#575550"/>
+      <stop offset="55%" stop-color="#585551"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-iphone-16-pro-max-natural-titanium" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-iphone-16-pro-max-natural-titanium" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-iphone-16-pro-max-natural-titanium" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="805" rx="336" ry="34" fill="url(#floor-iphone-16-pro-max-natural-titanium)"/>
+  <g transform="translate(78 156)">
+    <rect x="0" y="0" width="320" height="653" rx="50" fill="url(#body-iphone-16-pro-max-natural-titanium)" stroke="#88847d" stroke-width="2"/>
+    <rect x="6" y="6" width="308" height="641" rx="44" fill="none" stroke="#d7d3cd" stroke-width="1.2" opacity="0.55"/>
+    <path d="M50 6 H270 A44 44 0 0 1 314 50" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.35"/>
+    <rect x="21" y="19.684999999999988" width="150" height="150" rx="44" fill="#c6c1b7" stroke="#928d86" stroke-width="1.5"/>
+    <circle cx="65" cy="63.68499999999999" r="29" fill="#cdc8c0" opacity="0.9"/>
+    <circle cx="65" cy="63.68499999999999" r="26" fill="#363532"/>
+    <circle cx="65" cy="63.68499999999999" r="21" fill="url(#lens-iphone-16-pro-max-natural-titanium)"/>
+    <circle cx="57.75" cy="56.43499999999999" r="4.833333333333333" fill="#ffffff" opacity="0.5"/>
+    <circle cx="65" cy="125.68499999999999" r="29" fill="#cdc8c0" opacity="0.9"/>
+    <circle cx="65" cy="125.68499999999999" r="26" fill="#363532"/>
+    <circle cx="65" cy="125.68499999999999" r="21" fill="url(#lens-iphone-16-pro-max-natural-titanium)"/>
+    <circle cx="57.75" cy="118.43499999999999" r="4.833333333333333" fill="#ffffff" opacity="0.5"/>
+    <circle cx="127" cy="94.68499999999999" r="29" fill="#cdc8c0" opacity="0.9"/>
+    <circle cx="127" cy="94.68499999999999" r="26" fill="#363532"/>
+    <circle cx="127" cy="94.68499999999999" r="21" fill="url(#lens-iphone-16-pro-max-natural-titanium)"/>
+    <circle cx="119.75" cy="87.43499999999999" r="4.833333333333333" fill="#ffffff" opacity="0.5"/><circle cx="131" cy="47.68499999999999" r="8" fill="#e1ded9"/>
+         <circle cx="131" cy="47.68499999999999" r="4.5" fill="#F6E6B8"/>
+    <circle cx="160" cy="339.56" r="30" fill="none" stroke="#d4d0c9" stroke-width="1.2" opacity="0.4"/>
+    <circle cx="160" cy="339.56" r="46" fill="none" stroke="#d4d0c9" stroke-width="1" opacity="0.22"/>
+    <text x="160" y="509.34000000000003" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif"
+          font-size="17" letter-spacing="2" fill="#575550" opacity="0.7">iPhone</text>
+  </g>
+  <g transform="translate(362 112)">
+    <rect x="0" y="0" width="320" height="653" rx="50" fill="url(#frame-iphone-16-pro-max-natural-titanium)" stroke="#74716b" stroke-width="2"/>
+    <rect x="11" y="11" width="298" height="631" rx="41" fill="#05060A"/>
+    <rect x="11" y="11" width="298" height="631" rx="41" fill="url(#wall-iphone-16-pro-max-natural-titanium)"/>
+    <rect x="11" y="11" width="298" height="631" rx="41" fill="url(#gloss-iphone-16-pro-max-natural-titanium)"/>
+    <rect x="112" y="27" width="96" height="30" rx="15" fill="#07070A"/>
+       <circle cx="190" cy="42" r="8" fill="#0E1118"/>
+       <circle cx="190" cy="42" r="3.4" fill="#1E3A5F"/>
+    <g opacity="0.92" font-family="Inter, Helvetica, Arial, sans-serif" fill="#ffffff" text-anchor="middle">
+      <text x="160" y="195.9" font-size="58" font-weight="300" letter-spacing="-1">09:41</text>
+      <text x="160" y="225.285" font-size="16" opacity="0.72">Saturday, Lusaka</text>
+    </g>
+    <g opacity="0.9">
+      <rect x="64" y="522.4" width="38.4" height="38.4" rx="10.24" fill="#ffffff" opacity="0.14"/><rect x="128" y="522.4" width="38.4" height="38.4" rx="10.24" fill="#ffffff" opacity="0.17"/><rect x="192" y="522.4" width="38.4" height="38.4" rx="10.24" fill="#ffffff" opacity="0.2"/><rect x="256" y="522.4" width="38.4" height="38.4" rx="10.24" fill="#ffffff" opacity="0.23"/>
+      <rect x="64" y="574.64" width="192" height="41.6" rx="14.399999999999999" fill="#ffffff" opacity="0.12"/>
+      <rect x="105.6" y="626" width="108.80000000000001" height="5" rx="2.5" fill="#ffffff" opacity="0.6"/>
+    </g>
+    <rect x="318" y="143.66" width="4" height="45.71" rx="2" fill="#9b968e"/>
+    <rect x="318" y="215.49" width="4" height="78.36" rx="2" fill="#9b968e"/>
+    <rect x="-2" y="130.6" width="4" height="32.65" rx="2" fill="#9b968e"/>
+    <rect x="-2" y="182.84" width="4" height="58.769999999999996" rx="2" fill="#9b968e"/>
+  </g>
+</svg>

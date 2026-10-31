@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="Braided USB-C Cable in Ink">
+  <title>Braided USB-C Cable in Ink</title>
+  <defs>
+    <linearGradient id="body-braided-cable-ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#505052"/>
+      <stop offset="45%" stop-color="#1F1F21"/>
+      <stop offset="100%" stop-color="#18181a"/>
+    </linearGradient>
+    <linearGradient id="frame-braided-cable-ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#626264"/>
+      <stop offset="50%" stop-color="#1F1F21"/>
+      <stop offset="100%" stop-color="#161617"/>
+    </linearGradient>
+    <linearGradient id="wall-braided-cable-ink" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#0e0e0f"/>
+      <stop offset="55%" stop-color="#5c5c5d"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-braided-cable-ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-braided-cable-ink" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-braided-cable-ink" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="772.8" rx="250" ry="38" fill="url(#floor-braided-cable-ink)"/>
+      <path d="M190 240 C 530 290, 210 500, 500 550
+               S 280 710, 420 710" fill="none" stroke="#1a1a1c" stroke-width="22" stroke-linecap="round"/>
+      <path d="M190 240 C 530 290, 210 500, 500 550
+               S 280 710, 420 710" fill="none" stroke="#505052" stroke-width="10"
+            stroke-linecap="round" stroke-dasharray="14 12" opacity="0.7"/>
+      <g fill="#353537" stroke="#161617" stroke-width="2">
+        <rect x="166" y="210" width="54" height="62" rx="18"/>
+        <rect x="400" y="682" width="54" height="62" rx="18"/>
+      </g>
+      <g fill="#101011">
+        <rect x="178" y="192" width="30" height="22" rx="11"/>
+        <rect x="412" y="734" width="30" height="22" rx="11"/>
+      </g>
+    </svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="Ceramic Screen Protector">
+  <title>Ceramic Screen Protector</title>
+  <defs>
+    <linearGradient id="body-ceramic-protector-clear" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e4e9ed"/>
+      <stop offset="45%" stop-color="#DDE3E8"/>
+      <stop offset="100%" stop-color="#acb1b5"/>
+    </linearGradient>
+    <linearGradient id="frame-ceramic-protector-clear" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e7ebef"/>
+      <stop offset="50%" stop-color="#DDE3E8"/>
+      <stop offset="100%" stop-color="#9b9fa2"/>
+    </linearGradient>
+    <linearGradient id="wall-ceramic-protector-clear" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#636668"/>
+      <stop offset="55%" stop-color="#65686a"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-ceramic-protector-clear" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-ceramic-protector-clear" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-ceramic-protector-clear" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="772.8" rx="250" ry="38" fill="url(#floor-ceramic-protector-clear)"/>
+      <rect x="240" y="160" width="280" height="600" rx="42" fill="#CFE0EC" opacity="0.28" stroke="#9FC2D8" stroke-width="2"/>
+      <rect x="260" y="180" width="240" height="560" rx="34" fill="#E9F3F8" opacity="0.18"/>
+      <path d="M240 340 L520 160 L520 270 L240 450 Z" fill="#ffffff" opacity="0.35"/>
+      <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.8">
+        <path d="M450 610 v34 M433 627 h34"/>
+        <path d="M300 690 v22 M289 701 h22"/>
+      </g>
+      <text x="380" y="520" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif" font-size="22" letter-spacing="4" fill="#5E7E92">9H CERAMIC</text>
+    </svg>

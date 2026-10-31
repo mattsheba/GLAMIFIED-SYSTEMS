@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="Apple Watch Series 11 in Jet Black">
+  <title>Apple Watch Series 11 in Jet Black</title>
+  <defs>
+    <linearGradient id="body-apple-watch-series-11-jet-black" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4f4f50"/>
+      <stop offset="45%" stop-color="#1D1D1F"/>
+      <stop offset="100%" stop-color="#171718"/>
+    </linearGradient>
+    <linearGradient id="frame-apple-watch-series-11-jet-black" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#616162"/>
+      <stop offset="50%" stop-color="#1D1D1F"/>
+      <stop offset="100%" stop-color="#141416"/>
+    </linearGradient>
+    <linearGradient id="wall-apple-watch-series-11-jet-black" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#0d0d0e"/>
+      <stop offset="55%" stop-color="#5c5c5c"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-apple-watch-series-11-jet-black" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-apple-watch-series-11-jet-black" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-apple-watch-series-11-jet-black" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="772.8" rx="250" ry="38" fill="url(#floor-apple-watch-series-11-jet-black)"/>
+      <path d="M326 160 h108 a26 26 0 0 1 26 26 v150 h-160 v-150 a26 26 0 0 1 26 -26 z" fill="#1a1a1b"/>
+      <path d="M300 584 h160 v150 a26 26 0 0 1 -26 26 h-108 a26 26 0 0 1 -26 -26 z" fill="#1a1a1b"/>
+      <rect x="262" y="312" width="236" height="280" rx="68" fill="url(#frame-apple-watch-series-11-jet-black)" stroke="#131314" stroke-width="2.5"/>
+      <rect x="276" y="326" width="208" height="252" rx="58" fill="#05060A"/>
+      <rect x="276" y="326" width="208" height="252" rx="58" fill="url(#wall-apple-watch-series-11-jet-black)"/>
+      <rect x="276" y="326" width="208" height="252" rx="58" fill="url(#gloss-apple-watch-series-11-jet-black)"/>
+      <g font-family="Inter, Helvetica, Arial, sans-serif" fill="#ffffff" text-anchor="middle">
+        <text x="380" y="420" font-size="56" font-weight="300">09:41</text>
+        <text x="380" y="464" font-size="15" opacity="0.7">LUSAKA · 24°</text>
+        <circle cx="380" cy="522" r="34" fill="none" stroke="#ffffff" stroke-width="7" opacity="0.18"/>
+        <path d="M380 488 a34 34 0 0 1 30 50" fill="none" stroke="#E86A4B" stroke-width="7" stroke-linecap="round"/>
+      </g>
+      <rect x="496" y="394" width="12" height="42" rx="6" fill="#4a4a4c" stroke="#141416" stroke-width="1.5"/>
+      <rect x="496" y="458" width="10" height="56" rx="5" fill="#1a1a1c"/>
+    </svg>

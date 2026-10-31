@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warranty, returns &amp; delivery | iVogue Lusaka</title>
+<meta name="description" content="iVogue Lusaka warranty, returns, swap and delivery policy. 12 months on sealed iPhones, 90 days on certified pre-owned, same-day Lusaka delivery.">
+<link rel="canonical" href="https://ivoguelusaka.com/warranty.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Warranty, returns &amp; delivery | iVogue Lusaka">
+<meta property="og:description" content="iVogue Lusaka warranty, returns, swap and delivery policy. 12 months on sealed iPhones, 90 days on certified pre-owned, same-day Lusaka delivery.">
+<meta property="og:image" content="https://ivoguelusaka.com/assets/og.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav-root"></div>
+<main>
+  <section class="section-tight" style="padding-top:2.5rem">
+    <div class="wrap-narrow">
+      <div class="eyebrow">The fine print, in plain words</div>
+      <h1 class="display-2" style="margin:.6rem 0 .8rem">Warranty, returns &amp; delivery</h1>
+      <p class="lead">Last updated 31 October 2026. This is the policy we actually apply at the counter — nothing hidden in a longer document somewhere else.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem">
+    <div class="wrap-narrow">
+      <div class="panel">
+        <h2 class="h2">Warranty</h2>
+        <div style="margin-top:1rem">
+          <details class="acc" open><summary>Sealed iPhone, Apple Watch and AirPods — 12 months</summary>
+            <div class="acc-body">Covers manufacturing faults: the device not powering on, a screen that fails on its own, a camera or speaker that stops working, a charging port that dies, or a battery that drops below 80% health within the year. Bring the device and the receipt. We test it, and repair or replace it. Where the fault is covered by Apple's own warranty we handle that claim for you.</div></details>
+          <details class="acc"><summary>Certified pre-owned handsets — 90 days</summary>
+            <div class="acc-body">Parts and labour on anything that was working when you bought it and stops working on its own within 90 days. The battery health we printed on your receipt is what we stand behind; if it falls more than 5 percentage points below that figure inside 90 days we replace the battery free.</div></details>
+          <details class="acc"><summary>Accessories</summary>
+            <div class="acc-body">Cases and cables: 3–6 months against splitting, fraying or a failed connector. Chargers and power banks: 12 months. Fitted screen protectors: we re-fit free if dust or a bubble gets under it, any time.</div></details>
+          <details class="acc"><summary>What the warranty does not cover</summary>
+            <div class="acc-body">Cracked or chipped glass, bent frames, liquid damage, damage from a non-genuine charger, software problems caused by jailbreaking, and any device opened by somebody else. Water resistance is a factory rating, not a promise — it is not covered once the phone has been dropped or repaired.</div></details>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 class="h2">Returns and swaps</h2>
+        <ul class="tick-list" style="margin-top:1rem">
+          <li><b>7 days</b> to return an unopened, unregistered item with the receipt for a full refund by the method you paid with.</li>
+          <li><b>Opened sealed items</b> are exchange-or-repair, not refund. Once an iPhone is activated it is no longer sealed stock and cannot be resold as new.</li>
+          <li><b>48-hour swap</b> on certified pre-owned handsets: if it misbehaves in the first two days, bring it back and swap it for another unit of equal value.</li>
+          <li><b>Mobile money refunds</b> go back to the wallet that paid, usually within 24 hours. Card refunds take 3–10 working days depending on your bank.</li>
+          <li>Nothing here removes your rights under the Competition and Consumer Protection Act No. 24 of 2010.</li>
+        </ul>
+      </div>
+
+      <div class="panel" id="delivery">
+        <h2 class="h2">Delivery &amp; collection</h2>
+        <table class="plain-table" id="zones" style="margin-top:1rem"></table>
+        <ul class="tick-list" style="margin-top:1.2rem">
+          <li>Order before 15:00 on a trading day for same-day delivery inside Lusaka.</li>
+          <li>Every delivery is insured until it is in your hands. The rider calls before arriving.</li>
+          <li>We check the NRC or order reference of whoever receives the parcel on high-value items.</li>
+          <li>Collection at East Park Mall is free and usually ready within the hour.</li>
+          <li>Nothing ships before payment clears, except reserved collections, which we hold for 24 hours.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h2 class="h2">Stolen or blocked handsets</h2>
+        <p class="small" style="margin-top:.8rem">Every handset we buy or sell has its IMEI recorded and checked. We do not buy a phone without seeing the seller's NRC, and we will not take a phone that is iCloud-locked or reported stolen. If you believe a phone you bought here has a history problem, bring it in with the receipt and we will resolve it the same day.</p>
+      </div>
+
+      <div class="panel center">
+        <h2 class="h3">Something gone wrong?</h2>
+        <p class="small muted" style="margin:.5rem 0 1rem">Message us with your order reference and we will sort it out.</p>
+        <a class="btn btn-wa" id="wa" target="_blank" rel="noopener">WhatsApp the shop</a>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('wa').href = window.IV.waLink('Hi iVogue, I have a warranty question about order ');
+  window.IV.loadCatalog().then(function (c) {
+    document.getElementById('zones').innerHTML = c.deliveryZones.map(function (z) {
+      return '<tr><td>' + z.name + '<br><span class="xs muted">' + z.eta + '</span></td><td>' +
+        (z.fee ? window.IV.money(z.fee) : 'Free') + '</td></tr>';
+    }).join('');
+  });
+});
+</script>
+<footer id="footer-root"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
