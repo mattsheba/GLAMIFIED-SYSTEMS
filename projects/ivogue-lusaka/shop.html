@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop iPhones in Lusaka — new, pre-owned &amp; accessories | iVogue Lusaka</title>
+<meta name="description" content="Browse every iPhone in stock in Lusaka: iPhone 17, 17 Pro, Air, 16, certified pre-owned 13 and 12, AirPods, Apple Watch, cases and chargers. Prices in kwacha, mobile money accepted.">
+<link rel="canonical" href="https://ivoguelusaka.com/shop.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Shop iPhones in Lusaka — iVogue Lusaka">
+<meta property="og:description" content="Every iPhone we have on the shelf, with kwacha prices and live stock.">
+<meta property="og:image" content="https://ivoguelusaka.com/assets/og.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav-root"></div>
+
+<main>
+  <section class="section-tight" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="eyebrow">The shop</div>
+      <h1 class="display-2" style="margin:.6rem 0 .7rem" id="shop-title">Everything in stock</h1>
+      <p class="lead" id="shop-blurb" style="max-width:60ch">Live stock from the Lusaka counter. If it shows here, it is in the shop — not on a ship.</p>
+
+      <div class="filter-bar" role="group" aria-label="Filter products">
+        <button class="chip" data-cat="" aria-pressed="true">All</button>
+        <button class="chip" data-cat="new-iphone" aria-pressed="false">New iPhone</button>
+        <button class="chip" data-cat="preowned" aria-pressed="false">Pre-owned</button>
+        <button class="chip" data-cat="accessories" aria-pressed="false">Accessories</button>
+        <button class="chip" data-cat="bundles" aria-pressed="false">Bundles</button>
+        <span style="flex:1"></span>
+        <label class="sr-only" for="q">Search</label>
+        <input class="input" id="q" type="search" placeholder="Search model or colour…" style="width:min(240px,46vw)">
+        <label class="sr-only" for="sort">Sort</label>
+        <select class="input" id="sort" style="width:auto">
+          <option value="featured">Sort: featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="newest">Newest model</option>
+        </select>
+      </div>
+
+      <p class="small muted" id="count" aria-live="polite">Loading the shelf…</p>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem">
+    <div class="wrap">
+      <div class="product-grid" id="grid">
+        <div class="skeleton" style="height:420px"></div><div class="skeleton" style="height:420px"></div>
+        <div class="skeleton" style="height:420px"></div><div class="skeleton" style="height:420px"></div>
+      </div>
+      <div class="empty" id="empty" hidden>
+        <h2 class="h2">Nothing matches that</h2>
+        <p class="lead">Try a different filter, or message us — we source specific models and colours on request, usually within a week.</p>
+        <a class="btn btn-wa" id="empty-wa" target="_blank" rel="noopener" href="#">Ask us to source it</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap panel">
+      <div class="spread">
+        <div>
+          <h2 class="h3">Looking for a model that isn't listed?</h2>
+          <p class="small muted" style="margin-top:.4rem">We bring in specific models, storages and colours to order — usually 5–8 working days, 50% deposit by mobile money.</p>
+        </div>
+        <a class="btn btn-clay" id="source-wa" target="_blank" rel="noopener" href="#">Request a model</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer-root"></footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  const { loadCatalog, productCard, esc, qs, waLink, fromPrice, totalStock } = window.IV;
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const count = document.getElementById('count');
+  const search = document.getElementById('q');
+  const sort = document.getElementById('sort');
+
+  const state = {
+    category: qs('category'),
+    collection: qs('collection'),
+    q: qs('q'),
+    sort: qs('sort') || 'featured',
+  };
+  search.value = state.q;
+  sort.value = state.sort;
+
+  const waText = "Hi iVogue, do you have this model in stock? ";
+  document.getElementById('source-wa').href = waLink(waText);
+  document.getElementById('empty-wa').href = waLink(waText);
+
+  function syncChips() {
+    document.querySelectorAll('.chip[data-cat]').forEach((c) =>
+      c.setAttribute('aria-pressed', String(c.dataset.cat === state.category)));
+  }
+
+  function syncUrl() {
+    const p = new URLSearchParams();
+    if (state.category) p.set('category', state.category);
+    if (state.collection) p.set('collection', state.collection);
+    if (state.q) p.set('q', state.q);
+    if (state.sort !== 'featured') p.set('sort', state.sort);
+    const url = p.toString() ? `shop.html?${p}` : 'shop.html';
+    history.replaceState(null, '', url);
+  }
+
+  function render(catalog) {
+    let list = catalog.products.slice();
+
+    if (state.collection) {
+      const col = catalog.collections.find((c) => c.id === state.collection);
+      if (col) {
+        list = list.filter((p) => col.productIds.includes(p.id));
+        document.getElementById('shop-title').textContent = col.name;
+        document.getElementById('shop-blurb').textContent = col.blurb;
+      }
+    } else if (state.category) {
+      const cat = catalog.categories.find((c) => c.id === state.category);
+      if (cat) {
+        document.getElementById('shop-title').textContent = cat.name;
+        document.getElementById('shop-blurb').textContent = cat.blurb;
+      }
+    }
+
+    if (state.category) list = list.filter((p) => p.category === state.category);
+
+    if (state.q) {
+      const needle = state.q.toLowerCase().trim();
+      list = list.filter((p) =>
+        [p.name, p.tagline, p.category, p.condition, ...p.colors.map((c) => c.name), ...p.options.map((o) => o.label)]
+          .join(' ').toLowerCase().includes(needle));
+    }
+
+    const order = { featured: 0, 'price-asc': 1, 'price-desc': 2, newest: 3 }[state.sort];
+    list.sort((a, b) => {
+      if (order === 1) return fromPrice(a) - fromPrice(b);
+      if (order === 2) return fromPrice(b) - fromPrice(a);
+      if (order === 3) return (b.releaseYear || 0) - (a.releaseYear || 0) || fromPrice(b) - fromPrice(a);
+      return (Number(!!b.featured) - Number(!!a.featured)) || (totalStock(b) > 0) - (totalStock(a) > 0) || fromPrice(b) - fromPrice(a);
+    });
+
+    grid.innerHTML = list.map(productCard).join('');
+    grid.hidden = list.length === 0;
+    empty.hidden = list.length > 0;
+    const inStock = list.filter((p) => totalStock(p) > 0).length;
+    count.textContent = list.length
+      ? `${list.length} product${list.length === 1 ? '' : 's'} · ${inStock} ready to collect today`
+      : '';
+  }
+
+  loadCatalog().then((catalog) => {
+    syncChips();
+    render(catalog);
+
+    document.querySelectorAll('.chip[data-cat]').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        state.category = chip.dataset.cat;
+        state.collection = '';
+        syncChips(); syncUrl(); render(catalog);
+      });
+    });
+
+    let t;
+    search.addEventListener('input', () => {
+      clearTimeout(t);
+      t = setTimeout(() => { state.q = search.value; syncUrl(); render(catalog); }, 180);
+    });
+    sort.addEventListener('change', () => { state.sort = sort.value; syncUrl(); render(catalog); });
+  });
+})();
+</script>
+</body>
+</html>

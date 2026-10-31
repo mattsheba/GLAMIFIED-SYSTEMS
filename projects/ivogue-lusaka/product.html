@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>iVogue Lusaka — product</title>
+<meta name="description" content="iPhone, AirPods and Apple Watch in Lusaka with kwacha pricing, live stock, mobile money checkout and same-day delivery.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://ivoguelusaka.com/assets/og.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav-root"></div>
+
+<main>
+  <section class="section-tight" style="padding-top:1.5rem">
+    <div class="wrap">
+      <p class="small muted"><a class="link-underline" href="shop.html">Shop</a> <span aria-hidden="true">→</span> <span id="crumb">…</span></p>
+    </div>
+  </section>
+
+  <section style="padding-top:1rem">
+    <div class="wrap pdp" id="pdp">
+      <div class="skeleton" style="height:520px"></div>
+      <div><div class="skeleton" style="height:48px;margin-bottom:1rem"></div><div class="skeleton" style="height:320px"></div></div>
+    </div>
+  </section>
+
+  <section id="related-section" style="padding-top:1rem" hidden>
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Goes with it</div><h2 class="h2">Style it out</h2></div>
+      <div class="product-grid" id="related"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer-root"></footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  const IV = window.IV, P = window.IVPricing;
+  const { esc, money, qs, waLink, cfg, art, cart, toast, productCard } = IV;
+  const root = document.getElementById('pdp');
+
+  const id = qs('id');
+  let product, optionId, colorId, qty = 1;
+
+  function deliveryLine() {
+    const st = IV.openState();
+    if (st.open && st.beforeCutoff) return 'Order in the next few hours for <b>same-day delivery in Lusaka</b>.';
+    if (st.beforeCutoff) return 'Order before 15:00 on a trading day for <b>same-day Lusaka delivery</b>.';
+    return 'Ordered after 15:00 — this goes out <b>first thing tomorrow</b> in Lusaka.';
+  }
+
+  function currentOption() { return product.options.find((o) => o.id === optionId); }
+  function currentColor() { return product.colors.find((c) => c.id === colorId); }
+
+  function render() {
+    const opt = currentOption(), col = currentColor();
+    const stock = Number(opt.stock) || 0;
+    const saving = opt.compareAt ? opt.compareAt - opt.price : 0;
+
+    document.title = `${product.name} ${opt.label} in ${col.name} — price in Lusaka | iVogue`;
+    document.getElementById('crumb').textContent = product.name;
+
+    root.innerHTML = `
+      <div class="pdp-media">
+        <img id="hero-img" src="${art(product.id, col.id)}" alt="${esc(product.name)} in ${esc(col.name)}" width="620" height="760">
+        <p class="xs muted center" style="margin-top:.5rem">${esc(product.name)} · ${esc(col.name)}</p>
+      </div>
+      <div>
+        <div class="row" style="gap:.4rem;margin-bottom:.8rem">
+          ${(product.badges || []).map((b) => `<span class="badge">${esc(b)}</span>`).join('')}
+          ${product.condition === 'certified-preowned' ? '<span class="badge badge-ink">Certified pre-owned</span>' : ''}
+          ${stock === 0 ? '<span class="badge badge-ink">Sold out</span>'
+            : stock <= 2 ? `<span class="badge badge-warn">Only ${stock} left</span>`
+            : '<span class="badge badge-ok">In stock in Lusaka</span>'}
+        </div>
+
+        <h1 class="display-2">${esc(product.name)}</h1>
+        <p class="lead" style="margin-top:.6rem">${esc(product.tagline || '')}</p>
+
+        <div class="row" style="align-items:baseline;gap:.8rem;margin:1.4rem 0 .4rem">
+          <span class="price" style="font-size:2rem">${money(opt.price)}</span>
+          ${opt.compareAt ? `<span class="price-was">${money(opt.compareAt)}</span><span class="badge badge-sale">Save ${money(saving)}</span>` : ''}
+        </div>
+        <p class="xs muted">${esc(cfg.payments.vatNote)}</p>
+
+        <div class="stack" style="margin-top:1.8rem">
+          <div>
+            <div class="field"><label>${esc(product.optionLabel)}</label></div>
+            <div class="opt-row" id="opts" style="margin-top:.5rem"></div>
+          </div>
+          ${product.colors.length > 1 ? `
+          <div style="margin-top:1.4rem">
+            <div class="field"><label>Colour — <span id="col-name">${esc(col.name)}</span></label></div>
+            <div class="opt-row" id="cols" style="margin-top:.6rem"></div>
+          </div>` : ''}
+        </div>
+
+        <div class="row" style="margin-top:1.8rem;gap:1rem">
+          <div class="qty" role="group" aria-label="Quantity">
+            <button type="button" id="minus" aria-label="Reduce quantity">−</button>
+            <span id="qty" aria-live="polite">1</span>
+            <button type="button" id="plus" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="btn btn-primary btn-lg" id="add" style="flex:1;min-width:200px" ${stock === 0 ? 'disabled' : ''}>
+            ${stock === 0 ? 'Sold out' : 'Add to basket'}
+          </button>
+        </div>
+        <a class="btn btn-wa btn-block" style="margin-top:.7rem" id="wa" target="_blank" rel="noopener">Ask about this on WhatsApp</a>
+
+        <div class="panel" style="margin-top:1.6rem;background:var(--bone-2);border:0">
+          <p class="small">${deliveryLine()}</p>
+          <p class="small muted" style="margin-top:.5rem">Or collect free at ${esc(cfg.store.addressLines[0])}, usually within the hour.</p>
+          <p class="small muted" style="margin-top:.5rem">${product.warrantyMonths} month${product.warrantyMonths === 1 ? '' : 's'} warranty · ${esc(product.condition === 'certified-preowned' ? cfg.policies.warrantyPreowned : cfg.policies.warrantyNew)}</p>
+        </div>
+
+        ${product.fashionNote ? `<p class="quote" style="margin-top:2rem">“${esc(product.fashionNote)}”</p>
+          <p class="xs muted" style="margin-top:.5rem">— the counter, East Park Mall</p>` : ''}
+
+        <ul class="tick-list" style="margin-top:1.8rem">
+          ${product.highlights.map((h) => `<li>${esc(h)}</li>`).join('')}
+        </ul>
+
+        <div style="margin-top:2rem">
+          <details class="acc" open><summary>Full specification</summary>
+            <div class="acc-body"><table class="spec-table">
+              ${Object.entries(product.specs).map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`).join('')}
+            </table></div>
+          </details>
+          <details class="acc"><summary>What's in the box</summary>
+            <div class="acc-body"><ul class="tick-list">${product.includes.map((i) => `<li>${esc(i)}</li>`).join('')}</ul></div>
+          </details>
+          <details class="acc"><summary>Warranty, returns and swaps</summary>
+            <div class="acc-body">
+              <p>${esc(product.condition === 'certified-preowned' ? cfg.policies.warrantyPreowned : cfg.policies.warrantyNew)}</p>
+              <p style="margin-top:.6rem">${esc(cfg.policies.returns)}</p>
+              <p style="margin-top:.6rem">${esc(cfg.policies.swapWindow)}</p>
+              <p style="margin-top:.6rem"><a class="link-underline" href="warranty.html">Read the full policy</a></p>
+            </div>
+          </details>
+          <details class="acc"><summary>Paying for it</summary>
+            <div class="acc-body">
+              <p>Airtel Money, MTN MoMo and Zamtel Kwacha prompts come straight to your phone. Visa and Mastercard are accepted online and at the counter. You can also pay cash when you collect in store.</p>
+              <p style="margin-top:.6rem">Trading in an older iPhone? <a class="link-underline" href="trade-in.html">Value it here</a> and we take it off this price.</p>
+            </div>
+          </details>
+        </div>
+      </div>`;
+
+    /* option buttons */
+    document.getElementById('opts').innerHTML = product.options.map((o) => `
+      <button class="opt" data-opt="${esc(o.id)}" aria-pressed="${o.id === optionId}" ${Number(o.stock) ? '' : 'disabled'}>
+        ${esc(o.label)}<small>${money(o.price)}${Number(o.stock) ? '' : ' · sold out'}</small>
+      </button>`).join('');
+
+    const colsWrap = document.getElementById('cols');
+    if (colsWrap) {
+      colsWrap.innerHTML = product.colors.map((c) => `
+        <button class="swatch" data-col="${esc(c.id)}" style="background:${esc(c.hex)}"
+                aria-pressed="${c.id === colorId}" aria-label="${esc(c.name)}" title="${esc(c.name)}"></button>`).join('');
+    }
+
+    document.getElementById('qty').textContent = qty;
+    document.getElementById('wa').href = waLink(
+      `Hi iVogue, I'm interested in the ${product.name} ${opt.label} in ${col.name} (${money(opt.price)}). Is it in stock?`);
+
+    bind();
+    writeSchema(opt, col, stock);
+  }
+
+  function bind() {
+    document.querySelectorAll('[data-opt]').forEach((b) => b.addEventListener('click', () => {
+      optionId = b.dataset.opt; qty = 1; render(); syncUrl();
+    }));
+    document.querySelectorAll('[data-col]').forEach((b) => b.addEventListener('click', () => {
+      colorId = b.dataset.col; render(); syncUrl();
+    }));
+    const opt = currentOption();
+    const max = Math.min(P.MAX_QTY, Number(opt.stock) || 1);
+    document.getElementById('plus').addEventListener('click', () => {
+      if (qty >= max) { toast(`Only ${max} available right now.`); return; }
+      qty++; document.getElementById('qty').textContent = qty;
+    });
+    document.getElementById('minus').addEventListener('click', () => {
+      if (qty > 1) { qty--; document.getElementById('qty').textContent = qty; }
+    });
+    document.getElementById('add').addEventListener('click', () => {
+      cart.add(product.id, optionId, colorId, qty);
+      toast(`${product.name} added to your basket.`, 'cart.html', 'Checkout');
+    });
+  }
+
+  function syncUrl() {
+    history.replaceState(null, '', `product.html?id=${encodeURIComponent(product.id)}&option=${encodeURIComponent(optionId)}&color=${encodeURIComponent(colorId)}`);
+  }
+
+  function writeSchema(opt, col, stock) {
+    const old = document.getElementById('pdp-schema');
+    if (old) old.remove();
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.id = 'pdp-schema';
+    s.textContent = JSON.stringify({
+      '@context': 'https://schema.org', '@type': 'Product',
+      name: `${product.name} ${opt.label}`,
+      description: product.tagline,
+      color: col.name,
+      brand: { '@type': 'Brand', name: 'Apple' },
+      itemCondition: product.condition === 'certified-preowned'
+        ? 'https://schema.org/RefurbishedCondition' : 'https://schema.org/NewCondition',
+      offers: {
+        '@type': 'Offer', priceCurrency: 'ZMW', price: (opt.price / 100).toFixed(2),
+        availability: stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+        seller: { '@type': 'Store', name: cfg.brand.name },
+        areaServed: 'Lusaka, Zambia',
+      },
+    });
+    document.head.appendChild(s);
+  }
+
+  IV.loadCatalog().then((catalog) => {
+    product = P.findProduct(catalog, id);
+    if (!product) {
+      root.innerHTML = `<div class="empty" style="grid-column:1/-1">
+        <h2 class="h2">We can't find that one</h2>
+        <p class="lead">It may have sold out and been taken down. Here is what is on the shelf right now.</p>
+        <a class="btn btn-primary" href="shop.html">Back to the shop</a></div>`;
+      return;
+    }
+    const wantedOpt = qs('option');
+    const wantedCol = qs('color');
+    const firstAvailable = product.options.find((o) => Number(o.stock) > 0) || product.options[0];
+    optionId = product.options.some((o) => o.id === wantedOpt) ? wantedOpt : firstAvailable.id;
+    colorId = product.colors.some((c) => c.id === wantedCol) ? wantedCol : product.colors[0].id;
+    render();
+
+    /* related: accessories for a phone, phones for an accessory */
+    const related = product.category === 'accessories'
+      ? catalog.products.filter((p) => p.category === 'new-iphone' && p.featured)
+      : catalog.products.filter((p) => p.category === 'accessories' || p.category === 'bundles');
+    const list = related.filter((p) => p.id !== product.id).slice(0, 4);
+    if (list.length) {
+      document.getElementById('related').innerHTML = list.map(productCard).join('');
+      document.getElementById('related-section').hidden = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>

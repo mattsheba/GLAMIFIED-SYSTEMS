@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="iPhone 16 in Teal">
+  <title>iPhone 16 — Teal</title>
+  <defs>
+    <linearGradient id="body-iphone-16-teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#bbd0cb"/>
+      <stop offset="45%" stop-color="#A8C3BC"/>
+      <stop offset="100%" stop-color="#839893"/>
+    </linearGradient>
+    <linearGradient id="frame-iphone-16-teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c2d5d0"/>
+      <stop offset="50%" stop-color="#A8C3BC"/>
+      <stop offset="100%" stop-color="#768984"/>
+    </linearGradient>
+    <linearGradient id="wall-iphone-16-teal" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#4c5855"/>
+      <stop offset="55%" stop-color="#4c5955"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-iphone-16-teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-iphone-16-teal" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-iphone-16-teal" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="782" rx="312.90000000000003" ry="34" fill="url(#floor-iphone-16-teal)"/>
+  <g transform="translate(78 178)">
+    <rect x="0" y="0" width="298" height="608" rx="46" fill="url(#body-iphone-16-teal)" stroke="#768984" stroke-width="2"/>
+    <rect x="6" y="6" width="286" height="596" rx="40" fill="none" stroke="#c6d8d3" stroke-width="1.2" opacity="0.55"/>
+    <path d="M46 6 H252 A40 40 0 0 1 292 46" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.35"/>
+    <rect x="51.39999999999999" y="17.159999999999997" width="76" height="142" rx="38" fill="#aec7c1" stroke="#7e928d" stroke-width="1.5"/>
+    <circle cx="89.39999999999999" cy="55.16" r="27" fill="#b8cec8" opacity="0.9"/>
+    <circle cx="89.39999999999999" cy="55.16" r="24" fill="#2f3735"/>
+    <circle cx="89.39999999999999" cy="55.16" r="19" fill="url(#lens-iphone-16-teal)"/>
+    <circle cx="82.64999999999999" cy="48.41" r="4.5" fill="#ffffff" opacity="0.5"/>
+    <circle cx="89.39999999999999" cy="121.16" r="27" fill="#b8cec8" opacity="0.9"/>
+    <circle cx="89.39999999999999" cy="121.16" r="24" fill="#2f3735"/>
+    <circle cx="89.39999999999999" cy="121.16" r="19" fill="url(#lens-iphone-16-teal)"/>
+    <circle cx="82.64999999999999" cy="114.41" r="4.5" fill="#ffffff" opacity="0.5"/><circle cx="89.39999999999999" cy="88.16" r="5" fill="#F6E6B8" opacity="0.85"/>
+    <circle cx="149" cy="316.16" r="30" fill="none" stroke="#c2d5d0" stroke-width="1.2" opacity="0.4"/>
+    <circle cx="149" cy="316.16" r="46" fill="none" stroke="#c2d5d0" stroke-width="1" opacity="0.22"/>
+    <text x="149" y="474.24" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif"
+          font-size="17" letter-spacing="2" fill="#4c5855" opacity="0.7">iPhone</text>
+  </g>
+  <g transform="translate(384 134)">
+    <rect x="0" y="0" width="298" height="608" rx="46" fill="url(#frame-iphone-16-teal)" stroke="#657571" stroke-width="2"/>
+    <rect x="11" y="11" width="276" height="586" rx="37" fill="#05060A"/>
+    <rect x="11" y="11" width="276" height="586" rx="37" fill="url(#wall-iphone-16-teal)"/>
+    <rect x="11" y="11" width="276" height="586" rx="37" fill="url(#gloss-iphone-16-teal)"/>
+    <rect x="101" y="27" width="96" height="30" rx="15" fill="#07070A"/>
+       <circle cx="179" cy="42" r="8" fill="#0E1118"/>
+       <circle cx="179" cy="42" r="3.4" fill="#1E3A5F"/>
+    <g opacity="0.92" font-family="Inter, Helvetica, Arial, sans-serif" fill="#ffffff" text-anchor="middle">
+      <text x="149" y="182.4" font-size="58" font-weight="300" letter-spacing="-1">09:41</text>
+      <text x="149" y="209.76" font-size="16" opacity="0.72">Saturday, Lusaka</text>
+    </g>
+    <g opacity="0.9">
+      <rect x="59.6" y="486.40000000000003" width="35.76" height="35.76" rx="9.536" fill="#ffffff" opacity="0.14"/><rect x="119.2" y="486.40000000000003" width="35.76" height="35.76" rx="9.536" fill="#ffffff" opacity="0.17"/><rect x="178.8" y="486.40000000000003" width="35.76" height="35.76" rx="9.536" fill="#ffffff" opacity="0.2"/><rect x="238.4" y="486.40000000000003" width="35.76" height="35.76" rx="9.536" fill="#ffffff" opacity="0.23"/>
+      <rect x="59.6" y="535.04" width="178.79999999999998" height="38.74" rx="13.41" fill="#ffffff" opacity="0.12"/>
+      <rect x="98.34" y="581" width="101.32000000000001" height="5" rx="2.5" fill="#ffffff" opacity="0.6"/>
+    </g>
+    <rect x="296" y="133.76" width="4" height="42.56" rx="2" fill="#869c96"/>
+    <rect x="296" y="200.64000000000001" width="4" height="72.96" rx="2" fill="#869c96"/>
+    <rect x="-2" y="121.60000000000001" width="4" height="30.400000000000002" rx="2" fill="#869c96"/>
+    <rect x="-2" y="170.24" width="4" height="54.72" rx="2" fill="#869c96"/>
+  </g>
+</svg>

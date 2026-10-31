@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — iVogue Lusaka</title>
+<meta name="description" content="Pay with Airtel Money, MTN MoMo, Zamtel Kwacha, Visa or Mastercard. Same-day Lusaka delivery or free collection at East Park Mall.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav-root"></div>
+
+<main>
+  <section class="section-tight" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="steps"><a href="cart.html">1. Basket</a><i>→</i><b>2. Details</b><i>→</i><span>3. Payment</span></div>
+      <h1 class="display-2">Checkout</h1>
+      <p class="lead" style="max-width:52ch">Takes about a minute. Mobile money prompts arrive on your phone straight after you submit.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:1.5rem">
+    <div class="wrap checkout-grid">
+      <form id="form" novalidate>
+        <div class="panel">
+          <h2 class="h3">Who is it for?</h2>
+          <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:1rem">
+            <div class="field" style="grid-column:1/-1">
+              <label for="name">Full name *</label>
+              <input class="input" id="name" name="name" autocomplete="name" required maxlength="80" placeholder="Chanda Mwanza">
+              <span class="err" data-err="name" hidden></span>
+            </div>
+            <div class="field">
+              <label for="phone">Mobile number *</label>
+              <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="0977 123 456" inputmode="tel">
+              <span class="hint" id="phone-hint">We call before delivery.</span>
+              <span class="err" data-err="phone" hidden></span>
+            </div>
+            <div class="field">
+              <label for="email">Email (for the receipt)</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com">
+              <span class="err" data-err="email" hidden></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="h3">Delivery</h2>
+          <div class="field" style="margin-top:1rem">
+            <label for="zone">Area</label>
+            <select class="input" id="zone" name="zone"></select>
+            <span class="hint" id="eta"></span>
+          </div>
+          <div id="address-block" class="grid" style="grid-template-columns:1fr 1fr;margin-top:1rem">
+            <div class="field" style="grid-column:1/-1">
+              <label for="address">Street address *</label>
+              <input class="input" id="address" name="address" autocomplete="street-address" maxlength="160" placeholder="Plot 24, Leopards Hill Road">
+              <span class="err" data-err="address" hidden></span>
+            </div>
+            <div class="field" style="grid-column:1/-1">
+              <label for="landmark">Nearest landmark</label>
+              <input class="input" id="landmark" name="landmark" maxlength="120" placeholder="Opposite Kabulonga Girls">
+              <span class="hint">Lusaka riders find landmarks faster than plot numbers.</span>
+            </div>
+          </div>
+          <div class="field" style="margin-top:1rem">
+            <label for="notes">Anything we should know?</label>
+            <textarea class="input" id="notes" name="notes" rows="2" maxlength="400" placeholder="Deliver after 17:00, call on arrival…"></textarea>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2 class="h3">Payment</h2>
+          <div class="stack" style="margin-top:1rem" id="pay-methods">
+            <label class="pay-opt" data-method="momo">
+              <input type="radio" name="method" value="momo" checked>
+              <span>
+                <b>Mobile money</b>
+                <span class="small muted" style="display:block">Airtel Money, MTN MoMo or Zamtel Kwacha. A prompt comes to your phone — approve it with your PIN.</span>
+              </span>
+            </label>
+            <label class="pay-opt" data-method="card">
+              <input type="radio" name="method" value="card">
+              <span>
+                <b>Visa or Mastercard</b>
+                <span class="small muted" style="display:block">You'll be taken to a secure payment page. 3-D Secure supported.</span>
+              </span>
+            </label>
+            <label class="pay-opt" data-method="cash" id="cash-opt">
+              <input type="radio" name="method" value="cash">
+              <span>
+                <b>Pay on collection</b>
+                <span class="small muted" style="display:block">Reserve it and pay cash or card at the counter. We hold stock for 24 hours.</span>
+              </span>
+            </label>
+          </div>
+
+          <div id="momo-block" style="margin-top:1.2rem">
+            <div class="field">
+              <label for="momo">Mobile money number</label>
+              <input class="input" id="momo" name="momo" type="tel" inputmode="tel" placeholder="Same as above, or another wallet">
+              <span class="hint" id="momo-hint">Leave blank to use the number above.</span>
+              <span class="err" data-err="momo" hidden></span>
+            </div>
+          </div>
+
+          <details class="acc" style="margin-top:1rem">
+            <summary>Company invoice? Add your TPIN</summary>
+            <div class="acc-body">
+              <div class="grid" style="grid-template-columns:1fr 1fr">
+                <div class="field">
+                  <label for="company">Company name</label>
+                  <input class="input" id="company" name="company" maxlength="120">
+                </div>
+                <div class="field">
+                  <label for="tpin">TPIN (10 digits)</label>
+                  <input class="input" id="tpin" name="tpin" inputmode="numeric" maxlength="14" placeholder="1000000000">
+                  <span class="err" data-err="tpin" hidden></span>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div id="form-error" class="notice notice-err" hidden style="margin-top:1rem"></div>
+
+        <button class="btn btn-primary btn-lg btn-block" id="submit" style="margin-top:1.5rem" type="submit">
+          Place order
+        </button>
+        <p class="xs muted center" style="margin-top:.8rem">
+          By placing this order you accept our <a class="link-underline" href="terms.html">terms</a> and
+          <a class="link-underline" href="warranty.html">warranty policy</a>.
+        </p>
+      </form>
+
+      <div class="summary">
+        <div class="panel" id="summary">
+          <div class="skeleton" style="height:240px"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer-root"></footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/zm.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  const IV = window.IV, P = window.IVPricing, ZM = window.ZM;
+  const { esc, money, cart, cfg } = IV;
+  const form = document.getElementById('form');
+  let catalog, priced;
+
+  const field = (id) => document.getElementById(id);
+  const showErr = (name, msg) => {
+    const node = document.querySelector(`[data-err="${name}"]`);
+    if (!node) return;
+    node.textContent = msg || '';
+    node.hidden = !msg;
+    const input = field(name);
+    if (input) input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+  };
+
+  function recalc() {
+    priced = P.priceCart(catalog, { items: cart.items(), zoneId: cart.zone(), promoCode: cart.promo() });
+    return priced;
+  }
+
+  function renderSummary() {
+    const r = recalc();
+    if (!r.lines.length) {
+      location.replace('cart.html');
+      return;
+    }
+    document.getElementById('summary').innerHTML = `
+      <h2 class="h3">Your order</h2>
+      <div style="margin-top:.6rem">
+        ${r.lines.map((l) => `
+          <div class="line" style="padding:.7rem 0">
+            <div class="line-media" style="width:56px;height:56px"><img src="${l.art}" alt=""></div>
+            <div class="line-main">
+              <div class="spread" style="gap:.5rem">
+                <span class="small"><b>${esc(l.name)}</b><br><span class="muted">${esc(l.optionLabel)} · ${esc(l.colorName)} · ×${l.qty}</span></span>
+                <span class="small"><b>${money(l.lineTotal)}</b></span>
+              </div>
+            </div>
+          </div>`).join('')}
+      </div>
+      <div class="totals">
+        <div><span>Subtotal</span><span>${money(r.subtotal)}</span></div>
+        ${r.discount ? `<div style="color:var(--ok)"><span>${esc(r.promo.code)}</span><span>−${money(r.discount)}</span></div>` : ''}
+        <div><span>${r.zone && r.zone.id === 'collect' ? 'Collection' : 'Delivery'}</span><span>${r.delivery ? money(r.delivery) : 'Free'}</span></div>
+        <div class="grand"><span>To pay</span><span>${money(r.total)}</span></div>
+      </div>
+      <p class="xs muted" style="margin-top:.9rem">${esc(r.zone ? r.zone.eta : '')}</p>
+      <a class="small link-underline" href="cart.html" style="display:inline-block;margin-top:.8rem">Edit basket</a>`;
+  }
+
+  function applyZoneUi() {
+    const zoneId = field('zone').value;
+    cart.setZone(zoneId);
+    const zone = P.findZone(catalog, zoneId);
+    const collecting = zoneId === 'collect';
+    document.getElementById('address-block').hidden = collecting;
+    field('address').required = !collecting;
+    document.getElementById('eta').textContent = zone ? zone.eta : '';
+    document.getElementById('cash-opt').style.display = collecting ? '' : 'none';
+    if (!collecting && form.method.value === 'cash') {
+      document.querySelector('[value="momo"]').checked = true;
+      applyMethodUi();
+    }
+    renderSummary();
+  }
+
+  function applyMethodUi() {
+    const method = form.method.value;
+    document.querySelectorAll('.pay-opt').forEach((n) =>
+      n.setAttribute('data-active', String(n.dataset.method === method)));
+    document.getElementById('momo-block').hidden = method !== 'momo';
+    document.getElementById('submit').textContent =
+      method === 'cash' ? 'Reserve for collection'
+      : method === 'card' ? 'Continue to card payment'
+      : 'Send me the payment prompt';
+  }
+
+  function operatorHint(value, hintNode, fallbackText) {
+    const op = ZM.detectOperator(value);
+    if (!value) { hintNode.textContent = fallbackText; hintNode.style.color = ''; return; }
+    if (op) { hintNode.textContent = `${op.name} detected — the prompt goes to ${ZM.formatMsisdn(value)}.`; hintNode.style.color = 'var(--ok)'; }
+    else { hintNode.textContent = 'That is not a Zambian mobile number yet.'; hintNode.style.color = 'var(--warn)'; }
+  }
+
+  function validate() {
+    let ok = true;
+    const name = ZM.cleanLine(field('name').value, 80);
+    if (name.length < 3) { showErr('name', 'Please give the name on the order.'); ok = false; } else showErr('name');
+
+    const phone = ZM.normalizeMsisdn(field('phone').value);
+    if (!phone) { showErr('phone', 'Use a Zambian mobile number, e.g. 0977 123 456.'); ok = false; } else showErr('phone');
+
+    const emailRaw = field('email').value.trim();
+    if (emailRaw && !ZM.isEmail(emailRaw)) { showErr('email', 'That email does not look right.'); ok = false; } else showErr('email');
+
+    const collecting = field('zone').value === 'collect';
+    const address = ZM.cleanLine(field('address').value, 160);
+    if (!collecting && address.length < 6) { showErr('address', 'We need a street address to deliver to.'); ok = false; } else showErr('address');
+
+    const method = form.method.value;
+    let momo = null;
+    if (method === 'momo') {
+      const typed = field('momo').value.trim();
+      momo = ZM.normalizeMsisdn(typed || field('phone').value);
+      if (!momo && (typed || phone)) {
+        showErr('momo', 'Enter the wallet number that should receive the prompt.');
+        ok = false;
+      } else showErr('momo');
+    }
+
+    const tpinRaw = field('tpin').value.trim();
+    let tpin = null;
+    if (tpinRaw) {
+      tpin = ZM.normalizeTpin(tpinRaw);
+      if (!tpin) { showErr('tpin', 'A TPIN is exactly 10 digits.'); ok = false; } else showErr('tpin');
+    }
+
+    return ok ? {
+      customer: {
+        name, phone,
+        email: emailRaw || null,
+        address: collecting ? null : address,
+        landmark: ZM.cleanLine(field('landmark').value, 120) || null,
+        notes: ZM.cleanLine(field('notes').value, 400) || null,
+        company: ZM.cleanLine(field('company').value, 120) || null,
+        tpin,
+      },
+      payment: { method, momoNumber: momo, operator: momo ? (ZM.detectOperator(momo) || {}).id : null },
+      zoneId: field('zone').value,
+      promoCode: cart.promo() || null,
+      items: cart.items(),
+    } : null;
+  }
+
+  async function submit(e) {
+    e.preventDefault();
+    const payload = validate();
+    const errBox = document.getElementById('form-error');
+    errBox.hidden = true;
+    if (!payload) {
+      document.querySelector('[aria-invalid="true"]')?.focus();
+      return;
+    }
+    const btn = document.getElementById('submit');
+    const label = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Placing your order…';
+
+    try {
+      const res = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.reference) throw new Error(data.error || 'We could not place that order.');
+
+      cart.clear();
+      cart.setPromo('');
+      try { sessionStorage.setItem('ivogue.lastOrder', JSON.stringify({ reference: data.reference, phone: payload.customer.phone })); } catch {}
+
+      if (data.paymentUrl) { location.href = data.paymentUrl; return; }
+      location.href = `order.html?ref=${encodeURIComponent(data.reference)}`;
+    } catch (err) {
+      errBox.textContent = err.message + ' You can also send this basket to us on WhatsApp and we will finish it by hand.';
+      errBox.hidden = false;
+      btn.disabled = false;
+      btn.textContent = label;
+      errBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  IV.loadCatalog().then((c) => {
+    catalog = c;
+    field('zone').innerHTML = c.deliveryZones.map((z) =>
+      `<option value="${esc(z.id)}" ${z.id === cart.zone() ? 'selected' : ''}>${esc(z.name)} — ${z.fee ? money(z.fee) : 'free'}</option>`).join('');
+    applyZoneUi();
+    applyMethodUi();
+
+    field('zone').addEventListener('change', applyZoneUi);
+    form.addEventListener('change', (e) => { if (e.target.name === 'method') applyMethodUi(); });
+    field('phone').addEventListener('input', () => operatorHint(field('phone').value, document.getElementById('phone-hint'), 'We call before delivery.'));
+    field('momo').addEventListener('input', () => operatorHint(field('momo').value, document.getElementById('momo-hint'), 'Leave blank to use the number above.'));
+    form.addEventListener('submit', submit);
+    document.addEventListener('cart:change', renderSummary);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy policy | iVogue Lusaka</title>
+<meta name="description" content="How iVogue Lusaka collects, uses and protects your personal data under the Data Protection Act No. 3 of 2021.">
+<link rel="canonical" href="https://ivoguelusaka.com/privacy.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav-root"></div>
+<main>
+  <section class="section-tight" style="padding-top:2.5rem">
+    <div class="wrap-narrow">
+      <div class="eyebrow">Privacy</div>
+      <h1 class="display-2" style="margin:.6rem 0 .8rem">What we do with your details</h1>
+      <p class="lead">Last updated 31 October 2026. iVogue Lusaka is a trading store of Glamified Designs Zambia, Lusaka. This policy follows the Data Protection Act No. 3 of 2021.</p>
+    </div>
+  </section>
+  <section style="padding-top:1rem">
+    <div class="wrap-narrow panel">
+      <h2 class="h2">What we collect</h2>
+      <ul class="tick-list" style="margin-top:1rem">
+        <li><b>When you order:</b> your name, mobile number, email if you give one, delivery address and landmark, and any note you add.</li>
+        <li><b>When you pay:</b> the mobile money number or card reference needed to take payment. Card details are entered on the payment provider's page — they never reach our servers.</li>
+        <li><b>When you trade in:</b> the model, storage, condition and battery health of your phone, its IMEI, and your NRC number, which the law requires us to record for second-hand handsets.</li>
+        <li><b>When you browse:</b> your basket and preferences are stored in your own browser, not on our servers.</li>
+      </ul>
+
+      <h2 class="h2" style="margin-top:2rem">What we use it for</h2>
+      <ul class="tick-list" style="margin-top:1rem">
+        <li>Taking payment, packing and delivering your order, and calling you when the rider is on the way.</li>
+        <li>Honouring the warranty — your IMEI and purchase date are what let us help you later without a receipt.</li>
+        <li>Meeting our legal obligations on second-hand handsets and tax records.</li>
+        <li>Replying when you message us. We do not send marketing messages unless you ask us to.</li>
+      </ul>
+
+      <h2 class="h2" style="margin-top:2rem">Who else sees it</h2>
+      <p class="small" style="margin-top:.8rem">Only the parties needed to complete your order: our payment provider (to process the payment), our delivery rider or courier (name, number, address), and our email provider (for receipts). We do not sell or rent your details to anybody, ever.</p>
+
+      <h2 class="h2" style="margin-top:2rem">How long we keep it</h2>
+      <p class="small" style="margin-top:.8rem">Order and warranty records are kept for six years, which covers the tax record-keeping period and any warranty claim. Trade-in records, including the NRC we are required to log, are kept for the same period. Quote requests that never become orders are deleted after 12 months.</p>
+
+      <h2 class="h2" style="margin-top:2rem">Your rights</h2>
+      <p class="small" style="margin-top:.8rem">You can ask us for a copy of what we hold about you, correct anything wrong, or ask us to delete what we are not legally required to keep. Write to <a class="link-underline" id="mail" href="#">our email</a> or come into the shop with your NRC. We answer within 14 days.</p>
+
+      <h2 class="h2" style="margin-top:2rem">Data on devices we buy</h2>
+      <p class="small" style="margin-top:.8rem">Any handset we take in trade is signed out of iCloud and factory-erased in front of you before it leaves the counter. We never browse, copy or recover data from a device brought to us, and a device that cannot be erased is not accepted.</p>
+
+      <h2 class="h2" style="margin-top:2rem">Contact</h2>
+      <p class="small" style="margin-top:.8rem" id="contact-block"></p>
+    </div>
+  </section>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var c = window.IV.cfg;
+  document.getElementById('mail').href = 'mailto:' + c.contact.email;
+  document.getElementById('contact-block').innerHTML =
+    c.brand.name + ' (' + c.brand.legalName + ')<br>' + c.store.addressLines.join('<br>') +
+    '<br><a class="link-underline" href="mailto:' + c.contact.email + '">' + c.contact.email + '</a>' +
+    '<br><a class="link-underline" href="tel:' + c.contact.phoneDial + '">' + c.contact.phoneDisplay + '</a>';
+});
+</script>
+<footer id="footer-root"></footer>
+<script src="assets/config.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

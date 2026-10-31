@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="MagSafe Silicone Case in Lilac">
+  <title>MagSafe Silicone Case in Lilac</title>
+  <defs>
+    <linearGradient id="body-magsafe-case-lilac" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d5cae4"/>
+      <stop offset="45%" stop-color="#C9BBDD"/>
+      <stop offset="100%" stop-color="#9d92ac"/>
+    </linearGradient>
+    <linearGradient id="frame-magsafe-case-lilac" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d9cfe7"/>
+      <stop offset="50%" stop-color="#C9BBDD"/>
+      <stop offset="100%" stop-color="#8d839b"/>
+    </linearGradient>
+    <linearGradient id="wall-magsafe-case-lilac" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#5a5463"/>
+      <stop offset="55%" stop-color="#5c5565"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-magsafe-case-lilac" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-magsafe-case-lilac" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-magsafe-case-lilac" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="772.8" rx="250" ry="38" fill="url(#floor-magsafe-case-lilac)"/>
+      <rect x="230" y="140" width="300" height="640" rx="50" fill="url(#body-magsafe-case-lilac)" stroke="#978ca6" stroke-width="2.5"/>
+      <rect x="244" y="154" width="272" height="612" rx="42" fill="none" stroke="#d9cfe7" stroke-width="1.5" opacity="0.5"/>
+      <rect x="262" y="178" width="150" height="150" rx="44" fill="#756c80"/>
+      <rect x="272" y="188" width="130" height="130" rx="36" fill="#5a5463" stroke="#d7cce6" stroke-width="2" opacity="0.9"/>
+      <circle cx="308" cy="224" r="22" fill="#10151E"/>
+      <circle cx="308" cy="224" r="13" fill="#24405F"/>
+      <circle cx="362" cy="280" r="22" fill="#10151E"/>
+      <circle cx="362" cy="280" r="13" fill="#24405F"/>
+      <circle cx="380" cy="480" r="52" fill="none" stroke="#dfd6eb" stroke-width="3" opacity="0.45"/>
+      <circle cx="380" cy="480" r="34" fill="none" stroke="#dfd6eb" stroke-width="2" opacity="0.3"/>
+      <path d="M230 580 q150 70 300 0" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.14"/>
+      <text x="380" y="710" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif" font-size="18"
+            letter-spacing="3" fill="#655e6f" opacity="0.6">MAGSAFE</text>
+    </svg>

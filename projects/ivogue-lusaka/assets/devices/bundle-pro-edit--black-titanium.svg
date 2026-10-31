@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 920" role="img" aria-label="The Pro Edit Bundle in Black Titanium">
+  <title>The Pro Edit Bundle in Black Titanium</title>
+  <defs>
+    <linearGradient id="body-bundle-pro-edit-black-titanium" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#666668"/>
+      <stop offset="45%" stop-color="#3B3B3D"/>
+      <stop offset="100%" stop-color="#2e2e30"/>
+    </linearGradient>
+    <linearGradient id="frame-bundle-pro-edit-black-titanium" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#767677"/>
+      <stop offset="50%" stop-color="#3B3B3D"/>
+      <stop offset="100%" stop-color="#29292b"/>
+    </linearGradient>
+    <linearGradient id="wall-bundle-pro-edit-black-titanium" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0%" stop-color="#1b1b1b"/>
+      <stop offset="55%" stop-color="#676768"/>
+      <stop offset="100%" stop-color="#07080C"/>
+    </linearGradient>
+    <linearGradient id="gloss-bundle-pro-edit-black-titanium" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="38%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lens-bundle-pro-edit-black-titanium" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0%" stop-color="#2B4668"/>
+      <stop offset="60%" stop-color="#0B1220"/>
+      <stop offset="100%" stop-color="#05070C"/>
+    </radialGradient>
+    <radialGradient id="floor-bundle-pro-edit-black-titanium" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="380" cy="772.8" rx="250" ry="38" fill="url(#floor-bundle-pro-edit-black-titanium)"/>
+  <g transform="translate(180 150)">
+    <rect x="0" y="0" width="320" height="653" rx="50" fill="url(#body-bundle-pro-edit-black-titanium)" stroke="#29292b" stroke-width="2"/>
+    <rect x="6" y="6" width="308" height="641" rx="44" fill="none" stroke="#808081" stroke-width="1.2" opacity="0.55"/>
+    <path d="M50 6 H270 A44 44 0 0 1 314 50" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.35"/>
+    <rect x="21" y="19.684999999999988" width="150" height="150" rx="44" fill="#49494b" stroke="#2c2c2e" stroke-width="1.5"/>
+    <circle cx="65" cy="63.68499999999999" r="29" fill="#5e5e60" opacity="0.9"/>
+    <circle cx="65" cy="63.68499999999999" r="26" fill="#111111"/>
+    <circle cx="65" cy="63.68499999999999" r="21" fill="url(#lens-bundle-pro-edit-black-titanium)"/>
+    <circle cx="57.75" cy="56.43499999999999" r="4.833333333333333" fill="#ffffff" opacity="0.5"/>
+    <circle cx="65" cy="125.68499999999999" r="29" fill="#5e5e60" opacity="0.9"/>
+    <circle cx="65" cy="125.68499999999999" r="26" fill="#111111"/>
+    <circle cx="65" cy="125.68499999999999" r="21" fill="url(#lens-bundle-pro-edit-black-titanium)"/>
+    <circle cx="57.75" cy="118.43499999999999" r="4.833333333333333" fill="#ffffff" opacity="0.5"/>
+    <circle cx="127" cy="94.68499999999999" r="29" fill="#5e5e60" opacity="0.9"/>
+    <circle cx="127" cy="94.68499999999999" r="26" fill="#111111"/>
+    <circle cx="127" cy="94.68499999999999" r="21" fill="url(#lens-bundle-pro-edit-black-titanium)"/>
+    <circle cx="119.75" cy="87.43499999999999" r="4.833333333333333" fill="#ffffff" opacity="0.5"/><circle cx="131" cy="47.68499999999999" r="8" fill="#9d9d9e"/>
+         <circle cx="131" cy="47.68499999999999" r="4.5" fill="#F6E6B8"/>
+    <circle cx="160" cy="339.56" r="30" fill="none" stroke="#767677" stroke-width="1.2" opacity="0.4"/>
+    <circle cx="160" cy="339.56" r="46" fill="none" stroke="#767677" stroke-width="1" opacity="0.22"/>
+    <text x="160" y="509.34000000000003" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif"
+          font-size="17" letter-spacing="2" fill="#b1b1b1" opacity="0.7">iPhone</text>
+  </g>
+    <g transform="translate(530 640) scale(0.62)">
+      <rect x="-140" y="-100" width="280" height="210" rx="70" fill="#a7a7a8" stroke="#2f2f31" stroke-width="3"/>
+      <circle cx="0" cy="10" r="16" fill="none" stroke="#2f2f31" stroke-width="3" opacity="0.5"/>
+    </g>
+    <g transform="translate(170 690) scale(0.5) rotate(-12)">
+      <rect x="-150" y="-300" width="300" height="600" rx="50" fill="#303032" opacity="0.95"/>
+      <rect x="-132" y="-282" width="264" height="564" rx="40" fill="none" stroke="#767677" stroke-width="4" opacity="0.5"/>
+      <rect x="-118" y="-262" width="150" height="150" rx="44" fill="#272728"/>
+      <circle cx="0" cy="40" r="52" fill="none" stroke="#89898b" stroke-width="4" opacity="0.4"/>
+    </g>
+  </svg>

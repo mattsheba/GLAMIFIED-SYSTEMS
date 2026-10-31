@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trade in your iPhone in Lusaka — instant estimate | iVogue Lusaka</title>
+<meta name="description" content="Sell or swap your old iPhone in Lusaka. Get an instant kwacha estimate, confirmed in store after a free battery, camera and IMEI test. Paid by Airtel, MTN or Zamtel.">
+<link rel="canonical" href="https://ivoguelusaka.com/trade-in.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Trade in your iPhone in Lusaka">
+<meta property="og:description" content="Instant kwacha estimate, confirmed in store. Paid by mobile money, or taken off a new iPhone.">
+<meta property="og:image" content="https://ivoguelusaka.com/assets/og.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav-root"></div>
+
+<main>
+  <section class="section-tight" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="eyebrow">Trade-in &amp; swap</div>
+      <h1 class="display-2" style="margin:.6rem 0 .8rem">What is your old iPhone worth?</h1>
+      <p class="lead" style="max-width:58ch" id="intro"></p>
+    </div>
+  </section>
+
+  <section style="padding-top:1.5rem">
+    <div class="wrap checkout-grid">
+      <form id="calc" class="panel">
+        <h2 class="h3">Tell us about the phone</h2>
+        <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:1.2rem">
+          <div class="field" style="grid-column:1/-1">
+            <label for="model">Model</label>
+            <select class="input" id="model"></select>
+          </div>
+          <div class="field">
+            <label for="storage">Storage</label>
+            <select class="input" id="storage">
+              <option value="64">64GB</option>
+              <option value="128" selected>128GB</option>
+              <option value="256">256GB</option>
+              <option value="512">512GB</option>
+              <option value="1tb">1TB</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="battery">Battery health</label>
+            <select class="input" id="battery">
+              <option value="90">90% or more</option>
+              <option value="85" selected>85–89%</option>
+              <option value="80">80–84%</option>
+              <option value="79">Below 80%</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:1.4rem">
+          <div class="field"><label>Condition</label></div>
+          <div class="stack" style="margin-top:.6rem" id="grades"></div>
+        </div>
+
+        <div style="margin-top:1.4rem">
+          <div class="field"><label>Anything wrong with it?</label></div>
+          <div class="stack" style="margin-top:.6rem" id="deductions"></div>
+        </div>
+      </form>
+
+      <div class="summary">
+        <div class="panel">
+          <div class="eyebrow">Your estimate</div>
+          <div class="display-2" id="value" style="margin:.6rem 0 .2rem">—</div>
+          <p class="small muted" id="breakdown"></p>
+          <hr style="border:0;border-top:1px solid var(--line);margin:1.2rem 0">
+          <p class="small">This is an estimate from the same price matrix we use at the counter. The final figure is confirmed after a free 10-minute test: battery, cameras, Face ID, speakers, charging port and IMEI.</p>
+          <button class="btn btn-primary btn-block btn-lg" style="margin-top:1.2rem" id="book">Book the free test</button>
+          <a class="btn btn-wa btn-block" style="margin-top:.6rem" id="wa" target="_blank" rel="noopener">Send details on WhatsApp</a>
+        </div>
+        <div class="panel">
+          <ul class="tick-list">
+            <li>Swap against any phone in the shop, or take the cash by mobile money</li>
+            <li>We clear your data in front of you</li>
+            <li>iCloud-locked phones cannot be traded — bring the Apple ID password</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- booking -->
+  <section id="booking" style="padding-top:0">
+    <div class="wrap-narrow panel" id="booking-panel" hidden>
+      <h2 class="h2">Book the free test</h2>
+      <p class="small muted" style="margin-top:.4rem">We'll hold the quote for 7 days. Bring the phone, its charger if you have it, and your NRC.</p>
+      <form id="book-form" class="grid" style="grid-template-columns:1fr 1fr;margin-top:1.2rem">
+        <div class="field" style="grid-column:1/-1">
+          <label for="bname">Your name *</label>
+          <input class="input" id="bname" maxlength="80" required>
+          <span class="err" data-err="bname" hidden></span>
+        </div>
+        <div class="field">
+          <label for="bphone">Mobile number *</label>
+          <input class="input" id="bphone" type="tel" inputmode="tel" placeholder="0977 123 456" required>
+          <span class="err" data-err="bphone" hidden></span>
+        </div>
+        <div class="field">
+          <label for="bwhen">When will you come in?</label>
+          <select class="input" id="bwhen">
+            <option>Today</option><option>Tomorrow</option><option>This week</option><option>Just send me the quote</option>
+          </select>
+        </div>
+        <div class="field" style="grid-column:1/-1">
+          <label for="bnotes">Anything else?</label>
+          <textarea class="input" id="bnotes" rows="2" maxlength="400" placeholder="Screen was replaced last year, still has the box…"></textarea>
+        </div>
+        <div style="grid-column:1/-1">
+          <div class="notice notice-err" id="book-err" hidden style="margin-bottom:1rem"></div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit" id="book-submit">Send my quote request</button>
+        </div>
+      </form>
+      <div class="notice notice-ok" id="book-ok" hidden style="margin-top:1rem"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Straight answers</div><h2 class="h2">How the trade-in works</h2></div>
+      <div class="wrap-narrow" style="width:100%;margin:0">
+        <details class="acc" open><summary>Do I have to buy something to trade in?</summary>
+          <div class="acc-body">No. You can sell the phone outright and we pay you by Airtel, MTN or Zamtel the same day. You get a better figure when the value goes against a phone in the shop, because we skip the cash-out cost.</div></details>
+        <details class="acc"><summary>What makes the value drop?</summary>
+          <div class="acc-body">Cracked glass, a battery under 80%, a failed Face ID, a replaced non-genuine screen, water damage, or an iCloud lock. We show you each deduction on screen before you agree to anything.</div></details>
+        <details class="acc"><summary>What do you do with my data?</summary>
+          <div class="acc-body">The phone is signed out of iCloud and erased in front of you before it leaves the counter. Nothing is kept, and nothing is resold before it has been wiped and re-tested.</div></details>
+        <details class="acc"><summary>My screen is cracked — is it worth bringing?</summary>
+          <div class="acc-body">Yes. A cracked iPhone still has value; the Damaged grade on this calculator is the figure we work from. Bring it in rather than guessing.</div></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer-root"></footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/zm.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  const IV = window.IV, P = window.IVPricing, ZM = window.ZM;
+  const { esc, money, waLink } = IV;
+  let catalog, state = { modelId: 'iphone-13', storageId: '128', gradeId: 'b', deductions: [] };
+
+  const el = (id) => document.getElementById(id);
+
+  function current() { return P.valueTradeIn(catalog, state); }
+
+  function paint() {
+    const v = current();
+    if (!v) return;
+    el('value').textContent = money(v.value);
+    const bits = [`${v.modelName}, ${state.storageId === '1tb' ? '1TB' : state.storageId + 'GB'}, ${v.gradeName.toLowerCase()}`];
+    if (v.storageBonus) bits.push(`+${money(v.storageBonus)} for the storage`);
+    if (v.deduction) bits.push(`−${money(v.deduction)} for ${v.deductionLabels.join(', ').toLowerCase()}`);
+    el('breakdown').textContent = bits.join(' · ');
+    el('wa').href = waLink(
+      `Hi iVogue, I'd like to trade in my ${v.modelName} (${state.storageId === '1tb' ? '1TB' : state.storageId + 'GB'}, ${v.gradeName}). ` +
+      `Your site estimates ${money(v.value)}. When can I come in?`);
+  }
+
+  function bindGrades() {
+    el('grades').innerHTML = catalog.tradeIn.grades.map((g) => `
+      <label class="pay-opt" data-active="${g.id === state.gradeId}">
+        <input type="radio" name="grade" value="${esc(g.id)}" ${g.id === state.gradeId ? 'checked' : ''}>
+        <span><b>${esc(g.name)}</b><span class="small muted" style="display:block">${esc(g.desc)}</span></span>
+      </label>`).join('');
+    el('grades').querySelectorAll('input').forEach((i) => i.addEventListener('change', () => {
+      state.gradeId = i.value;
+      el('grades').querySelectorAll('.pay-opt').forEach((n) => n.setAttribute('data-active', String(n.querySelector('input').checked)));
+      paint();
+    }));
+  }
+
+  function bindDeductions() {
+    el('deductions').innerHTML = catalog.tradeIn.deductions.map((d) => `
+      <label class="pay-opt">
+        <input type="checkbox" value="${esc(d.id)}">
+        <span><b>${esc(d.label)}</b><span class="small muted" style="display:block">−${money(d.amount)}</span></span>
+      </label>`).join('');
+    el('deductions').querySelectorAll('input').forEach((i) => i.addEventListener('change', () => {
+      state.deductions = [...el('deductions').querySelectorAll('input:checked')].map((n) => n.value);
+      el('deductions').querySelectorAll('.pay-opt').forEach((n) => n.setAttribute('data-active', String(n.querySelector('input').checked)));
+      paint();
+    }));
+  }
+
+  function showErr(name, msg) {
+    const node = document.querySelector(`[data-err="${name}"]`);
+    node.textContent = msg || ''; node.hidden = !msg;
+    el(name).setAttribute('aria-invalid', msg ? 'true' : 'false');
+  }
+
+  async function book(e) {
+    e.preventDefault();
+    const name = ZM.cleanLine(el('bname').value, 80);
+    const phone = ZM.normalizeMsisdn(el('bphone').value);
+    let ok = true;
+    if (name.length < 3) { showErr('bname', 'Please give us a name.'); ok = false; } else showErr('bname');
+    if (!phone) { showErr('bphone', 'Use a Zambian mobile number.'); ok = false; } else showErr('bphone');
+    if (!ok) return;
+
+    const btn = el('book-submit');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    el('book-err').hidden = true;
+
+    try {
+      const res = await fetch('/api/trade-in', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, phone,
+          when: el('bwhen').value,
+          notes: ZM.cleanLine(el('bnotes').value, 400),
+          modelId: state.modelId, storageId: state.storageId, gradeId: state.gradeId,
+          batteryHealth: el('battery').value, deductions: state.deductions,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'We could not send that just now.');
+      el('book-form').hidden = true;
+      el('book-ok').hidden = false;
+      el('book-ok').innerHTML = `Quote <b>${esc(data.quoteRef || '')}</b> saved — ${esc(money(data.value))} held for 7 days. ` +
+        `We'll call you on ${esc(ZM.formatMsisdn(phone))}. Bring the phone and your NRC to ${esc(IV.cfg.store.addressLines[0])}.`;
+    } catch (err) {
+      el('book-err').textContent = err.message + ' You can also send it straight to us on WhatsApp.';
+      el('book-err').hidden = false;
+      btn.disabled = false; btn.textContent = 'Send my quote request';
+    }
+  }
+
+  IV.loadCatalog().then((c) => {
+    catalog = c;
+    el('intro').textContent = c.tradeIn.intro;
+    el('model').innerHTML = c.tradeIn.models.map((m) =>
+      `<option value="${esc(m.id)}" ${m.id === state.modelId ? 'selected' : ''}>${esc(m.name)}</option>`).join('');
+    bindGrades(); bindDeductions(); paint();
+
+    el('model').addEventListener('change', () => { state.modelId = el('model').value; paint(); });
+    el('storage').addEventListener('change', () => { state.storageId = el('storage').value; paint(); });
+    el('battery').addEventListener('change', () => {
+      /* a weak battery pushes the grade down — mirrors what happens at the counter */
+      const h = Number(el('battery').value);
+      if (h < 80 && state.gradeId !== 'd') { state.gradeId = 'c'; bindGrades(); }
+      paint();
+    });
+    el('book').addEventListener('click', () => {
+      el('booking-panel').hidden = false;
+      el('booking-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el('bname').focus({ preventScroll: true });
+    });
+    el('book-form').addEventListener('submit', book);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your basket — iVogue Lusaka</title>
+<meta name="description" content="Your iVogue Lusaka basket. Kwacha pricing, Lusaka delivery zones and mobile money checkout.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav-root"></div>
+
+<main>
+  <section class="section-tight" style="padding-top:2.5rem">
+    <div class="wrap">
+      <div class="steps"><b>1. Basket</b><i>→</i><span>2. Details</span><i>→</i><span>3. Payment</span></div>
+      <h1 class="display-2">Your basket</h1>
+    </div>
+  </section>
+
+  <section style="padding-top:1.5rem">
+    <div class="wrap checkout-grid" id="cart-root">
+      <div class="skeleton" style="height:320px"></div>
+      <div class="skeleton" style="height:280px"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer-root"></footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/pricing.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  const IV = window.IV, P = window.IVPricing;
+  const { esc, money, cart, toast, waLink } = IV;
+  const root = document.getElementById('cart-root');
+  let catalog;
+
+  function priced() {
+    return P.priceCart(catalog, {
+      items: cart.items(), zoneId: cart.zone(), promoCode: cart.promo(),
+    });
+  }
+
+  function render() {
+    const r = priced();
+
+    if (!r.lines.length) {
+      root.innerHTML = `<div class="empty" style="grid-column:1/-1">
+        <h2 class="h2">Nothing in the basket yet</h2>
+        <p class="lead">Pick a phone, a colour and a case — we'll fit the screen protector free.</p>
+        <div class="row center" style="justify-content:center;margin-top:1.5rem">
+          <a class="btn btn-primary" href="shop.html">Shop the collection</a>
+          <a class="btn btn-ghost" href="trade-in.html">Trade in an old iPhone</a>
+        </div></div>`;
+      return;
+    }
+
+    root.innerHTML = `
+      <div>
+        <div class="panel">
+          ${r.lines.map((l) => `
+            <div class="line">
+              <a class="line-media" href="product.html?id=${encodeURIComponent(l.productId)}&option=${encodeURIComponent(l.optionId)}&color=${encodeURIComponent(l.colorId)}">
+                <img src="${l.art}" alt="${esc(l.name)} in ${esc(l.colorName)}" loading="lazy">
+              </a>
+              <div class="line-main">
+                <div class="spread" style="align-items:flex-start">
+                  <div>
+                    <a href="product.html?id=${encodeURIComponent(l.productId)}"><b>${esc(l.name)}</b></a>
+                    <p class="small muted">${esc(l.optionName)}: ${esc(l.optionLabel)} · ${esc(l.colorName)}</p>
+                    ${l.stock <= 2 ? `<p class="xs" style="color:var(--warn)">Only ${l.stock} left in store</p>` : ''}
+                  </div>
+                  <b>${money(l.lineTotal)}</b>
+                </div>
+                <div class="row" style="margin-top:.7rem;gap:.8rem">
+                  <div class="qty">
+                    <button type="button" data-dec="${esc(l.key)}" aria-label="Reduce quantity">−</button>
+                    <span>${l.qty}</span>
+                    <button type="button" data-inc="${esc(l.key)}" aria-label="Increase quantity">+</button>
+                  </div>
+                  <button class="btn btn-sm btn-ghost" data-del="${esc(l.key)}">Remove</button>
+                  <span class="xs muted">${money(l.unit)} each</span>
+                </div>
+              </div>
+            </div>`).join('')}
+        </div>
+
+        <div class="panel">
+          <h2 class="h3">Where is it going?</h2>
+          <div class="field" style="margin-top:.8rem">
+            <label for="zone">Delivery or collection</label>
+            <select class="input" id="zone">
+              ${catalog.deliveryZones.map((z) => `
+                <option value="${esc(z.id)}" ${z.id === cart.zone() ? 'selected' : ''}>
+                  ${esc(z.name)} — ${z.fee ? money(z.fee) : 'free'}
+                </option>`).join('')}
+            </select>
+          </div>
+          <p class="hint" style="margin-top:.6rem" id="eta">${esc(r.zone ? r.zone.eta : '')}</p>
+        </div>
+
+        <div class="panel">
+          <h2 class="h3">Promo code</h2>
+          <div class="row" style="margin-top:.8rem;gap:.6rem;flex-wrap:nowrap">
+            <input class="input" id="promo" placeholder="e.g. LUSAKA10" value="${esc(cart.promo())}" style="flex:1" autocomplete="off">
+            <button class="btn btn-ghost" id="apply">Apply</button>
+          </div>
+          ${r.promoError ? `<p class="err" style="margin-top:.5rem">${esc(r.promoError)}</p>` : ''}
+          ${r.promo ? `<p class="small" style="margin-top:.5rem;color:var(--ok)">${esc(r.promo.code)} applied — ${esc(r.promo.label)}.</p>` : ''}
+          <p class="hint" style="margin-top:.6rem">Codes running now: ${catalog.promos.map((p) => `<b>${esc(p.code)}</b> (${esc(p.label)})`).join(' · ')}</p>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div class="panel">
+          <h2 class="h3">Summary</h2>
+          <div class="totals">
+            <div><span>Subtotal (${r.itemCount} item${r.itemCount === 1 ? '' : 's'})</span><span>${money(r.subtotal)}</span></div>
+            ${r.discount ? `<div style="color:var(--ok)"><span>Discount ${esc(r.promo ? r.promo.code : '')}</span><span>−${money(r.discount)}</span></div>` : ''}
+            <div><span>${r.zone && r.zone.id === 'collect' ? 'Collection' : 'Delivery'}</span><span>${r.delivery ? money(r.delivery) : 'Free'}</span></div>
+            <div class="grand"><span>Total</span><span>${money(r.total)}</span></div>
+          </div>
+          <a class="btn btn-primary btn-block btn-lg" style="margin-top:1.2rem" href="checkout.html">Continue to details</a>
+          <a class="btn btn-ghost btn-block" style="margin-top:.6rem" href="shop.html">Keep shopping</a>
+          <a class="btn btn-wa btn-block" style="margin-top:.6rem" id="wa-order" target="_blank" rel="noopener">Order on WhatsApp instead</a>
+          <p class="xs muted" style="margin-top:1rem">Prices in Zambian kwacha. ${esc(IV.cfg.payments.vatNote)}</p>
+        </div>
+        <div class="panel">
+          <ul class="tick-list">
+            <li>Unboxed and tested with you before you pay</li>
+            <li>IMEI, battery health and warranty on the receipt</li>
+            <li>Airtel · MTN · Zamtel · Visa · Mastercard · cash on collection</li>
+          </ul>
+        </div>
+      </div>`;
+
+    bind(r);
+  }
+
+  function bind(r) {
+    root.querySelectorAll('[data-inc]').forEach((b) => b.addEventListener('click', () => {
+      const line = r.lines.find((l) => l.key === b.dataset.inc);
+      if (line.qty >= Math.min(P.MAX_QTY, line.stock)) { toast(`Only ${line.stock} in stock.`); return; }
+      cart.setQty(b.dataset.inc, line.qty + 1); render();
+    }));
+    root.querySelectorAll('[data-dec]').forEach((b) => b.addEventListener('click', () => {
+      const line = r.lines.find((l) => l.key === b.dataset.dec);
+      if (line.qty <= 1) { cart.remove(b.dataset.dec); } else { cart.setQty(b.dataset.dec, line.qty - 1); }
+      render();
+    }));
+    root.querySelectorAll('[data-del]').forEach((b) => b.addEventListener('click', () => {
+      cart.remove(b.dataset.del); toast('Removed from your basket.'); render();
+    }));
+
+    const zone = document.getElementById('zone');
+    zone?.addEventListener('change', () => { cart.setZone(zone.value); render(); });
+
+    const apply = document.getElementById('apply');
+    const promo = document.getElementById('promo');
+    apply?.addEventListener('click', () => { cart.setPromo(promo.value.trim().toUpperCase()); render(); });
+    promo?.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); apply.click(); } });
+
+    const wa = document.getElementById('wa-order');
+    if (wa) {
+      const body = r.lines.map((l) => `• ${l.qty} × ${l.name} ${l.optionLabel} (${l.colorName}) — ${money(l.lineTotal)}`).join('\n');
+      wa.href = waLink(`Hi iVogue, I'd like to order:\n${body}\n\n${r.zone ? r.zone.name : ''}\nTotal: ${money(r.total)}`);
+    }
+  }
+
+  IV.loadCatalog().then((c) => { catalog = c; render(); });
+})();
+</script>
+</body>
+</html>

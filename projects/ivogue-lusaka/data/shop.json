@@ -1,0 +1,55 @@
+{
+  "brand": {
+    "name": "iVogue Lusaka",
+    "shortName": "iVogue",
+    "tagline": "The iPhone boutique.",
+    "promise": "Fashion-grade iPhones, fitted and styled in Lusaka.",
+    "domain": "ivoguelusaka.com",
+    "siteUrl": "https://ivoguelusaka.com",
+    "legalName": "Glamified Designs Zambia",
+    "tpin": "1000000000"
+  },
+  "contact": {
+    "whatsapp": "260977669883",
+    "phoneDisplay": "+260 977 669 883",
+    "phoneDial": "+260977669883",
+    "email": "shop@ivoguelusaka.com",
+    "instagram": "ivoguelusaka",
+    "facebook": "ivoguelusaka"
+  },
+  "store": {
+    "addressLines": ["Shop 22, East Park Mall", "Great East Road", "Lusaka, Zambia"],
+    "mapsQuery": "East Park Mall, Great East Road, Lusaka",
+    "hours": [
+      { "days": "Monday – Friday", "open": "09:00", "close": "19:00" },
+      { "days": "Saturday",        "open": "09:00", "close": "18:00" },
+      { "days": "Sunday",          "open": "10:00", "close": "16:00" }
+    ],
+    "timezone": "Africa/Lusaka",
+    "cutoffHour": 15
+  },
+  "payments": {
+    "mobileMoney": [
+      { "id": "airtel", "name": "Airtel Money", "prefixes": ["097", "077"] },
+      { "id": "mtn",    "name": "MTN MoMo",     "prefixes": ["096", "076"] },
+      { "id": "zamtel", "name": "Zamtel Kwacha","prefixes": ["095", "075"] }
+    ],
+    "card": true,
+    "cashOnCollection": true,
+    "lencoPublicKey": "pub-REPLACE-WITH-YOUR-LENCO-PUBLIC-KEY",
+    "vatRate": 0,
+    "vatNote": "Prices include all import duty and taxes. VAT is not charged separately on retail handsets at this registration."
+  },
+  "policies": {
+    "warrantyNew": "12 months on all sealed iPhones, Apple Watch and AirPods.",
+    "warrantyPreowned": "90 days on certified pre-owned handsets, parts and labour.",
+    "returns": "7 days for an unopened, unregistered item with the receipt. Opened sealed items are exchange-or-repair only.",
+    "swapWindow": "48 hours to swap a pre-owned unit for another of equal value if it misbehaves."
+  },
+  "trust": [
+    { "title": "Tested in front of you", "text": "Every handset is unboxed, booted, IMEI-checked and battery-tested at the counter before you pay." },
+    { "title": "Receipt with the IMEI on it", "text": "Printed receipt with model, IMEI, storage, colour and battery health. That receipt is your warranty." },
+    { "title": "Mobile money or card", "text": "Airtel Money, MTN MoMo, Zamtel Kwacha, Visa and Mastercard. No cash-only pressure." },
+    { "title": "Same-day Lusaka delivery", "text": "Ordered before 15:00 inside Lusaka? It reaches you the same day, insured." }
+  ]
+}
